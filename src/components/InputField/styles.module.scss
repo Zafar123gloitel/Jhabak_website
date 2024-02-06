@@ -1,0 +1,106 @@
+@import '../../styles/index.scss';
+.input_field {
+  border: 0px;
+  box-sizing: content-box;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0%;
+  width: 100%;
+  padding: 5px 0px;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid #fff;
+
+  .dropdown {
+    // appearance: none;
+    // padding-left: 16px;
+    border: none;
+  }
+}
+.input_field_select {
+  width: 100%;
+  padding: 6px 0px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-top: 10px;
+  font-weight: 300;
+  background-color: transparent;
+  display: flex;
+  // align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 19px;
+  .input_field {
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #000;
+    outline: none;
+    border: none;
+    padding: 9px 0px;
+    margin-left: 9px;
+    width: 95%;
+    option {
+      &:nth-child(1) {
+        color: #bbb8b8;
+      }
+    }
+
+    option {
+      color: #6c3483;
+    }
+  }
+}
+.select_field_err {
+  position: absolute !important;
+  left: 0;
+  top: 100%;
+}
+.label {
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  font-size: 14px;
+  color: #6c3483;
+  span {
+    color: red;
+  }
+}
+
+._input_field_ {
+  input {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+// Date Input field styles
+
+.date_input {
+  .react-datepicker__input-container {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 15px;
+      height: 15px;
+      background: url('/assets/svg/admin/date_svg.svg');
+      background-size: cover;
+      right: 0;
+      top: 0;
+      z-index: 5;
+    }
+  }
+  .date_input_field {
+    padding-left: 10px !important;
+    border-color: $light-input-color !important;
+    position: relative;
+    &::placeholder {
+      font-size: 13px;
+    }
+  }
+}
