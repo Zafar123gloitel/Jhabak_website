@@ -82,7 +82,7 @@ p {
 .css-f21 {
   font-size: 21px;
 }
-.light_dark_color {
+.text-white {
   color: #9c9eb9;
 }
 .text-green {
@@ -90,6 +90,11 @@ p {
 }
 .text-blue {
   color: $blue-color;
+}
+.section_shadow {
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .bg-trans-css {
@@ -116,6 +121,11 @@ button {
   align-items: center;
   -webkit-align-items: center;
   -webkit-justify-content: center;
+}
+.small_heading {
+  color: #00b666;
+  font-size: 13px;
+  font-weight: bolder;
 }
 .section_heading_css {
   font-size: 44px;

@@ -1,0 +1,37 @@
+@import '../../../styles/index.scss';
+.intraday_strategy {
+  background-color: $light-green-color;
+  .innr_intraday_strategy {
+    .strategy_container {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .strategy {
+        width: 45%;
+        align-items: center;
+        margin: 15px 0;
+        @include respond(md) {
+          width: 80%;
+        }
+        @include respond(sm) {
+          width: 90%;
+        }
+        @include respond(xs) {
+          flex-direction: column;
+          text-align: center;
+        }
+        span {
+          margin-left: 15px;
+          @include respond(xs) {
+            margin-top: 10px;
+          }
+          h5 {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

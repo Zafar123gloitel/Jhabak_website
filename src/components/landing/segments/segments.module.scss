@@ -1,0 +1,45 @@
+@import '../../../styles/index.scss';
+.segments {
+  .innr_segments {
+    .segment_conainer {
+      width: 80%;
+      padding: 40px 0;
+      .content {
+      }
+      .image_part {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        .segments_img {
+          display: block;
+          position: relative;
+          width: 300px;
+          height: 300px;
+          border-radius: 15px;
+          //   overflow: hidden;
+        }
+      }
+      &:nth-child(2) {
+        .segments_img {
+          width: 500px;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+        .image_part {
+          order: 1;
+          display: flex;
+          justify-content: flex-start;
+        }
+        .content {
+          order: 2;
+        }
+      }
+      &:nth-child(3) {
+        .segments_img {
+          width: 400px;
+          height: 180px;
+        }
+      }
+    }
+  }
+}

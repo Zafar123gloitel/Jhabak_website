@@ -1,0 +1,51 @@
+@import '../../../styles/index.scss';
+.we_are_dream {
+  overflow: hidden;
+  background-color: #e6ecf0;
+  .innr_dream {
+    .dream_content {
+      padding-left: 55px;
+      position: relative;
+      .content {
+        text-align: right;
+        h1 {
+          width: 90%;
+        }
+      }
+      .small_heading {
+        // margin-left: 15px;
+        width: 90% !important;
+      }
+      .dream_text {
+        width: 90%;
+      }
+      button {
+        position: relative;
+        right: 10%;
+      }
+    }
+    .dream_image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      .dream_img {
+        position: relative;
+        width: 650px;
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        left: -30%;
+        top: -16%;
+        width: 600px;
+        height: 500px;
+        background: $blue-color;
+        border-radius: 50px;
+        transform: rotate(-167deg);
+      }
+    }
+  }
+}

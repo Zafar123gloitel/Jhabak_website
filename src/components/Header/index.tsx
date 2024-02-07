@@ -40,7 +40,7 @@ const Header = () => {
                   <>
                     <button
                       className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent`}
-                      key={value?.id}
+                      key={value.id}
                       onClick={() => hanleRoute(value?.href)}
                     >
                       <strong>{value?.name}</strong>
