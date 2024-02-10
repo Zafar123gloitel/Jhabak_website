@@ -1,7 +1,19 @@
 @import '../../../styles/index.scss';
 .intraday_strategy {
-  background-color: $light-green-color;
+  // background-color: $light-green-color;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url('/assets/svg/landing/trading_bg.svg');
+    background-size: cover;
+    opacity: 0.3;
+    left: -25px;
+  }
   .innr_intraday_strategy {
+    position: relative;
     .strategy_container {
       flex-wrap: wrap;
       justify-content: space-around;

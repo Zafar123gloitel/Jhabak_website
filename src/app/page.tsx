@@ -1,17 +1,32 @@
-import { IntardayStrategy, WeAreAdvisory, WeBuildDream } from '@/components';
+
 import styles from './page.module.css';
-import NeedHelpSection from '@/components/landing/needHelpSection';
-import Segments from '@/components/landing/segments';
+import {
+  // BannerSection,
+  // Banner,
+  BasicRuleTrading,
+  Enquiry,
+  IntardayStrategy,
+  NeedHelpSection,
+  Pricing,
+  Segments,
+  VideoContent,
+  WeAreAdvisory,
+  WeBuildDream,
+} from '@/components';
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/* <Banner /> */}
+      {/* <BannerSection /> */}
+      <VideoContent />
       <WeAreAdvisory />
+      <BasicRuleTrading />
       <IntardayStrategy />
       <NeedHelpSection />
       <Segments />
       <WeBuildDream />
+      <Pricing />
+      <Enquiry />
     </main>
   );
 }
