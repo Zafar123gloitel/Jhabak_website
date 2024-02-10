@@ -17,18 +17,18 @@ export const pageRoute: pageRoute[] = [
   },
   {
     id: 3,
-    name: 'Products',
-    href: '/products',
+    name: 'Services',
+    href: '/Services',
   },
   {
     id: 4,
-    name: 'Career',
-    href: '/career',
+    name: 'Contact Us',
+    href: '/Contact Us',
   },
   {
     id: 5,
-    name: 'Contact',
-    href: '/contact',
+    name: 'Login',
+    href: '/Login',
   },
   //   {
   //     id: 5,
