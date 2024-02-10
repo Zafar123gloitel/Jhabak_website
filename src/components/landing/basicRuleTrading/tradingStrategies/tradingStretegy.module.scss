@@ -3,14 +3,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  h1
-  {
+  h1 {
     @include respond(lg) {
-          width: 70%;
-        }
-         @include respond(sm) {
-          width: 100%;
-        }
+      width: 70%;
+    }
+    @include respond(sm) {
+      width: 100%;
+    }
   }
   .innr_trading_strategies {
     position: relative;
