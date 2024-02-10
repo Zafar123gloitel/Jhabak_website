@@ -199,7 +199,29 @@ button {
     width: 98%;
   }
 }
-
+// Banner Images style
+.common_banner_img {
+  width: 100%;
+  margin: auto;
+  display: block;
+  object-fit: cover;
+  height: auto;
+  opacity: 1;
+  @include respond(xxxxl) {
+    aspect-ratio: 90 /25;
+  }
+  @include respond(xxxl) {
+    aspect-ratio: 80 /25;
+  }
+  @include respond(xl) {
+    aspect-ratio: 90 /25;
+    object-position: top center;
+  }
+  @include respond(md) {
+    aspect-ratio: 85 /25;
+    object-position: top center;
+  }
+}
 // custome loder
 .custom-loader {
   width: 3px !important;
@@ -368,25 +390,27 @@ button {
   color: $green-color;
 }
 
-.input-field input {
+.input-field input,
+.input-field textarea {
   width: 100%;
   padding: 5px 0px;
   // border: none;
-  border: 1px solid #000;
-  border-radius: 12px;
-  color: #f8f8f8ef;
+  border: none;
+  color: $black-text-color;
   font-size: 14px;
   margin-top: 5px;
-  background-color: transparent;
+  background-color: #d0cfcf;
   padding: 14px 16px;
 
   // background-color: #fff;
 }
-
-.input-field input::placeholder {
+.input-field textarea {
+  resize: none;
+}
+.input-field input::placeholder,
+.input-field textarea::placeholder {
   font-weight: 590;
-  color: #ccc;
-  font-size: 16px;
+  font-size: 14px;
   // color: #0e0e0e;
 }
 
@@ -394,4 +418,13 @@ button {
   color: #ff0000;
   font-size: 12px;
   margin-top: 4px;
+}
+
+.fitness_slider {
+  .slider-section {
+    .splide__track {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
 }

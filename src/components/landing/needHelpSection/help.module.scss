@@ -2,15 +2,30 @@
 .need_help {
   background: $blue-color;
   position: relative;
-
   .innr_need_help {
     .need_help_img {
       position: absolute;
       top: -25%;
       left: -10%;
+      @include respond(md) {
+        width: 570px;
+        height: 500px;
+        top: 0;
+      }
+      @include respond(sm) {
+        width: 300px;
+        height: 300px;
+        top: 0;
+      }
     }
     h1 {
       font-size: 72px;
+      @include respond(md) {
+        font-size: 55px;
+      }
+      @include respond(sm) {
+        font-size: 40px;
+      }
       span {
         position: relative;
         height: 100%;

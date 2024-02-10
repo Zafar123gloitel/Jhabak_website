@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export const WeAreAdvisory = () => {
   return (
@@ -39,7 +39,13 @@ export const WeAreAdvisory = () => {
 
           <div className={`${styles.advisory_image} _css_right`}>
             <div className={`${styles.advisory_img} mt-5`}>
-              <Image src={'/assets/images/landing_page/advisory.jpg'} fill={true} alt="advisory" />
+              {/* <Image src={'/assets/images/landing_page/advisory.jpg'} fill={true} alt="advisory" /> */}
+              <video
+                src="https://res.cloudinary.com/ddaddjwgj/video/upload/v1707478996/jhabak_trading/ut2nsknsn9bxg41k1uqd.mp4"
+                autoPlay
+                loop
+                muted
+              />
             </div>
           </div>
         </div>
