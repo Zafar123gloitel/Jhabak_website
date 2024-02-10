@@ -15,6 +15,8 @@ export const TradingStrategy = () => {
       {/* <span className={`${styles.single_object} element_center`}>
         <b className="text-white">Trend Following</b>
       </span> */}
+
+      <h1 className="section_heading_css text-center">Intraday Trading Strategies</h1>
       <div className={styles.innr_trading_strategies}>
         {/* {[...Array(3)].map((_, i) => (
           <div key={i} className={`${styles.small_single_object} element_center`}>

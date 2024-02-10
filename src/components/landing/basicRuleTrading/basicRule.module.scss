@@ -2,11 +2,19 @@
 .basic_rule {
   .innnr_basic_rule {
     justify-content: center;
+    .strategy_rule
+    {
+      display: flex;
+      justify-content: center;
+    }
     .rules {
       h1 {
         @include respond(xl) {
-          text-align: center;
-        }
+          text-align: center;  }
+
+      }
+      @include respond(mmd) {
+        margin-top: 55px;
       }
       .rule_container {
         display: flex;

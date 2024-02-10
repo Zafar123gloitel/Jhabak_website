@@ -7,7 +7,7 @@ export const BasicRuleTrading = () => {
   return (
     <section className={`${styles.basic_rule} element_center section_padding section_shadow`}>
       <div className={`${styles.innnr_basic_rule} css_max_screen d-flex flex-wrap`}>
-        <div className={`${styles.strategy_rule} _css_left element_center`}>
+        <div className={`${styles.strategy_rule} _css_left `}>
           <TradingStrategy />
         </div>
         <div className={`${styles.rules} _css_right`}>

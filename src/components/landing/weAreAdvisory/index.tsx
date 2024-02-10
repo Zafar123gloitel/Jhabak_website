@@ -6,7 +6,7 @@ export const WeAreAdvisory = () => {
   return (
     <>
       <section className={`${styles.we_are_advisory} element_center w-100 section_padding section_shadow `}>
-        <div className={`${styles.innr_advisory} css_max_screen d-flex flex-wrap  `}>
+        <div className={`${styles.innr_advisory} css_max_screen d-flex flex-wrap `}>
           <div className={`${styles.advisory_content} _css_left `}>
             <div className={styles.content}>
               <b className={`${styles.small_heading} text-green w-100 css-f13`}>Get to Know</b>
