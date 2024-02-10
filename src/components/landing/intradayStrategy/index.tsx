@@ -15,9 +15,9 @@ export const IntardayStrategy = () => {
               return (
                 <div className={`${styles.strategy} d-flex`} key={item.id}>
                   <Image src={item.imgSrc} alt="intraday_strategy" width={150} height={150} />
-                  <span className="text-blue">
-                    <h5>{item.title}</h5>
-                    <p>{item.content}</p>
+                  <span>
+                    <h5 className="text-blue">{item.title}</h5>
+                    <p className="_css_content_ ">{item.content}</p>
                   </span>
                 </div>
               );

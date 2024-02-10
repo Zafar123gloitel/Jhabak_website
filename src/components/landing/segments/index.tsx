@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './segments.module.scss';
 import { segmentData } from './segementData';
 import Image from 'next/image';
-const Segments = () => {
+export const Segments = () => {
   return (
     <section className={`${styles.segments} element_center section_shadow flex-column section_padding mt-1`}>
       <h1 className="section_heading_css">We Cover the Following Segments</h1>
@@ -42,5 +42,3 @@ const Segments = () => {
     </section>
   );
 };
-
-export default Segments;
