@@ -178,8 +178,34 @@ button {
   padding: 0;
   margin: 0;
 }
+@media (prefers-reduced-motion: no-preference) {
+  ._css_left {
+    position: relative;
+    left: -100%;
+    animation: left_slide linear forwards;
+    animation-timeline: view();
+    animation-range: 0px 400px;
+  }
+
+  @keyframes left_slide {
+    from {
+      position: relative;
+      left: -100%;
+    }
+    to {
+      position: relative;
+      left: 0;
+    }
+  }
+}
 ._css_left {
   width: 48%;
+
+  // We can also use offset top and bottom in view() first one is for top and second one is for bottom offset
+  // we also can use
+  // animation-range-start: 500px;
+  // also use contain and cover
+  // animation-range-end: 200px;
   @include respond(mmd) {
     width: 70%;
   }
@@ -190,6 +216,7 @@ button {
     width: 98%;
   }
 }
+
 ._css_right {
   width: 48%;
   @include respond(mmd) {

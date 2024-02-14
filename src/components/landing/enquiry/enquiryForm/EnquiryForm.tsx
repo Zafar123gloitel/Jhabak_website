@@ -59,7 +59,7 @@ export const EnquiryForm = () => {
           <span className="text-green"> Privacy Policy</span>.
         </label>
       </div>
-      <button type="submit" className="Dark_button mt-3">
+      <button type="submit" className={`${styles.enquiry_btn} Dark_button mt-3`}>
         Submit Now
       </button>
     </div>

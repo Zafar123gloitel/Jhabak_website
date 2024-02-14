@@ -1,7 +1,11 @@
 @import '../../../styles/index.scss';
-.segments {
-  .innr_segments {
-    .segment_conainer {
+.advantages {
+  .advantges_content {
+    width: 50%;
+    text-align: center;
+  }
+  .innr_advantages {
+    .advantages_conainer {
       width: 80%;
       padding: 40px 0;
 
@@ -23,23 +27,12 @@
           //   overflow: hidden;
         }
       }
-      &:nth-child(2) {
+      &:nth-child(even) {
         @include respond(md) {
           justify-content: space-between;
         }
         @include respond(mmd) {
           justify-content: center;
-        }
-
-        .segments_img {
-          width: 500px;
-          border-radius: 5px;
-          overflow: hidden;
-
-          @include respond(lg) {
-            width: 350px;
-            height: 250px;
-          }
         }
         .image_part {
           order: 1;
@@ -51,12 +44,6 @@
         }
         .content {
           order: 2;
-        }
-      }
-      &:nth-child(3) {
-        .segments_img {
-          width: 400px;
-          height: 180px;
         }
       }
     }

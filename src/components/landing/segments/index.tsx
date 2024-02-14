@@ -27,7 +27,7 @@ export const Segments = () => {
                         );
                       })}
                     </ul>
-                    <button className="Dark_button mt-1">{item.button}</button>
+                    <button className="Dark_button mt-3">{item.button}</button>
                   </div>
                   <div className={`${styles.image_part} _css_right`}>
                     <div className={`${styles.segments_img} mt-5`}>
