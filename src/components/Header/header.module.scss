@@ -176,7 +176,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Montserrat, sans-serif;
   // height: 100%;
 }
 // archana_css
@@ -195,16 +194,6 @@
   }
 }
 .book {
-  width: 180px;
-  height: 40px;
-  background: #023d6d;
-  border-radius: 5px;
-  font-family: Source Sans Pro;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #ffffff;
   @include respond(md) {
     display: none;
   }

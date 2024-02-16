@@ -23,7 +23,7 @@ export const pageRoute: pageRoute[] = [
   {
     id: 11114,
     name: 'Contact Us',
-    href: '/contact Us',
+    href: '/contact',
   },
   {
     id: 11115,

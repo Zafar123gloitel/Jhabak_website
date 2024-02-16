@@ -1,6 +1,7 @@
 @import '../../../styles/index.scss';
 
 .fitness_slider {
+  background-color: $background-color;
   // min-height: 500px;
   height: 800px;
   @include respond(xxxl) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/app/global.css';
+import '@/app/globals.scss';
 
 import { Metadata } from 'next';
 

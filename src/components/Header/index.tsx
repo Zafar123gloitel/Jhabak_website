@@ -21,7 +21,7 @@ const Header = () => {
                 return (
                   <>
                     <button
-                      className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-blue`}
+                      className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
                       key={value.id}
                       onClick={() => hanleRoute(value?.href)}
                     >
@@ -32,7 +32,7 @@ const Header = () => {
               })}
             </ul>
           </div>
-          <button className={`${styles['book']}`} type="button">
+          <button className={`outline_button`} type="button">
             Book An Appointment
           </button>
           <div className={`${styles['menu_dropdown']}`}>
