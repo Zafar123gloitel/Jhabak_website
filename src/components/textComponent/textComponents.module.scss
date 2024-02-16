@@ -1,0 +1,21 @@
+@import '../../styles/index.scss';
+
+.content {
+  margin-left: 100px;
+  @include respond(mmd) {
+    text-align: center;
+  }
+  h1 {
+    width: 90%;
+    @include respond(lg) {
+      width: 100%;
+    }
+  }
+  ul {
+    li {
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

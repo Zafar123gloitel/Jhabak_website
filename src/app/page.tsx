@@ -8,16 +8,18 @@ import {
   NeedHelpSection,
   Pricing,
   Segments,
-  VideoContent,
-  WeAreAdvisory,
+  // VideoContent,
+  MasterTechnical,
   WeBuildDream,
+  WeAreAdvisory,
 } from '@/components';
 
 export default function Home() {
   return (
     <main className={styles.main}>
       {/* <BannerSection /> */}
-      <VideoContent />
+      {/* <VideoContent /> */}
+      <MasterTechnical />
       <WeAreAdvisory />
       <BasicRuleTrading />
       <IntardayStrategy />

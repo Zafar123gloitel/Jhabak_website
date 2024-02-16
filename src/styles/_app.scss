@@ -132,7 +132,7 @@ button {
 }
 .section_heading_css {
   font-size: 44px;
-  font-weight: bolder;
+  font-weight: 600;
   color: $white-color;
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -178,26 +178,27 @@ button {
   padding: 0;
   margin: 0;
 }
-@media (prefers-reduced-motion: no-preference) {
-  ._css_left {
-    position: relative;
-    left: -100%;
-    animation: left_slide linear forwards;
-    animation-timeline: view();
-    animation-range: 0px 400px;
-  }
 
-  @keyframes left_slide {
-    from {
-      position: relative;
-      left: -100%;
-    }
-    to {
-      position: relative;
-      left: 0;
-    }
-  }
-}
+// @media (prefers-reduced-motion: no-preference) {
+//   ._css_left {
+//     position: relative;
+//     left: -100%;
+//     animation: left_slide linear forwards;
+//     animation-timeline: view();
+//     animation-range: 0px 400px;
+//   }
+
+//   @keyframes left_slide {
+//     from {
+//       position: relative;
+//       left: -100%;
+//     }
+//     to {
+//       position: relative;
+//       left: 0;
+//     }
+//   }
+// }
 ._css_left {
   width: 48%;
 
