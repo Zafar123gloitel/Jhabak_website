@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './pricing.module.scss';
-import { PricingData } from './card';
 import PriceCard from './priceCard';
+import { PricingData } from '@/components/landing/configData';
 export const Pricing = () => {
   return (
     <section className={`${styles.pricing} section_padding section_shadow element_center flex-column`}>

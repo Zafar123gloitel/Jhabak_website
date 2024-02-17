@@ -1,11 +1,29 @@
 @import '../../../../styles/index.scss';
 .pricing_card {
-  width: 400px;
-  min-width: 400px;
+  width: 350px;
+  min-width: 350px;
   height: auto;
   padding: 50px 25px 30px 25px;
   margin: 40px;
-  background-color: $white-color;
+  // background-color: $white-color;
+  box-shadow: #adff14 1.85px 5px 9px 0px;
+  border-radius: 10px;
+
+  &:nth-child(even) {
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  &:nth-child(odd) {
+    .innr_card {
+      .info_btns {
+        .more_details {
+          border-color: #fff;
+          color: #fff;
+        }
+      }
+    }
+  }
   @include respond(xms) {
     width: 98%;
     min-width: 98%;
@@ -17,16 +35,20 @@
     flex-direction: column;
     .card_heading {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       width: 100%;
-      border-bottom: 1px dashed $blue-color;
       h5 {
-        font-size: 26px;
+        font-size: 50px;
         font-weight: 700;
         @include respond(xms) {
           font-size: 22px;
         }
+      }
+    }
+    .info_btns {
+      .more_details {
+        border-color: #000;
+        color: #000;
       }
     }
     p {
@@ -42,6 +64,9 @@
         li {
           color: $content-text-color;
           margin: 10px 0;
+          span {
+            margin-left: 5px;
+          }
         }
       }
     }
