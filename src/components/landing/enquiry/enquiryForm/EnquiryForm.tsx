@@ -52,13 +52,13 @@ export const EnquiryForm = () => {
       <div className={styles.input_container}>
         <TextAreaInput placeholder="Message" error="error" name="message" className={styles.enquiry_input} value="" />
       </div>
-      <div className={`${styles.checkbox} w-100`}>
+      {/* <div className={`${styles.checkbox} w-100`}>
         <input type="checkbox" name="terms" value="Bike" />
         <label htmlFor="vehicle1" className="css-f16">
           Accept <span className="text-green">Terms & Conditions</span> And
           <span className="text-green"> Privacy Policy</span>.
         </label>
-      </div>
+      </div> */}
       <button type="submit" className={`${styles.enquiry_btn} Dark_button mt-3`}>
         Submit Now
       </button>

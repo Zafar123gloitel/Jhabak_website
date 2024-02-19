@@ -12,7 +12,9 @@ interface ITextContent {
 export const TextComponent = ({ heading, smallHeading, content, contentList, href }: ITextContent) => {
   return (
     <div className={styles.content}>
-      <p className={`${styles.small_heading} text-green css-f13 m-0`}>{smallHeading}</p>
+      <p className={`${styles.small_heading} text-green css-f13 m-0`}>
+        <strong>{smallHeading}</strong>
+      </p>
       <h1 className="section_heading_css w-100 mt-1">{heading}</h1>
       <p className={`${styles.advisory_text} mt-3  _css_content_ `}>{content}</p>
       <ul className="mt-2">

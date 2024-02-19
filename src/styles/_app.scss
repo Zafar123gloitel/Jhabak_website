@@ -13,6 +13,9 @@ body {
   font-family: 'Source Sans 3', sans-serif;
   color: #212b36;
   transition: all 0.5s ease;
+  background-image: url('/assets/svg/landing/backgournd_img.svg');
+  background-repeat: repeat-y;
+  background-size: contain;
 }
 
 ul {
@@ -49,41 +52,41 @@ p {
 }
 
 .css-f13 {
-  font-size: 13px;
+  font-size: 13px !important;
 }
 .css-f14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 .css-f15 {
-  font-size: 15px;
+  font-size: 15px !important;
 }
 .css-f12 {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .css-f16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .css-f17 {
-  font-size: 17px;
+  font-size: 17px !important;
 }
 .css-f18 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 .css-f19 {
-  font-size: 19px;
+  font-size: 19px !important;
 }
 .css-f20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .css-f25 {
-  font-size: 25px;
+  font-size: 25px !important;
   @include respond(md) {
-    font-size: 18px;
+    font-size: 18px !important;
   }
 }
 
 .css-f21 {
-  font-size: 21px;
+  font-size: 21px !important;
 }
 .text-white {
   color: #9c9eb9;
@@ -427,22 +430,23 @@ button {
   padding: 5px 0px;
   // border: none;
   border: none;
-  color: $black-text-color;
+  color: $content-text-color;
   font-size: 14px;
   margin-top: 5px;
-  background-color: #d0cfcf;
+  background-color: #6666665e;
+  font-weight: 500;
+  border-radius: 8px;
   padding: 14px 16px;
-
-  // background-color: #fff;
+  border-bottom: 2px solid $green-color;
 }
 .input-field textarea {
   resize: none;
 }
 .input-field input::placeholder,
 .input-field textarea::placeholder {
-  font-weight: 590;
+  font-weight: 500;
   font-size: 14px;
-  // color: #0e0e0e;
+  color: $content-text-color;
 }
 
 .error-message {

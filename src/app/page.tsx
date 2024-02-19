@@ -4,14 +4,15 @@ import {
   // Banner,
   BasicRuleTrading,
   Enquiry,
-  IntardayStrategy,
+  // IntardayStrategy,
   NeedHelpSection,
   Pricing,
   Segments,
   // VideoContent,
   MasterTechnical,
-  WeBuildDream,
   WeAreAdvisory,
+  RuleTrading,
+  MutualFundServices,
 } from '@/components';
 
 export default function Home() {
@@ -21,12 +22,13 @@ export default function Home() {
       {/* <VideoContent /> */}
       <MasterTechnical />
       <WeAreAdvisory />
+      <Pricing />
+      <RuleTrading />
       <BasicRuleTrading />
-      <IntardayStrategy />
+      {/* <IntardayStrategy /> */}
       <NeedHelpSection />
       <Segments />
-      <WeBuildDream />
-      <Pricing />
+      <MutualFundServices />
       <Enquiry />
     </main>
   );

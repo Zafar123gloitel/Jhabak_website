@@ -1,92 +1,31 @@
 @import '../../../../styles/index.scss';
 .trading_strategies {
-  display: flex;
-  align-items: center;
+  width: 80%;
+  height: 100%;
   flex-direction: column;
-  h1 {
-    @include respond(lg) {
-      width: 70%;
+  align-items: flex-start;
+
+  h4 {
+    width: 100%;
+    font-weight: 500;
+    position: relative;
+    span {
+      display: block;
+      margin-left: 10px;
     }
-    @include respond(sm) {
-      width: 100%;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 2px;
+      left: 0px;
+      height: 100%;
+      background-color: #1fcff1;
     }
   }
-  .innr_trading_strategies {
+  .trading_strategies_text {
     position: relative;
-    img {
-      @include respond(lg) {
-        width: 500px;
-        height: 500px;
-      }
-      @include respond(mmd) {
-        width: 100%;
-        height: 500px;
-      }
-      @include respond(xs) {
-        width: 400px;
-        height: 400px;
-      }
-      @include respond(xms) {
-        width: 100%;
-        height: 300px;
-      }
-    }
-    .single_object,
-    .small_single_object {
-      position: absolute;
-      display: flex;
-      right: 100%;
-      top: 0%;
-      width: 150px;
-      height: 150px;
-      clip-path: polygon(0 0, 100% 0, 78% 100%, 22% 100%);
-      background-color: $green-color;
-      border-radius: 5%;
-      perspective-origin: center;
-      transform-origin: bottom;
-      &:nth-child(1) {
-        transform: rotate(-110deg) translate(-0px, 50px);
-      }
-      &:nth-child(2) {
-        transform: rotate(-70deg) translate(75px, 23px);
-      }
-      &:nth-child(3) {
-        transform: rotate(-70deg) translate(75px, 23px);
-      }
-
-      &::before {
-        position: absolute;
-        top: 96%;
-        width: 63%;
-        height: 28px;
-        border-radius: 50%;
-        background-color: #fff;
-        content: '';
-      }
-      &::after {
-        position: absolute;
-        bottom: 90%;
-        width: 100%;
-        height: 28px;
-        border-radius: 50%;
-        background-color: $green-color;
-        content: '';
-      }
-      b {
-        width: 70%;
-        text-align: center;
-      }
-    }
-    .small_single_object {
-      width: 80px;
-      height: 70px;
-      &::before {
-        top: 96%;
-        width: 90%;
-        border-radius: 50%;
-        background-color: #fff;
-        content: '';
-      }
+    p {
+      width: 75%;
     }
   }
 }

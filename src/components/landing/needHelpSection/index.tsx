@@ -3,7 +3,7 @@ import styles from './help.module.scss';
 import Image from 'next/image';
 export const NeedHelpSection = () => {
   return (
-    <div className={`${styles.need_help} element_center section_padding mt-1 section_shadow`}>
+    <div className={`${styles.need_help} element_center section_padding mt-5 section_shadow`}>
       <div className={`${styles.innr_need_help} css_max_screen element_center flex-column`}>
         <h1 className="section_heading_css text-center text-white w-75">
           <Image
