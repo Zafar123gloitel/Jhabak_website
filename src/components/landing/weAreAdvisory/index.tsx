@@ -3,7 +3,7 @@ import styles from './advisory.module.scss';
 import { TextComponent } from '@/components';
 import Image from 'next/image';
 
-export const WeAreAdvisory = () => {
+const WeAreAdvisory = () => {
   return (
     <section className={`${styles.advisory} element_center `}>
       <div className={`${styles.inner_advisory} css_max_screen element_center`}>
@@ -22,3 +22,5 @@ export const WeAreAdvisory = () => {
     </section>
   );
 };
+
+export default WeAreAdvisory;

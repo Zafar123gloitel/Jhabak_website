@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './segments.module.scss';
 import { segmentData } from './segementData';
 import Image from 'next/image';
-export const Segments = () => {
+const Segments = () => {
   return (
-    <section className={`${styles.segments} element_center section_shadow flex-column section_padding mt-1`}>
+    <section className={`${styles.segments} element_center flex-column section_padding mt-1`}>
       <h1 className="section_heading_css">We Cover the Following Segments</h1>
       <div className={`${styles.innr_segments} css_max_screen element_center flex-column`}>
         {segmentData.length &&
@@ -42,3 +42,4 @@ export const Segments = () => {
     </section>
   );
 };
+export default Segments;

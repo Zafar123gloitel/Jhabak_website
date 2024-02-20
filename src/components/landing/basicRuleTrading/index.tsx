@@ -4,9 +4,10 @@ import styles from './basicRule.module.scss';
 import TradinRules from './tradingRules';
 import { TradingStrategy } from './tradingStrategies';
 import { baseRuleData, basicRules } from '../configData';
-export const BasicRuleTrading = () => {
+
+const BasicRuleTrading = () => {
   return (
-    <section className={`${styles.basic_rule} element_center section_shadow`}>
+    <section className={`${styles.basic_rule} element_center `}>
       <div className={`${styles.innnr_basic_rule} css_max_screen d-flex flex-wrap`}>
         <div className={`${styles.strategy_rule} _css_left order-2`}>
           {baseRuleData &&
@@ -33,3 +34,5 @@ export const BasicRuleTrading = () => {
     </section>
   );
 };
+
+export default BasicRuleTrading;

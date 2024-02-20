@@ -3,9 +3,9 @@ import styles from './styles.module.scss';
 import Image from 'next/image';
 import { TextComponent } from '@/components';
 import { buildDreamData } from '../configData';
-export function MutualFundServices() {
+function MutualFund() {
   return (
-    <section className={`${styles.we_are_dream} element_center w-100 section_padding section_shadow mt-1`}>
+    <section className={`${styles.we_are_dream} element_center w-100 section_padding mt-1`}>
       <div className={`${styles.innr_dream} css_max_screen d-flex flex-wrap  `}>
         {buildDreamData &&
           buildDreamData.map(item => {
@@ -18,7 +18,7 @@ export function MutualFundServices() {
                       {item.svgList.map(data => {
                         return (
                           <span key={data.id}>
-                            <Image src={data.svgSrc} alt="" width={100} height={100} />
+                            {/* <Image src={data.svgSrc} alt="" width={100} height={100} /> */}
                             <h6 className="mt-2">{data.svgHeading}</h6>
                           </span>
                         );
@@ -38,3 +38,5 @@ export function MutualFundServices() {
     </section>
   );
 }
+
+export default MutualFund;

@@ -3,9 +3,9 @@ import styles from './ruleTrading.module.scss';
 import Image from 'next/image';
 import { StartegyData } from '@/components/landing/configData';
 
-export const RuleTrading = () => {
+const RuleTrading = () => {
   return (
-    <div className={styles.main}>
+    <section className={styles.main}>
       <div className={`${styles.inner_main}`}>
         <div className={styles.plus_sign}>
           <Image src="/assets/svg/landing/rule_men.svg" alt="loading" width={500} height={500} />
@@ -22,6 +22,7 @@ export const RuleTrading = () => {
           })}
         </ul>
       </div>
-    </div>
+    </section>
   );
 };
+export default RuleTrading;

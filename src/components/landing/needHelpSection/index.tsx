@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './help.module.scss';
 import Image from 'next/image';
-export const NeedHelpSection = () => {
+const NeedHelpSection = () => {
   return (
-    <div className={`${styles.need_help} element_center section_padding mt-5 section_shadow`}>
+    <section className={`${styles.need_help} element_center section_padding mt-5 `}>
       <div className={`${styles.innr_need_help} css_max_screen element_center flex-column`}>
         <h1 className="section_heading_css text-center text-white w-75">
           <Image
@@ -18,6 +18,7 @@ export const NeedHelpSection = () => {
         <p className="text-white text-center w-50 mt-4">Request a callback to get your queries answered</p>
         <button className="css-f17 Dark_button ">Try Jhabak </button>
       </div>
-    </div>
+    </section>
   );
 };
+export default NeedHelpSection;

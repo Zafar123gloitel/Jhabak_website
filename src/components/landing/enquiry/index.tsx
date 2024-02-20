@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './enquiry.module.scss';
 import { EnquiryForm } from './enquiryForm/EnquiryForm';
 import Image from 'next/image';
-export const Enquiry = () => {
+const Enquiry = () => {
   return (
-    <section className={`${styles.enquiry} element_center section_shadow section_padding`}>
+    <section className={`${styles.enquiry} element_center section_padding`}>
       <div className={`${styles.innr_enquiry} css_max_screen element_center flex-wrap`}>
         <div className={`${styles.enquiry_container} _css_left element_center flex-column`}>
           <p className="small_heading text-left">Reach us</p>
@@ -27,3 +27,4 @@ export const Enquiry = () => {
     </section>
   );
 };
+export default Enquiry;

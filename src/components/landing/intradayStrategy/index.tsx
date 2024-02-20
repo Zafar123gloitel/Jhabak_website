@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import { StartegyData } from './stragtegyData';
-export const IntardayStrategy = () => {
+const IntradayStrategy = () => {
   return (
-    <section
-      className={`${styles.intraday_strategy} element_center w-100 section_padding flex-column section_shadow mt-1`}
-    >
+    <section className={`${styles.intraday_strategy} element_center w-100 section_padding flex-column mt-1`}>
       <h1 className="section_heading_css mb-5 ">Intraday Trading Strategies</h1>
       <div className={`${styles.innr_intraday_strategy} css_max_screen`}>
         <div className={`${styles.strategy_container} element_center`}>
@@ -27,3 +25,5 @@ export const IntardayStrategy = () => {
     </section>
   );
 };
+
+export default IntradayStrategy;
