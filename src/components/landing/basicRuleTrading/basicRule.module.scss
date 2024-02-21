@@ -7,13 +7,22 @@ $list: #ffd512, #9945ff, #19fb9b;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      @include respond(mmd) {
+        margin-top: 30px;
+      }
       .single_stretegy {
         width: 48%;
-
         &:nth-child(even) {
           transform: translateY(-150px);
         }
-
+        @include respond(mmd) {
+          transform: translateY(0) !important;
+          margin-top: 25px;
+        }
+        @include respond(xs) {
+          width: 100%;
+        }
+        // For right side heading vertical line
         @for $i from 1 through length($list) {
           &:nth-child(#{$i}) {
             h4 {

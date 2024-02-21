@@ -5,6 +5,13 @@
   flex-direction: column;
   align-items: flex-start;
 
+  @include respond(mmd) {
+    width: 100%;
+  }
+  @include respond(xs) {
+    width: 90%;
+  }
+
   h4 {
     width: 100%;
     font-weight: 500;
@@ -26,6 +33,9 @@
     position: relative;
     p {
       width: 75%;
+      @include respond(mmd) {
+        width: 100%;
+      }
     }
   }
 }

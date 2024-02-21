@@ -30,8 +30,8 @@
   width: 80%;
   height: 550px;
   border-radius: 20px;
-  overflow: hidden;
   margin-top: -55px;
+
   @include respond(lg) {
     height: 400px;
   }

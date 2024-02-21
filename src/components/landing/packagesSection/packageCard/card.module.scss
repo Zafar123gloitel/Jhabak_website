@@ -44,10 +44,8 @@ $card_text_color: #adff14;
     }
     .innr_card {
       .card_heading {
+        color: $white-color;
         h5 {
-          color: $white-color;
-        }
-        span {
           color: $white-color;
         }
       }
@@ -80,6 +78,15 @@ $card_text_color: #adff14;
         color: #000;
         @include respond(xms) {
           font-size: 22px;
+        }
+        @include respond(xms) {
+          font-size: 35px;
+        }
+      }
+      span {
+        // font-size: 15px;
+        @include respond(xms) {
+          font-size: 11px !important;
         }
       }
     }

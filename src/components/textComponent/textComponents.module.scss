@@ -2,6 +2,9 @@
 
 .content {
   margin-left: 100px;
+  @include respond(xl) {
+    margin-left: 0;
+  }
   @include respond(mmd) {
     text-align: center;
   }

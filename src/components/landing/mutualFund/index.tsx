@@ -18,7 +18,7 @@ function MutualFund() {
                       {item.svgList.map(data => {
                         return (
                           <span key={data.id}>
-                            {/* <Image src={data.svgSrc} alt="" width={100} height={100} /> */}
+                            <Image src={data.svgSrc} alt="" width={100} height={100} />
                             <h6 className="mt-2">{data.svgHeading}</h6>
                           </span>
                         );

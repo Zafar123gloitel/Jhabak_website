@@ -8,12 +8,12 @@ import { TextComponent } from '@/components';
 const VideoSection = () => {
   return (
     <>
-      <section className={`${styles.master_technical} element_center w-100 section_padding section_shadow `}>
+      <main className={`${styles.master_technical} element_center w-100 section_padding`}>
         {masterTechnicalData &&
           masterTechnicalData.map(item => {
             return (
               <div className={`${styles.innr_technical} css_max_screen d-flex flex-wrap element_center `} key={item.id}>
-                <div className={`${styles.technical_content} _css_left `}>
+                <div className={`${styles.technical_content} _css_left order-2 order-lg-1`}>
                   {/* <div className={styles.content}>
                     <h1 className="section_heading_css w-100 mt-1">{item.heading}</h1>
                     <p className={`${styles.technical_text}  _css_content_ `}>{item.content}</p>
@@ -37,22 +37,24 @@ const VideoSection = () => {
                   />
                 </div>
 
-                <div className={`${styles.technical_image} _css_right`}>
+                <div className={`${styles.technical_image} _css_right order-lg-2 order-1`}>
                   <div className={`${styles.technical_img} `}>
                     <Image src={'/assets/images/landing_page/screenFrame.png'} fill={true} alt="technical" />
 
-                    <video
-                      src="https://res.cloudinary.com/ddaddjwgj/video/upload/v1707478996/jhabak_trading/ut2nsknsn9bxg41k1uqd.mp4"
-                      autoPlay
-                      loop
-                      muted
-                    />
+                    <video preload="matadata" poster="Loading" autoPlay muted>
+                      <source
+                        src="https://res.cloudinary.com/ddaddjwgj/video/upload/v1707478996/jhabak_trading/ut2nsknsn9bxg41k1uqd.mp4"
+                        type="video/mp4"
+                      />
+                      <track kind="captions" src={'loading'} />
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
                 </div>
               </div>
             );
           })}
-      </section>
+      </main>
     </>
   );
 };
