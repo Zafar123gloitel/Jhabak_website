@@ -18,7 +18,7 @@ export const pageRoute: pageRoute[] = [
   {
     id: 3,
     name: 'Services',
-    href: '/Services',
+    href: '/services',
   },
   {
     id: 4,

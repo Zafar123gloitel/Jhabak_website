@@ -1,4 +1,3 @@
-
 import styles from './page.module.css';
 import {
   // BannerSection,
@@ -14,7 +13,7 @@ import {
   WeBuildDream,
 } from '@/components';
 
-export default function Home() {
+const Home = () => {
   return (
     <main className={styles.main}>
       {/* <BannerSection /> */}
@@ -29,4 +28,5 @@ export default function Home() {
       <Enquiry />
     </main>
   );
-}
+};
+export default Home;

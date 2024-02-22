@@ -9,9 +9,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: #020000;
   font-family: 'Source Sans 3', sans-serif;
-  color: #212b36;
+  color: white;
   transition: all 0.5s ease;
 }
 
@@ -423,8 +423,6 @@ button {
   margin-top: 4px;
 }
 
-
-
 .fitness_slider {
   .slider-section {
     .splide__track {
@@ -432,5 +430,4 @@ button {
       margin-top: 0;
     }
   }
-  
 }
