@@ -233,6 +233,23 @@ button {
     width: 98%;
   }
 }
+// animations declare
+.updownanimation {
+  animation: updownanimation 5s linear infinite;
+}
+
+@keyframes updownanimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px); /* Move down */
+  }
+  100% {
+    transform: translateY(0); /* Move back up */
+  }
+}
+
 // Banner Images style
 .common_banner_img {
   width: 100%;

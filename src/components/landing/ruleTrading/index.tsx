@@ -15,11 +15,14 @@ const RuleTrading = () => {
         <ul className={styles.menu_list}>
           {StartegyData.map(item => {
             return (
-              <li className={styles.menu_item} title="Home" key={item.id}>
-                <div className={`${styles.menues} element_center`}>
-                  <Image src={item.imgSrc} alt="loading" width={100} height={100} />
-                </div>
-              </li>
+              <>
+                <li className={styles.menu_item} key={item.id} title={item.title}>
+                  <div className={`${styles.menues} element_center`}>
+                    <Image src={item.imgSrc} alt="loading" width={100} height={100} />
+                  </div>
+                  <span className={`${styles.heading_text} element_center`}>{item.title}</span>
+                </li>
+              </>
             );
           })}
         </ul>

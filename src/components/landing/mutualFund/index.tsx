@@ -27,7 +27,7 @@ function MutualFund() {
                   </div>
                 </div>
                 <div className={`${styles.dream_image} _css_right`}>
-                  <div className={`${styles.dream_img}`}>
+                  <div className={`${styles.dream_img} updownanimation`}>
                     <Image src={'/assets/svg/landing/potli.svg'} fill={true} alt="advisory" />
                   </div>
                 </div>

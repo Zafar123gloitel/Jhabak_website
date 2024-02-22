@@ -12,10 +12,12 @@
       padding-left: 55px;
       position: relative;
       z-index: inherit;
+      order: 1;
       @include respond(mmd) {
         text-align: center;
         padding-left: 0;
         margin-top: 50px;
+        order: 2;
       }
 
       .technical_text {
@@ -23,6 +25,7 @@
         margin-top: 20px;
         @include respond(mmd) {
           width: 100%;
+          order: 2;
           // text-align: center;
         }
       }
@@ -44,11 +47,15 @@
       position: relative;
       display: flex;
       justify-content: center;
+      order: 2;
       @include respond(xl) {
         justify-content: flex-end;
       }
       @include respond(lg) {
         justify-content: center;
+      }
+      @include respond(mmd) {
+        order: 1;
       }
       .technical_img {
         position: relative;

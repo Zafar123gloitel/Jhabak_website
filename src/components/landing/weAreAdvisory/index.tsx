@@ -15,7 +15,7 @@ const WeAreAdvisory = () => {
           />
         </div>
         <div className={`${styles.advisory_right} _css_right order-1`}>
-          <div className={`${styles.advisory_image} _css_left order-sm-1 order-2`}>
+          <div className={`${styles.advisory_image} _css_left order-sm-1 order-2 updownanimation`}>
             <Image src={'/assets/svg/landing/advisory.svg'} alt="" fill={true} />
           </div>
         </div>

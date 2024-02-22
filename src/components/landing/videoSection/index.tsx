@@ -13,7 +13,7 @@ const VideoSection = () => {
           masterTechnicalData.map(item => {
             return (
               <div className={`${styles.innr_technical} css_max_screen d-flex flex-wrap element_center `} key={item.id}>
-                <div className={`${styles.technical_content} _css_left order-2 order-lg-1`}>
+                <div className={`${styles.technical_content} _css_left `}>
                   {/* <div className={styles.content}>
                     <h1 className="section_heading_css w-100 mt-1">{item.heading}</h1>
                     <p className={`${styles.technical_text}  _css_content_ `}>{item.content}</p>
@@ -37,11 +37,11 @@ const VideoSection = () => {
                   />
                 </div>
 
-                <div className={`${styles.technical_image} _css_right order-lg-2 order-1`}>
+                <div className={`${styles.technical_image} _css_right `}>
                   <div className={`${styles.technical_img} `}>
                     <Image src={'/assets/images/landing_page/screenFrame.png'} fill={true} alt="technical" />
 
-                    <video preload="matadata" poster="Loading" autoPlay muted>
+                    <video preload="matadata" poster="Loading" autoPlay muted loop>
                       <source
                         src="https://res.cloudinary.com/ddaddjwgj/video/upload/v1707478996/jhabak_trading/ut2nsknsn9bxg41k1uqd.mp4"
                         type="video/mp4"

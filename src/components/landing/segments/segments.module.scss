@@ -35,7 +35,10 @@
           width: 500px;
           border-radius: 5px;
           overflow: hidden;
-
+          @include respond(xl) {
+            width: 400px;
+            height: 250px;
+          }
           @include respond(lg) {
             width: 350px;
             height: 250px;

@@ -1,6 +1,6 @@
 @mixin respond($type) {
   @if ($type == xxs) {
-    @media only screen and (max-width: 325.98px) {
+    @media only screen and (max-width: 340.98px) {
       @content;
     }
   }

@@ -6,7 +6,7 @@ import LoadingSection from '@/components/loading';
 // import Loading from './loading';
 // import dynamic from 'next/dynamic';
 // import {
-//   // BannerSection,
+// BannerSection,
 //   VideoSection,
 //   // IntradayStrategy,
 //   NeedHelpSection,

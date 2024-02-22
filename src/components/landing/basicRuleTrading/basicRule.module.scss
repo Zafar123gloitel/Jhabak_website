@@ -10,6 +10,7 @@ $list: #ffd512, #9945ff, #19fb9b;
       @include respond(mmd) {
         margin-top: 30px;
       }
+
       .single_stretegy {
         width: 48%;
         &:nth-child(even) {
@@ -19,6 +20,7 @@ $list: #ffd512, #9945ff, #19fb9b;
           transform: translateY(0) !important;
           margin-top: 25px;
         }
+
         @include respond(xs) {
           width: 100%;
         }
@@ -42,6 +44,9 @@ $list: #ffd512, #9945ff, #19fb9b;
       }
       @include respond(mmd) {
         margin-top: 55px;
+      }
+      @include respond(sm) {
+        margin-top: 0px;
       }
       .rule_container {
         display: flex;
