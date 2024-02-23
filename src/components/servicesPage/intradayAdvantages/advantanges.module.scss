@@ -1,0 +1,64 @@
+@import '../../../styles/index.scss';
+.advantages {
+  padding-top: 00;
+  h1 {
+    @include respond(xs) {
+      width: 80%;
+      text-align: left !important;
+    }
+  }
+  .advantges_content {
+    width: 50%;
+    text-align: center;
+
+    @include respond(sm) {
+      text-align: justify;
+      width: 70%;
+    }
+    @include respond(xs) {
+      width: 80%;
+    }
+  }
+  .innr_advantages {
+    .advantages_conainer {
+      width: 80%;
+      padding: 40px 0;
+      .image_part {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        @include respond(mmd) {
+          width: 500px;
+          height: 300px;
+          display: none;
+        }
+        .segments_img {
+          display: block;
+          position: relative;
+          width: 300px;
+          height: 300px;
+          border-radius: 15px;
+        }
+      }
+      &:nth-child(even) {
+        @include respond(md) {
+          justify-content: space-between;
+        }
+        @include respond(mmd) {
+          justify-content: center;
+        }
+        .image_part {
+          order: 1;
+          display: flex;
+          justify-content: flex-start;
+          @include respond(mmd) {
+            display: none;
+          }
+        }
+        .content {
+          order: 2;
+        }
+      }
+    }
+  }
+}

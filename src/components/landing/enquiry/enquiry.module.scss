@@ -1,8 +1,42 @@
+@import '../../../styles/index.scss';
+.enquiry_container {
+  @include respond(md) {
+    width: 90%;
+  }
+  @include respond(sm) {
+    width: 95%;
+  }
+  p,
+  h1,
+  form {
+    width: 75%;
+    @include respond(sm) {
+      width: 100%;
+    }
+  }
+  h1 {
+    font-size: 40px;
+  }
+}
+.form_sct {
+  h3 {
+    width: 65%;
+    font-size: 40px;
+  }
+}
 .enquiry_image {
   position: relative;
   display: flex;
-  width: 90%;
-  height: 500px;
+  width: 80%;
+  height: 550px;
   border-radius: 20px;
-  overflow: hidden;
+  margin-top: -55px;
+
+  @include respond(lg) {
+    height: 400px;
+  }
+  @include respond(md) {
+    height: 350px;
+    display: none;
+  }
 }

@@ -5,30 +5,30 @@ export interface pageRoute {
 }
 export const pageRoute: pageRoute[] = [
   {
-    id: 1,
+    id: 11111,
     name: 'Home',
     href: '/',
   },
 
   {
-    id: 2,
+    id: 11112,
     name: 'About',
     href: '/about',
   },
   {
-    id: 3,
+    id: 11113,
     name: 'Services',
-    href: '/Services',
+    href: '/services',
   },
   {
-    id: 4,
+    id: 11114,
     name: 'Contact Us',
-    href: '/Contact Us',
+    href: '/contact',
   },
   {
-    id: 5,
+    id: 11115,
     name: 'Login',
-    href: '/Login',
+    href: '/login',
   },
   //   {
   //     id: 5,

@@ -14,7 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 //   require?: string;
 // }
 interface CustomDatePickerProps {
-  onChange?: (date: Date) => void;
+  onChange?: () => void;
   label: string;
   placeholderText: string;
   required?: boolean;
@@ -40,7 +40,7 @@ const DateInput: React.FC<CustomDatePickerProps> = ({
   const handleDateChange = (date: Date | null) => {
     setStartDate(date);
     if (onChange) {
-      onChange(date ?? new Date()); // Pass a default value if date is null
+      // onChange(date ?? new Date()); // Pass a default value if date is null
     }
   };
   return (

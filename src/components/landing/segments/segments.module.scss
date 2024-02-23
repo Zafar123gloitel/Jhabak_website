@@ -4,12 +4,16 @@
     .segment_conainer {
       width: 80%;
       padding: 40px 0;
-      .content {
-      }
+
       .image_part {
         position: relative;
         display: flex;
         justify-content: center;
+        @include respond(mmd) {
+          width: 500px;
+          height: 300px;
+          display: none;
+        }
         .segments_img {
           display: block;
           position: relative;
@@ -20,15 +24,33 @@
         }
       }
       &:nth-child(2) {
+        @include respond(md) {
+          justify-content: space-between;
+        }
+        @include respond(mmd) {
+          justify-content: center;
+        }
+
         .segments_img {
           width: 500px;
           border-radius: 5px;
           overflow: hidden;
+          @include respond(xl) {
+            width: 400px;
+            height: 250px;
+          }
+          @include respond(lg) {
+            width: 350px;
+            height: 250px;
+          }
         }
         .image_part {
           order: 1;
           display: flex;
           justify-content: flex-start;
+          @include respond(mmd) {
+            display: none;
+          }
         }
         .content {
           order: 2;

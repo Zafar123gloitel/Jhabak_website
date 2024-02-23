@@ -9,7 +9,7 @@ const TradinRules = ({ data, index }: IProps) => {
     <div className={styles.single_rule}>
       <span className={styles.text_part}>
         <span className={`${styles.index} element_center`}>{index + 1}</span>
-        <span className={`${styles.text} css-f17 text-white`}>{data}</span>
+        <span className={`${styles.text} text-white`}>{data}</span>
       </span>
     </div>
   );

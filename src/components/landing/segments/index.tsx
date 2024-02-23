@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './segments.module.scss';
-import { segmentData } from './segementData';
+
 import Image from 'next/image';
-export const Segments = () => {
+import { segmentData } from '../configData';
+const Segments = () => {
   return (
-    <section className={`${styles.segments} element_center section_shadow flex-column section_padding mt-1`}>
+    <section className={`${styles.segments} element_center flex-column section_padding mt-1`}>
       <h1 className="section_heading_css">We Cover the Following Segments</h1>
       <div className={`${styles.innr_segments} css_max_screen element_center flex-column`}>
         {segmentData.length &&
@@ -27,10 +28,10 @@ export const Segments = () => {
                         );
                       })}
                     </ul>
-                    <button className="Dark_button mt-1">{item.button}</button>
+                    <button className="Dark_button mt-3">{item.button}</button>
                   </div>
-                  <div className={`${styles.image_part} _css_right`}>
-                    <div className={`${styles.segments_img} mt-5`}>
+                  <div className={`${styles.image_part} _css_right `}>
+                    <div className={`${styles.segments_img} mt-5 `}>
                       <Image src={item.imgSrc} fill={true} alt="advisory" />
                     </div>
                   </div>
@@ -42,3 +43,4 @@ export const Segments = () => {
     </section>
   );
 };
+export default Segments;

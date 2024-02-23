@@ -107,3 +107,25 @@
     }
   }
 }
+
+// phone Number input
+
+.enquiry_phone_number {
+  width: 100% !important;
+  text-align: left;
+  border: 0px;
+  box-sizing: content-box;
+  background: none;
+  display: block;
+  padding: 5px 0;
+  // min-width: 0px;
+  min-width: 100%;
+  position: relative;
+  // padding-top: 50px !important;
+  .enquiry_phone_number_collection {
+    margin-top: 8px;
+  }
+  .phone_no_label {
+    color: $light-green-color;
+  }
+}

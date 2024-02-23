@@ -15,5 +15,4 @@ export const fitnessClientImage: fitnessClientImages[] = [
     name: 'second',
     image: '/assets/images/banner2.jpg',
   },
-  
 ];

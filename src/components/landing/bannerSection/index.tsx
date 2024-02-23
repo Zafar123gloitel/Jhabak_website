@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import styles from './banner.module.scss';
 
@@ -7,7 +7,6 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { fitnessClientImage } from './sliderData';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const BannerSection = () => {
-  
   return (
     <>
       <div className={`${styles.fitness_slider} All_content_center fitness_slider `}>
@@ -16,7 +15,7 @@ export const BannerSection = () => {
             rewind: true,
             type: 'loop',
             gap: '0',
-            drag: 'free',            
+            drag: 'free',
             perPage: 1,
             autoplay: true,
             interval: 3000,
@@ -86,3 +85,5 @@ export const BannerSection = () => {
     </>
   );
 };
+
+export default BannerSection;
