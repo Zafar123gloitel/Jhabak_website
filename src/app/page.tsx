@@ -60,7 +60,7 @@ const RuleTrading = dynamic(() => import('../components/landing/ruleTrading'), {
   ssr: false, // Replace this with your loading component
 });
 
-export default function Home() {
+export function Home() {
   return (
     <main className={styles.main}>
       {/* section 1 */}
@@ -89,3 +89,4 @@ export default function Home() {
     </main>
   );
 }
+export default Home;
