@@ -1,10 +1,10 @@
-import { IntradayAdvantage, Packages, Segments, VideoContent } from '@/components';
+import { IntradayAdvantage, Packages, Segments, ServiceHero } from '@/components';
 import React from 'react';
 
 const ServicesPage = () => {
   return (
     <>
-      <VideoContent />
+      <ServiceHero />
       <Packages />
       <Segments />
       <IntradayAdvantage />

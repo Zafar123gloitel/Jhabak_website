@@ -1,8 +1,23 @@
 @import '../../../styles/index.scss';
 .advantages {
+  padding-top: 00;
+  h1 {
+    @include respond(xs) {
+      width: 80%;
+      text-align: left !important;
+    }
+  }
   .advantges_content {
     width: 50%;
     text-align: center;
+
+    @include respond(sm) {
+      text-align: justify;
+      width: 70%;
+    }
+    @include respond(xs) {
+      width: 80%;
+    }
   }
   .innr_advantages {
     .advantages_conainer {

@@ -27,8 +27,8 @@ export const ContactForm = () => {
   return (
     <section className="w-100 element_center flex-column">
       <span className={`${styles['heading']}`}>
-        <h2 className={`${styles['section_heading']}`}>Get in Touch</h2>
-        <p className={`${styles['section_para']} _css_content`}>
+        <h2 className={`${styles['section_heading']} section_heading_css`}>Get in Touch</h2>
+        <p className={`${styles['section_para']} _css_content_`}>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys
           standard dummy text ever since the 1500s.
         </p>
@@ -52,7 +52,7 @@ export const ContactForm = () => {
                       <div className={`${styles['contact_icon']}`}>
                         <Image src={item.imgSrc} alt={item.heading} width={175} height={175} />
                       </div>
-                      <div className={`${styles['contact_content']}`}>
+                      <div className={`${styles['contact_content']} _css_content_`}>
                         <h2 className={`${styles['office_heading_css']}`}>{item.heading}</h2>
                         <p className={`${styles['office_para_css']}`}>{item.content}</p>
                       </div>

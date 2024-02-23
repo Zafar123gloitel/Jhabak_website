@@ -14,7 +14,7 @@ export const advantagesData: Advantages[] = [
     Heading: 'Trade from Anywhere',
     content:
       'One of the main advantages is that you can trade from any where in the world, you can trade from the sea beaches or in the comfort of your home, office, college, you can trade while you travel too. That is why it is an ideal option for those who want to trade on the go. To do this, you’ll need to have a broker and a demat account / trading account, who will allow you to trade during the day.',
-    imgSrc: '/assets/images/services/source.png',
+    imgSrc: '/assets/svg/service/trade_service.svg',
   },
   {
     id: 202,
@@ -32,7 +32,7 @@ export const advantagesData: Advantages[] = [
     content:
       'Intraday trading involves lower risks compared to traditional investing. This is because intraday traders do not hold positions overnight, which reduces the risk of being exposed to unexpected market events, such as earnings reports, political events, or global economic news. Intraday traders can also use stop-loss orders to minimize losses, which is not possible in traditional investing.',
 
-    imgSrc: '/assets/images/services/source.png',
+    imgSrc: '/assets/svg/service/no_risk.svg',
   },
   {
     id: 204,
@@ -41,6 +41,6 @@ export const advantagesData: Advantages[] = [
     content:
       'Intraday trading provides flexibility and control to traders. Traders can choose their own trading strategies and set their own trading rules. They can also monitor their positions in real time and make quick decisions based on market movements and our Intraday Advisor remain online on WhatsApp in market hours so that you can ask any query directly without any problem.',
 
-    imgSrc: '/assets/images/services/source.png',
+    imgSrc: '/assets/svg/service/flexibility_control.svg',
   },
 ];
