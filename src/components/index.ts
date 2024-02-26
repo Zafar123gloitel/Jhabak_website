@@ -6,3 +6,4 @@ export * from './textComponent';
 export * from './about/index';
 export * from './login';
 export * from './sidebar';
+export * from './appointmentform';
