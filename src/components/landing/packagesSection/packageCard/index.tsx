@@ -14,11 +14,10 @@ interface IPriceData {
 }
 interface IProps {
   priceData: IPriceData;
-  key: number;
 }
-const PackageCard = ({ priceData, key }: IProps) => {
+const PackageCard = ({ priceData }: IProps) => {
   return (
-    <div className={styles.pricing_card} key={key}>
+    <div className={styles.pricing_card}>
       <h1>{priceData.heading}</h1>
       <span className={styles.label_duration}>{priceData.callType}</span>
       <div className={styles.innr_card}>

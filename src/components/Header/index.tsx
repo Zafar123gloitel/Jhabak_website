@@ -19,15 +19,13 @@ const Header = () => {
             <ul className={`${styles['Menues']} element_center`}>
               {pageRoute.map(value => {
                 return (
-                  <>
-                    <button
-                      className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
-                      key={value.id}
-                      onClick={() => hanleRoute(value?.href)}
-                    >
-                      <strong>{value?.name}</strong>
-                    </button>
-                  </>
+                  <button
+                    className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                    key={value.id}
+                    onClick={() => hanleRoute(value?.href)}
+                  >
+                    <strong>{value?.name}</strong>
+                  </button>
                 );
               })}
             </ul>

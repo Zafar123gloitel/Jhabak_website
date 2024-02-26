@@ -22,11 +22,7 @@ const BasicRuleTrading = () => {
         <div className={`${styles.rules} _css_right order-1`}>
           <div className={`${styles.rule_container} mt-5`}>
             {basicRules.map((item, index) => {
-              return (
-                <>
-                  <TradinRules key={item} index={index} data={item} />
-                </>
-              );
+              return <TradinRules key={item} index={index} data={item} />;
             })}
           </div>
         </div>

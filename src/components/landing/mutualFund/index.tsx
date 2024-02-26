@@ -10,7 +10,7 @@ function MutualFund() {
         {buildDreamData &&
           buildDreamData.map(item => {
             return (
-              <>
+              <span key={item.heading}>
                 <div className={`${styles.dream_content} _css_left `}>
                   <div className={`${styles.content}`}>
                     <TextComponent smallHeading={item.smallHeading} heading={item.heading} content={item.content} />
@@ -31,7 +31,7 @@ function MutualFund() {
                     <Image src={'/assets/svg/landing/potli.svg'} fill={true} alt="advisory" />
                   </div>
                 </div>
-              </>
+              </span>
             );
           })}
       </div>
