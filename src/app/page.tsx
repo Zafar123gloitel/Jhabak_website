@@ -5,20 +5,7 @@ import styles from './page.module.css';
 import LoadingSection from '@/components/loading';
 // import Loading from './loading';
 // import dynamic from 'next/dynamic';
-// import {
-// BannerSection,
-//   VideoSection,
-//   // IntradayStrategy,
-//   NeedHelpSection,
-//   Segments,
-//   MutualFund,
-//   Packages,
-//   Enquiry,
-//   WeAreAdvisory,
-//   RuleTrading,
-//   // BasicRuleTrading,
-//   // VideoContent,
-// } from '../components/landing';
+
 import dynamic from 'next/dynamic';
 
 const BasicRuleTrading = dynamic(() => import('../components/landing/basicRuleTrading'), {
@@ -60,7 +47,7 @@ const RuleTrading = dynamic(() => import('../components/landing/ruleTrading'), {
   ssr: false, // Replace this with your loading component
 });
 
-export function Home() {
+function Home() {
   return (
     <main className={styles.main}>
       {/* section 1 */}

@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 export const Sidebar = () => {
   const router = useRouter();
-
   const handleRoute = (path: string) => {
     router.push(path);
   };

@@ -24,11 +24,10 @@ export const ContactForm = () => {
   const [contactData, setContactData] = useState(defaultContactData);
   const [contactError, setContactError] = useState(defaultContactData);
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setContactError(defaultContactData);
     setContactData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
-
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
