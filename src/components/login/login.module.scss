@@ -1,0 +1,67 @@
+@import '../../styles/index.scss';
+
+.outter_container {
+  min-height: 90vh;
+  @include respond(xh) {
+    min-height: 800px;
+  }
+}
+
+.inner_container {
+  flex-direction: column;
+  width: 500px;
+  border-radius: 10px;
+  padding: 50px 0;
+  background-color: white;
+
+  box-shadow:
+    rgba(255, 255, 255, 0.4) 0px 2px 14px 0px,
+    rgba(255, 255, 255, 0.4) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.4) 0px 0px 0px 1px inset;
+
+  @include respond(xs) {
+    width: 90%;
+  }
+  @include respond(xh) {
+    margin-top: -55px;
+  }
+}
+.heading {
+  font-size: 30px;
+  color: #000;
+  @include respond(md) {
+    font-size: 26px;
+  }
+}
+.sub_heading {
+  font-weight: 600;
+  margin-top: 5px;
+}
+.image {
+  width: 50%;
+}
+.details {
+  width: 100%;
+  flex-direction: column;
+  // gap: 8px;
+  .User_name_div {
+    width: 80%;
+
+    .User_name {
+      border-radius: 10px;
+    }
+  }
+}
+
+.Button {
+  border: none;
+  width: 80%;
+  border-radius: 10px !important;
+}
+.sub_heading3 {
+  padding-top: 10px;
+}
+
+//@include respond(md) {
+// font-size: 35px;
+//}

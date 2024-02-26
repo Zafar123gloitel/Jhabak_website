@@ -43,7 +43,7 @@ const PackageCard = ({ priceData }: IProps) => {
               return (
                 <li key={index}>
                   <Image src="/assets/svg/landing/check.svg" alt="list" width={15} height={15} />
-                  <span className="css-f12">{item}</span>
+                  <span className="css-f13">{item}</span>
                 </li>
               );
             })}

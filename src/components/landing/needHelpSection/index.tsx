@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './help.module.scss';
 import Image from 'next/image';
-const NeedHelpSection = () => {
+export const NeedHelpSection = () => {
   return (
     <section className={`${styles.need_help} element_center section_padding mt-5 `}>
       <div className={`${styles.innr_need_help} css_max_screen element_center flex-column`}>

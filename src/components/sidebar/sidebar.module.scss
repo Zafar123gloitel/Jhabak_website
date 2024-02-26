@@ -1,0 +1,41 @@
+@import '../../styles/index.scss';
+
+.inner_sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(172.55deg, #10c880 5.78%, rgba(0, 182, 102, 0.61) 68.83%);
+  padding-left: 10px;
+  padding-top: 20px;
+}
+.sidebar_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 60px;
+  .menu_dropdown_button {
+    background-color: transparent;
+  }
+}
+.Menu_List {
+  gap: 50px;
+
+  .Menues {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    height: 500px;
+
+    .li_content {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      height: 50px;
+      justify-content: left;
+
+      .single_menu {
+        font-size: 15px;
+      }
+    }
+  }
+}
