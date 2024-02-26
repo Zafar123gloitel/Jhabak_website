@@ -7,12 +7,56 @@ import { ddItems } from '@/services/country';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import InputField from '../InputField/InputField';
 import TextAreaInput from '../InputField/TextAreaInput';
+import validation from '@/services/validation';
+
+const defaultContactData = {
+  fName: '',
+  lName: '',
+  email: '',
+  mobile: '',
+  message: '',
+};
 
 export const ContactForm = () => {
   const [data, setData] = useState(ddItems);
   const [searchValue, setSearchValue] = useState('');
   const [countryCode, setCountryCode] = useState('+91');
-  const filterHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [contactData, setContactData] = useState(defaultContactData);
+  const [contactError, setContactError] = useState(defaultContactData);
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setContactError(defaultContactData);
+    setContactData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+      if (!validation.requied(contactData?.fName)) {
+        setContactError(prev => ({ ...prev, fName: 'First Name Require' }));
+        // alert(contactError.fName);
+      }
+      if (!validation.requied(contactData?.lName)) {
+        setContactError(prev => ({ ...prev, lName: 'Last Name Require' }));
+      }
+      if (!validation.email(contactData?.email)) {
+        setContactError(prev => ({ ...prev, email: 'Invalid Email Form' }));
+      }
+      if (!validation.mobile(countryCode + contactData?.mobile)) {
+        setContactError(prev => ({ ...prev, mobile: 'Invalid Phone Number' }));
+      }
+      if (!validation.requied(contactData?.message)) {
+        setContactError(prev => ({ ...prev, message: 'Message Required' }));
+      }
+      // console.log(contactData, 'contactData');
+      // setContactError(defaultContactData);
+    } catch (error) {
+      const typeError = error as Error;
+
+      return new Error(typeError.message);
+    }
+  }
+  const filterHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value === '') {
       setData(ddItems);
     } else {
@@ -22,6 +66,7 @@ export const ContactForm = () => {
     setSearchValue(e.target.value);
   };
   const handleCountry = (code: string) => {
+    alert(code);
     setCountryCode(code);
   };
   return (
@@ -53,8 +98,8 @@ export const ContactForm = () => {
                         <Image src={item.imgSrc} alt={item.heading} width={175} height={175} />
                       </div>
                       <div className={`${styles['contact_content']} _css_content_`}>
-                        <h2 className={`${styles['office_heading_css']}`}>{item.heading}</h2>
-                        <p className={`${styles['office_para_css']}`}>{item.content}</p>
+                        <h2 className={`${styles['office_heading_css']} text-white`}>{item.heading}</h2>
+                        <p className={`${styles['office_para_css']} text-white`}>{item.content}</p>
                       </div>
                     </div>
                   </>
@@ -63,16 +108,17 @@ export const ContactForm = () => {
           </div>
         </div>
         <div className={`${styles['inner_div_right']} _css_right element_center`}>
-          <div className={`${styles['inner_div_right_form']}`}>
+          <form className={`${styles['inner_div_right_form']}`} onSubmit={onSubmit}>
             <div className={`${styles['name_css']}`}>
               <div className={`${styles['first_name_div']}`}>
                 <InputField
                   type="text"
                   name="fName"
                   label="First Name"
-                  value=""
+                  value={contactData.fName}
+                  onChange={onChange}
                   placeholder="Eg. John"
-                  error="First Name Required"
+                  error={contactError.fName}
                 />
               </div>
               <div className={`${styles['last_name_div']}`}>
@@ -80,9 +126,10 @@ export const ContactForm = () => {
                   type="text"
                   name="lName"
                   label="Last Name"
-                  value=""
+                  value={contactData.lName}
+                  onChange={onChange}
                   placeholder="Eg. Doe"
-                  error="Last Name Required"
+                  error={contactError.lName}
                 />
               </div>
             </div>
@@ -92,13 +139,14 @@ export const ContactForm = () => {
                   type="email"
                   name="email"
                   label="Email"
-                  value=""
+                  value={contactData.email}
+                  onChange={onChange}
                   placeholder="Eg. you@example.com"
-                  error="Email Required"
+                  error={contactError.email}
                 />
               </div>
               <div className={`${styles['detail_css']}`}>
-                <label className={`${styles['lable_css']}`} htmlFor="firstname">
+                <label className={`${styles['phone_code_lable_css']} text-white css-f14`} htmlFor="firstname">
                   Phone number
                 </label>
                 <div className={`${styles['phone_number']} ${styles['enquiry_phone_number']}`}>
@@ -108,6 +156,7 @@ export const ContactForm = () => {
                         type="text"
                         className="search drop_search dark_input"
                         placeholder="Search"
+                        name="countryCode"
                         value={searchValue}
                         onChange={filterHandler}
                       />
@@ -123,29 +172,27 @@ export const ContactForm = () => {
                       </div>
                     </DropdownButton>
                     <InputField
-                      type="text"
+                      type="number"
                       label=""
                       name="mobile"
                       placeholder="Enter your mobile"
-                      value={''}
-                      //   onChange={e => handleFormDataChange(e)}
-                      error={'mobileError'}
+                      value={contactData.mobile}
+                      onChange={onChange}
+                      error={contactError.mobile}
                       className={`${styles.consultant_phone} phone_input ${styles.phone_input} dark_input`}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className={`${styles.detail_css}`}>
-                <InputField label="date" type="date" name="date" placeholder="Eg: 5485495252" value="" />
-              </div>
               <div className={`${styles['detail_css']}`}>
                 <TextAreaInput
                   name="message"
                   label="Message"
                   placeholder="Your Message"
-                  value=""
-                  error="Message Required"
+                  value={contactData.message}
+                  onChange={onChange}
+                  error={contactError.message}
                   require={true}
                 />
               </div>
@@ -153,7 +200,7 @@ export const ContactForm = () => {
                 Book an appointment
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

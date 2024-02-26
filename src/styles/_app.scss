@@ -380,7 +380,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.7px;
   font-size: 14px;
-  color: $green-color;
+  color: $white-color;
 }
 
 .input-field input,
@@ -389,10 +389,10 @@ button {
   padding: 5px 0px;
   // border: none;
   border: none;
-  color: $content-text-color;
+  color: $black-text-color;
   font-size: 14px;
   margin-top: 5px;
-  background-color: #6666665e;
+  // background-color: #6666665e;
   font-weight: 500;
   border-radius: 8px;
   padding: 14px 16px;
@@ -419,6 +419,32 @@ button {
     .splide__track {
       height: 100%;
       margin-top: 0;
+    }
+  }
+}
+
+// phone number validate
+
+.phone_code_lable_css {
+  font-weight: 600;
+}
+.country-collection {
+  #dropdown-basic-button {
+    position: absolute;
+    z-index: 2;
+    top: 9.5px;
+    height: 50px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: transparent;
+    border: 1px transparent solid;
+    border-right-color: #00000081;
+
+    color: #000;
+  }
+  .phone_input {
+    input {
+      padding-left: 90px !important;
     }
   }
 }

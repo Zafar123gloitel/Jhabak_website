@@ -5,8 +5,8 @@ interface InputFieldProps {
   label?: string;
   placeholder: string;
   value: string;
-  // onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onChange?: () => void;
   error?: string;
   className?: string;
   require?: boolean;

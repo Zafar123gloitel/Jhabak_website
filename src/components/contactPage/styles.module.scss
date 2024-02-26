@@ -12,8 +12,7 @@
     font-weight: 700;
     text-align: center;
     width: 100%;
-    color: #023d6d;
-
+    color: $white-color;
     @include respond(md) {
       font-size: 32px;
     }
