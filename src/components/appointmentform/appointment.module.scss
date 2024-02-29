@@ -1,9 +1,34 @@
-.form_info1 {
-  width: 200px;
-  gap: 50px;
+.main_form {
+  padding: 20px;
+  height: 600px;
 }
-.inputbox {
-  width: 300px;
-  background-color: beige;
+
+.inner_form {
+  background-color: black;
+  width: 500px;
   border-radius: 5px;
+  padding: 30px;
+  border: 1px solid #adff14;
+}
+
+.form_info {
+  height: 500px;
+}
+
+.input_container {
+  color: #3c4959;
+  height: 100px;
+}
+
+.appointment_input {
+  width: 400px;
+  height: 40px;
+  color: #3c4959;
+  border-radius: 5px;
+}
+.Button {
+  margin-top: 50px;
+}
+.input {
+  background: #222222;
 }
