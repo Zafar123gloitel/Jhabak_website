@@ -78,8 +78,8 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(redux@5.0.1)
   regexx:
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.0.2
+    version: 1.0.2
   sass:
     specifier: ^1.70.0
     version: 1.70.0
@@ -5777,8 +5777,8 @@ packages:
       unicode-match-property-value-ecmascript: 2.1.0
     dev: false
 
-  /regexx@1.0.1:
-    resolution: {integrity: sha512-84tP62N+YFE9Mity8YJs/7+wnRhNKVKMx/TU32FmRJaI/t8jo1QQvAJi2zWRuzEKn941UInmOlC606M4Ntd5Rg==}
+  /regexx@1.0.2:
+    resolution: {integrity: sha512-uTINxLR4TjZMJpzU30JVbl2SD6rIxQUiK40gI6uJMBQ6uVgWQymwJRy2ZIEgwUfwASCkKFoOcGV6W+YgAZd2cA==}
     engines: {node: '>=16.0.0'}
     dev: false
 

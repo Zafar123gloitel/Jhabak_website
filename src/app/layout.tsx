@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: IChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} red_color`}>
         <Header />
         {children}
         <Footer />

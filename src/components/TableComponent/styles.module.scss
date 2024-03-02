@@ -1,0 +1,101 @@
+@import '../../styles/index.scss';
+
+.main__data_container {
+}
+.dashboard_data {
+  border-radius: 20px;
+  width: 95%;
+  box-shadow: 0 0.5rem 1.2rem rgb(189 197 209 / 20%);
+  border: 1px solid #e9ecef;
+  padding: 16px;
+  padding-top: 25px;
+  overflow-y: scroll;
+
+  .create_client_img {
+    h5 {
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .table_dashboard {
+    margin: 0 !important;
+    overflow: hidden;
+    border-radius: 12px;
+    thead,
+    tr {
+      td {
+        height: 100%;
+        text-wrap: nowrap;
+        font-size: 13px;
+        // border: 2px solid #ddd;
+      }
+      th {
+        font-size: 13px;
+        text-wrap: nowrap;
+      }
+    }
+  }
+}
+.action {
+  background-color: red;
+  display: flex;
+}
+.approve_btn {
+  width: 60px;
+  height: 35px;
+  -webkit-appearance: none;
+  appearance: none;
+
+  box-shadow:
+    -7px -7px 15px rgba(255, 255, 255, 0.65),
+    7px 7px 15px rgba(70, 70, 70, 0.12),
+    inset -7px -7px 15px rgba(255, 255, 255, 0.65),
+    inset 7px 7px 15px rgba(70, 70, 70, 0.12);
+  border-radius: 20px;
+  border: 5px solid #eee;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  &.approved_btn {
+    // background: $background-color;
+    box-shadow:
+      -7px -7px 15px rgba(255, 255, 255, 0.65),
+      7px 7px 15px rgba(70, 70, 70, 0.12),
+      inset -7px -7px 15px rgba(255, 255, 255, 0.65),
+      inset 7px 7px 15px rgba(70, 70, 70, 0.12);
+    border-color: #ad2c83;
+    border-width: 4px;
+    span {
+      background: $background-color;
+      left: 25px;
+    }
+  }
+  span {
+    position: absolute;
+    width: 20px;
+    left: 2px;
+    top: 3px;
+    height: 20px;
+    border-radius: 20px;
+    padding: 3px;
+    background: $background-color;
+    border: 1px solid #ccc;
+  }
+}
+
+// Modal styles
+.modal_image {
+  margin-top: 15px;
+}
+.modal_heading {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.modal_btns {
+  margin: 17px;
+  width: 150px;
+}

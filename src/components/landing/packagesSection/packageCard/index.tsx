@@ -14,11 +14,10 @@ interface IPriceData {
 }
 interface IProps {
   priceData: IPriceData;
-  key: number;
 }
-const PackageCard = ({ priceData, key }: IProps) => {
+const PackageCard = ({ priceData }: IProps) => {
   return (
-    <div className={styles.pricing_card} key={key}>
+    <div className={styles.pricing_card}>
       <h1>{priceData.heading}</h1>
       <span className={styles.label_duration}>{priceData.callType}</span>
       <div className={styles.innr_card}>
@@ -44,7 +43,7 @@ const PackageCard = ({ priceData, key }: IProps) => {
               return (
                 <li key={index}>
                   <Image src="/assets/svg/landing/check.svg" alt="list" width={15} height={15} />
-                  <span className="css-f12">{item}</span>
+                  <span className="css-f13">{item}</span>
                 </li>
               );
             })}

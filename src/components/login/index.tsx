@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './login.module.scss';
 import InputField from '../InputField/InputField';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { validatePassword, validateEmail, validatePhoneNumber } from 'regexx';
 
 const defaultLoginData = {
@@ -25,7 +25,7 @@ export const Login = () => {
       if (!validateEmail(credentials.email) || !validatePhoneNumber(credentials.email)) {
         return setInputError(prev => ({ ...prev, email: 'Invalid email or phone number' }));
       }
-      if (!validatePassword(credentials.password, 'basic')) {
+      if (!validatePassword(credentials.password)) {
         // console.log(credentials.password, 'password');
         return setInputError(prev => ({ ...prev, password: 'Password should contains"Aa123@"' }));
       }
@@ -84,13 +84,9 @@ export const Login = () => {
             </button>
           </form>
 
-          <button className={`${styles.sub_heading3} text-blue css-f14 element_center`}>Forgot password ?</button>
-          <p className={`${styles.sub_heading4} text-blue  css-f17 element_center flex-wrap`}>
-            Dont have an account ?
-            <strong>
-              <Link href="/signup">Signup</Link>
-            </strong>
-          </p>
+          <button className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}>
+            Forgot password ?
+          </button>
         </div>
       </div>
     </main>

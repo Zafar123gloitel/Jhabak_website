@@ -9,11 +9,7 @@
   flex-direction: column;
 }
 .heading {
-  font-family: Roboto;
-  // font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 0em;
-  text-align: left;
+  color: $white-color;
 }
 .content {
   font-family: Source Sans Pro;

@@ -35,6 +35,11 @@ $card_text_color: #adff14;
       h6 {
         color: $blue-color !important;
       }
+      ul {
+        li {
+          color: $black-text-color !important;
+        }
+      }
     }
   }
 

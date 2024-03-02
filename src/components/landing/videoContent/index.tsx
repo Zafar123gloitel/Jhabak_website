@@ -28,14 +28,12 @@ function VideoContent() {
               </li>
               <li className="d-flex mx-2">
                 <button className="Dark_button bg-light text-black">
-                  {' '}
                   {/* <Image src="/assets/svg/landing/check.svg" alt="Intraday" width={25} height={25} /> */}
                   <span>Investment Services</span>
                 </button>
               </li>
               <li className="d-flex">
                 <button className="Dark_button bg-light text-black">
-                  {' '}
                   <Image src="/assets/svg/landing/check.svg" alt="Intraday" width={25} height={25} />
                   <span>Technical Analysis Course</span>
                 </button>

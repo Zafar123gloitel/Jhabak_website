@@ -8,7 +8,7 @@ export const About = () => {
       <div className={`${styles.innnr_basic_rule} css_max_screen d-flex flex-wrap`}>
         <div className={`${styles.about_left} _css_left element_center`}>
           <div className={`${styles.about_left_content} _css_left element_center`}>
-            <h2 className={`${styles.heading} _css_left element_center css-f25`}>
+            <h2 className={`${styles.heading} _css_left element_center `}>
               Generating wealth for you is at the heart of everything we do
             </h2>
             <p className={`${styles.about_description} _css_content_`}>

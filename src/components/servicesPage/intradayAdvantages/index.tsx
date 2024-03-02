@@ -17,20 +17,18 @@ export const IntradayAdvantage = () => {
         {advantagesData.length &&
           advantagesData.map(item => {
             return (
-              <>
-                <div className={`${styles.advantages_conainer}  element_center flex-wrap`} key={item.id}>
-                  <div className={`${styles.content} _css_left`}>
-                    <b className={`${styles.small_heading} text-green w-100 css-f13`}>{item.smallHeading}</b>
-                    <h1 className="section_heading_css w-100 mt-1">{item.Heading}</h1>
-                    <p className={`${styles.advisory_text} _css_content_ mt-3`}>{item.content}</p>
-                  </div>
-                  <div className={`${styles.image_part} _css_right`}>
-                    <div className={`${styles.segments_img} mt-5`}>
-                      <Image src={item.imgSrc} fill={true} alt="advisory" />
-                    </div>
+              <div className={`${styles.advantages_conainer}  element_center flex-wrap`} key={item.id}>
+                <div className={`${styles.content} _css_left`}>
+                  <b className={`${styles.small_heading} text-green w-100 css-f13`}>{item.smallHeading}</b>
+                  <h1 className="section_heading_css w-100 mt-1">{item.Heading}</h1>
+                  <p className={`${styles.advisory_text} _css_content_ mt-3`}>{item.content}</p>
+                </div>
+                <div className={`${styles.image_part} _css_right`}>
+                  <div className={`${styles.segments_img} mt-5`}>
+                    <Image src={item.imgSrc} fill={true} alt="advisory" />
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
       </div>

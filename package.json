@@ -45,7 +45,7 @@
     "react-toastify": "^10.0.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "regexx": "^1.0.1",
+    "regexx": "^1.0.2",
     "sass": "^1.70.0"
   },
   "devDependencies": {

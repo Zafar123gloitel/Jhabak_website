@@ -65,7 +65,6 @@ export const ContactForm = () => {
     setSearchValue(e.target.value);
   };
   const handleCountry = (code: string) => {
-    alert(code);
     setCountryCode(code);
   };
   return (
