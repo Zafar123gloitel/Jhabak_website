@@ -1,11 +1,7 @@
 'use client';
 import React from 'react';
-import styles from './page.module.css';
-
+// import styles from '@/app/page.module.scss';
 import LoadingSection from '@/components/loading';
-// import Loading from './loading';
-// import dynamic from 'next/dynamic';
-
 import dynamic from 'next/dynamic';
 
 const BasicRuleTrading = dynamic(() => import('../components/landing/basicRuleTrading'), {
@@ -49,7 +45,7 @@ const RuleTrading = dynamic(() => import('../components/landing/ruleTrading'), {
 
 function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       {/* section 1 */}
       {/* <BannerSection /> */}
       {/* <VideoContent /> */}

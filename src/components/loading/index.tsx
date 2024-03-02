@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 function LoadingSection() {
   return (
     <div className={`${styles.image} element_center`}>
-      <Image src="/assets/images/loader.gif" alt="loading" width={150} height={150} />
+      <Image src="/assets/svg/loader.gif" alt="loading" width={150} height={150} />
     </div>
   );
 }

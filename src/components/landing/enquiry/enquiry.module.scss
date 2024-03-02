@@ -9,7 +9,7 @@
   p,
   h1,
   form {
-    width: 75%;
+    width: 100%;
     @include respond(sm) {
       width: 100%;
     }
