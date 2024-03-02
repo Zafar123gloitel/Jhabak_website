@@ -38,10 +38,9 @@ export const Appointmentform = () => {
                     label="Email"
                     type="email"
                     placeholder="email"
-                    className={styles.input}
                     // error="error"
                     name="enquiryEmail"
-                    // className={styles.enquiry_input}
+                    className={styles.enquiry_input}
                     value=""
                   />
                 </span>
