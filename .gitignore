@@ -36,3 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .husky
+
+# PWA 
+sw.js
+sw.js.map
+workbox-*.js
+workbox-*.js.map

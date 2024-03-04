@@ -41,6 +41,7 @@ export const Login = () => {
   useEffect(() => {
     if (accessToken) return router.push('/');
   }, [accessToken, router]);
+
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const rule = /\s{1,}/g;
@@ -185,10 +186,10 @@ export const Login = () => {
               Login
             </button>
           </div>
-          <button className={`${styles.sub_heading3} text-blue css-f14 element_center`}>Forgot password ?</button>
-          <p className={`${styles.sub_heading4} text-blue  css-f17 element_center flex-wrap`}>
-            Dont have an account ?<strong>{/* <Link href="/signup">Signup</Link> */}</strong>
-          </p>
+
+          <button className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}>
+            Forgot password ?
+          </button>
         </div>
       </div>
     </main>

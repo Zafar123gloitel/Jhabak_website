@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { About, Offer, OurValues } from '@/components';
+import { About, OurValues } from '@/components';
 
 const AboutPage = () => {
   return (
     <>
       <About />
       <OurValues />
-      <Offer />
+      {/* <Offer /> */}
     </>
   );
 };

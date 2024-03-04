@@ -38,6 +38,9 @@ const Header = () => {
           <button className={`outline_button`} type="button">
             Book An Appointment
           </button>
+          {/* <button className="bg-transparent" onClick={() => document.body.setAttribute('data-theme', 'red-theme')}>
+            <Image src={'/assets/svg/light-theme.svg'} alt="light" width={35} height={35} />
+          </button> */}
         </div>
       </div>
     </>

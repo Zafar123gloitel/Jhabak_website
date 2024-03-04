@@ -1,53 +1,51 @@
 'use client';
 import React from 'react';
-import styles from './page.module.css';
-import LoadingSection from '@/components/loading';
-// import Loading from './loading';
-// import dynamic from 'next/dynamic';
+// import styles from '@/app/page.module.scss';
+import Loading from '@/components/loading';
 import dynamic from 'next/dynamic';
 
 const BasicRuleTrading = dynamic(() => import('../components/landing/basicRuleTrading'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 // const VideoContent = dynamic(() => import('../components/landing/videoContent'));
 const VideoSection = dynamic(() => import('../components/landing/videoSection'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 // const IntradayStrategy = dynamic(() => import('../components/landing/intradayStrategy'));
 const NeedHelpSection = dynamic(() => import('../components/landing/needHelpSection'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const Segments = dynamic(() => import('../components/landing/segments'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const MutualFund = dynamic(() => import('../components/landing/mutualFund'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const Packages = dynamic(() => import('../components/landing/packagesSection'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const Enquiry = dynamic(() => import('../components/landing/enquiry'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const WeAreAdvisory = dynamic(() => import('../components/landing/weAreAdvisory'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 const RuleTrading = dynamic(() => import('../components/landing/ruleTrading'), {
-  loading: () => <LoadingSection />,
+  loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
 });
 
 function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       {/* section 1 */}
       {/* <BannerSection /> */}
       {/* <VideoContent /> */}

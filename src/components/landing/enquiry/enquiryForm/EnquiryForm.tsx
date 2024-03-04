@@ -1,56 +1,148 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import styles from './enquiryForm.module.scss';
 import InputField from '@/components/InputField/InputField';
 import TextAreaInput from '@/components/InputField/TextAreaInput';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { ddItems } from '@/services/country';
+import validation from '@/services/validation';
+
+const defaultEnquiryData = {
+  name: '',
+  email: '',
+  mobile: '',
+  message: '',
+};
+
 export const EnquiryForm = () => {
+  const [data, setData] = useState(ddItems);
+  const [countryCode, setCountryCode] = useState('+91');
+  const [searchValue, setSearchValue] = useState('');
+  const [enquiryData, setEnquiryData] = useState(defaultEnquiryData);
+  const [enquiryDataError, setEnquiryDataError] = useState(defaultEnquiryData);
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setEnquiryDataError(defaultEnquiryData);
+    setEnquiryData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+      if (!validation.requied(enquiryData?.name)) {
+        setEnquiryDataError(prev => ({ ...prev, name: 'Name Require' }));
+      }
+
+      if (!validation.email(enquiryData?.email)) {
+        setEnquiryDataError(prev => ({ ...prev, email: 'Invalid Email Form' }));
+      }
+      if (!validation.mobile(countryCode + enquiryData?.mobile)) {
+        setEnquiryDataError(prev => ({ ...prev, mobile: 'Invalid Phone Number' }));
+      }
+      if (!validation.requied(enquiryData?.message)) {
+        setEnquiryDataError(prev => ({ ...prev, message: 'Message Required' }));
+      }
+
+      // setEnquiryDataError(defaultenquiryData);
+    } catch (error) {
+      const typeError = error as Error;
+
+      return new Error(typeError.message);
+    }
+  }
+
+  const filterHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (e.target.value === '') {
+      setData(ddItems);
+    } else {
+      const filterResult = ddItems.filter(item => item.country.toLowerCase().includes(e.target.value.toLowerCase()));
+      setData(filterResult);
+    }
+    setSearchValue(e.target.value);
+  };
+  const handleCountry = (code: string) => {
+    setCountryCode(code);
+  };
   return (
-    <div className={styles.form_enquiry}>
+    <form className={styles.form_enquiry} onSubmit={onSubmit}>
       <div className={styles.input_container}>
         <span>
           <InputField
+            label="Name"
             type="text"
             placeholder="Enter Your Name"
-            error="error"
-            name="enquiryName"
+            error={enquiryDataError.name}
+            name="name"
             className={styles.enquiry_input}
-            value="value"
+            onChange={onChange}
+            value={enquiryData.name}
           />
         </span>
         <span>
+          <div className={`${styles['detail_css']}`}>
+            <label className={`${styles['phone_code_lable_css']} text-white css-f14`} htmlFor="phone">
+              Phone number
+            </label>
+            <div className={`${styles['phone_number']} ${styles['enquiry_phone_number']}`}>
+              <div className={`${styles['enquiry_phone_number_collection']} All_content_center country-collection`}>
+                <DropdownButton id="dropdown-basic-button" title={countryCode} className="dropdown-btn-phn">
+                  <input
+                    type="text"
+                    className="search drop_search dark_input"
+                    placeholder="Search"
+                    name="countryCode"
+                    value={searchValue}
+                    onChange={filterHandler}
+                  />
+                  <div className="dd-item-wrp">
+                    {data.map((d: Record<string, string>, index: number) => {
+                      return (
+                        <Dropdown.Item key={index} onClick={() => handleCountry(d.code)}>
+                          <span className="left">{d.country}</span>
+                          <span className="right">{d.code}</span>
+                        </Dropdown.Item>
+                      );
+                    })}
+                  </div>
+                </DropdownButton>
+                <InputField
+                  type="number"
+                  label=""
+                  name="mobile"
+                  placeholder="Enter your mobile"
+                  onChange={onChange}
+                  value={enquiryData.mobile}
+                  error={enquiryDataError.mobile}
+                  className={`${styles.consultant_phone} phone_input ${styles.phone_input} dark_input`}
+                />
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div className={styles.input_container}>
+        <span className="w-100">
           <InputField
+            label="Email"
             type="email"
             placeholder="email"
-            error="error"
-            name="enquiryEmail"
+            error={enquiryDataError.email}
+            name="email"
             className={styles.enquiry_input}
-            value=""
+            onChange={onChange}
+            value={enquiryData.email}
           />
         </span>
       </div>
       <div className={styles.input_container}>
-        <span>
-          <InputField
-            type="number"
-            placeholder="Number"
-            error="error"
-            name="enquiryName"
-            className={styles.enquiry_input}
-            value=""
-          />
-        </span>
-        <span>
-          <InputField
-            type="email"
-            placeholder="email"
-            error="error"
-            name="enquiryEmail"
-            className={styles.enquiry_input}
-            value="value"
-          />
-        </span>
-      </div>
-      <div className={styles.input_container}>
-        <TextAreaInput placeholder="Message" error="error" name="message" className={styles.enquiry_input} value="" />
+        <TextAreaInput
+          label="Enter Your Message"
+          placeholder="Message"
+          error={enquiryDataError.message}
+          name="message"
+          className={styles.enquiry_input}
+          onChange={onChange}
+          value={enquiryData.message}
+        />
       </div>
       {/* <div className={`${styles.checkbox} w-100`}>
         <input type="checkbox" name="terms" value="Bike" />
@@ -62,6 +154,6 @@ export const EnquiryForm = () => {
       <button type="submit" className={`${styles.enquiry_btn} Dark_button mt-3`}>
         Submit Now
       </button>
-    </div>
+    </form>
   );
 };
