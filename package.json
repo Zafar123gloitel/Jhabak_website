@@ -2,6 +2,9 @@
   "name": "jhabak-share",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "rm -rf .next && next build",
@@ -29,6 +32,7 @@
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
     "moment": "^2.30.1",
+    "n": "^9.2.1",
     "next": "14.1.0",
     "next-pwa": "^5.6.0",
     "node-sass": "^9.0.0",
@@ -45,7 +49,7 @@
     "react-toastify": "^10.0.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "regexx": "^1.0.1",
+    "regexx": "^1.0.2",
     "sass": "^1.70.0"
   },
   "devDependencies": {

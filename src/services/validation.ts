@@ -53,6 +53,7 @@ function email(val: string) {
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return !!(requied(val) && regex.test(val));
 }
+
 function nameAlpha(val: string) {
   const regex = /^[A-Za-z]+$/;
   return !!(requied(val) && regex.test(val));

@@ -14,7 +14,7 @@ const defaultContactData = {
   lName: '',
   email: '',
   mobile: '',
-  message: '',
+  message: 'please enter your message',
 };
 
 export const ContactForm = () => {
@@ -24,7 +24,7 @@ export const ContactForm = () => {
   const [contactData, setContactData] = useState(defaultContactData);
   const [contactError, setContactError] = useState(defaultContactData);
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  function onHandleValue(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setContactError(defaultContactData);
     setContactData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -115,7 +115,7 @@ export const ContactForm = () => {
                   name="fName"
                   label="First Name"
                   value={contactData.fName}
-                  onChange={onChange}
+                  onChange={onHandleValue}
                   placeholder="Eg. John"
                   error={contactError.fName}
                 />
@@ -126,7 +126,7 @@ export const ContactForm = () => {
                   name="lName"
                   label="Last Name"
                   value={contactData.lName}
-                  onChange={onChange}
+                  onChange={onHandleValue}
                   placeholder="Eg. Doe"
                   error={contactError.lName}
                 />
@@ -139,7 +139,7 @@ export const ContactForm = () => {
                   name="email"
                   label="Email"
                   value={contactData.email}
-                  onChange={onChange}
+                  onChange={onHandleValue}
                   placeholder="Eg. you@example.com"
                   error={contactError.email}
                 />
@@ -176,7 +176,7 @@ export const ContactForm = () => {
                       name="mobile"
                       placeholder="Enter your mobile"
                       value={contactData.mobile}
-                      onChange={onChange}
+                      onChange={onHandleValue}
                       error={contactError.mobile}
                       className={`${styles.consultant_phone} phone_input ${styles.phone_input} dark_input`}
                     />
@@ -190,7 +190,7 @@ export const ContactForm = () => {
                   label="Message"
                   placeholder="Your Message"
                   value={contactData.message}
-                  onChange={onChange}
+                  onChange={onHandleValue}
                   error={contactError.message}
                   require={true}
                 />

@@ -3,9 +3,12 @@ import React from 'react';
 import { pageRoute } from './config';
 import styles from './header.module.scss';
 import { useRouter } from 'next/navigation';
+import { selectUser } from '@/store/user/userSlice';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const router = useRouter();
+  const { accessToken } = useSelector(selectUser);
 
   const handleRoute = (path: string) => {
     router.push(path);
@@ -20,15 +23,14 @@ const Header = () => {
             <ul className={`${styles['Menues']} element_center`}>
               {pageRoute.map(value => {
                 return (
-                  <>
+                  <div key={value.id}>
                     <button
                       className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
-                      key={value.id}
                       onClick={() => handleRoute(value?.href)}
                     >
-                      <strong>{value?.name}</strong>
+                      {value?.name === 'Login' && accessToken ? '' : <strong>{value?.name}</strong>}
                     </button>
-                  </>
+                  </div>
                 );
               })}
             </ul>

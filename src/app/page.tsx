@@ -1,11 +1,9 @@
 'use client';
 import React from 'react';
 import styles from './page.module.css';
-
 import LoadingSection from '@/components/loading';
 // import Loading from './loading';
 // import dynamic from 'next/dynamic';
-
 import dynamic from 'next/dynamic';
 
 const BasicRuleTrading = dynamic(() => import('../components/landing/basicRuleTrading'), {

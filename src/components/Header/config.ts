@@ -13,23 +13,52 @@ export const pageRoute: pageRoute[] = [
   {
     id: 142,
     name: 'About',
-    href: '/about',
+    href: '/public/about',
   },
   {
     id: 143,
     name: 'Services',
-    href: '/services',
+    href: '/public/services',
   },
   {
     id: 144,
     name: 'Contact Us',
-    href: '/contact',
+    href: '/public/contact',
   },
   {
     id: 145,
     name: 'Login',
     href: '/login',
   },
+  //   {
+  //     id: 5,
+  //     name: 'Home',
+  //     href: '/',
+  //   },
+];
+export const loginPageRoute: pageRoute[] = [
+  {
+    id: 141,
+    name: 'Home',
+    href: '/',
+  },
+
+  {
+    id: 142,
+    name: 'About',
+    href: '/public/about',
+  },
+  {
+    id: 143,
+    name: 'Services',
+    href: '/public/services',
+  },
+  {
+    id: 144,
+    name: 'Contact Us',
+    href: '/public/contact',
+  },
+
   //   {
   //     id: 5,
   //     name: 'Home',

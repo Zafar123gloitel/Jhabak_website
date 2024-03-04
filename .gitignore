@@ -15,7 +15,8 @@
 .next
 # production
 /build
-
+sw.*
+workbox-*
 # misc
 .DS_Store
 *.pem
