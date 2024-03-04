@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './login.module.scss';
 import InputField from '../InputField/InputField';
 import Image from 'next/image';
@@ -10,10 +10,10 @@ import { apiService } from '@/utils/index';
 import '@/components/Loader/styles.module.scss';
 import { useRouter } from 'next/navigation';
 import { setAccessAndRefreshCookies } from '@/utils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { setDataUser, setAccessToken, setRefreshToken, RESET_USER_DATA } from '@/store/User/userSlice';
 import { validateEmail, validateIndianPhoneNumber, validatePassword, validateEmptyString } from 'regexx';
-import { RESET_USER_DATA, selectUser, setAccessToken, setDataUser, setRefreshToken } from '@/store/user/userSlice';
+import { RESET_USER_DATA, setAccessToken, setDataUser, setRefreshToken } from '@/store/user/userSlice';
 
 interface AddressProfileState {
   email: string;
@@ -36,11 +36,6 @@ export const Login = () => {
   const { startLoading, stopLoading } = useLoading();
   const router = useRouter();
   const dispatch = useDispatch();
-  const { accessToken } = useSelector(selectUser);
-
-  useEffect(() => {
-    if (accessToken) return router.push('/');
-  }, [accessToken, router]);
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -104,7 +99,6 @@ export const Login = () => {
       }
       if (isEmailValid && isPasswordValid) {
         startLoading();
-
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response: any = await apiService.post('/login', data);
         if (response.success && response.status === 200) {
@@ -113,28 +107,19 @@ export const Login = () => {
           dispatch(setAccessToken(response.accessToken));
           dispatch(setRefreshToken(response.refreshToken));
           setAccessAndRefreshCookies(response.accessToken, response.refreshToken, response?.payload?.role);
+          toast.success('login successfull');
           if (response?.payload?.role === 'admin') {
-            router.push('/admin/clients');
+            return router.push('/admin/clients');
           }
           if (response?.payload?.role === 'user') {
-            router.push('/client/dashboard');
+            return router.push('/client/dashboard');
           }
-          stopLoading();
-          toast.success('login successfull');
         } else {
           toast.info('you are not authorized');
           dispatch(RESET_USER_DATA());
         }
       }
     } catch (error) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      if (error.response.data.message) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        return toast.error(error.response.data.message);
-      }
-
       const typeError = error as Error;
       return toast.error(typeError.message);
     } finally {
