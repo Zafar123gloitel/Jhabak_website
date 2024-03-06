@@ -1,8 +1,10 @@
-import { Login } from '@/components';
+'use client';
 import React from 'react';
+import { Login } from '@/components';
+import withAuthentication from '@/hoc/withAuthentication';
 
 const LoginPage = () => {
   return <Login />;
 };
 
-export default LoginPage;
+export default withAuthentication(LoginPage);
