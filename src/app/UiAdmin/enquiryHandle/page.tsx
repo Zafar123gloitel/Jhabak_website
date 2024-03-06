@@ -1,5 +1,5 @@
 import React from 'react';
-import EnquiryHandleList from '@/components/uiAdmin/enquiryHandle';
+import EnquiryHandleList from '@/components/admin/enquiryHandle';
 
 const EnquiryHandle = () => {
   return (

@@ -94,6 +94,9 @@ p {
 .text-green {
   color: $green-color;
 }
+.bg-green {
+  background-color: $green-color;
+}
 .text-blue {
   color: $blue-color;
 }
@@ -465,6 +468,7 @@ button {
 
 .inner_plans_tabs {
   margin-top: 0px;
+  width: 75%;
   .nav-tabs {
     border: none;
     margin-left: auto;
@@ -509,6 +513,24 @@ button {
       .nav-link.active {
         color: #000;
         background: $green-color;
+      }
+    }
+  }
+}
+
+// banners tab design
+.images_tabs_css {
+  .nav-tabs {
+    @include respond(xs) {
+      width: 100%;
+      right: unset;
+    }
+    .nav-item {
+      button {
+        @include respond(xs) {
+          width: 130px !important;
+          padding: 5px;
+        }
       }
     }
   }

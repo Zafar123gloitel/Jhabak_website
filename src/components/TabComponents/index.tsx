@@ -31,7 +31,7 @@ function TabComponent(props: IProps) {
           ? props.tabOptions?.map((option: ITabOptions) => {
               return (
                 <Tab
-                  key={option?._id}
+                  key={option?.name}
                   eventKey={option?.name.toLowerCase()}
                   className="element_center flex-column"
                   title={<>{option?.alt}</>}

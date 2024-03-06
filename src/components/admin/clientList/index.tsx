@@ -6,6 +6,7 @@ import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
 import { ClientData } from './clientData';
 import ClientList from './client-list/ClientList';
+import CreateClientForm from './CreateClient';
 
 const CreateClient = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -17,14 +18,14 @@ const CreateClient = () => {
 
   const [tabData] = useState([
     {
-      _id: '2121',
-      name: 'client_list',
-      alt: 'Client List',
-    },
-    {
       _id: '2122',
       name: 'create_client',
       alt: 'Create Client',
+    },
+    {
+      _id: '2121',
+      name: 'client_list',
+      alt: 'Client List',
     },
   ]);
 
@@ -84,7 +85,7 @@ const CreateClient = () => {
           ) : (
             <MainLoader />
           )}
-          {/* {activeTab === 'create_client' && <CreateClientSection />} */}
+          {activeTab === 'create_client' && <CreateClientForm />}
         </div>
       </div>
     </>

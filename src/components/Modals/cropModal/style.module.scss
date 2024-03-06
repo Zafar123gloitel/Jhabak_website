@@ -1,0 +1,97 @@
+@import '../../../styles/index.scss';
+
+.cropContainer {
+  position: relative;
+  width: 100%;
+  background: red;
+  height: 264px;
+  @include respond(xs) {
+    height: 175px;
+  }
+
+  .controls {
+    padding: 16;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    @media (max-width: 480px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .sliderContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  .sliderLabel {
+    @media (max-width: 480px) {
+      minwidth: 65;
+    }
+  }
+
+  .slider {
+    padding: 22px 0px;
+    margin-left: 16;
+    @media (max-width: 480px) {
+      flex-direction: row;
+      align-items: center;
+      margin: 0 16px;
+    }
+  }
+}
+
+.productImageCropModal {
+  .modal-dialog {
+    max-width: 500px;
+  }
+  .modal-header,
+  .modal-body {
+    padding: 0;
+  }
+  .modal-header {
+    .close {
+      position: absolute;
+      right: 5px;
+      margin: 0;
+      z-index: 1;
+      top: 5px;
+    }
+  }
+  // .cropContainer{
+  //   height: 300px;
+  //   border-top-left-radius: 7.75px;
+  //   border-top-right-radius: 7.75px;
+  // }
+  .controls {
+    padding: 10px 0;
+    text-align: center;
+    .cropButton {
+      padding: 8px 15px;
+      min-width: 130px;
+      margin-top: 15px;
+    }
+    .sliderContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label {
+        margin-bottom: 0;
+      }
+      .rangSlider {
+        width: 100%;
+      }
+    }
+  }
+}
+.title-thumbnail {
+  font-size: 21px;
+  font-weight: 700;
+  color: gray;
+
+  @include respond(lg) {
+    font-size: 18px;
+  }
+}

@@ -17,9 +17,16 @@
   min-height: 90px;
   align-items: center;
   justify-content: center;
+
   .inner_main_header {
     @include respond(xxxxl) {
       max-width: 1800px;
+    }
+    .menu_dropdown_button {
+      position: absolute;
+      z-index: 99;
+      left: 0;
+      top: 0;
     }
 
     .menue-list-section {
@@ -207,16 +214,19 @@
 .menu_dropdown_button {
   width: 100px;
   height: 40px;
-  background: #023d6d;
+  background: transparent;
   border-radius: 5px;
   text-align: center;
   color: #ffffff;
   font-size: 20px;
   font-weight: 600;
-  display: none;
+  display: flex;
+  left: 25px;
+  top: 35px;
+  position: absolute;
 
   @include respond(xl) {
-    display: none;
+    display: flex;
   }
   @include respond(md) {
     display: inline;

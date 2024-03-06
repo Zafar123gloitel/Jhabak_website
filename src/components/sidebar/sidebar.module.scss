@@ -3,9 +3,10 @@
 .main_sidebar {
   position: relative;
   width: 250px;
-  height: 90vh;
+  height: 100%;
   transition: all 0.7s ease-in-out;
   overflow: hidden;
+
   &.show_sidebar {
     width: 70px !important;
 
@@ -16,7 +17,7 @@
       }
       .Menu_List {
         .Menues {
-          padding: 0 15px;
+          // padding: 0 15px;
         }
       }
     }
@@ -25,12 +26,13 @@
 .inner_sidebar {
   height: 100%;
   width: 100%;
-  border-radius: 8px;
+
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  background: linear-gradient(172.55deg, #10c880 5.78%, rgba(0, 182, 102, 0.61) 68.83%);
+  // background: linear-gradient(172.55deg, #10c880 5.78%, rgba(0, 182, 102, 0.61) 68.83%);
+  background-color: $green-color;
   // padding-left: 10px;
   padding-top: 20px;
   .sidebar_top {
@@ -45,13 +47,14 @@
 }
 
 .Menu_List {
-  width: 90%;
+  width: 100%;
 
   .Menues {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
     margin-top: 30px;
+    padding: 0;
     .li_content {
       display: flex;
       align-items: center;
@@ -59,6 +62,7 @@
       height: 50px;
       justify-content: left;
       cursor: pointer;
+      padding: 0 15px;
 
       .single_menu {
         font-size: 15px;
@@ -67,6 +71,8 @@
         align-items: center;
         justify-content: flex-start;
         transition: all 0.7s ease-in-out;
+
+        padding: 8px 0px 8px 5px;
         strong {
           width: auto;
           text-wrap: nowrap;

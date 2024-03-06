@@ -1,4 +1,4 @@
-import CreateClient from '@/components/uiAdmin/clientList';
+import CreateClient from '@/components/admin/clientList';
 import React from 'react';
 
 const AppointmentForm = () => {

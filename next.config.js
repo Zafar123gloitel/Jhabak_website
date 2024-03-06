@@ -12,11 +12,8 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   reactStrictMode: false,
   swcMinify: true,
-  // sassOptions: {
-  //   includePaths: [path.join(__dirname, 'styles')],
-  // },
+
   images: {
-    // domains: ['res.cloudinary.com'],
     remotePatterns: [
       {
         protocol: 'https',

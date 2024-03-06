@@ -19,12 +19,12 @@ const EnquiryHandleList = () => {
 
   const [tabData] = useState([
     {
-      _id: '2221',
+      _id: '',
       name: 'appointment_list',
       alt: 'Appointment List',
     },
     {
-      _id: '2222',
+      _id: '',
       name: 'enquiry_list',
       alt: 'Enquiry List',
     },

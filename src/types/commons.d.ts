@@ -38,13 +38,3 @@ export interface IIPayload {
   accessToken: string;
   refreshToken: string;
 }
-
-export const industryTypeOptions = [
-  { label: 'Select Corporate Type*', value: '' },
-  { label: 'School', value: 'school' },
-  { label: 'College', value: 'college' },
-  { label: 'Society', value: 'society' },
-  { label: 'Enterprise', value: 'enterprise' },
-  { label: 'Government', value: 'government' },
-  { label: 'Healthcare', value: 'healthcare' },
-];

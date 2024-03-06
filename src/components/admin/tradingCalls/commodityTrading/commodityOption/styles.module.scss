@@ -1,0 +1,53 @@
+@import '../../../../../styles/index.scss';
+.create_Client_section {
+  position: relative;
+  border-radius: 30px;
+  background: #fff;
+  padding: 20px 0 50px 0;
+  margin: 20px 0 50px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  width: 90%;
+  .create_client_img {
+    margin-bottom: 25px;
+    h5 {
+      margin-top: 15px;
+      font-weight: 700;
+      color: #6c3483;
+    }
+  }
+  .inr_create_Client_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .Client_input_container {
+      width: 45%;
+      label {
+        color: #000 !important;
+      }
+      @include respond(xs) {
+        width: 90%;
+        margin-top: 10px;
+      }
+    }
+    .Client_input_section {
+      width: 100%;
+      input {
+        border-color: #000;
+        color: #0e0e0e;
+      }
+      select {
+        border: 1px solid #000;
+        color: #0e0e0e;
+      }
+    }
+  }
+  .smt_btn {
+    margin-right: 50px;
+    width: 150px;
+    margin-top: 25px;
+    &.smt_btn_loader {
+      padding: 20px 0;
+    }
+  }
+}
