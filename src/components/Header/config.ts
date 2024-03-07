@@ -25,17 +25,8 @@ export const pageRoute: pageRoute[] = [
     name: 'Contact Us',
     href: '/public/contact',
   },
-  {
-    id: 145,
-    name: 'Login',
-    href: '/login',
-  },
-  //   {
-  //     id: 5,
-  //     name: 'Home',
-  //     href: '/',
-  //   },
 ];
+
 export const loginPageRoute: pageRoute[] = [
   {
     id: 141,

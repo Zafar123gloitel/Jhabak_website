@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import withAuthentication from '@/hoc/withAuthentication';
+import { withAuthentication } from '@/hocs';
 const Dashboard = () => {
   return (
     <div>
