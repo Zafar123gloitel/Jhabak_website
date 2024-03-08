@@ -1,8 +1,9 @@
 import Cookies from 'js-cookie';
-import { configs } from '@/config';
-const accessToken = configs.baseUrl.accesskey;
-const refreshToken = configs.baseUrl.refreshkey;
-const role = configs.baseUrl.role;
+
+const accessToken = 'accessToken';
+const refreshToken = 'refreshToken';
+const role = 'role';
+
 export const setCookies = (key: string, token: string, expires = 7) => {
   Cookies.set(key, token, { expires });
 };

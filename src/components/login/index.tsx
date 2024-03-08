@@ -6,14 +6,11 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 // import Forgotten from '@/components/Modals/ForgottenModal';
 import useLoading from '@/components/Loader/Loader';
-import { apiService } from '@/utils/index';
 import '@/components/Loader/styles.module.scss';
 import { useRouter } from 'next/navigation';
-import { setAccessAndRefreshCookies } from '@/utils';
-import { useDispatch } from 'react-redux';
-// import { setDataUser, setAccessToken, setRefreshToken, RESET_USER_DATA } from '@/store/User/userSlice';
+import { apiReduxService } from '@/utils';
 import { validateEmail, validateIndianPhoneNumber, validatePassword, validateEmptyString } from 'regexx';
-import { RESET_USER_DATA, setAccessToken, setDataUser, setRefreshToken } from '@/store/user/userSlice';
+import { useAuth, useUser } from '@/hooks';
 
 interface AddressProfileState {
   email: string;
@@ -25,17 +22,16 @@ interface AddressProfileState {
 }
 
 export const Login = () => {
-  const [userDetails, setUserDetails] = useState<AddressProfileState>({
-    email: '',
-    password: '',
-  });
+  const { Auth, ResetAuth } = useAuth();
+  const { SetUser, ResetUser } = useUser();
+  const router = useRouter();
+
+  const [userDetails, setUserDetails] = useState<AddressProfileState>({ email: '', password: '' });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toastId: any = React.useRef(null);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const { startLoading, stopLoading } = useLoading();
-  const router = useRouter();
-  const dispatch = useDispatch();
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -100,13 +96,15 @@ export const Login = () => {
       if (isEmailValid && isPasswordValid) {
         startLoading();
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const response: any = await apiService.post('/login', data);
+        const response: any = await apiReduxService.post('/login', data);
         if (response.success && response.status === 200) {
-          dispatch(setDataUser(response.payload));
-          localStorage.setItem('role', response?.payload?.role);
-          dispatch(setAccessToken(response.accessToken));
-          dispatch(setRefreshToken(response.refreshToken));
-          setAccessAndRefreshCookies(response.accessToken, response.refreshToken, response?.payload?.role);
+          Auth({
+            role: response.payload.role,
+            accessToken: response.accessToken,
+            refreshToken: response.refreshToken,
+          });
+          SetUser(response.payload);
+
           toast.success('login successfull');
           if (response?.payload?.role === 'admin') {
             return router.push('/admin/clients');
@@ -116,7 +114,8 @@ export const Login = () => {
           }
         } else {
           toast.info('you are not authorized');
-          dispatch(RESET_USER_DATA());
+          ResetAuth();
+          ResetUser();
         }
       }
     } catch (error) {

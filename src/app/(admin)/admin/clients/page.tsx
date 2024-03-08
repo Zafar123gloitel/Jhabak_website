@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import withAuthentication from '@/hoc/withAuthentication';
+import { withAuthentication } from '@/hocs';
 import CreateClient from '@/components/admin/clientList';
+
 const Clientsss = () => {
   return <CreateClient />;
 };

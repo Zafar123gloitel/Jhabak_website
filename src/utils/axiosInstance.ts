@@ -1,112 +1,141 @@
-import axios, {
-  type AxiosRequestConfig,
-  type AxiosResponse,
-  type AxiosError,
-  type InternalAxiosRequestConfig,
-  AxiosInstance,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { configs } from '@/config';
-import { getCookies, setAccessAndRefreshCookies, clearAccessAndRefreshCookies, getRoleCookies } from './cookies.utils';
+import { store } from '@/store';
+import { resetAuth_, setAuth_ } from '@/store/slices/authSlice';
+const { baseUrl, nodeEnv } = configs;
 
-const accessToken = configs.baseUrl.accesskey;
-const refreshToken = configs.baseUrl.refreshkey;
-const role = configs.baseUrl.role;
-type CustomHeaders = Record<string, string | boolean>;
+const baseURL: string = `${baseUrl.server}${baseUrl.apiVersion}`;
+const isProduction: boolean = nodeEnv === 'production';
+
+interface TokenResponse {
+  accessToken: string;
+  refreshToken: string;
+  role: string;
+  message: string;
+  status: number;
+  success: boolean;
+}
+
+interface InternalAxiosRequestConfig extends AxiosRequestConfig {
+  _retry?: boolean;
+}
+
 class APIService {
   private readonly axiosInstance: AxiosInstance;
   private abortController: AbortController;
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: configs.baseUrl.server,
+      baseURL,
       headers: { 'Content-Type': 'application/json' },
-      // withCredentials: configs.nodeEnv === 'production',
+      withCredentials: isProduction,
     });
+
     this.abortController = new AbortController();
+    this.setupRequestInterceptors();
+    this.setupResponseInterceptors();
+  }
+
+  private setupRequestInterceptors() {
     this.axiosInstance.interceptors.request.use(
-      (config: InternalAxiosRequestConfig<unknown>) => {
-        if (typeof window !== 'undefined') {
-          // const accessToken: string | null = window.localStorage.getItem('token');
-          const _accessToken: string | undefined = getCookies(accessToken);
-          const user_role: string | undefined = getRoleCookies(role);
-          if (_accessToken != null && user_role != null) {
-            config.headers.Authorization = `Bearer ${_accessToken}`;
-            config.headers[role] = user_role;
-          }
+      config => {
+        const { accessToken, role } = this.getStoredCredentials();
+        if (accessToken && role) {
+          config.headers.Authorization = `Bearer ${accessToken}`;
+          config.headers.role = role;
         }
         return config;
       },
-      async (error: AxiosError) => {
-        return await Promise.reject(error);
-      }
+      async error => Promise.reject(error)
     );
+  }
 
+  private setupResponseInterceptors() {
     this.axiosInstance.interceptors.response.use(
       response => response,
-      async error => {
-        const originalRequest = error.config;
-        // if (error.response.status === 401 || error.response.status === 403) {
-        if ([401, 403].includes(error.response.status)) {
+      async (error: AxiosError) => {
+        const originalRequest = error.config as InternalAxiosRequestConfig;
+        if ([401, 403].includes(error.response?.status ?? 0) && !originalRequest._retry) {
           originalRequest._retry = true;
-          const refreshCookies = getCookies(refreshToken);
-          const user_role: string | undefined = getRoleCookies(role);
-          const headers = {
-            Authorization: `Bearer ${refreshCookies}`,
-            role: user_role,
-          };
-          try {
-            const response = await this.axiosInstance.post(
-              `${this.axiosInstance}/auth/refresh`,
-              // { refreshToken },
-              headers,
-              { withCredentials: true, signal: this.abortController.signal }
-            );
-            const { accessToken, refreshToken, role } = response.data;
-            setAccessAndRefreshCookies(accessToken, refreshToken, role);
-            // setCookie('accessToken', accessToken, 3600); // expires in 1 hour
-            this.axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-            return this.axiosInstance(originalRequest);
-          } catch (error) {
-            // deleteCookie('accessToken');
-            // deleteCookie('refreshToken');
-            clearAccessAndRefreshCookies();
-            // handle refresh token failure
-          }
+          await this.refreshToken();
+          return this.axiosInstance(originalRequest);
         }
         return Promise.reject(error);
       }
     );
   }
 
+  private getStoredCredentials() {
+    // Use useSelector to access authentication state from the Redux store
+    const { accessToken, role } = store.getState().auth;
+    return { accessToken, role };
+  }
+
+  private updateStoredCredentials(accessToken: string, refreshToken: string, role: string) {
+    // Dispatch the setCredentials action to update the Redux store
+    store.dispatch(setAuth_({ accessToken, refreshToken, role }));
+
+    this.axiosInstance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+    this.axiosInstance.defaults.headers.common.role = role;
+  }
+
+  private clearStoredCredentials() {
+    // Dispatch the clearCredentials action to update the Redux store
+    store.dispatch(resetAuth_());
+  }
+
+  private async refreshToken() {
+    try {
+      // Use useSelector to access authentication state from the Redux store
+      const { refreshToken: RefreshToken, role: Role } = store.getState().auth;
+
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RefreshToken}`,
+        'role': Role,
+      };
+      const response = await axios.post<TokenResponse>(
+        `${baseURL}/auth/refresh`,
+        {},
+        { headers, withCredentials: isProduction, signal: this.abortController.signal }
+      );
+      if (response.data && response.data.status === 200 && response.data.success) {
+        const { accessToken, refreshToken, role } = response.data;
+        this.updateStoredCredentials(accessToken, refreshToken, role);
+      }
+    } catch (error) {
+      this.handleError(error as AxiosError);
+    }
+  }
+
   private responseData<T>(response: AxiosResponse<T>): T {
     return response.data;
   }
 
-  private handleError(error: AxiosError): void {
+  private handleError(error: AxiosError): never {
     const status = error.response?.status;
-
-    if ((status === 401 || status === 403) && typeof window !== 'undefined') {
-      window.localStorage.removeItem('token');
+    if ([401, 403].includes(status ?? 0) && typeof window !== 'undefined') {
+      this.clearStoredCredentials();
     }
     throw error;
   }
 
   async get<T>(
     url: string,
-    data: unknown = {},
-    headers: CustomHeaders = {},
+    params: Record<string, unknown> = {},
+    headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
-  ): Promise<unknown> {
+  ): Promise<T> {
     try {
       const response = await this.axiosInstance.request<T>({
         method: 'get',
         url,
-        data,
+        params,
         headers,
         ...configOverrides,
         signal: this.abortController.signal,
       });
-      return this.responseData<T>(response);
+      return this.responseData(response);
     } catch (error) {
       this.handleError(error as AxiosError);
     }
@@ -114,20 +143,17 @@ class APIService {
 
   async post<T>(
     url: string,
-    data: unknown = {},
-    headers: CustomHeaders = {},
+    data: Record<string, unknown> = {},
+    headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
-  ): Promise<unknown> {
+  ): Promise<T> {
     try {
-      const response = await this.axiosInstance.request<T>({
-        method: 'post',
-        url,
-        data,
+      const response = await this.axiosInstance.post<T>(url, data, {
         headers,
         ...configOverrides,
         signal: this.abortController.signal,
       });
-      return this.responseData<T>(response);
+      return this.responseData(response);
     } catch (error) {
       this.handleError(error as AxiosError);
     }
@@ -135,20 +161,17 @@ class APIService {
 
   async put<T>(
     url: string,
-    data: unknown = {},
-    headers: CustomHeaders = {},
+    data: Record<string, unknown> = {},
+    headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
-  ): Promise<unknown> {
+  ): Promise<T> {
     try {
-      const response = await this.axiosInstance.request<T>({
-        method: 'put',
-        url,
-        data,
+      const response = await this.axiosInstance.put<T>(url, data, {
         headers,
         ...configOverrides,
         signal: this.abortController.signal,
       });
-      return this.responseData<T>(response);
+      return this.responseData(response);
     } catch (error) {
       this.handleError(error as AxiosError);
     }
@@ -156,20 +179,17 @@ class APIService {
 
   async patch<T>(
     url: string,
-    data: unknown = {},
-    headers: CustomHeaders = {},
+    data: Record<string, unknown> = {},
+    headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
-  ): Promise<unknown> {
+  ): Promise<T> {
     try {
-      const response = await this.axiosInstance.request<T>({
-        method: 'patch',
-        url,
-        data,
+      const response = await this.axiosInstance.patch<T>(url, data, {
         headers,
         ...configOverrides,
         signal: this.abortController.signal,
       });
-      return this.responseData<T>(response);
+      return this.responseData(response);
     } catch (error) {
       this.handleError(error as AxiosError);
     }
@@ -177,10 +197,10 @@ class APIService {
 
   async delete<T>(
     url: string,
-    headers: CustomHeaders = {},
-    data: unknown = {},
+    data: Record<string, unknown> = {},
+    headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
-  ): Promise<unknown> {
+  ): Promise<T> {
     try {
       const response = await this.axiosInstance.request<T>({
         method: 'delete',
@@ -190,7 +210,7 @@ class APIService {
         ...configOverrides,
         signal: this.abortController.signal,
       });
-      return this.responseData<T>(response);
+      return this.responseData(response);
     } catch (error) {
       this.handleError(error as AxiosError);
     }
@@ -202,4 +222,11 @@ class APIService {
   }
 }
 
-export const apiService = new APIService();
+export const apiReduxService = new APIService();
+
+/**
+//! Cleanup function to abort the request when the component unmounts
+    return () => {
+      apiService.abortRequest();
+    };
+ */
