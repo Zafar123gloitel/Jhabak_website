@@ -9,3 +9,151 @@
     }
   }
 }
+
+//  Form Design
+@import '../../../../styles/index.scss';
+
+.create_form {
+  justify-content: flex-start;
+}
+.create_Client_section {
+  position: relative;
+  border-radius: 10px;
+  padding: 20px 0 50px 0;
+  margin: 20px 0 50px 0;
+  width: 85%;
+  border: 1px solid $green-color;
+  .inr_create_Client_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .Client_input_container {
+      width: 30%;
+      fieldset {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        span {
+          &:nth-child(2) {
+            margin-left: 15px;
+          }
+          label {
+            padding-left: 5px;
+            color: #fff;
+          }
+        }
+      }
+      input {
+        background-color: transparent;
+      }
+      @include respond(xs) {
+        width: 90%;
+        margin-top: 10px;
+      }
+    }
+
+    .Client_input_section {
+      width: 100%;
+      input,
+      select {
+        border-bottom: 1px solid $green-color !important;
+        color: #fff;
+        background-color: $dark-input-bg;
+      }
+
+      label {
+        color: #fff;
+      }
+      // select {
+      //   border: 1px solid #000;
+      //   color: #fff;
+      // }
+    }
+  }
+  .plans_details {
+    width: 100%;
+    align-items: flex-start;
+    .single_plan_field {
+      margin-left: 10px;
+      width: 95%;
+      align-items: center;
+
+      .single_plan {
+        width: 30%;
+        color: #fff;
+        .duration {
+          width: 100px;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+        }
+        .tradeType {
+          padding: 0;
+          margin-bottom: 0;
+        }
+
+        label {
+          padding-left: 5px;
+        }
+        select {
+          border-bottom: 1px solid $green-color;
+          color: #fff;
+          background-color: $dark-input-bg;
+        }
+        input[type='radio'] {
+          margin: 0 0 0 5px;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .smt_btn {
+    width: 95%;
+    margin-top: 64px;
+    &.smt_btn_loader {
+      padding: 20px 0;
+    }
+  }
+  input[type='checkbox'] {
+    box-shadow:
+      #14f19580 0px 0px 0px 1px inset,
+      #14f19580 0px 0px 0px 1px;
+    background-color: transparent;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 10px;
+    height: 10px;
+    &:checked {
+      accent-color: $green-color;
+      &::before {
+        display: none;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $background-color;
+    }
+  }
+  input[type='radio'] {
+    background-color: $background-color;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $background-color;
+      border: 1px solid $green-color;
+      border-radius: 50%;
+    }
+    &:checked {
+      accent-color: $green-color;
+    }
+  }
+}

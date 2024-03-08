@@ -43,14 +43,31 @@
     margin-left: 9px;
     border-radius: 8px;
     width: 95%;
+    background-color: $dark-input-bg !important;
+    &:focus {
+      background-color: $dark-input-bg !important;
+      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+      transition: all 0.5s;
+    }
     option {
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
       &:nth-child(1) {
-        color: #bbb8b8;
+        color: #aaaaaa;
+        border-top: 1px solid $green-color;
+      }
+      &:last-child {
+        border-bottom: 1px solid red;
       }
     }
-
     option {
-      color: #6c3483;
+      color: #fff;
+      background-color: $background-color;
+      border-radius: 50%;
     }
   }
 }

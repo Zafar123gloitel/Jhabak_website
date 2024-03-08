@@ -15,8 +15,6 @@ const callTypeOption = [
   { label: 'Long Term Calls', value: 'year_calls' },
 ];
 const EquityTrading = () => {
-  // const { dataUser } = useSelector(selectUser);
-
   return (
     <>
       <div className={`${styles.create_form} All_content_center`}>
