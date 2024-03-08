@@ -41,6 +41,7 @@
     border: none;
     padding: 9px 0px;
     margin-left: 9px;
+    border-radius: 8px;
     width: 95%;
     option {
       &:nth-child(1) {
@@ -100,7 +101,7 @@
   }
   .date_input_field {
     padding-left: 10px !important;
-    border-color: $light-input-color !important;
+    border-color: $white-input-color !important;
     position: relative;
     &::placeholder {
       font-size: 13px;

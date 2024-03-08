@@ -14,7 +14,7 @@ const CreateClient = () => {
   const [postsPerPage] = useState<number>(5);
   // const [dataList, setDataList] = useState([]);
   const [totalEvents, setTotalEvents] = useState(0);
-  const [activeTab, setActiveTab] = useState('client_list');
+  const [activeTab, setActiveTab] = useState('create_client');
 
   const [tabData] = useState([
     {

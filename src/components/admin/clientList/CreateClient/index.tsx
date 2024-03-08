@@ -3,9 +3,16 @@ import styles from './styles.module.scss';
 
 // import { industryTypeOptions } from '@/types';
 import InputField from '@/components/InputField/InputField';
+import SelectField from '@/components/InputField/SelectField';
+import TradeTypeInput from './tradeTypeInput';
 // import SelectField from '@/components/InputField/SelectField';
-import Image from 'next/image';
 
+const tradeTypeDataOptions = [
+  { label: 'Select Trade Type', value: 'equity' },
+  { label: 'Equity', value: 'equity' },
+  { label: 'Option', value: 'option' },
+  { label: 'commodity', value: 'Commodity' },
+];
 const CreateClientForm = () => {
   // const { dataUser } = useSelector(selectUser);
 
@@ -13,10 +20,6 @@ const CreateClientForm = () => {
     <>
       <div className={`${styles.create_form} All_content_center`}>
         <form className={`${styles.create_Client_section}`}>
-          <div className={`${styles.create_client_img} w-100 All_content_center flex-column`}>
-            <Image src={'/assets/svg/admin/client_form.svg'} alt={'Create Client'} width={80} height={80} />
-            <h5>Create Corporate Client </h5>
-          </div>
           <div className={`${styles.inr_create_Client_section}`}>
             <div className={`${styles.Client_input_container}`}>
               <InputField
@@ -31,17 +34,6 @@ const CreateClientForm = () => {
               />
             </div>
 
-            <div className={`${styles.Client_input_container}`}>
-              {/* <SelectField
-                label="Corporate Type"
-                name="corporateType"
-                value={'createClient.corporateType'}
-                // onChange={onChange}
-                options={'industryTypeOptions'}
-                error={inputError.corporateType}
-                className={`${styles['']} ${styles['otp_input-box']}`}
-              /> */}
-            </div>
             <div className={`${styles.Client_input_container}`}>
               <InputField
                 name="email"
@@ -91,28 +83,28 @@ const CreateClientForm = () => {
               />
             </div>
             <div className={`${styles.Client_input_container}`}>
-              <fieldset>
-                <div>
-                  <input type="checkbox" id="isActive" name="isActive" checked />
+              <fieldset className="element_center h-100">
+                <span>
+                  <input type="checkbox" id="isActive" name="isActive" defaultChecked />
                   <label htmlFor="isActive">isActive</label>
-                </div>
-
-                <div>
+                </span>
+                <span>
                   <input type="checkbox" id="subscription" name="subscription" />
                   <label htmlFor="subscription">Subscription</label>
-                </div>
+                </span>
               </fieldset>
             </div>
           </div>
 
           <div className={`${styles.Client_input_container} ${styles.plans_details} w-100`}>
-            <fieldset className="d-flex justify-content-around">
-              <div>
+            <TradeTypeInput />
+            <fieldset className={`${styles.single_plan_field} d-flex justify-content-around a`}>
+              <div className={`${styles.single_plan}`}>
                 <input type="checkbox" id="day_call" name="day_call" checked />
                 <label htmlFor="day_call">Day Call</label>
               </div>
 
-              <div className="d-flex justify-content-around">
+              <div className={`${styles.single_plan} d-flex justify-content-start`}>
                 <input type="radio" id="1mth" name="select_duration" value="1mth" />
                 <label htmlFor="1mth">1 Mth</label>
                 <br />
@@ -120,17 +112,20 @@ const CreateClientForm = () => {
                 <label htmlFor="2mth">2Mth</label>
                 <br />
                 <input type="radio" id="3mth" name="select_duration" value="3mth" />
-                <label htmlFor="javascript">3mth</label>
+                <label htmlFor="3mth">3mth</label>
               </div>
-              <div>
-                <select name="trade_type" id="trade_type">
-                  <option value="equity">Equity</option>
-                  <option value="option">Option</option>
-                  <option value="MCX">MCX</option>
-                </select>
+              <div className={`${styles.single_plan}`}>
+                <SelectField
+                  name="day_call_tradeType"
+                  value={''}
+                  options={tradeTypeDataOptions}
+                  error=""
+                  require=""
+                  className={styles.tradeType}
+                />
               </div>
             </fieldset>
-            <fieldset className="d-flex justify-content-around">
+            {/* <fieldset className={`${styles.single_plan} d-flex justify-content-start`}>
               <div>
                 <input type="checkbox" id="day_call" name="day_call" />
                 <label htmlFor="day_call">Weekly Call</label>
@@ -204,7 +199,7 @@ const CreateClientForm = () => {
                   <option value="MCX">MCX</option>
                 </select>
               </div>
-            </fieldset>
+            </fieldset> */}
           </div>
 
           {/* {isLoading ? ( */}
