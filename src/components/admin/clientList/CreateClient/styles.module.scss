@@ -163,6 +163,9 @@
     }
     &:checked {
       accent-color: $green-color;
+      &::before {
+        display: none;
+      }
     }
   }
 }

@@ -20,8 +20,6 @@ const SelectField: React.FC<SelectFieldProps> = ({
   error,
   require,
 }) => {
-  // console.log(options, 'options');
-
   return (
     <>
       {label && (

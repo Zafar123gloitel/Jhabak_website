@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { validateEmail, validateIndianPhoneNumber } from 'regexx';
 import styles from './styles.module.scss';
 import InputField from '@/components/InputField/InputField';
-import { inputsDetails } from './inputConfig';
 import TradeTypeInput from './tradeTypeInput';
 
 const CREATE_CORPORATE_CLIENT = {
@@ -18,10 +17,38 @@ const CREATE_CORPORATE_CLIENT = {
   isSubscription: false,
 };
 
+const DEFAULT_SELECT = { duration: '', trade_type: '' };
+
 const CreateClientForm = () => {
   const [formData, setFormData] = useState(CREATE_CORPORATE_CLIENT);
-  // const [isLoading, setIsLoading] = useState(false);
   const [getError, setGetError] = useState({ ...CREATE_CORPORATE_CLIENT });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [isDayChecked, setIsDayChecked] = useState(false);
+  const [selectedDayOption, setSelectedDayOption] = useState({ ...DEFAULT_SELECT });
+
+  const [isWeekChecked, setIsWeekChecked] = useState(false);
+  const [selectedWeekOption, setSelectedWeekOption] = useState({ ...DEFAULT_SELECT });
+
+  const [isMonthChecked, setIsMonthChecked] = useState(false);
+  const [selectedMonthOption, setSelectedMonthOption] = useState({ ...DEFAULT_SELECT });
+
+  const [isYearChecked, setIsYearChecked] = useState(false);
+  const [selectedYearOption, setSelectedYearOption] = useState({ ...DEFAULT_SELECT });
+
+  function Reset() {
+    setGetError({ ...CREATE_CORPORATE_CLIENT });
+    setFormData(CREATE_CORPORATE_CLIENT);
+    setIsLoading(false);
+    setIsDayChecked(false);
+    setIsWeekChecked(false);
+    setIsMonthChecked(false);
+    setIsYearChecked(false);
+    setSelectedDayOption({ ...DEFAULT_SELECT });
+    setSelectedWeekOption({ ...DEFAULT_SELECT });
+    setSelectedMonthOption({ ...DEFAULT_SELECT });
+    setSelectedYearOption({ ...DEFAULT_SELECT });
+  }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setGetError({ ...CREATE_CORPORATE_CLIENT }); // clearing all the errors
@@ -39,14 +66,21 @@ const CreateClientForm = () => {
     try {
       if (!validateEmail(formData.email)) return onError('email', 'Invalide Email Address.');
       if (!validateIndianPhoneNumber(formData.phone_number)) return onError('phone_number', 'Invalide Phone Number.');
-      // setIsLoading(true);
+      setIsLoading(true);
+      const day = { isDayChecked, ...selectedDayOption };
+      const week = { isWeekChecked, ...selectedWeekOption };
+      const month = { isMonthChecked, ...selectedMonthOption };
+      const year = { isYearChecked, ...selectedYearOption };
 
-      setGetError({ ...CREATE_CORPORATE_CLIENT });
+      // eslint-disable-next-line no-console
+      console.log('<<<<formData>>>>', { ...formData, day, week, month, year });
+
+      Reset();
     } catch (error) {
       const _e = error as Error;
       toast.error(_e.message);
     } finally {
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   }
 
@@ -150,29 +184,42 @@ const CreateClientForm = () => {
               <strong className={`  ${styles.single_plan} css-f15`}>Select Trade Type</strong>
             </div>
           </div>
-          <div
+
+          <section
             className={`${styles.Client_input_container} ${styles.plans_details} w-100 element_center flex-column mt-2`}
           >
-            {inputsDetails &&
-              inputsDetails.map(item => {
-                return (
-                  <>
-                    <TradeTypeInput
-                      key={item.callTypeName}
-                      callTypeName={item.callTypeName}
-                      callTypeLabel={item.callTypeLabel}
-                      planDurationName={item.planDurationName}
-                      planDuration={item.planDuration}
-                      tradeTypeName={item.tradeTypeName}
-                    />
-                  </>
-                );
-              })}
-          </div>
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
+            >
+              <Checkbox label="Day Call" isChecked={isDayChecked} setIsChecked={setIsDayChecked} />
+              <TradeTypeInput setSelectedOptions={setSelectedDayOption} />
+            </div>
+
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
+            >
+              <Checkbox label="Weekly Call" isChecked={isWeekChecked} setIsChecked={setIsWeekChecked} />
+              <TradeTypeInput setSelectedOptions={setSelectedWeekOption} />
+            </div>
+
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
+            >
+              <Checkbox label="Monthly Call" isChecked={isMonthChecked} setIsChecked={setIsMonthChecked} />
+              <TradeTypeInput setSelectedOptions={setSelectedMonthOption} />
+            </div>
+
+            <div
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
+            >
+              <Checkbox label="Year Call" isChecked={isYearChecked} setIsChecked={setIsYearChecked} />
+              <TradeTypeInput setSelectedOptions={setSelectedYearOption} />
+            </div>
+          </section>
 
           <div className={`${styles.sbt_button} w-100 d-flex element_center`}>
             <button type="submit" className={`${styles.smt_btn} Dark_button css-f16`}>
-              Create Account
+              {isLoading ? 'Loading...' : 'Create Account'}
             </button>
           </div>
         </form>
@@ -180,5 +227,22 @@ const CreateClientForm = () => {
     </>
   );
 };
+
+function Checkbox({
+  label,
+  isChecked,
+  setIsChecked,
+}: {
+  label: string;
+  isChecked: boolean;
+  setIsChecked: (prev: boolean) => void;
+}) {
+  return (
+    <div>
+      <input type="checkbox" id={label} onChange={() => setIsChecked(!isChecked)} checked={isChecked} />
+      <label htmlFor={label}>{label}</label>
+    </div>
+  );
+}
 
 export default CreateClientForm;
