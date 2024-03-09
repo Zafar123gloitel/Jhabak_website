@@ -5,7 +5,6 @@ import InputField from '../InputField/InputField';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 // import Forgotten from '@/components/Modals/ForgottenModal';
-import useLoading from '@/components/Loader/Loader';
 import '@/components/Loader/styles.module.scss';
 import { useRouter } from 'next/navigation';
 import { apiReduxService } from '@/utils';
@@ -26,12 +25,12 @@ export const Login = () => {
   const { SetUser, ResetUser } = useUser();
   const router = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [userDetails, setUserDetails] = useState<AddressProfileState>({ email: '', password: '' });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const toastId: any = React.useRef(null);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { startLoading, stopLoading } = useLoading();
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -94,7 +93,7 @@ export const Login = () => {
         };
       }
       if (isEmailValid && isPasswordValid) {
-        startLoading();
+        setIsLoading(true);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response: any = await apiReduxService.post('/login', data);
         if (response.success && response.status === 200) {
@@ -122,7 +121,7 @@ export const Login = () => {
       const typeError = error as Error;
       return toast.error(typeError.message);
     } finally {
-      stopLoading();
+      setIsLoading(false);
     }
   };
   return (
@@ -167,7 +166,7 @@ export const Login = () => {
             </div>
 
             <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={() => handleLogin()}>
-              Login
+              {isLoading ? 'Loading...' : 'Login'}
             </button>
           </div>
 

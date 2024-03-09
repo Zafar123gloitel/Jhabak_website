@@ -16,6 +16,8 @@
     justify-content: space-around;
 
     .Client_input_container {
+      display: flex;
+      align-items: center;
       width: 30%;
       fieldset {
         display: flex;
@@ -58,6 +60,26 @@
       // }
     }
   }
+  .plan_headings {
+    width: 100%;
+    align-items: flex-start;
+    div {
+      margin-left: 10px;
+      width: 95%;
+      align-items: center;
+
+      strong {
+        display: flex;
+        text-align: center;
+        width: 33%;
+        &:nth-child(2),
+        &:nth-child(3) {
+          margin-left: 11px;
+        }
+      }
+    }
+  }
+
   .plans_details {
     width: 100%;
     align-items: flex-start;

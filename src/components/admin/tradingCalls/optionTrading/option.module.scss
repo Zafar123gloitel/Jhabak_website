@@ -1,0 +1,25 @@
+@import '../../../../styles/index.scss';
+
+.create_Client_section {
+  width: 50%;
+  margin-top: 0;
+  .inr_create_Client_section {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+.hedgeDesign {
+  width: 70%;
+  .Client_input_container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .single_side_option {
+    width: 48% !important;
+  }
+}
+.Client_input_container {
+  padding: 0;
+  margin-bottom: 10px !important;
+}
