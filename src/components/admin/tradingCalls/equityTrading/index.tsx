@@ -159,7 +159,7 @@ const EquityTrading = () => {
               </div>
               <div className={`${styles.single_price_actions}`}>
                 <InputField
-                  label={'Minimum Quantity *'}
+                  label={'Min Qty *'}
                   type="number"
                   name="minimum_quantity"
                   value={formData.minimum_quantity}

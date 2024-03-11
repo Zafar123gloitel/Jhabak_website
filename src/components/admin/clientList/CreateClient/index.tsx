@@ -152,7 +152,7 @@ const CreateClientForm = () => {
             </div>
 
             <div className={`${styles.Client_input_container}`}>
-              <fieldset>
+              <fieldset className="mt-4">
                 <span>
                   <input
                     type="checkbox"
@@ -180,42 +180,36 @@ const CreateClientForm = () => {
           <div className={` ${styles.plan_headings} d-flex mt-3 text-white w-100 element_center`}>
             <div className="d-flex">
               <strong className={` ${styles.single_plan} css-f15 `}>Select Plan </strong>
-              <strong className={`  ${styles.single_plan} css-f15`}>Select Duration </strong>
-              <strong className={`  ${styles.single_plan} css-f15`}>Select Trade Type</strong>
+              <strong className={` ${styles.single_plan} css-f15`}>Select Duration </strong>
+              <strong className={` ${styles.single_plan} css-f15 d-flex  justify-content-center`}>
+                Select Trade Type
+              </strong>
             </div>
           </div>
 
-          <section
+          <div
             className={`${styles.Client_input_container} ${styles.plans_details} w-100 element_center flex-column mt-2`}
           >
-            <div
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
-            >
+            <div className={`${styles.single_plan_field}`}>
               <Checkbox label="Day Call" isChecked={isDayChecked} setIsChecked={setIsDayChecked} />
               <TradeTypeInput setSelectedOptions={setSelectedDayOption} />
             </div>
 
-            <div
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
-            >
+            <div className={`${styles.single_plan_field}`}>
               <Checkbox label="Weekly Call" isChecked={isWeekChecked} setIsChecked={setIsWeekChecked} />
               <TradeTypeInput setSelectedOptions={setSelectedWeekOption} />
             </div>
 
-            <div
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
-            >
+            <div className={`${styles.single_plan_field}`}>
               <Checkbox label="Monthly Call" isChecked={isMonthChecked} setIsChecked={setIsMonthChecked} />
               <TradeTypeInput setSelectedOptions={setSelectedMonthOption} />
             </div>
 
-            <div
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginRight: '40px' }}
-            >
+            <div className={`${styles.single_plan_field}`}>
               <Checkbox label="Year Call" isChecked={isYearChecked} setIsChecked={setIsYearChecked} />
               <TradeTypeInput setSelectedOptions={setSelectedYearOption} />
             </div>
-          </section>
+          </div>
 
           <div className={`${styles.sbt_button} w-100 d-flex element_center`}>
             <button type="submit" className={`${styles.smt_btn} Dark_button css-f16`}>
@@ -238,9 +232,11 @@ function Checkbox({
   setIsChecked: (prev: boolean) => void;
 }) {
   return (
-    <div>
+    <div className={`${styles.single_plan}`}>
       <input type="checkbox" id={label} onChange={() => setIsChecked(!isChecked)} checked={isChecked} />
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={label} className="css-f12">
+        {label}
+      </label>
     </div>
   );
 }

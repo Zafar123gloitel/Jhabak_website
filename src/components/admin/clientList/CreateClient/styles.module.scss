@@ -19,6 +19,8 @@
       display: flex;
       align-items: center;
       width: 30%;
+      padding: 10px 0;
+
       fieldset {
         display: flex;
         align-items: center;
@@ -50,6 +52,12 @@
         color: #fff;
         background-color: $dark-input-bg;
       }
+      span {
+        position: absolute;
+        width: 100%;
+        top: 95%;
+        left: 5px;
+      }
 
       label {
         color: #fff;
@@ -71,7 +79,7 @@
       strong {
         display: flex;
         text-align: center;
-        width: 33%;
+        width: 30%;
         &:nth-child(2),
         &:nth-child(3) {
           margin-left: 11px;
@@ -82,17 +90,21 @@
 
   .plans_details {
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
     .single_plan_field {
       margin-left: 10px;
       width: 95%;
+      display: flex;
       align-items: center;
-
+      .radio_select_field {
+        width: 70%;
+      }
       .single_plan {
         width: 30%;
         color: #fff;
+        justify-content: flex-start;
         .duration {
-          width: 100px;
+          width: calc(100% / 4);
           font-size: 12px;
           display: flex;
           align-items: center;
@@ -105,13 +117,11 @@
         label {
           padding-left: 5px;
         }
-        select {
-          border-bottom: 1px solid $green-color;
-          color: #fff;
-          background-color: $dark-input-bg;
-        }
+
         input[type='radio'] {
           margin: 0 0 0 5px;
+          width: 13px;
+          height: 13px;
           background-color: transparent;
         }
       }
@@ -166,6 +176,23 @@
       &::before {
         display: none;
       }
+    }
+  }
+}
+
+.select_tradeType {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  select {
+    border-bottom: 1px solid $green-color;
+    color: #fff;
+    background-color: $dark-input-bg;
+    width: 68%;
+    border-radius: 5px;
+    font-size: 13px;
+    option {
+      background-color: $background-color;
     }
   }
 }

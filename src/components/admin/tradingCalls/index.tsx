@@ -34,11 +34,6 @@ const TradingCalls = () => {
       name: 'commodity_trading',
       alt: 'Commodity Trading',
     },
-    {
-      _id: '',
-      name: 'equity_option_list',
-      alt: 'Equity/Option List',
-    },
   ]);
 
   const handleTabChange = (selectedTab: string) => {

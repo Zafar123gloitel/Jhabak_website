@@ -221,7 +221,7 @@ const CommodityOption = () => {
                   <div>
                     <InputField
                       name="minQuantity2"
-                      label={'Minimum Quantity *'}
+                      label={'Min Qty *'}
                       type="text"
                       value={''}
                       // onChange={onChange}
