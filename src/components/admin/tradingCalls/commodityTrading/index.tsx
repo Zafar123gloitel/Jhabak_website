@@ -10,7 +10,7 @@ import {
   DefaultCommodityError,
   DefaultCommodityTrading,
   callTypeOption,
-} from '@/components/admin/tradingCalls/optionConfig';
+} from '@/components/admin/tradingCalls/options.constant';
 import Equity from '../equity';
 import { toast } from 'react-toastify';
 

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import styles from '../style.module.scss';
 // import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
-import { DefaultCommodityError, DefaultCommodityTrading, callTypeOption } from '../../optionConfig';
+import { DefaultCommodityError, DefaultCommodityTrading, callTypeOption } from '../../options.constant';
 import Equity from '../../equity';
 
 const CommodityEquity = () => {

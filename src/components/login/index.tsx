@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 // import Forgotten from '@/components/Modals/ForgottenModal';
 import '@/components/Loader/styles.module.scss';
 import { useRouter } from 'next/navigation';
-import { apiReduxService } from '@/utils';
+import { apiService } from '@/utils';
 import { validateEmail, validateIndianPhoneNumber, validatePassword, validateEmptyString } from 'regexx';
 import { useAuth, useUser } from '@/hooks';
 
@@ -95,7 +95,7 @@ export const Login = () => {
       if (isEmailValid && isPasswordValid) {
         setIsLoading(true);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const response: any = await apiReduxService.post('/login', data);
+        const response: any = await apiService.post('/login', data);
         if (response.success && response.status === 200) {
           Auth({
             role: response.payload.role,

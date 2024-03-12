@@ -3,12 +3,12 @@ import styles from '@/components/admin/tradingCalls/style.module.scss';
 import optionStyles from '@/components/admin/tradingCalls/optionTrading/option.module.scss';
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
-import { IDefaultOptionTrading, IDefaultOptionError } from '../../optionConfig';
+import { DefaultOptionTrading, DefaultOptionError } from '../../options.constant';
 
 interface IProps {
-  formData: IDefaultOptionTrading;
-  getError: IDefaultOptionError;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  formData: typeof DefaultOptionTrading;
+  getError: typeof DefaultOptionError;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 const OptionData = ({ formData, getError, onChange }: IProps) => {
   return (
@@ -30,13 +30,14 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
           <SelectField
             label={'CE/PE *'}
             options={[
-              { label: 'PE', value: 'PE' },
-              { label: 'CE', value: 'CE' },
+              { label: 'Select CE/PE', value: '' },
+              { label: 'PE', value: 'PE_CALL' },
+              { label: 'CE', value: 'CE_CALL' },
             ]}
-            name="buy_cell"
-            value={formData.ce_pe}
+            name="ce_pe_type"
+            value={formData.ce_pe_type}
             onChange={onChange}
-            error={getError.ce_pe}
+            error={getError.ce_pe_type}
             className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
           />
         </div>
@@ -44,6 +45,7 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
           <SelectField
             label={'Buy/Sell *'}
             options={[
+              { label: 'Select buy/sell', value: '' },
               { label: 'Buy', value: 'buy' },
               { label: 'Sell', value: 'sell' },
             ]}
@@ -54,17 +56,19 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
           />
         </div>
-        <div className={`${styles.Client_input_container} ${styles.price_range}`}>
+        <div className={`${styles.Client_input_container}`}>
           <InputField
-            label={'Price Range From *'}
+            label={'Strike Price *'}
             type="number"
-            name="price_from"
-            value={formData.price_from}
+            name="strick_price"
+            value={formData.strick_price}
             onChange={onChange}
-            error={getError.price_from}
+            error={getError.strick_price}
             placeholder="Eg: 275"
             className={`${styles.Client_input_section}`}
           />
+        </div>
+        <div className={`${styles.Client_input_container} ${styles.price_range}`}>
           <InputField
             label={'Price Range To *'}
             type="number"
@@ -75,21 +79,19 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             placeholder="Eg: 280"
             className={`${styles.Client_input_section}`}
           />
+          <InputField
+            label={'Price Range From *'}
+            type="number"
+            name="price_from"
+            value={formData.price_from}
+            onChange={onChange}
+            error={getError.price_from}
+            placeholder="Eg: 275"
+            className={`${styles.Client_input_section}`}
+          />
         </div>
 
         <div className={`${styles.Client_input_container} ${styles.price_actions}`}>
-          <div className={`${styles.single_price_actions}`}>
-            <InputField
-              label={'Target *'}
-              type="number"
-              name="target"
-              value={formData.target}
-              onChange={onChange}
-              error={getError.target}
-              placeholder="Eg: 350"
-              className={`${styles.Client_input_section}`}
-            />
-          </div>
           <div className={`${styles.single_price_actions}`}>
             <InputField
               label={'Stoploss *'}
@@ -99,6 +101,18 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
               onChange={onChange}
               error={getError.stoploss}
               placeholder="Eg: 245"
+              className={`${styles.Client_input_section}`}
+            />
+          </div>
+          <div className={`${styles.single_price_actions}`}>
+            <InputField
+              label={'Target *'}
+              type="number"
+              name="target"
+              value={formData.target}
+              onChange={onChange}
+              error={getError.target}
+              placeholder="Eg: 350"
               className={`${styles.Client_input_section}`}
             />
           </div>
