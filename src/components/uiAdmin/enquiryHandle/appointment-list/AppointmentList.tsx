@@ -1,5 +1,7 @@
 // YourPage.tsx
 import React from 'react';
+import LocalStyle from './styles.module.scss';
+import Image from 'next/image';
 // import { TrainingRequest } from '@/types/index';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
@@ -69,29 +71,41 @@ const AppointmentList = ({ dataList, onChange, total, current, pageSize }: ICard
   // };
 
   return (
-    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
+    <div style={{ marginTop: '50px' }} className={`${LocalStyle.main__data_container} All_content_center flex-column`}>
       {dataList !== undefined ? (
         <>
-          <div className={`${styles.dashboard_data}`}>
-            <table className={`${styles.table_dashboard} table responsive`}>
-              <thead>
+          <div className={`${LocalStyle.dashboard_data} text-white  element_center `}>
+            <table className={`${LocalStyle.table_dashboard} `}>
+              <thead className={`${LocalStyle.table_head}`}>
                 <tr>
                   {empcolumns.map((column, index) => (
-                    <th key={index}>{column}</th>
+                    <th className={`${LocalStyle.data_content} `} key={index}>
+                      {column}
+                    </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {dataList?.map((appointment, index) => (
                   <>
-                    <tr key={index}>
-                      <td>{appointment?.name}</td>
-                      <td>{appointment.contact ? appointment.contact : ''}</td>
+                    <tr className={`${LocalStyle.table_data}`} key={index}>
+                      <td className={`${LocalStyle.table_data}`}>{appointment?.name}</td>
+                      <td className={`${LocalStyle.table_data}`}>{appointment.contact ? appointment.contact : ''}</td>
 
-                      <td>{appointment?.email}</td>
-                      <td>{appointment.message ? appointment.message : 'hello'}</td>
+                      <td className={`${LocalStyle.table_data}`}>{appointment?.email}</td>
+                      <td className={`${LocalStyle.table_data}`}>
+                        {appointment.status ? appointment.status : 'hello'}
+                        <Image
+                          className={styles.delete_icon}
+                          src="/assets/svg/chevron-up.svg"
+                          alt="image back"
+                          width={12}
+                          height={7}
+                        />
+                      </td>
+
                       {/* <td>{appointment?.isActive ? 'true' : 'false'}</td> */}
-                      <td>
+                      <td className={`${LocalStyle.table_data}`}>
                         {/* <button
                           className={`${styles.approve_btn} ${
                             appointment.isActive && styles.approved_btn
@@ -101,7 +115,16 @@ const AppointmentList = ({ dataList, onChange, total, current, pageSize }: ICard
                         >
                           <span></span>
                         </button> */}
-                        <>isActive</>
+                        <>
+                          {/* isActive */}
+                          <Image
+                            className={styles.delete_icon}
+                            src="/assets/svg/delete_icon/delete.svg"
+                            alt="image back"
+                            width={20}
+                            height={20}
+                          />
+                        </>
                         {/* {!appointment.isActive ? (
                           <button
                             className={`${styles.approve_btn} bg-transparent`}

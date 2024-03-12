@@ -1,5 +1,7 @@
 // YourPage.tsx
 import React from 'react';
+import LocalStyle from './styles.module.scss';
+import Image from 'next/image';
 // import { TrainingRequest } from '@/types/index';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
@@ -72,33 +74,69 @@ const ClientList = ({ dataList, onChange, total, current, pageSize }: ICardDeati
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
       {dataList !== undefined ? (
         <>
-          <div className={`${styles.dashboard_data}`}>
-            <table className={`${styles.table_dashboard} table responsive`}>
-              <thead>
+          <div className={`${LocalStyle.dashboard_data} text-white  element_center `}>
+            <table className={`${LocalStyle.table_dashboard} `}>
+              <thead className={`${LocalStyle.table_head}`}>
                 <tr>
                   {empcolumns.map((column, index) => (
-                    <th key={index}>{column}</th>
+                    <th className={`${LocalStyle.data_content} `} key={index}>
+                      {column}
+                    </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {dataList?.map((appointment, index) => (
                   <>
-                    <tr key={index}>
-                      <td>{appointment?.name}</td>
-                      <td>{appointment.contact ? appointment.contact : 'Default'}</td>
-                      <td>{appointment?.subscription ? appointment?.subscription : 'false'}</td>
-                      <td>{appointment?.expiry}</td>
+                    <tr className={`${LocalStyle.table_data}`} key={index}>
+                      <td className={`${LocalStyle.table_data}`}>{appointment?.name}</td>
+                      <td className={`${LocalStyle.table_data}`}>
+                        {appointment.contact ? appointment.contact : 'Default'}
+                      </td>
+                      <td className={`${LocalStyle.table_data}`}>
+                        {appointment?.subscription ? appointment?.subscription : 'false'}
+                      </td>
+                      <td className={`${LocalStyle.table_data}`}>{appointment?.expiry}</td>
                       <td>
+                        <td className={`${LocalStyle.action_button}  element_center`}>
+                          <button className={`bg-transparent`}>
+                            <Image
+                              className={styles.highlight}
+                              src="/assets/svg/highlight.svg"
+                              alt="image back"
+                              width={20}
+                              height={20}
+                            />
+                          </button>
+                          {/* <div className={`${LocalStyle.highlight}`}>
+                            <Image
+                              className={styles.highlight}
+                              src="/assets/svg/iOS Toggle.svg"
+                              alt="image back"
+                              width={40}
+                              height={20}
+                            />
+                          </div> */}
+                          <div className={`${LocalStyle.switch}  `}>
+                            <input type="checkbox"></input>
+                            <span className={`${LocalStyle.slider}`}></span>
+                          </div>
+
+                          <div className={`${LocalStyle.switch}  `}>
+                            <input type="checkbox" checked></input>
+                            <span className={`${LocalStyle.slider}`}></span>
+                          </div>
+                        </td>
+
                         {/* <button
                           className={`${styles.approve_btn} ${
                             appointment.isActive && styles.approved_btn
                           } bg-transparent`}
-                          // onClick={e => handleApproved(e, true, appointment?._id, appointment?.isActive)}
+                          onClick={e => handleApproved(e, true, appointment?._id, appointment?.isActive)}
                           title="Approve"
-                        > */}
-                        {/* <span>fkjk</span> */}
-                        {/* </button> */}
+                        >
+                          <span>fkjk</span>
+                        </button> */}
                         {/* {!appointment.isActive ? (
                           <button
                             className={`${styles.approve_btn} bg-transparent`}

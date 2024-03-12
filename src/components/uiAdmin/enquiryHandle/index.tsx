@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import MainLoader from '@/components/loading';
 import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
-
+// import Style from './styles.module.scss';
 import AppointmentList from './appointment-list/AppointmentList';
 import { EnquiryData } from './enquiryData';
 import EnquiryList from './enquiry-list/EnquiryList';
