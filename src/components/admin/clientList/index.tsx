@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import MainLoader from '@/components/loading';
 import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
-import { ClientData } from './clientData';
+import { ClientData, tabData } from './clientData';
 import ClientList from './client-list/ClientList';
 import CreateClientForm from './CreateClient';
 
@@ -15,19 +15,6 @@ const CreateClient = () => {
   // const [dataList, setDataList] = useState([]);
   const [totalEvents, setTotalEvents] = useState(0);
   const [activeTab, setActiveTab] = useState('create_client');
-
-  const [tabData] = useState([
-    {
-      _id: '2122',
-      name: 'create_client',
-      alt: 'Create Client',
-    },
-    {
-      _id: '2121',
-      name: 'client_list',
-      alt: 'Client List',
-    },
-  ]);
 
   const corporateList = async () => {
     startLoading();

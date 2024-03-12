@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
+// import { Tabs, Tab } from 'react-bootstrap';
+// import { Tabs, Tab } from 'react-bootstrap';
 import { Tabs, Tab } from 'react-bootstrap';
+import { ITabData } from '../admin/clientList/clientData';
 
-interface ITabOptions {
-  _id: string;
-  name: string;
-  alt: string;
-}
 interface IProps {
   activeKey: string;
-  tabOptions: ITabOptions[];
+  tabOptions: ITabData[];
   onChangeTab: (selectedTab: string) => void;
 }
 
@@ -23,12 +21,12 @@ function TabComponent(props: IProps) {
       <Tabs
         defaultActiveKey={props.activeKey}
         id="uncontrolled-tab-example"
-        onSelect={k => onTabSelect(k)}
+        onSelect={(k: string | null) => onTabSelect(k)}
         activeKey={props.activeKey}
         //   className={`common-tabs ${style['Tabs']}`}
       >
         {props.tabOptions.length > 1
-          ? props.tabOptions?.map((option: ITabOptions) => {
+          ? props.tabOptions?.map((option: ITabData) => {
               return (
                 <Tab
                   key={option?.name}
