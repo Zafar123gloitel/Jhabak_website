@@ -33,11 +33,18 @@ export default function TradeTypeInput({ setSelectedOptions }: IProps) {
 function RadioOptions({ onChange }: { onChange: (event: React.ChangeEvent<HTMLInputElement>) => void }) {
   return (
     <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
-      {durations.map(option => (
-        <React.Fragment key={option.id}>
+      {durations.map(duration => (
+        <React.Fragment key={duration.id}>
           <div className={styles.duration}>
-            <input type="radio" id={option.id} name={option.value} value={option.value} onChange={onChange} />
-            <label htmlFor={option.id}>{option.label}</label>
+            <input
+              type="radio"
+              id={duration.id.toString()}
+              name="duration"
+              value={duration.value}
+              // checked={checked === duration.value}
+              onChange={onChange}
+            />
+            <label htmlFor={duration.id.toString()}>{duration.label}</label>
             <br />
           </div>
         </React.Fragment>

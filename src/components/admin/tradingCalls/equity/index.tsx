@@ -3,13 +3,14 @@ import styles from '@/components/admin/tradingCalls/style.module.scss';
 
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
-import { IDefaultCommodityError, IDefaultCommodityTrading } from '@/components/admin/tradingCalls/optionConfig';
+import { DefaultEquityTrading, DefaultEquitError } from '../options.constant';
 
 interface IProps {
-  formData: IDefaultCommodityTrading;
-  getError: IDefaultCommodityError;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  formData: typeof DefaultEquityTrading;
+  getError: typeof DefaultEquitError;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
+
 const Equity = ({ formData, getError, onChange }: IProps) => {
   return (
     <>
@@ -19,8 +20,7 @@ const Equity = ({ formData, getError, onChange }: IProps) => {
             label={'Share Name *'}
             type="text"
             name="share_name"
-            value=""
-            // value={formData?.share_name}
+            value={formData.share_name}
             onChange={onChange}
             error={getError.share_name}
             placeholder="Ex : TATA Motors"
@@ -43,16 +43,6 @@ const Equity = ({ formData, getError, onChange }: IProps) => {
         </div>
         <div className={`${styles.price_range} ${styles.Client_input_container}`}>
           <InputField
-            label={'Price Range From *'}
-            type="number"
-            name="price_from"
-            value={formData.price_from}
-            onChange={onChange}
-            error={getError.price_from}
-            placeholder="Eg: 275"
-            className={`${styles.Client_input_section}`}
-          />
-          <InputField
             label={'Price Range To *'}
             type="number"
             name="price_to"
@@ -60,6 +50,16 @@ const Equity = ({ formData, getError, onChange }: IProps) => {
             onChange={onChange}
             error={getError.price_to}
             placeholder="Eg: 280"
+            className={`${styles.Client_input_section}`}
+          />
+          <InputField
+            label={'Price Range From *'}
+            type="number"
+            name="price_from"
+            value={formData.price_from}
+            onChange={onChange}
+            error={getError.price_from}
+            placeholder="Eg: 275"
             className={`${styles.Client_input_section}`}
           />
         </div>

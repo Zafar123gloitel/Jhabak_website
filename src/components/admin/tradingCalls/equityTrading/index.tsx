@@ -1,65 +1,56 @@
 'use client';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { validateEmptyString } from 'regexx';
 
 import styles from '../style.module.scss';
-// import InputField from '@/components/InputField/InputField';
-// import SelectField from '@/components/InputField/SelectField';
 import Equity from '../equity';
 import SelectField from '@/components/InputField/SelectField';
-
-const callTypeOption = [
-  { label: 'Select Plan', value: '' },
-  { label: 'Day Calls', value: 'day_calls' },
-  { label: 'Weekly Calls', value: 'week_calls' },
-  { label: 'Monthly Calls', value: 'month_calls' },
-  { label: 'Long Term Calls', value: 'year_calls' },
-];
-
-const DefaultEquityTrading = {
-  plan_name: '',
-  buy_cell: '',
-  share_name: '',
-  price_from: 0,
-  price_to: 0,
-  stoploss: 0,
-  target: 0,
-  minimum_quantity: 0,
-};
-
-const DefaultError = {
-  plan_name: '',
-  buy_cell: '',
-  share_name: '',
-  price_from: '',
-  price_to: '',
-  stoploss: '',
-  target: '',
-  minimum_quantity: '',
-};
+import { apiService } from '@/utils';
+import { useUser } from '@/hooks';
+import { IMessageResponse } from '@/types';
+import { DefaultEquityTrading, DefaultEquitError, callTypeOption } from '../options.constant';
 
 const EquityTrading = () => {
+  const { UserData } = useUser();
   const [formData, setFormData] = useState<typeof DefaultEquityTrading>(DefaultEquityTrading);
+  const [getError, setGetError] = useState<typeof DefaultEquitError>(DefaultEquitError);
   const [isLoading, setIsLoading] = useState(false);
-  const [getError, setGetError] = useState<typeof DefaultError>(DefaultError);
 
   function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    setGetError(DefaultError); // clearing all the errors
+    setGetError(DefaultEquitError); // clearing all the errors
     const { name, value } = e.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
   }
 
-  // function onError(key: string, msg: string) {
-  //   setGetError(prev => ({ ...prev, [key]: msg }));
-  // }
+  function onError(key: string, msg: string) {
+    setGetError(prev => ({ ...prev, [key]: msg }));
+  }
 
-  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
+      if (validateEmptyString(UserData()?._id ?? '')) return toast.error('Invalid Admin Id.');
+      if (validateEmptyString(formData.plan_name)) return onError('plan_name', 'Plan is required.');
+      if (validateEmptyString(formData.share_name)) return onError('share_name', 'Share is required.');
       setIsLoading(true);
+      const data = {
+        plan_type: formData.plan_name,
+        share_name: formData.share_name,
+        buy_sell_type: formData.buy_cell,
+        price_range_from: Number(formData.price_from),
+        price_range_to: Number(formData.price_to),
+        min_quantity: Number(formData.minimum_quantity),
+        target_set: Number(formData.target),
+        stop_loss: Number(formData.stoploss),
+      };
 
-      // console.log('<<<formData>>>', formData);
-      setGetError(DefaultError);
+      const response: IMessageResponse = await apiService.post(`/admin/${UserData()?._id}/create-equity`, data);
+      if (response.success && response.status === 201) {
+        setGetError(DefaultEquitError);
+        setFormData(DefaultEquityTrading);
+        toast.success(response.message);
+      }
     } catch (error) {
       const _e = error as Error;
       toast.error(_e.message);
@@ -85,93 +76,6 @@ const EquityTrading = () => {
               />
             </div>
 
-            {/* <div className={`${styles.Client_input_container}`}>
-              <InputField
-                label={'Share Name *'}
-                type="text"
-                name="share_name"
-                value={formData.share_name}
-                onChange={onChange}
-                error={getError.share_name}
-                placeholder="Ex : TATA Motors"
-                className={`${styles.Client_input_section}`}
-              />
-            </div>
-            <div className={`${styles.Client_input_container}`}>
-              <SelectField
-                label={'Buy/Sell *'}
-                options={[
-                  { label: 'Buy', value: 'buy' },
-                  { label: 'Sell', value: 'sell' },
-                ]}
-                name="buy_cell"
-                value={formData.buy_cell}
-                onChange={onChange}
-                className={`${styles.Client_input_section}`}
-                error={getError.buy_cell}
-              />
-            </div>
-            <div className={`${styles.price_range} ${styles.Client_input_container}`}>
-              <InputField
-                label={'Price Range From *'}
-                type="number"
-                name="price_from"
-                value={formData.price_from}
-                onChange={onChange}
-                error={getError.price_from}
-                placeholder="Eg: 275"
-                className={`${styles.Client_input_section}`}
-              />
-              <InputField
-                label={'Price Range To *'}
-                type="number"
-                name="price_to"
-                value={formData.price_to}
-                onChange={onChange}
-                error={getError.price_to}
-                placeholder="Eg: 280"
-                className={`${styles.Client_input_section}`}
-              />
-            </div>
-
-            <div className={` ${styles.price_actions} ${styles.Client_input_container}`}>
-              <div className={`${styles.single_price_actions}`}>
-                <InputField
-                  label={'Stoploss *'}
-                  type="number"
-                  name="stoploss"
-                  value={formData.stoploss}
-                  onChange={onChange}
-                  error={getError.stoploss}
-                  placeholder="Eg: 245"
-                  className={`${styles.Client_input_section}`}
-                />
-              </div>
-              <div className={`${styles.single_price_actions}`}>
-                <InputField
-                  label={'Target *'}
-                  type="number"
-                  name="target"
-                  value={formData.target}
-                  onChange={onChange}
-                  error={getError.target}
-                  placeholder="Eg: 350"
-                  className={`${styles.Client_input_section}`}
-                />
-              </div>
-              <div className={`${styles.single_price_actions}`}>
-                <InputField
-                  label={'Min Qty *'}
-                  type="number"
-                  name="minimum_quantity"
-                  value={formData.minimum_quantity}
-                  onChange={onChange}
-                  error={getError.minimum_quantity}
-                  placeholder="Eg: 5"
-                  className={`${styles.Client_input_section}`}
-                />
-              </div>
-            </div> */}
             <Equity formData={formData} getError={getError} onChange={onChange} />
           </div>
 

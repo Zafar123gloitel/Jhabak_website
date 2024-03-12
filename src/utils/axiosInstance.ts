@@ -222,7 +222,7 @@ class APIService {
   }
 }
 
-export const apiReduxService = new APIService();
+export const apiService = new APIService();
 
 /**
 //! Cleanup function to abort the request when the component unmounts

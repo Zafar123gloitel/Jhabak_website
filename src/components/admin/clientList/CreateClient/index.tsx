@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { validateEmail, validateIndianPhoneNumber } from 'regexx';
+import { validateEmail, validateEmptyString, validateIndianPhoneNumber } from 'regexx';
 import styles from './styles.module.scss';
 import InputField from '@/components/InputField/InputField';
 import TradeTypeInput from './tradeTypeInput';
+import { apiService } from '@/utils';
+import { useUser } from '@/hooks';
 
 const CREATE_CORPORATE_CLIENT = {
   name: '',
@@ -14,27 +16,28 @@ const CREATE_CORPORATE_CLIENT = {
   pan_number: '',
   aadhar_card: '',
   isActive: true,
-  isSubscription: false,
+  subscription: false,
 };
 
 const DEFAULT_SELECT = { duration: '', trade_type: '' };
 
 const CreateClientForm = () => {
+  const { UserData } = useUser();
   const [formData, setFormData] = useState(CREATE_CORPORATE_CLIENT);
   const [getError, setGetError] = useState({ ...CREATE_CORPORATE_CLIENT });
   const [isLoading, setIsLoading] = useState(false);
 
   const [isDayChecked, setIsDayChecked] = useState(false);
-  const [selectedDayOption, setSelectedDayOption] = useState({ ...DEFAULT_SELECT });
+  const [selectedDayOption, setSelectedDayOption] = useState(DEFAULT_SELECT);
 
   const [isWeekChecked, setIsWeekChecked] = useState(false);
-  const [selectedWeekOption, setSelectedWeekOption] = useState({ ...DEFAULT_SELECT });
+  const [selectedWeekOption, setSelectedWeekOption] = useState(DEFAULT_SELECT);
 
   const [isMonthChecked, setIsMonthChecked] = useState(false);
-  const [selectedMonthOption, setSelectedMonthOption] = useState({ ...DEFAULT_SELECT });
+  const [selectedMonthOption, setSelectedMonthOption] = useState(DEFAULT_SELECT);
 
   const [isYearChecked, setIsYearChecked] = useState(false);
-  const [selectedYearOption, setSelectedYearOption] = useState({ ...DEFAULT_SELECT });
+  const [selectedYearOption, setSelectedYearOption] = useState(DEFAULT_SELECT);
 
   function Reset() {
     setGetError({ ...CREATE_CORPORATE_CLIENT });
@@ -44,10 +47,10 @@ const CreateClientForm = () => {
     setIsWeekChecked(false);
     setIsMonthChecked(false);
     setIsYearChecked(false);
-    setSelectedDayOption({ ...DEFAULT_SELECT });
-    setSelectedWeekOption({ ...DEFAULT_SELECT });
-    setSelectedMonthOption({ ...DEFAULT_SELECT });
-    setSelectedYearOption({ ...DEFAULT_SELECT });
+    setSelectedDayOption(DEFAULT_SELECT);
+    setSelectedWeekOption(DEFAULT_SELECT);
+    setSelectedMonthOption(DEFAULT_SELECT);
+    setSelectedYearOption(DEFAULT_SELECT);
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -61,21 +64,27 @@ const CreateClientForm = () => {
     setGetError(prev => ({ ...prev, [key]: msg }));
   }
 
-  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
+      if (validateEmptyString(UserData()?._id ?? '')) return toast.error('Invalid Admin Id.');
       if (!validateEmail(formData.email)) return onError('email', 'Invalide Email Address.');
       if (!validateIndianPhoneNumber(formData.phone_number)) return onError('phone_number', 'Invalide Phone Number.');
       setIsLoading(true);
-      const day = { isDayChecked, ...selectedDayOption };
-      const week = { isWeekChecked, ...selectedWeekOption };
-      const month = { isMonthChecked, ...selectedMonthOption };
-      const year = { isYearChecked, ...selectedYearOption };
 
-      // eslint-disable-next-line no-console
-      console.log('<<<<formData>>>>', { ...formData, day, week, month, year });
+      const plans = [];
+      if (isDayChecked) plans.push({ isDayChecked, ...selectedDayOption });
+      if (isWeekChecked) plans.push({ isWeekChecked, ...selectedWeekOption });
+      if (isMonthChecked) plans.push({ isMonthChecked, ...selectedMonthOption });
+      if (isYearChecked) plans.push({ isYearChecked, ...selectedYearOption });
+      const data = { ...formData, plans };
 
-      Reset();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.post(`/admin/${UserData()?._id}/create-user`, data);
+      if (response.success && response.status === 201) {
+        toast.info(response.message);
+        Reset();
+      }
     } catch (error) {
       const _e = error as Error;
       toast.error(_e.message);
@@ -168,8 +177,8 @@ const CreateClientForm = () => {
                   <input
                     type="checkbox"
                     id="subscription"
-                    name="isSubscription"
-                    checked={formData.isSubscription}
+                    name="subscription"
+                    checked={formData.subscription}
                     onChange={onChange}
                   />
                   <label htmlFor="subscription">Subscription</label>
