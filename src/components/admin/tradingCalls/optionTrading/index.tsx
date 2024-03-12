@@ -9,29 +9,29 @@ import SelectField from '@/components/InputField/SelectField';
 import optionStyles from './option.module.scss';
 import OptionData from './singleOptionInputs';
 import useLoading from '@/components/loading/Loader';
-import { DefaultBaseType, DefaultEquityTrading, DefaultError, callTypeOption } from './optionConfig';
+import { DefaultBaseType, DefaultOptionError, DefaultOptionTrading, callTypeOption } from '../optionConfig';
 
 const OptionTrading = () => {
   const [optionType, setOptionType] = useState<typeof DefaultBaseType>(DefaultBaseType);
-  const [formDataOpen, setFormDataOpen] = useState<typeof DefaultEquityTrading>(DefaultEquityTrading);
-  const [formDataHedge, setFormDataHedge] = useState<typeof DefaultEquityTrading>({ ...DefaultEquityTrading });
-  const [errorInput, setErrorInput] = useState<typeof DefaultError>(DefaultError);
+  const [formDataOpen, setFormDataOpen] = useState<typeof DefaultOptionTrading>(DefaultOptionTrading);
+  const [formDataHedge, setFormDataHedge] = useState<typeof DefaultOptionTrading>({ ...DefaultOptionTrading });
+  const [errorInput, setErrorInput] = useState<typeof DefaultOptionError>(DefaultOptionError);
   const { isLoading, stopLoading, startLoading } = useLoading();
 
   function onBaseChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setErrorInput(DefaultError); // clearing all the errors
+    setErrorInput(DefaultOptionError); // clearing all the errors
     const { name, value } = e.target;
     setOptionType(prevData => ({ ...prevData, [name]: value }));
   }
 
   function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    setErrorInput(DefaultError); // clearing all the errors
+    setErrorInput(DefaultOptionError); // clearing all the errors
     const { name, value } = e.target;
     setFormDataOpen(prevData => ({ ...prevData, [name]: value }));
   }
 
   function onChange2(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    setErrorInput(DefaultError); // clearing all the errors
+    setErrorInput(DefaultOptionError); // clearing all the errors
     const { name, value } = e.target;
     setFormDataHedge(prevData => ({ ...prevData, [name]: value }));
   }
@@ -49,7 +49,7 @@ const OptionTrading = () => {
       // console.log('<<<baseType>>>', baseType);
       // console.log('<<<formData>>>', formData);
       // console.log('<<<formData2>>>', formData2);
-      setErrorInput(DefaultError);
+      setErrorInput(DefaultOptionError);
     } catch (error) {
       const _e = error as Error;
       toast.error(_e.message);

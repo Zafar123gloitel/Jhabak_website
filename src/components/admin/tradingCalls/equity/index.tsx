@@ -1,43 +1,30 @@
 import React from 'react';
 import styles from '@/components/admin/tradingCalls/style.module.scss';
-import optionStyles from '@/components/admin/tradingCalls/optionTrading/option.module.scss';
+
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
-import { IDefaultOptionTrading, IDefaultOptionError } from '../../optionConfig';
+import { IDefaultCommodityError, IDefaultCommodityTrading } from '@/components/admin/tradingCalls/optionConfig';
 
 interface IProps {
-  formData: IDefaultOptionTrading;
-  getError: IDefaultOptionError;
+  formData: IDefaultCommodityTrading;
+  getError: IDefaultCommodityError;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
-const OptionData = ({ formData, getError, onChange }: IProps) => {
+const Equity = ({ formData, getError, onChange }: IProps) => {
   return (
     <>
-      <div className={`${styles.single_side_option} ${optionStyles.single_side_option}`}>
+      <div className={`${styles.inr_create_Client_section}`}>
         <div className={`${styles.Client_input_container}`}>
           <InputField
             label={'Share Name *'}
             type="text"
             name="share_name"
-            value={formData.share_name}
+            value=""
+            // value={formData?.share_name}
             onChange={onChange}
             error={getError.share_name}
-            placeholder="Ex : Nifty 50"
+            placeholder="Ex : TATA Motors"
             className={`${styles.Client_input_section}`}
-          />
-        </div>
-        <div className={`${styles.Client_input_container}`}>
-          <SelectField
-            label={'CE/PE *'}
-            options={[
-              { label: 'PE', value: 'PE' },
-              { label: 'CE', value: 'CE' },
-            ]}
-            name="buy_cell"
-            value={formData.ce_pe}
-            onChange={onChange}
-            error={getError.ce_pe}
-            className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
           />
         </div>
         <div className={`${styles.Client_input_container}`}>
@@ -50,11 +37,11 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             name="buy_cell"
             value={formData.buy_cell}
             onChange={onChange}
+            className={`${styles.Client_input_section}`}
             error={getError.buy_cell}
-            className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
           />
         </div>
-        <div className={`${styles.Client_input_container} ${styles.price_range}`}>
+        <div className={`${styles.price_range} ${styles.Client_input_container}`}>
           <InputField
             label={'Price Range From *'}
             type="number"
@@ -77,19 +64,7 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
           />
         </div>
 
-        <div className={`${styles.Client_input_container} ${styles.price_actions}`}>
-          <div className={`${styles.single_price_actions}`}>
-            <InputField
-              label={'Target *'}
-              type="number"
-              name="target"
-              value={formData.target}
-              onChange={onChange}
-              error={getError.target}
-              placeholder="Eg: 350"
-              className={`${styles.Client_input_section}`}
-            />
-          </div>
+        <div className={` ${styles.price_actions} ${styles.Client_input_container}`}>
           <div className={`${styles.single_price_actions}`}>
             <InputField
               label={'Stoploss *'}
@@ -102,7 +77,18 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
               className={`${styles.Client_input_section}`}
             />
           </div>
-
+          <div className={`${styles.single_price_actions}`}>
+            <InputField
+              label={'Target *'}
+              type="number"
+              name="target"
+              value={formData.target}
+              onChange={onChange}
+              error={getError.target}
+              placeholder="Eg: 350"
+              className={`${styles.Client_input_section}`}
+            />
+          </div>
           <div className={`${styles.single_price_actions}`}>
             <InputField
               label={'Min Qty *'}
@@ -121,4 +107,4 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
   );
 };
 
-export default OptionData;
+export default Equity;

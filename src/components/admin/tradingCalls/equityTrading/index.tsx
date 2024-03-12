@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import styles from '../style.module.scss';
-import InputField from '@/components/InputField/InputField';
+// import InputField from '@/components/InputField/InputField';
+// import SelectField from '@/components/InputField/SelectField';
+import Equity from '../equity';
 import SelectField from '@/components/InputField/SelectField';
 
 const callTypeOption = [
@@ -83,7 +85,7 @@ const EquityTrading = () => {
               />
             </div>
 
-            <div className={`${styles.Client_input_container}`}>
+            {/* <div className={`${styles.Client_input_container}`}>
               <InputField
                 label={'Share Name *'}
                 type="text"
@@ -169,7 +171,8 @@ const EquityTrading = () => {
                   className={`${styles.Client_input_section}`}
                 />
               </div>
-            </div>
+            </div> */}
+            <Equity formData={formData} getError={getError} onChange={onChange} />
           </div>
 
           <div className={`w-100 element_center`}>
