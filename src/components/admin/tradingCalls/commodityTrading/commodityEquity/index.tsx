@@ -3,45 +3,18 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import styles from '../style.module.scss';
-import InputField from '@/components/InputField/InputField';
+// import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
-
-const callTypeOption = [
-  { label: 'Day Calls', value: 'day_calls' },
-  { label: 'Weekly Calls', value: 'week_calls' },
-  { label: 'Monthly Calls', value: 'month_calls' },
-  { label: 'Long Term Calls', value: 'year_calls' },
-];
-
-const DefaultEquityTrading = {
-  plan_name: '',
-  buy_cell: '',
-  share_name: '',
-  price_from: 0,
-  price_to: 0,
-  stoploss: 0,
-  target: 0,
-  minimum_quantity: 0,
-};
-
-const DefaultError = {
-  plan_name: '',
-  buy_cell: '',
-  share_name: '',
-  price_from: '',
-  price_to: '',
-  stoploss: '',
-  target: '',
-  minimum_quantity: '',
-};
+import { DefaultCommodityError, DefaultCommodityTrading, callTypeOption } from '../../optionConfig';
+import Equity from '../../equity';
 
 const CommodityEquity = () => {
-  const [formData, setFormData] = useState<typeof DefaultEquityTrading>(DefaultEquityTrading);
+  const [formData, setFormData] = useState<typeof DefaultCommodityTrading>(DefaultCommodityTrading);
   const [isLoading, setIsLoading] = useState(false);
-  const [getError, setGetError] = useState<typeof DefaultError>(DefaultError);
+  const [getError, setGetError] = useState<typeof DefaultCommodityError>(DefaultCommodityError);
 
   function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    setGetError(DefaultError); // clearing all the errors
+    setGetError(DefaultCommodityError); // clearing all the errors
     const { name, value } = e.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
   }
@@ -56,7 +29,7 @@ const CommodityEquity = () => {
       setIsLoading(true);
 
       // console.log('<<<formData>>>', formData);
-      setGetError(DefaultError);
+      setGetError(DefaultCommodityError);
     } catch (error) {
       const _e = error as Error;
       toast.error(_e.message);
@@ -82,7 +55,7 @@ const CommodityEquity = () => {
               />
             </div>
 
-            <div className={`${styles.Client_input_container}`}>
+            {/* <div className={`${styles.Client_input_container}`}>
               <InputField
                 label={'Share Name *'}
                 type="text"
@@ -168,7 +141,8 @@ const CommodityEquity = () => {
                   className={`${styles.Client_input_section}`}
                 />
               </div>
-            </div>
+            </div> */}
+            <Equity formData={formData} getError={getError} onChange={onChange} />
           </div>
 
           <div className={`w-100 element_center`}>
