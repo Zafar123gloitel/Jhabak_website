@@ -63,6 +63,23 @@ export interface IDefaultCommodityError {
   minimum_quantity: string;
 }
 
+export const tradingCallsTab = [
+  {
+    _id: '',
+    name: 'equity_trading',
+    alt: 'Equity Trading',
+  },
+  {
+    _id: '',
+    name: 'option_trading',
+    alt: 'Option Trading',
+  },
+  {
+    _id: '',
+    name: 'commodity_trading',
+    alt: 'Commodity Trading',
+  },
+];
 export const callTypeOption = [
   { label: 'Day Calls', value: 'day_calls' },
   { label: 'Weekly Calls', value: 'week_calls' },

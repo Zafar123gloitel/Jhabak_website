@@ -7,6 +7,7 @@ import useLoading from '@/components/loading/Loader';
 import EquityTrading from './equityTrading';
 import OptionTrading from './optionTrading';
 import CommodityTrading from './commodityTrading';
+import { tradingCallsTab } from './optionConfig';
 
 const TradingCalls = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -18,23 +19,7 @@ const TradingCalls = () => {
   stopLoading;
   const [activeTab, setActiveTab] = useState('equity_trading');
 
-  const [tabData] = useState([
-    {
-      _id: '',
-      name: 'equity_trading',
-      alt: 'Equity Trading',
-    },
-    {
-      _id: '',
-      name: 'option_trading',
-      alt: 'Option Trading',
-    },
-    {
-      _id: '',
-      name: 'commodity_trading',
-      alt: 'Commodity Trading',
-    },
-  ]);
+  const [tabData] = useState(tradingCallsTab);
 
   const handleTabChange = (selectedTab: string) => {
     setActiveTab(selectedTab);

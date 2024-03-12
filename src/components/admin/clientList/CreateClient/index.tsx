@@ -91,7 +91,7 @@ const CreateClientForm = () => {
           <div className={`${styles.inr_create_Client_section}`}>
             <div className={`${styles.Client_input_container}`}>
               <InputField
-                label={'Complete Name *'}
+                label={'Full Name *'}
                 type="text"
                 name="name"
                 value={formData.name}
@@ -109,7 +109,7 @@ const CreateClientForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={onChange}
-                placeholder="Ex : John Doe"
+                placeholder="Enter Email Address"
                 className={`${styles.Client_input_section}`}
                 error={getError.email}
               />
@@ -128,24 +128,24 @@ const CreateClientForm = () => {
             </div>
             <div className={`${styles.Client_input_container}`}>
               <InputField
-                label={'PAN Card Number *'}
+                label={'PAN Number *'}
                 type="text"
                 name="pan_number"
                 value={formData.pan_number}
                 onChange={onChange}
-                placeholder="Eg: DX5648594525"
+                placeholder="Enter Your PAN Number"
                 className={`${styles.Client_input_section}`}
                 error={getError.pan_number}
               />
             </div>
             <div className={`${styles.Client_input_container}`}>
               <InputField
-                label={'Adhaar Number *'}
+                label={'Adhaar *'}
                 type="text"
                 name="aadhar_card"
                 value={formData.aadhar_card}
                 onChange={onChange}
-                placeholder="Eg: 5648594525"
+                placeholder="Enter Your Addhar Number"
                 className={`${styles.Client_input_section}`}
                 error={getError.aadhar_card}
               />
@@ -179,11 +179,9 @@ const CreateClientForm = () => {
           </div>
           <div className={` ${styles.plan_headings} d-flex mt-3 text-white w-100 element_center`}>
             <div className="d-flex">
-              <strong className={` ${styles.single_plan} css-f15 `}>Select Plan </strong>
-              <strong className={` ${styles.single_plan} css-f15`}>Select Duration </strong>
-              <strong className={` ${styles.single_plan} css-f15 d-flex  justify-content-center`}>
-                Select Trade Type
-              </strong>
+              <span className={` ${styles.single_plan} css-f15 `}>Select Plan </span>
+              <span className={` ${styles.single_plan} css-f15`}>Select Duration </span>
+              <span className={` ${styles.single_plan} css-f15 d-flex  justify-content-center`}>Select Trade Type</span>
             </div>
           </div>
 

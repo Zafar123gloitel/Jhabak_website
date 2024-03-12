@@ -71,7 +71,11 @@
         align-items: center;
         justify-content: flex-start;
         transition: all 0.7s ease-in-out;
-
+        &.active {
+          strong {
+            color: #000;
+          }
+        }
         padding: 8px 0px 8px 5px;
         strong {
           width: auto;

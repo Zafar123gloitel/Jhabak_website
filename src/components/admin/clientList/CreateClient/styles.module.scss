@@ -32,6 +32,7 @@
           label {
             padding-left: 5px;
             color: #fff;
+            font-size: 14px;
           }
         }
       }
@@ -76,7 +77,7 @@
       width: 95%;
       align-items: center;
 
-      strong {
+      span {
         display: flex;
         text-align: center;
         width: 30%;
@@ -116,6 +117,7 @@
 
         label {
           padding-left: 5px;
+          font-size: 13px;
         }
 
         input[type='radio'] {
@@ -193,6 +195,85 @@
     font-size: 13px;
     option {
       background-color: $background-color;
+    }
+  }
+}
+
+// select Trade Type Dropdown
+
+.tradeType_select {
+  position: relative;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 0px 10px;
+  font-size: 12px;
+  width: 72%;
+  position: relative;
+  .tradetype_btn {
+    padding: 7px 10px;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-left: 10px;
+    border-bottom: 1px solid $green-color;
+    background: $dark-input-bg;
+    color: #fff;
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 25px;
+      color: #fff;
+      background: url('/assets/svg/admin/down_arrow.svg');
+      background-position: center;
+      background-size: contain;
+      width: 10px;
+      height: 10px;
+      background-repeat: no-repeat;
+    }
+  }
+  .dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: $background-color;
+    width: 92% !important;
+    border: 1px solid #ccc;
+    z-index: 1;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    overflow: hidden;
+    width: 100%;
+    button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      color: $light-text-color;
+      padding: 10px;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+
+      transition: all 0.5s ease;
+      &:hover {
+        background-color: #efefef;
+        color: #000;
+      }
+    }
+    input[type='checkbox'] {
+      display: block;
+      margin-right: 15px;
+    }
+  }
+
+  .showOptions {
+    display: block;
+    button {
+      height: 100%;
+      padding: 10px;
+      transition: all 2.5s ease;
     }
   }
 }

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { durations, tradeTypes } from './constant';
 import styles from '../styles.module.scss';
-import selectStyle from '@/components/InputField/styles.module.scss';
+import selectStyle from '@/components/admin/clientList/CreateClient/styles.module.scss';
 
 interface IData {
   duration: string;
@@ -25,7 +25,7 @@ export default function TradeTypeInput({ setSelectedOptions }: IProps) {
   return (
     <div className={`${styles.radio_select_field} d-flex justify-content-between`}>
       <RadioOptions onChange={onChange} />
-      <SelectField name="trade_type" onChange={onChange} />
+      <SelectField />
     </div>
   );
 }
@@ -46,22 +46,62 @@ function RadioOptions({ onChange }: { onChange: (event: React.ChangeEvent<HTMLIn
   );
 }
 
-function SelectField({
-  name,
-  onChange,
-}: {
-  name: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-}) {
+function SelectField() {
+  // {
+  //   // name,
+  //   // onChange,
+  // }: {
+  //   name: string;
+  //   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  // }
+  const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowOptions(false);
+      }
+    };
+    window.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  const handleButtonClick = (value: string) => {
+    if (selectedOptions.includes(value)) {
+      setSelectedOptions(prevOptions => prevOptions.filter(option => option !== value));
+    } else {
+      setSelectedOptions(prevOptions => [...prevOptions, value]);
+    }
+  };
+
   return (
     <div className={`${styles.select_tradeType} w-50`}>
-      <select id={name} name={name} onChange={onChange} className={selectStyle.input_field_select}>
-        {tradeTypes.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <div className={`${selectStyle.tradeType_select}`}>
+        <button
+          className={`${selectStyle.tradetype_btn} d-flex align-items-center`}
+          type="button"
+          onClick={() => setShowOptions(!showOptions)}
+        >
+          Select Trade Type
+        </button>
+        <div className={`${selectStyle.dropdown_content} ${showOptions && selectStyle.showOptions}`} ref={dropdownRef}>
+          {tradeTypes.map(option => (
+            <button key={option.value} type="button" onClick={() => handleButtonClick(option.value)}>
+              <input
+                type="checkbox"
+                value={option.value}
+                name={option.value}
+                checked={selectedOptions.includes(option.value)}
+                // onChange={() => {}}
+              />{' '}
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

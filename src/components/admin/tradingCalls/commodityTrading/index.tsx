@@ -58,7 +58,6 @@ const CommodityTrading = () => {
                 <SelectField
                   label={'Select Trading Type *'}
                   options={[
-                    { label: 'Select Trading Type', value: '' },
                     { label: 'Equity Trading', value: 'equity' },
                     { label: 'Option Trading', value: 'option' },
                   ]}
