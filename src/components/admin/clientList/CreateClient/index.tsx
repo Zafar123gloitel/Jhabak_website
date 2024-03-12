@@ -153,7 +153,7 @@ const CreateClientForm = () => {
 
             <div className={`${styles.Client_input_container}`}>
               <fieldset className="mt-4">
-                <span>
+                <span className="d-flex align-items-center">
                   <input
                     type="checkbox"
                     id="isActive"
@@ -164,7 +164,7 @@ const CreateClientForm = () => {
                   <label htmlFor="isActive">isActive</label>
                 </span>
 
-                <span>
+                <span className="d-flex align-items-center">
                   <input
                     type="checkbox"
                     id="subscription"
@@ -230,7 +230,7 @@ function Checkbox({
   setIsChecked: (prev: boolean) => void;
 }) {
   return (
-    <div className={`${styles.single_plan}`}>
+    <div className={`${styles.single_plan} d-flex align-items-center`}>
       <input type="checkbox" id={label} onChange={() => setIsChecked(!isChecked)} checked={isChecked} />
       <label htmlFor={label} className="css-f12">
         {label}

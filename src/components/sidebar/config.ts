@@ -28,19 +28,20 @@ export const pageRoute: pageRoute[] = [
     imgSrc: '/assets/svg/sidebar/Calendar.svg',
     activeImgSrc: '/assets/svg/sidebar/Calender_active.svg',
   },
+
   {
     id: 4,
-    name: 'Plans',
-    href: '/admin/plans',
-    imgSrc: '/assets/svg/sidebar/Plans.svg',
-    activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
-  },
-  {
-    id: 5,
     name: 'CE & PE Call',
     href: '/admin/calls',
     imgSrc: '/assets/svg/sidebar/call.svg',
     activeImgSrc: '/assets/svg/sidebar/call_active.svg',
+  },
+  {
+    id: 5,
+    name: 'Trading Calls',
+    href: '/admin/trading_calls',
+    imgSrc: '/assets/svg/sidebar/Plans.svg',
+    activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
   },
   {
     id: 6,

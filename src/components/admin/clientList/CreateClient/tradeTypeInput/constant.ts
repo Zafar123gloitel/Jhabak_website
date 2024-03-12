@@ -21,5 +21,5 @@ export const durations: IOption[] = [
 export const tradeTypes: IOption[] = [
   { id: 'equity', value: 'equity', label: 'Equity' },
   { id: 'option', value: 'option', label: 'Option' },
-  { id: 'MCX', value: 'MCX', label: 'MCX' },
+  { id: 'commodity', value: 'commodity', label: 'Commodity' },
 ];

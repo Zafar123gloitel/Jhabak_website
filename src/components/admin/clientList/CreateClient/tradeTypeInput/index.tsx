@@ -76,6 +76,12 @@ function SelectField() {
       setSelectedOptions(prevOptions => [...prevOptions, value]);
     }
   };
+  const selectedOptionsText = selectedOptions
+    .map(option => {
+      const selectedOption = tradeTypes.find(type => type.value === option);
+      return selectedOption ? selectedOption.label : '';
+    })
+    .join(', ');
 
   return (
     <div className={`${styles.select_tradeType} w-50`}>
@@ -85,16 +91,22 @@ function SelectField() {
           type="button"
           onClick={() => setShowOptions(!showOptions)}
         >
-          Select Trade Type
+          {selectedOptionsText || 'Select Trade Type'}
         </button>
         <div className={`${selectStyle.dropdown_content} ${showOptions && selectStyle.showOptions}`} ref={dropdownRef}>
           {tradeTypes.map(option => (
-            <button key={option.value} type="button" onClick={() => handleButtonClick(option.value)}>
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => handleButtonClick(option.value)}
+              className="d-flex align-items-center"
+            >
               <input
                 type="checkbox"
                 value={option.value}
                 name={option.value}
                 checked={selectedOptions.includes(option.value)}
+                className="d-flex align-items-center"
                 // onChange={() => {}}
               />{' '}
               {option.label}
