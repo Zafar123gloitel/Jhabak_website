@@ -5,8 +5,9 @@ import MainLoader from '@/components/loading';
 import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
 import { ClientData, tabData } from './clientData';
-import ClientList from './client-list/ClientList';
+// import ClientList from './client-list/ClientList';
 import CreateClientForm from './CreateClient';
+import ClientDetails from './client-list/ClientDetails';
 
 const CreateClient = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -59,7 +60,15 @@ const CreateClient = () => {
           {!isLoading ? (
             <>
               {activeTab === 'client_list' && (
-                <ClientList
+                // <ClientList
+                //   dataList={ClientData}
+                //   corporateList={corporateList}
+                //   onChange={setPage}
+                //   total={totalEvents}
+                //   current={currentPage}
+                //   pageSize={postsPerPage}
+                // />
+                <ClientDetails
                   dataList={ClientData}
                   corporateList={corporateList}
                   onChange={setPage}

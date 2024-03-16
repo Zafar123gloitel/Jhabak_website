@@ -1,0 +1,40 @@
+.dashboard_data {
+  .details_card_container {
+    height: auto;
+  }
+}
+
+.client_details_card {
+  background-color: transparent;
+  border: 0.5px solid #efefef;
+  border-radius: 15px;
+  height: 500px;
+  width: 400px;
+  margin: 5px;
+  color: #fff;
+
+  .innr_client_card {
+    .detail_part {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #ffffff60;
+      .user_img {
+        width: 30%;
+      }
+      .details {
+        width: 65%;
+        flex-wrap: wrap;
+        font-size: 13px;
+        p {
+          width: 48%;
+          span {
+            &:nth-child(2) {
+              margin-left: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
