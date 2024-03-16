@@ -5,6 +5,7 @@ import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from './client_details.module.scss';
 import { IClientData } from '../clientData';
 import Image from 'next/image';
+import InputField from '@/components/InputField/InputField';
 // import ActivationModal from '../../Modals/ActivationModal';
 // import { apiService } from '@/utils/index';
 // import { useSelector } from 'react-redux';
@@ -26,7 +27,27 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
   // const empcolumns: string[] = ['Name', 'Contact Number', 'Subscription', 'Expiry Date', 'Action'];
 
   return (
-    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
+    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} element_center flex-column`}>
+      <div className={`${styles.search_filter} d-flex`}>
+        <div className={`${styles.search} `}>
+          <InputField
+            label=""
+            type="text"
+            placeholder="Search"
+            value={'searchData'}
+            // onChange={e => setSearchData(e.target.value)}
+            name="search"
+            className={`${styles.searchInput}`}
+          />
+        </div>
+
+        <div className={`${styles.filter} All_content_center `}>
+          <button className="outline_button">
+            {/* <Image src={'/assets/svg/admin/filter.svg'} alt="filter" width={15} height={15} /> */}
+            <span>Filter</span>
+          </button>
+        </div>
+      </div>
       {dataList !== undefined ? (
         <>
           <div className={`${styles.dashboard_data}`}>
@@ -54,7 +75,7 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
           ))} */}
             {/* </tbody>
             </table> */}
-            <div className={`${styles.details_card_container} element_center flex-wrap`}>
+            <div className={`${styles.details_card_container}  flex-wrap`}>
               {dataList?.map(appointment => (
                 <div className={styles.client_details_card} key={appointment.contact}>
                   <div className={`${styles.innr_client_card} element_center flex-column`}>

@@ -1,8 +1,35 @@
+@import '../../../../styles/index.scss';
 $text-color: #fff;
 $card-background: transparent;
 .dashboard_data {
   .details_card_container {
     height: auto;
+    display: flex;
+  }
+}
+.main__data_container {
+  position: relative;
+  .search_filter {
+    position: absolute;
+    top: -90px;
+    right: 200px;
+    align-items: center;
+    @include respond(xxxxl) {
+      right: 385px;
+    }
+    .search {
+      input {
+        border-radius: 8px;
+        margin: 0;
+      }
+    }
+    .filter {
+      button {
+        padding: 8px;
+        border-radius: 8px;
+        margin-left: 10px;
+      }
+    }
   }
 }
 
@@ -14,6 +41,7 @@ $card-background: transparent;
   width: 500px;
   margin: 15px;
   color: $text-color;
+  position: relative;
 
   .innr_client_card {
     .detail_part {
