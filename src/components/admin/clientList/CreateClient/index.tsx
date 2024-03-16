@@ -189,9 +189,23 @@ const CreateClientForm = () => {
         toast.success(response.message);
         Reset();
       }
-    } catch (error) {
-      const _e = error as Error;
-      toast.error(_e.message);
+      // } catch (error) {
+      //   const _e = error as Error;
+      //   toast.error(_e.message);
+      // } finally {
+      //   setIsLoading(false);
+      // }
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
     } finally {
       setIsLoading(false);
     }
