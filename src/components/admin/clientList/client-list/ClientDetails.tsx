@@ -57,7 +57,7 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
             <div className={`${styles.details_card_container} element_center flex-wrap`}>
               {dataList?.map(appointment => (
                 <div className={styles.client_details_card} key={appointment.contact}>
-                  <div className={styles.innr_client_card}>
+                  <div className={`${styles.innr_client_card} element_center flex-column`}>
                     <div className={`${styles.detail_part} `}>
                       <span className={`${styles.user_img} element_center`}>
                         <Image src={'/assets/svg/user_default_img.png'} alt="user" width={100} height={100} />
@@ -68,23 +68,148 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
                           <span>{appointment.name}</span>
                         </p>
                         <p>
-                          <span>Name:</span>
-                          <span>{appointment.name}</span>
+                          <span>Phone:</span>
+                          <span>{appointment.contact}</span>
                         </p>
                         <p>
-                          <span>Name:</span>
-                          <span>{appointment.name}</span>
+                          <span>Email:</span>
+                          <span>{appointment.email}</span>
                         </p>
                         <p>
-                          <span>Name:</span>
-                          <span>{appointment.name}</span>
+                          <span>Addhar:</span>
+                          <span>{appointment.Aadhar}</span>
                         </p>
                         <p>
-                          <span>Name:</span>
-                          <span>{appointment.name}</span>
+                          <span>PAN:</span>
+                          <span>{appointment.panCard}</span>
                         </p>
                       </div>
                     </div>
+
+                    <table className={`${styles.suscription_details} `}>
+                      <thead>
+                        <tr>
+                          <th>Plans Type</th>
+                          <th>Call Type</th>
+                          <th>Start</th>
+                          <th>Expiry</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Day Call</td>
+                          <td>
+                            <Image
+                              src="/assets/svg/admin/equity_calls.svg"
+                              alt="Equtiy Trading"
+                              title="Equtiy Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/option_trading.svg"
+                              alt="Option Trading"
+                              title="Option Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/commodity_trading.svg"
+                              alt="Commodity Trading"
+                              title="Commodity Trading"
+                              width={30}
+                              height={30}
+                            />
+                          </td>
+                          <td>22/03/2024</td>
+                          <td>22/06/2024</td>
+                        </tr>
+                        <tr>
+                          <td>Day Call</td>
+                          <td>
+                            <Image
+                              src="/assets/svg/admin/equity_calls.svg"
+                              alt="Equtiy Trading"
+                              title="Equtiy Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/option_trading.svg"
+                              alt="Option Trading"
+                              title="Option Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/commodity_trading.svg"
+                              alt="Commodity Trading"
+                              title="Commodity Trading"
+                              width={30}
+                              height={30}
+                            />
+                          </td>
+                          <td>22/03/2024</td>
+                          <td>22/06/2024</td>
+                        </tr>
+                        <tr>
+                          <td>Day Call</td>
+                          <td>
+                            <Image
+                              src="/assets/svg/admin/equity_calls.svg"
+                              alt="Equtiy Trading"
+                              title="Equtiy Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/option_trading.svg"
+                              alt="Option Trading"
+                              title="Option Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/commodity_trading.svg"
+                              alt="Commodity Trading"
+                              title="Commodity Trading"
+                              width={30}
+                              height={30}
+                            />
+                          </td>
+                          <td>22/03/2024</td>
+                          <td>22/06/2024</td>
+                        </tr>
+                        <tr>
+                          <td>Day Call</td>
+                          <td>
+                            <Image
+                              src="/assets/svg/admin/equity_calls.svg"
+                              alt="Equtiy Trading"
+                              title="Equtiy Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/option_trading.svg"
+                              alt="Option Trading"
+                              title="Option Trading"
+                              width={30}
+                              height={30}
+                            />
+                            <Image
+                              src="/assets/svg/admin/commodity_trading.svg"
+                              alt="Commodity Trading"
+                              title="Commodity Trading"
+                              width={30}
+                              height={30}
+                            />
+                          </td>
+                          <td>22/03/2024</td>
+                          <td>22/06/2024</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               ))}

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styles from './header.module.scss';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth, useUser } from '@/hooks';
@@ -30,7 +30,7 @@ const Header = () => {
           type="button"
           // onClick={() => setOpenSidebar(!openSidebar)}
         >
-          <Image className={styles.icon} src="/assets/svg/hamburger.svg" alt="Home" width={17} height={17} />
+          {/* <Image className={styles.icon} src="/assets/svg/hamburger.svg" alt="Home" width={17} height={17} /> */}
         </button>
         <div className={`${styles['inner_navbar']} element_center`}>
           <div className={`${styles['company_name']}`}>Jhabak</div>
