@@ -1,0 +1,33 @@
+@import '../../../styles/Globals.scss';
+.coach_search {
+  .inner_coach_search {
+    .dark_input {
+      width: 250px;
+      position: relative;
+      height: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 8px 0;
+      @include respond(xs) {
+        width: 200px;
+      }
+      input {
+        border: none;
+        padding: 0px;
+        padding-left: 35px;
+        margin: 0;
+      }
+    }
+    .dark_input::before {
+      position: absolute;
+      margin-top: 5px;
+      content: '';
+      width: 20px;
+      height: 20px;
+      left: 8px;
+      top: 6px;
+      background: url('/assets/svg/search.svg');
+      background-size: cover;
+    }
+  }
+}

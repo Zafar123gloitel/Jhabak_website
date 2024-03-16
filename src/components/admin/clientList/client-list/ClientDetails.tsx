@@ -3,19 +3,14 @@ import React from 'react';
 // import { TrainingRequest } from '@/types/index';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from './client_details.module.scss';
-import { IClientData } from '../clientData';
+import { IPlan, IUserSchema } from '../clientData';
 import Image from 'next/image';
 import InputField from '@/components/InputField/InputField';
+import moment from 'moment';
 // import ActivationModal from '../../Modals/ActivationModal';
-// import { apiService } from '@/utils/index';
-// import { useSelector } from 'react-redux';
-// import { selectUser } from '@/store/User/userSlice';
-// import { toast } from 'react-toastify';
-// import useLoading from '@/components/loading/Loader';
 
 interface ICardDeatils {
-  // dataList: TrainingRequest[] | undefined;
-  dataList: [] | IClientData[];
+  dataList: [] | IUserSchema[];
   corporateList: () => void;
   onChange: (i: number) => void;
   total: number;
@@ -23,9 +18,21 @@ interface ICardDeatils {
   pageSize: number;
   activeTab?: string;
 }
-const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
-  // const empcolumns: string[] = ['Name', 'Contact Number', 'Subscription', 'Expiry Date', 'Action'];
 
+const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
+  const formatStartDateRange = (startDateString: Date) => {
+    return moment(startDateString).format('DD MMMM YYYY');
+  };
+  const formatEndDateRange = (endDateString: Date) => {
+    return moment(endDateString).format('DD MMMM YYYY');
+  };
+
+  const convertLatter = (plan_type: string) => {
+    if (plan_type === 'day_call') return 'Day Call';
+    if (plan_type === 'week_call') return 'Week Call';
+    if (plan_type === 'month_call') return 'Month Call';
+    if (plan_type === 'long_term') return 'Long Call';
+  };
   return (
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} element_center flex-column`}>
       <div className={`${styles.search_filter} d-flex`}>
@@ -51,33 +58,9 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
       {dataList !== undefined ? (
         <>
           <div className={`${styles.dashboard_data}`}>
-            {/* <table className={`${styles.table_dashboard} table responsive`}>
-              <thead>
-                <tr>
-                  {empcolumns.map((column, index) => (
-                    <th key={index}>{column}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {dataList?.map((appointment, index) => (
-                  <>
-                    <tr key={index}>
-                      <td>{appointment?.name}</td>
-                      <td>{appointment.contact ? appointment.contact : 'Default'}</td>
-                      <td>{appointment?.subscription ? appointment?.subscription : 'false'}</td>
-                      <td>{appointment?.expiry}</td>
-                      <td></td>
-                    </tr>
-                  </>
-                ))}
-                {/* </>
-          ))} */}
-            {/* </tbody>
-            </table> */}
-            <div className={`${styles.details_card_container}  flex-wrap`}>
-              {dataList?.map(appointment => (
-                <div className={styles.client_details_card} key={appointment.contact}>
+            <div className={`${styles.details_card_container} flex-wrap`}>
+              {dataList?.map((appointment: IUserSchema) => (
+                <div className={styles.client_details_card} key={appointment?.phone_number}>
                   <div className={`${styles.innr_client_card} element_center flex-column`}>
                     <div className={`${styles.detail_part} `}>
                       <span className={`${styles.user_img} element_center`}>
@@ -90,19 +73,19 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
                         </p>
                         <p>
                           <span>Phone:</span>
-                          <span>{appointment.contact}</span>
-                        </p>
-                        <p>
-                          <span>Email:</span>
-                          <span>{appointment.email}</span>
+                          <span>{appointment.phone_number}</span>
                         </p>
                         <p>
                           <span>Addhar:</span>
-                          <span>{appointment.Aadhar}</span>
+                          <span>{appointment.aadhar_number}</span>
                         </p>
                         <p>
                           <span>PAN:</span>
-                          <span>{appointment.panCard}</span>
+                          <span className={`${styles.PAN}`}>{appointment.pan_number}</span>
+                        </p>
+                        <p className={`${styles.aadhar} w-100`}>
+                          <span>Email:</span>
+                          <span className="ml-5">{appointment.email}</span>
                         </p>
                       </div>
                     </div>
@@ -117,118 +100,48 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Day Call</td>
-                          <td>
-                            <Image
-                              src="/assets/svg/admin/equity_calls.svg"
-                              alt="Equtiy Trading"
-                              title="Equtiy Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/option_trading.svg"
-                              alt="Option Trading"
-                              title="Option Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/commodity_trading.svg"
-                              alt="Commodity Trading"
-                              title="Commodity Trading"
-                              width={30}
-                              height={30}
-                            />
-                          </td>
-                          <td>22/03/2024</td>
-                          <td>22/06/2024</td>
-                        </tr>
-                        <tr>
-                          <td>Day Call</td>
-                          <td>
-                            <Image
-                              src="/assets/svg/admin/equity_calls.svg"
-                              alt="Equtiy Trading"
-                              title="Equtiy Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/option_trading.svg"
-                              alt="Option Trading"
-                              title="Option Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/commodity_trading.svg"
-                              alt="Commodity Trading"
-                              title="Commodity Trading"
-                              width={30}
-                              height={30}
-                            />
-                          </td>
-                          <td>22/03/2024</td>
-                          <td>22/06/2024</td>
-                        </tr>
-                        <tr>
-                          <td>Day Call</td>
-                          <td>
-                            <Image
-                              src="/assets/svg/admin/equity_calls.svg"
-                              alt="Equtiy Trading"
-                              title="Equtiy Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/option_trading.svg"
-                              alt="Option Trading"
-                              title="Option Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/commodity_trading.svg"
-                              alt="Commodity Trading"
-                              title="Commodity Trading"
-                              width={30}
-                              height={30}
-                            />
-                          </td>
-                          <td>22/03/2024</td>
-                          <td>22/06/2024</td>
-                        </tr>
-                        <tr>
-                          <td>Day Call</td>
-                          <td>
-                            <Image
-                              src="/assets/svg/admin/equity_calls.svg"
-                              alt="Equtiy Trading"
-                              title="Equtiy Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/option_trading.svg"
-                              alt="Option Trading"
-                              title="Option Trading"
-                              width={30}
-                              height={30}
-                            />
-                            <Image
-                              src="/assets/svg/admin/commodity_trading.svg"
-                              alt="Commodity Trading"
-                              title="Commodity Trading"
-                              width={30}
-                              height={30}
-                            />
-                          </td>
-                          <td>22/03/2024</td>
-                          <td>22/06/2024</td>
-                        </tr>
+                        {appointment.plans.map((planValue: IPlan) => {
+                          return (
+                            <React.Fragment key={planValue?._id}>
+                              <tr>
+                                <td>{convertLatter(planValue.plan_type)}</td>
+                                <td>
+                                  {planValue.trading_type[0].includes('equity') && (
+                                    <Image
+                                      src="/assets/svg/admin/equity_calls.svg"
+                                      alt="Equtiy Trading"
+                                      title="Equtiy Trading"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  )}
+                                  {planValue.trading_type[1].includes('option') && (
+                                    <Image
+                                      src="/assets/svg/admin/option_trading.svg"
+                                      alt="Option Trading"
+                                      title="Option Trading"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  )}
+                                  {planValue.trading_type[2].includes('commodity') && (
+                                    <Image
+                                      src="/assets/svg/admin/commodity_trading.svg"
+                                      alt="Commodity Trading"
+                                      title="Commodity Trading"
+                                      width={30}
+                                      height={30}
+                                    />
+                                  )}
+                                </td>
+
+                                <td>{formatStartDateRange(planValue.start_plan)}</td>
+
+                                <td>{formatEndDateRange(planValue.end_plan)}</td>
+                              </tr>
+                            </React.Fragment>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
