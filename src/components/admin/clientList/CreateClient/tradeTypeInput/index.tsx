@@ -1,69 +1,176 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { durations, tradeTypes } from './constant';
+import { dayCallDurations, tradeTypes, longCalldurations, weekCallDurations, monthCallDurations } from './constant';
 import styles from '../styles.module.scss';
 import selectStyle from '@/components/admin/clientList/CreateClient/styles.module.scss';
 
+export interface IOption {
+  id: string;
+  label: string;
+  value: string;
+}
 interface IData {
-  duration: string;
-  trade_type: string;
+  setSelectedOptions: (value: string[]) => void;
+  selectedOptions: string[];
+  handleChanges: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  longTerm?: string;
 }
-
-interface IProps {
-  setSelectedOptions: React.Dispatch<
-    React.SetStateAction<{
-      duration: string;
-      trade_type: string;
-    }>
-  >;
+interface ISelect {
+  setSelectedOptions: (value: string[]) => void;
+  selectedOptions: string[];
+  longTerm: string;
 }
-
-export default function TradeTypeInput({ setSelectedOptions }: IProps) {
-  function onChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    const { name, value } = e.target;
-    setSelectedOptions((prev: IData) => ({ ...prev, [name]: value }));
-  }
+export default function TradeTypeInput({ setSelectedOptions, selectedOptions, handleChanges, longTerm }: IData) {
   return (
     <div className={`${styles.radio_select_field} d-flex justify-content-between`}>
-      <RadioOptions onChange={onChange} />
-      <SelectField />
+      {longTerm === 'day-call' && (
+        <>
+          <RadioDayOptions handleChanges={handleChanges} />
+          <SelectField setSelectedOptions={setSelectedOptions} selectedOptions={selectedOptions} longTerm={longTerm} />
+        </>
+      )}
+      {longTerm === 'week-call' && (
+        <>
+          <RadioWeekOptions handleChanges={handleChanges} />
+
+          <SelectField setSelectedOptions={setSelectedOptions} selectedOptions={selectedOptions} longTerm={longTerm} />
+        </>
+      )}
+      {longTerm === 'month-call' && (
+        <>
+          <RadioMonthOptions handleChanges={handleChanges} />
+
+          <SelectField setSelectedOptions={setSelectedOptions} selectedOptions={selectedOptions} longTerm={longTerm} />
+        </>
+      )}
+      {longTerm === 'year-call' && (
+        <>
+          <RadioLongOptions handleChanges={handleChanges} />
+
+          <SelectField setSelectedOptions={setSelectedOptions} selectedOptions={selectedOptions} longTerm={longTerm} />
+        </>
+      )}
     </div>
   );
 }
 
-function RadioOptions({ onChange }: { onChange: (event: React.ChangeEvent<HTMLInputElement>) => void }) {
+interface RadioDayOptionsProps {
+  handleChanges: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function RadioDayOptions({ handleChanges }: RadioDayOptionsProps) {
   return (
     <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
-      {durations.map(duration => (
-        <React.Fragment key={duration.id}>
-          <div className={styles.duration}>
-            <input
-              type="radio"
-              id={duration.id.toString()}
-              name="duration"
-              value={duration.value}
-              // checked={checked === duration.value}
-              onChange={onChange}
-            />
-            <label htmlFor={duration.id.toString()}>{duration.label}</label>
-            <br />
-          </div>
-        </React.Fragment>
+      {dayCallDurations.map(duration => (
+        <div key={duration.id} className={styles.duration}>
+          <input
+            type="radio"
+            id={duration.id.toString()}
+            name="dayCallDurations"
+            value={duration.value}
+            // checked={checked === duration.value}
+            onChange={handleChanges}
+          />
+          <label htmlFor={duration.id.toString()}>{duration.label}</label>
+          <br />
+        </div>
+      ))}
+    </div>
+  );
+}
+interface RadioWeekOptionsProps {
+  handleChanges: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function RadioWeekOptions({ handleChanges }: RadioWeekOptionsProps) {
+  return (
+    <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
+      {weekCallDurations.map(duration => (
+        <div key={duration.id} className={styles.duration}>
+          <input
+            type="radio"
+            id={duration.id.toString()}
+            name="weekCallDurations"
+            value={duration.value}
+            // checked={checked === duration.value}
+            onChange={handleChanges}
+          />
+          <label htmlFor={duration.id.toString()}>{duration.label}</label>
+          <br />
+        </div>
       ))}
     </div>
   );
 }
 
-function SelectField() {
-  // {
-  //   // name,
-  //   // onChange,
-  // }: {
-  //   name: string;
-  //   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  // }
+interface RadioMonthOptionsProps {
+  handleChanges: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function RadioMonthOptions({ handleChanges }: RadioMonthOptionsProps) {
+  return (
+    <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
+      {monthCallDurations.map(duration => (
+        <div key={duration.id} className={styles.duration}>
+          <input
+            type="radio"
+            id={duration.id.toString()}
+            name="monthCallDurations"
+            value={duration.value}
+            // checked={checked === duration.value}
+            onChange={handleChanges}
+          />
+          <label htmlFor={duration.id.toString()}>{duration.label}</label>
+          <br />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+interface RadioLongOptionsProps {
+  handleChanges?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+function RadioLongOptions({ handleChanges }: RadioLongOptionsProps) {
+  return (
+    <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
+      {longCalldurations.map(duration => (
+        <div key={duration.id} className={styles.duration}>
+          <input
+            type="radio"
+            id={duration.id.toString()}
+            name="longCalldurations"
+            value={duration.value}
+            // checked={checked === duration.value}
+            onChange={handleChanges}
+          />
+          <label htmlFor={duration.id.toString()}>{duration.label}</label>
+          <br />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SelectField({ setSelectedOptions, selectedOptions, longTerm }: ISelect) {
   const [showOptions, setShowOptions] = useState<boolean>(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const handleButtonClick = (value: string, longTerm: string) => {
+    const isSelected = selectedOptions.includes(value);
+
+    if (isSelected && longTerm === 'day-call') {
+      setSelectedOptions(selectedOptions.filter(option => option !== value));
+    } else if (isSelected && longTerm === 'week-call') {
+      setSelectedOptions(selectedOptions.filter(option => option !== value));
+    } else if (isSelected && longTerm === 'month-call') {
+      setSelectedOptions(selectedOptions.filter(option => option !== value));
+    } else if (isSelected && longTerm === 'year-call') {
+      setSelectedOptions(selectedOptions.filter(option => option !== value));
+    } else {
+      setSelectedOptions([...selectedOptions, value]);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -76,13 +183,6 @@ function SelectField() {
       window.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  const handleButtonClick = (value: string) => {
-    if (selectedOptions.includes(value)) {
-      setSelectedOptions(prevOptions => prevOptions.filter(option => option !== value));
-    } else {
-      setSelectedOptions(prevOptions => [...prevOptions, value]);
-    }
-  };
   const selectedOptionsText = selectedOptions
     .map(option => {
       const selectedOption = tradeTypes.find(type => type.value === option);
@@ -101,11 +201,11 @@ function SelectField() {
           {selectedOptionsText || 'Select Trade Type'}
         </button>
         <div className={`${selectStyle.dropdown_content} ${showOptions && selectStyle.showOptions}`} ref={dropdownRef}>
-          {tradeTypes.map(option => (
+          {tradeTypes.map((option: IOption) => (
             <button
               key={option.value}
               type="button"
-              onClick={() => handleButtonClick(option.value)}
+              onClick={() => handleButtonClick(option.value, longTerm)}
               className="d-flex align-items-center"
             >
               <input

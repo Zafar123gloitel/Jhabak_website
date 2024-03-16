@@ -12,6 +12,8 @@ export const PASSWORD_REGEX =
 
 export const DOB_REGEX = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/;
 
+export const PAN_NUMBER = /^[A-Z]{5}[0-9]{4}[A-Z]/;
+
 export const emailRegex = (email: string): boolean => {
   return EMAIL_REGEX.test(email);
 };
@@ -19,9 +21,12 @@ export const emailRegex = (email: string): boolean => {
 export const passwordRegex = (password: string): boolean => {
   return PASSWORD_REGEX.test(password);
 };
-
-export const dobRegex = (dob: string): boolean => {
+// export const panNumber=(number:string):boo
+export const panRegex = (dob: string): boolean => {
   return DOB_REGEX.test(dob);
+};
+export const dobRegex = (pan: string): boolean => {
+  return PAN_NUMBER.test(pan);
 };
 
 export const contactRegex = (contactNumber: string, phoneRegex = /^\d{10}$/): boolean => {
