@@ -1,5 +1,5 @@
 export const callTypeOption = [
-  { label: 'Select call option', value: '' },
+  { label: 'Select Plan option', value: '' },
   { label: 'Day Calls', value: 'day_call' },
   { label: 'Weekly Calls', value: 'week_call' },
   { label: 'Monthly Calls', value: 'month_call' },
@@ -12,11 +12,11 @@ export const DefaultEquityTrading = {
   plan_name: '',
   buy_cell: '',
   share_name: '',
-  price_from: 0,
-  price_to: 0,
-  stoploss: 0,
-  target: 0,
-  minimum_quantity: 0,
+  price_from: '',
+  price_to: '',
+  stoploss: '',
+  target: '',
+  minimum_quantity: '',
 };
 
 export const DefaultEquitError = {
@@ -36,12 +36,12 @@ export const DefaultOptionTrading = {
   share_name: '',
   buy_cell: '',
   ce_pe_type: '',
-  strick_price: 0,
-  price_from: 0,
-  price_to: 0,
-  target: 0,
-  stoploss: 0,
-  minimum_quantity: 0,
+  strick_price: '',
+  price_from: '',
+  price_to: '',
+  target: '',
+  stoploss: '',
+  minimum_quantity: '',
 };
 
 export const DefaultOptionError = {
@@ -66,4 +66,17 @@ export const DefaultBaseTrading = {
 export const DefaultBaseTradingError = {
   option_type: '',
   plan_type: '',
+};
+
+/***********************************Commodity Equity***********************************************/
+export const DefaultCommodityTrading = {
+  trading_type: 'equity',
+  plan_type: '',
+  option_type: 'open',
+};
+
+export const DefaultCommodityTradingError = {
+  trading_type: '',
+  plan_type: '',
+  option_type: '',
 };

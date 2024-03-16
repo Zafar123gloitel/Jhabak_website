@@ -14,21 +14,21 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
   return (
     <>
       <div className={`${styles.single_side_option} ${optionStyles.single_side_option}`}>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_container mt-2`}>
           <InputField
-            label={'Share Name *'}
+            label={''}
             type="text"
             name="share_name"
             value={formData.share_name}
             onChange={onChange}
             error={getError.share_name}
-            placeholder="Ex : Nifty 50"
+            placeholder="Share Name"
             className={`${styles.Client_input_section}`}
           />
         </div>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_container mt-4`}>
           <SelectField
-            label={'CE/PE *'}
+            label={''}
             options={[
               { label: 'Select CE/PE', value: '' },
               { label: 'PE', value: 'PE_CALL' },
@@ -41,9 +41,9 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
           />
         </div>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_container mt-4`}>
           <SelectField
-            label={'Buy/Sell *'}
+            label={''}
             options={[
               { label: 'Select buy/sell', value: '' },
               { label: 'Buy', value: 'buy' },
@@ -53,79 +53,79 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             value={formData.buy_cell}
             onChange={onChange}
             error={getError.buy_cell}
-            className={`${styles.Client_input_section}  ${optionStyles.Client_input_container}`}
+            className={`${styles.Client_input_section}  ${optionStyles.Client_input_container} input_margin`}
           />
         </div>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_container mt-4`}>
           <InputField
-            label={'Strike Price *'}
-            type="number"
+            label={''}
+            type="text"
             name="strick_price"
             value={formData.strick_price}
             onChange={onChange}
             error={getError.strick_price}
-            placeholder="Eg: 275"
+            placeholder="Strike Price"
             className={`${styles.Client_input_section}`}
           />
         </div>
-        <div className={`${styles.Client_input_container} ${styles.price_range}`}>
+        <div className={`${styles.Client_input_container} ${styles.price_range} input_container mt-4`}>
           <InputField
-            label={'Price Range To *'}
-            type="number"
+            label={''}
+            type="text"
             name="price_to"
             value={formData.price_to}
             onChange={onChange}
             error={getError.price_to}
-            placeholder="Eg: 280"
+            placeholder="Price Range To "
             className={`${styles.Client_input_section}`}
           />
           <InputField
-            label={'Price Range From *'}
-            type="number"
+            label={''}
+            type="text"
             name="price_from"
             value={formData.price_from}
             onChange={onChange}
             error={getError.price_from}
-            placeholder="Eg: 275"
+            placeholder="Price Range From "
             className={`${styles.Client_input_section}`}
           />
         </div>
 
-        <div className={`${styles.Client_input_container} ${styles.price_actions}`}>
-          <div className={`${styles.single_price_actions}`}>
+        <div className={`${styles.Client_input_container} ${styles.price_actions} input_container mt-2`}>
+          <div className={`${styles.single_price_actions} `}>
             <InputField
-              label={'Stoploss *'}
-              type="number"
+              label={''}
+              type="text"
               name="stoploss"
               value={formData.stoploss}
               onChange={onChange}
               error={getError.stoploss}
-              placeholder="Eg: 245"
+              placeholder="Stoploss"
               className={`${styles.Client_input_section}`}
             />
           </div>
           <div className={`${styles.single_price_actions}`}>
             <InputField
-              label={'Target *'}
-              type="number"
+              label={''}
+              type="text"
               name="target"
               value={formData.target}
               onChange={onChange}
               error={getError.target}
-              placeholder="Eg: 350"
+              placeholder="Target"
               className={`${styles.Client_input_section}`}
             />
           </div>
 
           <div className={`${styles.single_price_actions}`}>
             <InputField
-              label={'Min Qty *'}
-              type="number"
+              label={''}
+              type="text"
               name="minimum_quantity"
               value={formData.minimum_quantity}
               onChange={onChange}
               error={getError.minimum_quantity}
-              placeholder="Eg: 5"
+              placeholder="Min Qty"
               className={`${styles.Client_input_section}`}
             />
           </div>

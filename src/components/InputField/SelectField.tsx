@@ -30,7 +30,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
       )}
       <div className={`${styles.input_field_select} ${className} `}>
         <select
-          className={`${styles.input_field} ${styles.dropdown}`}
+          className={`${styles.input_field} ${styles.dropdown} ${value === '' && styles.defaultSelected}`}
           id={name}
           name={name}
           value={value}

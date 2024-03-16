@@ -1,9 +1,17 @@
-export interface pageRoute {
-  id: number;
+export interface ISubMenu {
+  _id: string;
   name: string;
   href: string;
   imgSrc: string;
   activeImgSrc: string;
+}
+export interface pageRoute {
+  id: number;
+  name: string;
+  href?: string | undefined;
+  imgSrc: string;
+  activeImgSrc: string;
+  subMenu?: ISubMenu[];
 }
 export const pageRoute: pageRoute[] = [
   {
@@ -39,9 +47,32 @@ export const pageRoute: pageRoute[] = [
   {
     id: 5,
     name: 'Trading Calls',
-    href: '/admin/trading_calls',
     imgSrc: '/assets/svg/sidebar/Plans.svg',
     activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+
+    subMenu: [
+      {
+        _id: 'Equity Trading',
+        name: 'Equity Trading',
+        href: '/admin/trading_calls',
+        imgSrc: '/assets/svg/sidebar/Plans.svg',
+        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+      },
+      {
+        _id: 'Option Trading',
+        name: 'Option Trading',
+        href: '/admin/trading_calls',
+        imgSrc: '/assets/svg/sidebar/Plans.svg',
+        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+      },
+      {
+        _id: 'Commodity Trading',
+        name: 'Option Trading',
+        href: '/admin/trading_calls',
+        imgSrc: '/assets/svg/sidebar/Plans.svg',
+        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+      },
+    ],
   },
   {
     id: 6,

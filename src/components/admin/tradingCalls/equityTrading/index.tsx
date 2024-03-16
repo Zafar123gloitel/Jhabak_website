@@ -66,7 +66,7 @@ const EquityTrading = () => {
           <div className={`${styles.inr_create_Client_section}`}>
             <div className={`${styles.Client_input_container}`}>
               <SelectField
-                label={'Select Plan *'}
+                label={''}
                 options={callTypeOption}
                 name="plan_name"
                 value={formData.plan_name}

@@ -361,6 +361,9 @@ button {
   position: relative;
   background-color: transparent;
 }
+.input_margin {
+  margin-top: 5px !important;
+}
 .password_input_div {
   .input-field {
     input {
@@ -393,7 +396,7 @@ button {
   // border: none;
   border: none;
   color: $black-text-color;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 5px;
   // background-color: #6666665e;
   font-weight: 500;
@@ -407,7 +410,7 @@ button {
 .input-field input::placeholder,
 .input-field textarea::placeholder {
   font-weight: 500;
-  font-size: 11px;
+  font-size: 13px;
   color: $content-text-color;
 }
 

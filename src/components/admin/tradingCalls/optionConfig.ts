@@ -65,17 +65,17 @@ export interface IDefaultCommodityError {
 
 export const tradingCallsTab = [
   {
-    _id: '',
+    _id: 9001,
     name: 'equity_trading',
     alt: 'Equity Trading',
   },
   {
-    _id: '',
+    _id: 9002,
     name: 'option_trading',
     alt: 'Option Trading',
   },
   {
-    _id: '',
+    _id: 9003,
     name: 'commodity_trading',
     alt: 'Commodity Trading',
   },
@@ -112,28 +112,6 @@ export const DefaultOptionTrading = {
   minimum_quantity: 0,
 };
 
-export const DefaultCommodityTrading = {
-  trading_type: '',
-  plan_name: '',
-  share_name: '',
-  buy_cell: '',
-  price_from: 0,
-  price_to: 0,
-  target: 0,
-  stoploss: 0,
-  minimum_quantity: 0,
-};
-export const DefaultCommodityError = {
-  trading_type: '',
-  plan_name: '',
-  share_name: '',
-  buy_cell: '',
-  price_from: '',
-  price_to: '',
-  target: '',
-  stoploss: '',
-  minimum_quantity: '',
-};
 export const DefaultError = {
   plan_name: '',
   buy_cell: '',

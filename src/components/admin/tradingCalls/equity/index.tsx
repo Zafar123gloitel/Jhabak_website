@@ -15,89 +15,90 @@ const Equity = ({ formData, getError, onChange }: IProps) => {
   return (
     <>
       <div className={`${styles.inr_create_Client_section}`}>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_margin`}>
           <InputField
-            label={'Share Name *'}
+            label={''}
             type="text"
             name="share_name"
             value={formData.share_name}
             onChange={onChange}
             error={getError.share_name}
-            placeholder="Ex : TATA Motors"
-            className={`${styles.Client_input_section}`}
+            placeholder="Enter Share Name"
+            className={`${styles.Client_input_section}  `}
           />
         </div>
-        <div className={`${styles.Client_input_container}`}>
+        <div className={`${styles.Client_input_container} input_margin`}>
           <SelectField
-            label={'Buy/Sell *'}
+            label={''}
             options={[
+              { label: 'Select Buy/Sell', value: '' },
               { label: 'Buy', value: 'buy' },
               { label: 'Sell', value: 'sell' },
             ]}
             name="buy_cell"
             value={formData.buy_cell}
             onChange={onChange}
-            className={`${styles.Client_input_section}`}
+            className={`${styles.Client_input_section} `}
             error={getError.buy_cell}
           />
         </div>
-        <div className={`${styles.price_range} ${styles.Client_input_container}`}>
+        <div className={`${styles.price_range} ${styles.Client_input_container} input_margin`}>
           <InputField
-            label={'Price Range To *'}
-            type="number"
+            label={''}
+            type="text"
             name="price_to"
             value={formData.price_to}
             onChange={onChange}
             error={getError.price_to}
-            placeholder="Eg: 280"
+            placeholder="Price Range To"
             className={`${styles.Client_input_section}`}
           />
           <InputField
-            label={'Price Range From *'}
-            type="number"
+            label={''}
+            type="text"
             name="price_from"
             value={formData.price_from}
             onChange={onChange}
             error={getError.price_from}
-            placeholder="Eg: 275"
+            placeholder="Price Range From"
             className={`${styles.Client_input_section}`}
           />
         </div>
 
-        <div className={` ${styles.price_actions} ${styles.Client_input_container}`}>
-          <div className={`${styles.single_price_actions}`}>
+        <div className={` ${styles.price_actions} ${styles.Client_input_container} input_margin`}>
+          <div className={`${styles.single_price_actions} `}>
             <InputField
-              label={'Stoploss *'}
-              type="number"
+              label={''}
+              type="text"
               name="stoploss"
               value={formData.stoploss}
               onChange={onChange}
               error={getError.stoploss}
-              placeholder="Eg: 245"
+              placeholder="Stoploss"
               className={`${styles.Client_input_section}`}
             />
           </div>
           <div className={`${styles.single_price_actions}`}>
             <InputField
-              label={'Target *'}
-              type="number"
+              label={''}
+              type="text "
               name="target"
               value={formData.target}
               onChange={onChange}
               error={getError.target}
-              placeholder="Eg: 350"
+              placeholder="Target"
               className={`${styles.Client_input_section}`}
             />
           </div>
           <div className={`${styles.single_price_actions}`}>
             <InputField
-              label={'Min Qty *'}
-              type="number"
+              label={''}
+              type="text "
               name="minimum_quantity"
               value={formData.minimum_quantity}
               onChange={onChange}
               error={getError.minimum_quantity}
-              placeholder="Eg: 5"
+              placeholder="Min. Quantity"
               className={`${styles.Client_input_section}`}
             />
           </div>

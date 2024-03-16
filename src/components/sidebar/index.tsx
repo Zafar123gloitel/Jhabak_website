@@ -41,18 +41,16 @@ export const Sidebar = () => {
             {pageRoute?.map(value => (
               <li key={value.id} className={`${styles.li_content}`}>
                 <button
-                  className={`${styles.single_menu} ${styles.no_margin_padding}  bg-transparent text-white ${openSidebar && styles.showSidebar} ${styles.main_content} ${
-                    isActiveLink(pathname, value.href) ? `${styles['active']}` : `${styles['not-active']}`
-                  } `}
+                  className={`${styles.single_menu} ${styles.no_margin_padding}  bg-transparent text-white ${openSidebar && styles.showSidebar} ${styles.main_content}  `}
                   title={value.name}
-                  onClick={() => handleRoute(value.href)}
+                  onClick={() => handleRoute(value.href as string)}
                 >
                   <Image
                     className={styles.icon}
                     alt="Home"
                     width={25}
                     height={25}
-                    src={isActiveLink(pathname, value.href) ? `${value.activeImgSrc}` : `${value.imgSrc}`}
+                    src={isActiveLink(pathname, value.href as string) ? `${value.activeImgSrc}` : `${value.imgSrc}`}
                   />
                   <strong>{value.name}</strong>
                 </button>
