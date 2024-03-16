@@ -157,7 +157,7 @@ const OptionTrading = () => {
     <>
       <div className={`${styles.create_form} element_center`}>
         <form
-          className={`${styles.create_Client_section} ${optionStyles.create_Client_section} ${baseFormData.option_type === 'hedge' && optionStyles.hedgeDesign}`}
+          className={`${styles.create_Client_section} ${optionStyles.create_Client_section} ${baseFormData.option_type === 'hedge' && optionStyles.hedge_design}`}
           onSubmit={handleFormSubmit}
         >
           <div className={`${styles.inr_create_Client_section} element_center`}>
@@ -168,8 +168,9 @@ const OptionTrading = () => {
             >
               <div className={optionStyles.top_single_input}>
                 <SelectField
-                  label={'Option Type *'}
+                  label={''}
                   options={[
+                    { label: 'Option Type', value: '' },
                     { label: 'Open', value: 'open' },
                     { label: 'Hedge', value: 'hedge' },
                   ]}
@@ -182,7 +183,7 @@ const OptionTrading = () => {
               </div>
               <div className={`${optionStyles.top_single_input}`}>
                 <SelectField
-                  label={'Select Plan *'}
+                  label={''}
                   options={callTypeOption}
                   name="plan_type"
                   value={baseFormData.plan_type}

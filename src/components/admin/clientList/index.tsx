@@ -5,15 +5,17 @@ import MainLoader from '@/components/loading';
 import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
 import { tabData } from './clientData';
-import ClientList from './client-list/ClientList';
-import CreateClientForm from './CreateClient';
+// import ClientList from './client-list/ClientList';
 import { apiService } from '@/utils';
 import useDebounce from '@/components/Usedebounce';
 import { useUser } from '@/hooks';
+// import ClientList from './client-list/ClientList';
+import CreateClientForm from './CreateClient';
+import ClientDetails from './client-list/ClientDetails';
 const CreateClient = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [postsPerPage] = useState<number>(1);
+  const [postsPerPage] = useState<number>(2);
   const [dataList, setDataList] = useState([]);
   const [totalEvents, setTotalEvents] = useState(0);
   const [activeTab, setActiveTab] = useState('create_client');
@@ -34,7 +36,7 @@ const CreateClient = () => {
         };
       }
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.get(
+      const response: any = await apiService.post(
         `/admin/${UserData()?._id}/get-users?page=${currentPage}&limit=${postsPerPage}&sort=desc`,
         data
       );
@@ -78,7 +80,15 @@ const CreateClient = () => {
           {!isLoading ? (
             <>
               {activeTab === 'client_list' && (
-                <ClientList
+                // <ClientList
+                //   dataList={ClientData}
+                //   corporateList={corporateList}
+                //   onChange={setPage}
+                //   total={totalEvents}
+                //   current={currentPage}
+                //   pageSize={postsPerPage}
+                // />
+                <ClientDetails
                   dataList={dataList}
                   corporateList={corporateList}
                   onChange={setPage}

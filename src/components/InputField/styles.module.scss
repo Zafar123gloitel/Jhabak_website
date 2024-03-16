@@ -44,6 +44,12 @@
     border-radius: 8px;
     width: 95%;
     background-color: $dark-input-bg !important;
+    font-size: 13px;
+    transition: none;
+    &.defaultSelected {
+      font-size: 13px !important;
+      color: $content-text-color !important;
+    }
     &:focus {
       background-color: $dark-input-bg !important;
       border-bottom-left-radius: 0px !important;
@@ -121,7 +127,8 @@
     border-color: $white-input-color !important;
     position: relative;
     &::placeholder {
-      font-size: 11px;
+      // font-size: 11px;
+      color: #efefef;
     }
   }
 }

@@ -31,8 +31,9 @@
   }
 }
 
-.hedgeDesign {
+.hedge_design {
   width: 60%;
+  transition: all 0.5s ease-in-out;
   .inr_create_Client_section {
     .top_inputs {
       .top_single_input {

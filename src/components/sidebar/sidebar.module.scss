@@ -23,6 +23,13 @@
     }
   }
 }
+.menu_dropdown_button {
+  background-color: transparent;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  z-index: 1200;
+}
 .inner_sidebar {
   height: 100%;
   width: 100%;
@@ -39,10 +46,6 @@
     width: 85%;
     display: flex;
     justify-content: space-between;
-
-    .menu_dropdown_button {
-      background-color: transparent;
-    }
   }
 }
 
