@@ -5,13 +5,9 @@ import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from './client_details.module.scss';
 import { IPlan, IUserSchema } from '../clientData';
 import Image from 'next/image';
+import InputField from '@/components/InputField/InputField';
 import moment from 'moment';
 // import ActivationModal from '../../Modals/ActivationModal';
-// import { apiService } from '@/utils/index';
-// import { useSelector } from 'react-redux';
-// import { selectUser } from '@/store/User/userSlice';
-// import { toast } from 'react-toastify';
-// import useLoading from '@/components/loading/Loader';
 
 interface ICardDeatils {
   dataList: [] | IUserSchema[];
@@ -38,7 +34,27 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
     if (plan_type === 'long_term') return 'Long Call';
   };
   return (
-    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
+    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} element_center flex-column`}>
+      <div className={`${styles.search_filter} d-flex`}>
+        <div className={`${styles.search} `}>
+          <InputField
+            label=""
+            type="text"
+            placeholder="Search"
+            value={'searchData'}
+            // onChange={e => setSearchData(e.target.value)}
+            name="search"
+            className={`${styles.searchInput}`}
+          />
+        </div>
+
+        <div className={`${styles.filter} All_content_center `}>
+          <button className="outline_button">
+            {/* <Image src={'/assets/svg/admin/filter.svg'} alt="filter" width={15} height={15} /> */}
+            <span>Filter</span>
+          </button>
+        </div>
+      </div>
       {dataList !== undefined ? (
         <>
           <div className={`${styles.dashboard_data}`}>

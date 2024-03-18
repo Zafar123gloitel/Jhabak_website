@@ -1,3 +1,4 @@
+@import '../../../../styles/index.scss';
 $text-color: #fff;
 $card-background: transparent;
 .dashboard_data {
@@ -6,73 +7,95 @@ $card-background: transparent;
     display: flex;
   }
 }
-
-.client_details_card {
-  background-color: $card-background;
-  border: 0.5px solid #efefef;
-  border-radius: 15px;
-  height: 350px;
-  width: 500px;
-  margin: 15px;
-  color: $text-color;
-
-  .innr_client_card {
-    .detail_part {
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-around;
-      border-bottom: 1px solid #ffffff60;
-      .user_img {
-        width: 25%;
+.main__data_container {
+  position: relative;
+  .search_filter {
+    position: absolute;
+    top: -90px;
+    right: 130px;
+    align-items: center;
+    @include respond(xxxxl) {
+      right: 200px;
+    }
+    .search {
+      input {
+        border-radius: 8px;
+        margin: 0;
       }
-      .details {
-        width: 75%;
-        flex-wrap: wrap;
-        font-size: 13px;
-        p {
-          width: 48%;
-          &.aadhar {
-            span {
-              &:nth-child(2) {
-                margin-left: 8px;
+    }
+    .filter {
+      button {
+        padding: 8px;
+        border-radius: 8px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .client_details_card {
+    background-color: $card-background;
+    border: 0.5px solid #efefef;
+    border-radius: 15px;
+    height: 350px;
+    width: 500px;
+    margin: 15px;
+    color: $text-color;
+    position: relative;
+
+    .innr_client_card {
+      .detail_part {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid #ffffff60;
+        .user_img {
+          width: 25%;
+        }
+        .details {
+          width: 75%;
+          flex-wrap: wrap;
+          font-size: 13px;
+          p {
+            width: 48%;
+            &.aadhar {
+              span {
+                &:nth-child(2) {
+                  margin-left: 8px;
+                }
               }
             }
-          }
-          .PAN {
-            text-transform: uppercase !important;
-          }
-
-          span {
-            &:nth-child(2) {
-              margin-left: 3px;
+            .PAN {
+              text-transform: uppercase !important;
             }
+
+            margin-left: 3px;
           }
         }
       }
     }
-    .suscription_details {
-      width: 95%;
-      //   border: 1px solid;
-      thead,
-      tbody {
-        tr {
-          border-bottom: 0.5px solid #efefef2e;
-          text-align: center;
-          th {
-            padding: 15px 0;
-            font-weight: 500;
-            font-size: 13px;
-            &:nth-child(1) {
-              text-align: left;
-            }
+  }
+  .suscription_details {
+    width: 95%;
+    //   border: 1px solid;
+    thead,
+    tbody {
+      tr {
+        border-bottom: 0.5px solid #efefef2e;
+        text-align: center;
+        th {
+          padding: 15px 0;
+          font-weight: 500;
+          font-size: 13px;
+          &:nth-child(1) {
+            text-align: left;
           }
-          td {
-            padding: 3px 0;
-            font-weight: 300;
-            font-size: 13px;
-            &:nth-child(1) {
-              text-align: left;
-            }
+        }
+        td {
+          padding: 3px 0;
+          font-weight: 300;
+          font-size: 13px;
+          &:nth-child(1) {
+            text-align: left;
           }
         }
       }
