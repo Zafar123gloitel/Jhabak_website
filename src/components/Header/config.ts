@@ -13,17 +13,17 @@ export const pageRoute: pageRoute[] = [
   {
     id: 142,
     name: 'About',
-    href: '/public/about',
+    href: '/about',
   },
   {
     id: 143,
     name: 'Services',
-    href: '/public/services',
+    href: '/services',
   },
   {
     id: 144,
     name: 'Contact Us',
-    href: '/public/contact',
+    href: '/contact',
   },
 ];
 
@@ -37,17 +37,17 @@ export const loginPageRoute: pageRoute[] = [
   {
     id: 142,
     name: 'About',
-    href: '/public/about',
+    href: '/about',
   },
   {
     id: 143,
     name: 'Services',
-    href: '/public/services',
+    href: '/services',
   },
   {
     id: 144,
     name: 'Contact Us',
-    href: '/public/contact',
+    href: '/contact',
   },
 
   //   {

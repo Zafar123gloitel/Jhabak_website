@@ -117,7 +117,15 @@ export const Login = () => {
           ResetUser();
         }
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
       const typeError = error as Error;
       return toast.error(typeError.message);
     } finally {

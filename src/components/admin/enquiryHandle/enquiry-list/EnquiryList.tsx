@@ -3,7 +3,7 @@ import React from 'react';
 // import { TrainingRequest } from '@/types/index';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
-import { IEnquiryData } from '../enquiryData';
+import { IContactUs } from '../enquiryData';
 // import ActivationModal from '../../Modals/ActivationModal';
 // import { apiService } from '@/utils/index';
 // import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import { IEnquiryData } from '../enquiryData';
 // import useLoading from '@/components/loading/Loader';
 interface ICardDeatils {
   // dataList: TrainingRequest[] | undefined;
-  dataList: [] | IEnquiryData[];
+  dataList: [] | IContactUs[];
   corporateList: () => void;
   onChange: (i: number) => void;
   total: number;
@@ -21,7 +21,7 @@ interface ICardDeatils {
   activeTab?: string;
 }
 const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
-  const empcolumns: string[] = ['Name', 'Contact Number', 'Subscription', 'Expiry Date', 'Action'];
+  const empcolumns: string[] = ['First Name', 'Email', 'Phone Number', 'Action'];
 
   // const [show, setShow] = useState(false);
   // const [employeeId, setEmployeeId] = useState<string | undefined>();
@@ -85,11 +85,12 @@ const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeat
                 {dataList?.map((appointment, index) => (
                   <>
                     <tr key={index}>
-                      <td>{appointment?.name}</td>
-                      <td>{appointment.contact ? appointment.contact : ''}</td>
-
+                      <td>{appointment?.first_name}</td>
                       <td>{appointment?.email}</td>
-                      <td>{appointment.message ? appointment.message : 'hello'}</td>
+                      <td>{appointment.phone_number ? appointment.phone_number : ''}</td>
+
+                      {/* <td>{appointment?.email}</td> */}
+                      {/* <td>{appointment.message ? appointment.message : 'hello'}</td> */}
                       {/* <td>{appointment?.isActive ? 'true' : 'false'}</td> */}
                       <td>
                         {/* <button

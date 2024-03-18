@@ -5,6 +5,25 @@ export interface IEnquiryData {
   message: string;
 }
 
+export interface IClientStatus {
+  prospects: string;
+  cancel: string;
+  documentProcess: string;
+  finalClient: string;
+}
+export interface IAppoitment extends Document {
+  name: string;
+  email: string;
+  phone_number: string;
+  client_status: string;
+}
+export interface IContactUs extends Document {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  message: string;
+}
 export const EnquiryData: IEnquiryData[] = [
   {
     name: 'Yugal kishor',
