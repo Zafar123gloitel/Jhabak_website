@@ -8,23 +8,18 @@ function withAuthentication<P extends object>(WrappedComponent: ComponentType<P>
     const path = usePathname();
     const router = useRouter();
     const { IsLoggedIn } = useAuth();
-    const { ResetUser, UserData } = useUser();
+    const { UserData } = useUser();
     const role = UserData()?.role;
 
     useEffect(() => {
-      if (!IsLoggedIn()) {
-        ResetUser();
-        router.push('/login');
-      } else {
-        if (role === 'admin' && path.startsWith('/admin')) {
-          router.push(path);
-        } else if (role === 'user' && path.startsWith('/client')) {
-          router.push(path); // Adjust the path for user profile accordingly
-        } else {
-          router.push('/');
-        }
+      if (IsLoggedIn() === false) {
+        router.replace('/login');
+      } else if (role === 'admin') {
+        router.push('/admin/clients');
+      } else if (role === 'user') {
+        router.push('/client'); // Adjust the path for user profile accordingly
       }
-    }, [IsLoggedIn, ResetUser, path, role, router]);
+    }, [IsLoggedIn, path, role, router]);
 
     return <WrappedComponent {...props} />;
   };

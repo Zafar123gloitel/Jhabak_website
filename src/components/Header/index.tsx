@@ -13,7 +13,7 @@ const Header = () => {
   const router = useRouter();
 
   const handleRoute = (path: string) => {
-    router.push(path);
+    return router.push(path);
   };
 
   function handleLogout() {

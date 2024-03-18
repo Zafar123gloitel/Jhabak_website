@@ -97,18 +97,18 @@ export const Login = () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response: any = await apiService.post('/login', data);
         if (response.success && response.status === 200) {
+          const { payload, accessToken, refreshToken } = response;
           Auth({
-            role: response.payload.role,
-            accessToken: response.accessToken,
-            refreshToken: response.refreshToken,
+            role: payload.role,
+            accessToken: accessToken,
+            refreshToken: refreshToken,
           });
-          SetUser(response.payload);
+          SetUser(payload);
 
           toast.success('login successfull');
-          if (response?.payload?.role === 'admin') {
+          if (payload?.role === 'admin') {
             return router.push('/admin/clients');
-          }
-          if (response?.payload?.role === 'user') {
+          } else if (payload?.role === 'user') {
             return router.push('/client/dashboard');
           }
         } else {
