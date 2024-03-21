@@ -85,7 +85,7 @@ const CropModal: React.FC<CropModalProps> = props => {
                   // eslint-disable-next-line sonarjs/no-identical-expressions
                   // aspect={size === '(1:1)' ? 1 / 1 : size === '(9:16)' ? 9 / 16 : 16 / 9}
                   // aspect={size === '(3.84:1)' ? 1 / 3.84 : 3.84 / 1}
-                  aspect={size === '(3.84:1)' ? 1 / 3.84 : 3.84 / 1}
+                  aspect={size === '(9:16)' ? 9 / 16 : 16 / 9}
                   onCropChange={setCrop}
                   onRotationChange={setRotation}
                   onCropComplete={onCropComplete}

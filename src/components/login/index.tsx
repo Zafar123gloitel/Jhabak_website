@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { apiService } from '@/utils';
 import { validateEmail, validateIndianPhoneNumber, validatePassword, validateEmptyString } from 'regexx';
 import { useAuth, useUser } from '@/hooks';
+import Forgotten from '../Modals/forgot-password/ForgottenModal';
 
 interface AddressProfileState {
   email: string;
@@ -24,7 +25,7 @@ export const Login = () => {
   const { Auth, ResetAuth } = useAuth();
   const { SetUser, ResetUser } = useUser();
   const router = useRouter();
-
+  const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userDetails, setUserDetails] = useState<AddressProfileState>({ email: '', password: '' });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -97,18 +98,24 @@ export const Login = () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response: any = await apiService.post('/login', data);
         if (response.success && response.status === 200) {
-          Auth({
-            role: response.payload.role,
-            accessToken: response.accessToken,
-            refreshToken: response.refreshToken,
-          });
-          SetUser(response.payload);
+          const { payload, accessToken, refreshToken } = response;
 
           toast.success('login successfull');
-          if (response?.payload?.role === 'admin') {
+          if (payload?.role === 'admin') {
+            Auth({
+              role: payload.role,
+              accessToken: accessToken,
+              refreshToken: refreshToken,
+            });
+            SetUser(payload);
             return router.push('/admin/clients');
-          }
-          if (response?.payload?.role === 'user') {
+          } else if (payload?.role === 'user') {
+            Auth({
+              role: payload.role,
+              accessToken: accessToken,
+              refreshToken: refreshToken,
+            });
+            SetUser(payload);
             return router.push('/client/dashboard');
           }
         } else {
@@ -117,7 +124,15 @@ export const Login = () => {
           ResetUser();
         }
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
       const typeError = error as Error;
       return toast.error(typeError.message);
     } finally {
@@ -165,16 +180,20 @@ export const Login = () => {
               />
             </div>
 
-            <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={() => handleLogin()}>
+            <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={handleLogin}>
               {isLoading ? 'Loading...' : 'Login'}
             </button>
           </div>
 
-          <button className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}>
+          <button
+            className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}
+            onClick={() => setShow(true)}
+          >
             Forgot password ?
           </button>
         </div>
       </div>
+      <Forgotten show={show} onHide={() => setShow(false)} />
     </main>
   );
 };

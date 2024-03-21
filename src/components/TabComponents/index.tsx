@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-// import { Tabs, Tab } from 'react-bootstrap';
-// import { Tabs, Tab } from 'react-bootstrap';
 import { Tabs, Tab } from 'react-bootstrap';
-import { ITabData } from '../admin/clientList/clientData';
+import { ITabData } from '@/components/admin/clientList/clientData';
 
 interface IProps {
   activeKey: string;
