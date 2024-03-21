@@ -1,0 +1,68 @@
+@import '../../../../styles/index.scss';
+.form_enquiry {
+  @include respond(md) {
+    margin-top: 25px;
+  }
+  .input_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    textarea {
+      background-color: $dark-input-bg;
+      color: $white-input-color;
+    }
+    .names {
+      width: 60%;
+      justify-content: space-between;
+      @include respond(mmd) {
+        width: 100%;
+      }
+      span {
+        width: 48%;
+        span {
+          width: 100%;
+        }
+      }
+    }
+    span {
+      display: block;
+      width: 37%;
+
+      input {
+        background-color: $dark-input-bg;
+        color: $white-input-color;
+      }
+      @include respond(mmd) {
+        width: 100%;
+      }
+      @include respond(xs) {
+        width: 100%;
+      }
+    }
+  }
+  .consultant_phone {
+    span {
+      width: 100%;
+    }
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    input[type='checkbox'] {
+      height: 15px;
+      width: 15px;
+      accent-color: $green-color;
+    }
+    label {
+      margin-left: 8px;
+    }
+  }
+  .enquiry_btn {
+    float: right;
+    @include respond(xms) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,614 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import './index.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $background-color !important;
+  font-family: 'Source Sans 3', sans-serif;
+  color: white;
+  transition: all 0.5s ease;
+  background-image: url('/assets/svg/landing/backgournd_img.svg');
+  background-repeat: repeat-y;
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none !important;
+  // color: #212B36 !important;
+}
+.page_top_margin {
+  margin-top: 90px;
+}
+textarea {
+  outline: none;
+  border: none;
+}
+.textarea_common {
+  width: 100%;
+  height: 100%;
+  resize: none;
+}
+.custom_border-light {
+  border: 1px solid #ccc !important;
+}
+h5,
+li,
+p {
+  margin: 0;
+  padding: 0;
+  text-align: -webkit-match-parent;
+}
+
+.css-f13 {
+  font-size: 13px !important;
+}
+.css-f14 {
+  font-size: 14px !important;
+}
+.css-f15 {
+  font-size: 15px !important;
+}
+.css-f12 {
+  font-size: 12px !important;
+}
+.css-f16 {
+  font-size: 16px !important;
+}
+.css-f17 {
+  font-size: 17px !important;
+}
+.css-f18 {
+  font-size: 18px !important;
+}
+.css-f19 {
+  font-size: 19px !important;
+}
+.css-f20 {
+  font-size: 20px !important;
+}
+.css-f25 {
+  font-size: 25px !important;
+  @include respond(md) {
+    font-size: 18px !important;
+  }
+}
+
+.css-f21 {
+  font-size: 21px !important;
+}
+.text-white {
+  color: #9c9eb9;
+}
+.text-green {
+  color: $green-color;
+}
+.bg-green {
+  background-color: $green-color;
+}
+.text-blue {
+  color: $blue-color;
+}
+.section_shadow {
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.bg-trans-css {
+  background-color: transparent;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+}
+.link-button {
+  background: transparent;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.section_padding {
+  padding: 90px 0;
+}
+.element_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+}
+.small_heading {
+  color: #00b666;
+  font-size: 13px;
+  font-weight: bolder;
+}
+.section_heading_css {
+  font-size: 35px;
+  font-weight: 600;
+  color: $white-color;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+
+  @include respond(mmd) {
+    font-size: 25px;
+  }
+  @include respond(xs) {
+    font-size: 19px;
+    -webkit-text-stroke-width: 1px;
+  }
+}
+
+.css_max_screen {
+  width: 100%;
+  max-width: 1900px;
+}
+
+.Dark_button {
+  font-size: 13px;
+  font-family: 'Source Sans 3', sans-serif;
+  background: $green-color;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: #fff;
+  letter-spacing: 0.9px;
+}
+.outline_button {
+  border: 1px solid #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: $white-color;
+  letter-spacing: 0.9px;
+}
+
+._css_content_ {
+  color: $content-text-color;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+// @media (prefers-reduced-motion: no-preference) {
+//   ._css_left {
+//     position: relative;
+//     left: -100%;
+//     animation: left_slide linear forwards;
+//     animation-timeline: view();
+//     animation-range: 0px 400px;
+//   }
+
+//   @keyframes left_slide {
+//     from {
+//       position: relative;
+//       left: -100%;
+//     }
+//     to {
+//       position: relative;
+//       left: 0;
+//     }
+//   }
+// }
+._css_left {
+  width: 48%;
+
+  // We can also use offset top and bottom in view() first one is for top and second one is for bottom offset
+  // we also can use
+  // animation-range-start: 500px;
+  // also use contain and cover
+  // animation-range-end: 200px;
+  @include respond(mmd) {
+    width: 70%;
+  }
+  @include respond(sm) {
+    width: 85%;
+  }
+  @include respond(xs) {
+    width: 98%;
+  }
+}
+
+._css_right {
+  width: 48%;
+  @include respond(mmd) {
+    width: 70%;
+  }
+  @include respond(sm) {
+    width: 85%;
+  }
+  @include respond(xs) {
+    width: 98%;
+  }
+}
+// animations declare
+.updownanimation {
+  animation: updownanimation 5s linear infinite;
+}
+
+@keyframes updownanimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px); /* Move down */
+  }
+  100% {
+    transform: translateY(0); /* Move back up */
+  }
+}
+
+// Banner Images style
+.common_banner_img {
+  width: 100%;
+  margin: auto;
+  display: block;
+  object-fit: cover;
+  height: auto;
+  opacity: 1;
+  @include respond(xxxxl) {
+    aspect-ratio: 90 /25;
+  }
+  @include respond(xxxl) {
+    aspect-ratio: 80 /25;
+  }
+  @include respond(xl) {
+    aspect-ratio: 90 /25;
+    object-position: top center;
+  }
+  @include respond(md) {
+    aspect-ratio: 85 /25;
+    object-position: top center;
+  }
+}
+// custome loder
+.custom-loader {
+  width: 3px !important;
+  height: 3px !important;
+  position: relative !important;
+  --d: 12px !important;
+  border-radius: 50%;
+  // padding: 5px;
+  box-shadow:
+    calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 1px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 1px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 2px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 2.75px !important;
+  animation: s7 1s infinite steps(8);
+}
+@keyframes s7 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+.send_again_link_loader {
+  margin-top: 5px;
+  .custom-loader {
+    width: 2px !important;
+    height: 2px !important;
+    --d: 8px !important;
+  }
+}
+
+.password_input_div {
+  position: relative;
+  width: 100%;
+
+  .password_show_btn {
+    position: absolute;
+    right: 2%;
+    top: 30%;
+    cursor: pointer;
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  display: flex;
+  position: relative;
+  &::before {
+    top: calc(100% / 3);
+    right: 5%;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: url('/assets/svg/admin/date_svg.svg');
+    background-size: cover;
+    z-index: 5;
+  }
+}
+.task_date_inp {
+  .react-datepicker__input-container {
+    &::before {
+      top: 25%;
+    }
+  }
+}
+
+// input global styles
+.input-field {
+  // color: currentcolor;
+  border: 0px;
+  box-sizing: content-box;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0px;
+  width: 100%;
+  padding: 5px 0px;
+  position: relative;
+  background-color: transparent;
+}
+.input_margin {
+  margin-top: 5px !important;
+}
+.password_input_div {
+  .input-field {
+    input {
+      padding-right: 40px;
+    }
+  }
+}
+
+.input-field:focus-within:before {
+  top: 0px;
+  // background-color: #fff;
+  text-align: center;
+  font-size: 13px;
+  padding: 5px 3px;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-field label {
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  font-size: 14px;
+  color: $white-color;
+}
+
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  padding: 5px 0px;
+  // border: none;
+  border: none;
+  color: $black-text-color;
+  font-size: 13px;
+  margin-top: 5px;
+  // background-color: #6666665e;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border-bottom: 2px solid $green-color;
+}
+.input-field textarea {
+  resize: none;
+}
+.input-field input::placeholder,
+.input-field textarea::placeholder {
+  font-weight: 500;
+  font-size: 13px;
+  color: $content-text-color;
+}
+
+.error-message {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.fitness_slider {
+  .slider-section {
+    .splide__track {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+}
+
+// phone number validate
+
+.phone_code_lable_css {
+  font-weight: 600;
+}
+.country-collection {
+  #dropdown-basic-button {
+    position: absolute;
+    z-index: 2;
+    top: 9px;
+    height: 40px;
+    font-size: 13px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+
+    &::before {
+      position: absolute;
+      content: '';
+      right: 0;
+      top: 3px;
+      width: 4px;
+      height: 35px;
+      border-right: 1px solid #efefef6c;
+    }
+  }
+  .drop_search {
+    padding: 5px 0px 3px 10px;
+    font-size: 14px;
+    &::placeholder {
+      font-size: 13px;
+    }
+    &:focus {
+      background-color: #000000d6 !important;
+      color: #fff !important;
+      &::placeholder {
+        color: #fff !important;
+      }
+    }
+  }
+  .dd-item-wrp {
+    a {
+      display: flex !important;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+      span {
+        width: auto;
+
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .phone_input {
+    input {
+      padding-left: 90px !important;
+      overflow: hidden;
+    }
+  }
+}
+
+// admin tabs
+
+.create_employee {
+  .nav-tabs {
+    .nav-item {
+      width: 150px;
+      margin: 0 5px;
+      button {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+.inner_plans_tabs {
+  margin-top: 0px;
+  width: 75%;
+  .nav-tabs {
+    border: none;
+    margin-left: auto;
+    @include respond(sm) {
+      margin: 0;
+      margin-top: 50px;
+    }
+    .nav-item {
+      font-size: 16px;
+      position: relative;
+      @include respond(xs) {
+        width: auto;
+        margin: 0;
+      }
+      button {
+        padding: 5px 10px;
+        border: none;
+      }
+      .nav-link {
+        width: 150px;
+        color: #fff;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        font-size: 14px;
+        text-transform: capitalize;
+        height: auto;
+        padding: 8px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40px;
+        margin: 0 10px;
+        margin-top: 15px;
+        border: 1px solid $green-color;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+        @include respond(xs) {
+          width: 100px;
+        }
+      }
+      .nav-link.active {
+        color: #000;
+        background: $green-color;
+      }
+    }
+  }
+}
+
+// Fitness Client Section css
+.banner_slider {
+  .slider-section {
+    .splide__track {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+  .splide__pagination {
+    .splide__pagination__page {
+      background-color: #fff;
+      &.is-active {
+        // background-color: $logo-button-color;
+      }
+    }
+  }
+}
+
+.slider-section {
+  .splide__track {
+    width: 100%;
+  }
+  @include respond(sm) {
+    width: 90%;
+  }
+  .splide__arrow {
+    display: none;
+  }
+  // .splide__pagination {
+  // }
+}
+// banners tab design
+.images_tabs_css {
+  .nav-tabs {
+    @include respond(xs) {
+      width: 100%;
+      right: unset;
+    }
+    .nav-item {
+      button {
+        @include respond(xs) {
+          width: 130px !important;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

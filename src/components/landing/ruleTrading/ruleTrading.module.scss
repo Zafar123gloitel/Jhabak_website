@@ -1,0 +1,353 @@
+@import '../../../styles/index.scss';
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+
+  @include respond(md) {
+    height: 100%;
+  }
+}
+.inner_main {
+  width: 700px;
+  min-height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  padding-top: 250px;
+  @include respond(xl) {
+    padding-top: 100px;
+  }
+  @include respond(mmd) {
+    padding-top: 0px;
+    min-height: 600px;
+  }
+  @include respond(sm) {
+    padding-top: 120px;
+    min-height: 400px;
+    width: 100%;
+  }
+  @include respond(xms) {
+    padding-top: 0;
+    width: 100%;
+  }
+  .men {
+    margin-left: -15px;
+    img {
+      @include respond(xl) {
+        width: 350px;
+        height: 350px;
+      }
+      @include respond(lg) {
+        width: 250px;
+        height: 250px;
+        margin-left: 15px;
+      }
+      @include respond(sm) {
+        width: 200px;
+        height: 200px;
+      }
+      @include respond(xxs) {
+        width: 150px;
+        height: 150px;
+        margin-top: 50px;
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.menu_list {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  @include respond(lg) {
+    width: 400px;
+    height: 400px;
+  }
+  @include respond(sm) {
+    width: 200px;
+    height: 200px;
+  }
+  @include respond(xxs) {
+    width: 100px;
+    height: 100px;
+  }
+}
+.menu_list > li {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include respond(lg) {
+    width: 120px;
+    height: 120px;
+  }
+  @include respond(sm) {
+    width: 80px;
+    height: 80px;
+  }
+  @include respond(xs) {
+    width: 70px;
+    height: 70px;
+  }
+  @include respond(xms) {
+    width: 60px;
+    height: 60px;
+  }
+}
+.menu_list > li .fa {
+  font-size: 30px;
+  position: relative;
+}
+.menues {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ffff;
+  // box-shadow: #5a69a5 0 0 10px 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  img {
+    position: relative;
+    width: 100px !important;
+    height: 100px !important;
+    @include respond(lg) {
+      width: 60px !important;
+      height: 60px !important;
+    }
+    @include respond(sm) {
+      width: 40px !important;
+      height: 40px !important;
+    }
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    width: 113%;
+    height: 113%;
+    border: 11px #ffcfcf solid;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    @include respond(xs) {
+      border-width: 5px;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    clip-path: polygon(49% 51%, 32% 0, 65% 0);
+    top: 100%;
+    @include respond(sm) {
+      display: none;
+    }
+    // background: red !important;
+  }
+}
+
+.menu_item {
+  transition: all 0.5s;
+}
+
+$menu-items: 6; // Define the number of menu items
+
+.menu_list {
+  .heading_text {
+    position: absolute;
+    display: flex;
+    color: #fff;
+    left: 0%;
+    top: 0%;
+    width: 200px;
+    height: 100px;
+    @include respond(lg) {
+      display: none;
+    }
+  }
+  .menu_item {
+    @for $i from 1 through $menu-items {
+      $deg: 36 * ($i - 1); // Calculate the rotation degree
+      &:nth-child(#{$i}) {
+        transform: rotate(#{0 + $deg}deg) translate(-400px);
+        @include respond(xl) {
+          transform: rotate(#{0 + $deg}deg) translate(-300px);
+        }
+        @include respond(lg) {
+          transform: rotate(#{0 + $deg}deg) translate(-250px);
+        }
+        @include respond(sm) {
+          transform: rotate(#{0 + $deg}deg) translate(-200px);
+        }
+        @include respond(xs) {
+          transform: rotate(#{0 + $deg}deg) translate(-150px);
+        }
+        @include respond(xms) {
+          transform: rotate(#{0 + $deg}deg) translate(-130px);
+        }
+        .menues,
+        .heading_text {
+          transform: rotate(-(#{0 + $deg}deg));
+        }
+      }
+    }
+
+    transition: all 2s ease-in-out;
+    &:nth-child(1) {
+      .menues {
+        &::before {
+          transform: rotate(-40deg);
+          border-right-color: #e9c3f1;
+          border-bottom-color: #e9c3f1;
+        }
+        &::after {
+          left: 100%;
+          top: 25%;
+          transform: rotate(-88deg);
+          background: #e9c3f1;
+        }
+      }
+      .heading_text {
+        left: -200px;
+        top: 30px;
+      }
+    }
+    &:nth-child(2) {
+      .menues {
+        &::before {
+          transform: rotate(-20deg);
+          border-right-color: #ffcfcf;
+          border-bottom-color: #ffcfcf;
+        }
+        &::after {
+          left: 90%;
+          top: 60%;
+          transform: rotate(-60deg);
+          background: #ffcfcf;
+        }
+      }
+      .heading_text {
+        left: -165px;
+        top: 135px;
+      }
+    }
+    &:nth-child(3) {
+      .menues {
+        &::before {
+          transform: rotate(22deg);
+          border-right-color: #d3cbf9;
+          border-bottom-color: #d3cbf9;
+        }
+        &::after {
+          left: 54%;
+          top: 92%;
+          transform: rotate(-24deg);
+          background: #d3cbf9;
+        }
+      }
+      .heading_text {
+        left: -106px;
+        top: 200px;
+      }
+    }
+    &:nth-child(4) {
+      .menues {
+        &::before {
+          transform: rotate(66deg);
+          border-right-color: #ffcfcf;
+          border-bottom-color: #ffcfcf;
+        }
+        &::after {
+          left: -12%;
+          top: 92%;
+          transform: rotate(27deg);
+          background: #ffcfcf;
+          @include respond(lg) {
+            left: -18%;
+            top: 92%;
+            transform: rotate(24deg);
+          }
+        }
+      }
+      .heading_text {
+        left: -90px;
+        top: -140px;
+      }
+    }
+    &:nth-child(5) {
+      .menues {
+        &::before {
+          transform: rotate(100deg);
+          border-right-color: #e9c3f1;
+          border-bottom-color: #e9c3f1;
+        }
+        &::after {
+          left: -43%;
+          top: 61%;
+          transform: rotate(58deg);
+          background: #e9c3f1;
+          @include respond(lg) {
+            left: -53%;
+            top: 61%;
+          }
+        }
+      }
+      .heading_text {
+        left: -170px;
+        top: -80px;
+      }
+    }
+    &:nth-child(6) {
+      .menues {
+        &::before {
+          transform: rotate(130deg);
+          border-right-color: #d3cbf9;
+          border-bottom-color: #d3cbf9;
+        }
+        &::after {
+          left: -53%;
+          top: 26%;
+          transform: rotate(90deg);
+          background: #d3cbf9;
+          @include respond(lg) {
+            top: 25%;
+            left: -65%;
+          }
+        }
+      }
+      .heading_text {
+        left: -200px;
+        top: 20px;
+      }
+    }
+  }
+}
+
+.menues:hover {
+  box-shadow: rgba(255, 255, 255, 0.5) 0 0 10px 2px;
+  color: #efefef;
+  transition: all 0.5s;
+}
+
+.menu_list .plus-sign {
+  transform: rotate(135deg);
+  transition: all 0.5s ease;
+}

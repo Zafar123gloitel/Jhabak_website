@@ -1,0 +1,76 @@
+@import '../../../styles/index.scss';
+.segments {
+  > h1 {
+    font-size: 36px;
+    @include respond(mmd) {
+      font-size: 26px;
+    }
+    @include respond(xs) {
+      font-size: 21px;
+    }
+  }
+  .innr_segments {
+    .segment_conainer {
+      width: 90%;
+      padding: 40px 0;
+
+      .image_part {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        @include respond(mmd) {
+          width: 500px;
+          height: 300px;
+          display: none;
+        }
+        .segments_img {
+          display: block;
+          position: relative;
+          width: 300px;
+          height: 300px;
+          border-radius: 15px;
+          //   overflow: hidden;
+        }
+      }
+      &:nth-child(2) {
+        @include respond(md) {
+          justify-content: space-between;
+        }
+        @include respond(mmd) {
+          justify-content: center;
+        }
+
+        .segments_img {
+          width: 500px;
+          border-radius: 5px;
+          overflow: hidden;
+          @include respond(xl) {
+            width: 400px;
+            height: 250px;
+          }
+          @include respond(lg) {
+            width: 350px;
+            height: 250px;
+          }
+        }
+        .image_part {
+          order: 1;
+          display: flex;
+          justify-content: flex-start;
+          @include respond(mmd) {
+            display: none;
+          }
+        }
+        .content {
+          order: 2;
+        }
+      }
+      &:nth-child(3) {
+        .segments_img {
+          width: 400px;
+          height: 180px;
+        }
+      }
+    }
+  }
+}

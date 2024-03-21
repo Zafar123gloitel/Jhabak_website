@@ -1,0 +1,156 @@
+@import '../../styles/index.scss';
+.input_field {
+  border: 0px;
+  box-sizing: content-box;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0%;
+  width: 100%;
+  padding: 5px 0px;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid #fff;
+
+  .dropdown {
+    // appearance: none;
+    // padding-left: 16px;
+    border: none;
+  }
+}
+.input_field_select {
+  width: 100%;
+  padding: 6px 0px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  font-size: 15px;
+  margin-top: 10px;
+  font-weight: 300;
+  background-color: transparent;
+  display: flex;
+  // align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 19px;
+  .input_field {
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #000;
+    outline: none;
+    border: none;
+    padding: 8px 0px;
+    margin-left: 9px;
+    border-radius: 8px;
+    width: 95%;
+    background-color: $dark-input-bg;
+    font-size: 13px;
+    transition: none;
+    &.defaultSelected {
+      font-size: 13px !important;
+      color: $content-text-color !important;
+    }
+    &:focus {
+      background-color: $dark-input-bg !important;
+      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0px !important;
+      transition: all 0.5s;
+    }
+    option {
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      &:nth-child(1) {
+        color: #aaaaaa;
+        border-top: 1px solid $green-color;
+      }
+      &:last-child {
+        border-bottom: 1px solid red;
+      }
+    }
+    option {
+      color: #fff;
+      background-color: $background-color;
+      border-radius: 50%;
+    }
+  }
+}
+.select_field_err {
+  position: absolute !important;
+  left: 0;
+  top: 100%;
+}
+.label {
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  font-size: 14px;
+  color: #fff;
+  span {
+    color: red;
+  }
+}
+
+._input_field_ {
+  input {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  textarea {
+    height: 100px !important;
+  }
+}
+
+// Date Input field styles
+
+.date_input {
+  .react-datepicker__input-container {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 15px;
+      height: 15px;
+      background: url('/assets/svg/admin/date_svg.svg');
+      background-size: cover;
+      right: 0;
+      top: 0;
+      z-index: 5;
+    }
+  }
+  .date_input_field {
+    padding-left: 10px !important;
+    border-color: $white-input-color !important;
+    position: relative;
+    &::placeholder {
+      // font-size: 11px;
+      color: #efefef;
+    }
+  }
+}
+
+// phone Number input
+
+.enquiry_phone_number {
+  width: 100% !important;
+  text-align: left;
+  border: 0px;
+  box-sizing: content-box;
+  background: none;
+  display: block;
+  padding: 5px 0;
+  // min-width: 0px;
+  min-width: 100%;
+  position: relative;
+  // padding-top: 50px !important;
+  .enquiry_phone_number_collection {
+    margin-top: 8px;
+  }
+  .phone_no_label {
+    color: $light-green-color;
+  }
+}

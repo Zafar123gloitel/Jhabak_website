@@ -1,0 +1,41 @@
+@import '../../../../styles/index.scss';
+.trading_strategies {
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include respond(mmd) {
+    width: 100%;
+  }
+  @include respond(xs) {
+    width: 90%;
+  }
+
+  h4 {
+    width: 100%;
+    font-weight: 500;
+    position: relative;
+    span {
+      display: block;
+      margin-left: 10px;
+    }
+    &::before {
+      position: absolute;
+      content: '';
+      width: 2px;
+      left: 0px;
+      height: 100%;
+      background-color: #1fcff1;
+    }
+  }
+  .trading_strategies_text {
+    position: relative;
+    p {
+      width: 75%;
+      @include respond(mmd) {
+        width: 100%;
+      }
+    }
+  }
+}

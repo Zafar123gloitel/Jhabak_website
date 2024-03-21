@@ -1,0 +1,12 @@
+export { default as BannerSection } from './bannerSection';
+export { default as VideoSection } from './videoSection';
+export { default as IntradayStrategy } from './intradayStrategy';
+export { default as NeedHelpSection } from './needHelpSection';
+export { default as Segments } from './segments';
+export { default as MutualFund } from './mutualFund';
+export { default as Packages } from './packagesSection';
+export { default as Enquiry } from './enquiry';
+export { default as VideoContent } from './videoContent';
+export { default as WeAreAdvisory } from './weAreAdvisory';
+export { default as RuleTrading } from './ruleTrading';
+export { default as BasicRuleTrading } from './basicRuleTrading';

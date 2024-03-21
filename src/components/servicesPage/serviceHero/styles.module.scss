@@ -1,0 +1,95 @@
+@import '../../../styles/index.scss';
+.main_home_page_video {
+  height: 75vh;
+  width: 100%;
+  margin-top: 0px;
+  position: relative;
+  .inner_main_home_page_video {
+    height: 100%;
+    width: 100%;
+
+    flex-wrap: wrap;
+    @include respond(sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .banner_content {
+      position: relative;
+      padding-left: 150px;
+
+      h1 {
+        font-size: 70px;
+      }
+      @include respond(xl) {
+        padding-left: 50px;
+      }
+      @include respond(mmd) {
+        text-align: center;
+        padding-left: 0;
+      }
+
+      @include respond(sm) {
+        left: unset;
+        top: unset;
+        text-align: center;
+
+        h1 {
+          font-size: 60px;
+        }
+      }
+      @include respond(xs) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+          font-size: 40px;
+        }
+      }
+
+      .facilities {
+        padding: 0;
+        @include respond(lg) {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        @include respond(mmd) {
+          justify-content: center;
+        }
+        @include respond(xs) {
+          width: 98%;
+        }
+        li {
+          @include respond(lg) {
+            width: 45%;
+            margin: 5px 0;
+          }
+          button {
+            @include respond(sm) {
+              font-size: 11px;
+            }
+            @include respond(lg) {
+              width: 100%;
+            }
+            span {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+    .img_part {
+      @include respond(mmd) {
+        display: none;
+      }
+      img {
+        @include respond(lg) {
+          width: 400px;
+          height: 400px;
+        }
+      }
+    }
+  }
+}

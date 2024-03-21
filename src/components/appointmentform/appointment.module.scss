@@ -1,0 +1,48 @@
+@import '../../styles/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.main_form {
+  padding: 20px;
+  height: 600px;
+}
+
+.inner_form {
+  background-color: black;
+  width: 500px;
+  border-radius: 5px;
+  padding: 30px;
+  border: 1px solid #adff14;
+
+  @include respond(sm) {
+    width: 400px;
+  }
+  @include respond(xs) {
+    width: 98%;
+  }
+}
+
+.form_info {
+  height: 500px;
+}
+
+.input_container {
+  color: #3c4959;
+  height: 100px;
+}
+.appointment_input {
+  width: 400px;
+  height: 40px;
+  color: #3c4959;
+  border-radius: 5px;
+
+  @include respond(sm) {
+    width: 350px;
+  }
+  @include respond(xs) {
+    width: 98%;
+  }
+}
+.Button {
+  margin-top: 50px;
+}

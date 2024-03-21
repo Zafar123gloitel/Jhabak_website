@@ -1,0 +1,101 @@
+@import '../../../styles/index.scss';
+.create_employee {
+  .inr_create_employee {
+    .employee_input {
+      .input-field {
+        input {
+          border-color: #000;
+        }
+      }
+    }
+  }
+}
+
+//  Form Design
+
+.create_form {
+  margin-top: 25px;
+}
+.create_Client_section {
+  position: relative;
+  border-radius: 10px;
+  padding: 20px 0 50px 0;
+  margin: 20px 0 50px 0;
+  width: 40%;
+  border: 1px solid $green-color;
+  transition: all 0.5s ease-in-out;
+  .inr_create_Client_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .Client_input_container {
+      width: 90%;
+      label {
+        font-size: 12px;
+      }
+      input {
+        background-color: transparent;
+      }
+      @include respond(xs) {
+        width: 90%;
+        margin-top: 10px;
+      }
+      .single_side_option {
+        width: 100%;
+        .Client_input_container {
+          width: 100%;
+        }
+      }
+    }
+    .price_range {
+      display: flex;
+      justify-content: space-between;
+      .Client_input_section {
+        width: 48%;
+      }
+    }
+
+    // Price sl target and buy price
+    .price_actions {
+      display: flex;
+      justify-content: space-between;
+      .single_price_actions {
+        width: 30%;
+      }
+    }
+
+    .Client_input_section {
+      width: 100%;
+      padding: 0;
+      margin-bottom: 10px !important;
+      input,
+      select {
+        border-bottom: 1px solid $green-color !important;
+        color: #fff;
+        background-color: $dark-input-bg;
+      }
+      select {
+        width: 98%;
+
+        padding-left: 13px;
+        margin-left: 0;
+
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+      }
+
+      label {
+        color: #fff;
+      }
+    }
+  }
+
+  .smt_btn {
+    width: 90%;
+    margin-top: 20px;
+    &.smt_btn_loader {
+      padding: 20px 0;
+    }
+  }
+}

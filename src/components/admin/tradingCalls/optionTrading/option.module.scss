@@ -1,0 +1,59 @@
+@import '../../../../styles/index.scss';
+
+.create_Client_section {
+  width: 40%;
+  margin-top: 0;
+  .inr_create_Client_section {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+.top_inputs {
+  .top_single_input {
+    width: 45%;
+    .Client_input_section {
+      width: 100%;
+    }
+    &:nth-child(2) {
+      margin-left: 35px;
+    }
+  }
+}
+.hedge_input {
+  .top_single_input {
+    width: 47.5%;
+    .Client_input_section {
+      width: 100%;
+    }
+    &:nth-child(2) {
+      margin-left: 38px;
+    }
+  }
+}
+
+.hedge_design {
+  width: 60%;
+  transition: all 0.5s ease-in-out;
+  .inr_create_Client_section {
+    .top_inputs {
+      .top_single_input {
+        width: 45% !important;
+        &:nth-child(2) {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  .Client_input_container {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font-size: 12px;
+    }
+  }
+  .single_side_option {
+    width: 48% !important;
+  }
+}

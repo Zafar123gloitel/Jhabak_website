@@ -1,0 +1,231 @@
+@import '../../styles/index.scss';
+
+.main_navbar {
+  background-image: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  left: auto;
+  right: 0px;
+  color: inherit;
+  box-shadow: none;
+  min-height: 80px;
+  align-items: center;
+  justify-content: center;
+
+  .inner_main_header {
+    @include respond(xxxxl) {
+      max-width: 1800px;
+    }
+    .menu_dropdown_button {
+      position: absolute;
+      z-index: 99;
+      left: 0;
+      top: 0;
+    }
+
+    .menue-list-section {
+      height: 100%;
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+
+      .menue_list {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        justify-content: space-evenly !important;
+        @include respond(md) {
+          justify-content: space-between !important;
+        }
+
+        .logo_section {
+          width: 130px !important;
+          height: 50px !important;
+          position: relative;
+          .logo_link {
+            width: 100%;
+            height: 100%;
+          }
+          @include respond(md) {
+            margin-left: 15px !important;
+          }
+        }
+
+        .single_list {
+          margin: 0px 0px 0px 40px;
+          @include respond(lg) {
+            margin: 0;
+          }
+          & a {
+            font-size: 14px;
+            // color: #000000e0;
+            color: #fff;
+            font-weight: 600;
+          }
+
+          & a:hover {
+            color: #efefefea;
+          }
+        }
+        .desktop_nav {
+          @include respond(md) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main_navbar {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anchor_dec {
+  text-decoration: none !important;
+  color: #000;
+  font-family: 'Yatra One';
+}
+
+.no_marging_padding {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  height: 100px;
+  background: transparent;
+  position: relative;
+  z-index: 99;
+}
+
+.inner_navbar {
+  height: 100%;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between !important;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand_menues {
+  width: 20%;
+  height: 100%;
+}
+
+.Menu_List {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 1170px;
+  @include respond(sm) {
+    margin-left: 0;
+  }
+}
+
+.Menues {
+  margin: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+.single_menue {
+  width: auto;
+  margin: 0 15px;
+  height: 100%;
+  @include respond(xxs) {
+    margin: 0 4px;
+  }
+  .anchor_dec {
+    text-decoration: none;
+    height: 100%;
+    color: $black-text-color;
+    font-weight: 500;
+    @include respond(xxs) {
+      font-size: 13px;
+    }
+  }
+}
+.nav_border {
+  position: relative;
+  z-index: 99;
+}
+
+.Menues {
+  width: 100%;
+}
+
+.single_menue > a {
+  font-size: 15px;
+  // font-weight: 550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 100%;
+}
+// archana_css
+.company_name {
+  display: flex;
+  width: 40%;
+  height: auto;
+  font-family: Timmana;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #023d6d;
+  @include respond(md) {
+    font-size: 40px;
+  }
+}
+.book {
+  @include respond(md) {
+    display: none;
+  }
+}
+.appointment_btn {
+  text-wrap: nowrap;
+}
+.Menu_List {
+  width: 55%;
+  @include respond(md) {
+    display: none;
+  }
+}
+
+.menu_dropdown_button {
+  width: 100px;
+  height: 40px;
+  background: transparent;
+  border-radius: 5px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  left: 25px;
+  top: 35px;
+  position: absolute;
+
+  @include respond(xl) {
+    display: flex;
+  }
+  @include respond(md) {
+    display: inline;
+  }
+}

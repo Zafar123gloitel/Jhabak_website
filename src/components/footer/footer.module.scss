@@ -1,0 +1,32 @@
+.footer_outter {
+  background-color: #00b666;
+}
+
+.footer_inner {
+  gap: 50px;
+  height: auto;
+  justify-content: space-between;
+  align-items: flex-start !important;
+}
+.footer_1 {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.footer_2 {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.footer_3 {
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+}
+
+.footer_heading {
+  width: 70%;
+}
+.footer_content {
+  width: 70%;
+}
