@@ -27,15 +27,8 @@ const PackageCard = ({ priceData }: IProps) => {
             Market <br /> <span> hrs.</span>
           </span>
         </span>
-        <div className={`${styles.info_btns} element_center flex-column`}>
-          <Link href={'/'} className={`${styles.dark_btn} Dark_button w-100 element_center`}>
-            Subscribe
-          </Link>
-          <Link href={'/'} className={`outline_button ${styles.more_details} element_center w-100 mt-2`}>
-            More Details
-          </Link>
-        </div>
-        <span className="d-block border mt-2"></span>
+
+        <span className="d-block border mb-1"></span>
         <span className={styles.feature}>
           <h6 className="css-f15">{priceData.featureHeading}</h6>
           <ul>
@@ -49,6 +42,11 @@ const PackageCard = ({ priceData }: IProps) => {
             })}
           </ul>
         </span>
+        <div className={`${styles.info_btns} element_center flex-column `}>
+          <Link href={'/'} className={`${styles.more_details} element_center mt-2 float-right`}>
+            More Details &#8594;
+          </Link>
+        </div>
       </div>
     </div>
   );

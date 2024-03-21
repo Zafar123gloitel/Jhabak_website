@@ -14,26 +14,11 @@ const VideoSection = () => {
             return (
               <div className={`${styles.innr_technical} css_max_screen d-flex flex-wrap element_center `} key={item.id}>
                 <div className={`${styles.technical_content} _css_left `}>
-                  {/* <div className={styles.content}>
-                    <h1 className="section_heading_css w-100 mt-1">{item.heading}</h1>
-                    <p className={`${styles.technical_text}  _css_content_ `}>{item.content}</p>
-                    <ul className="mt-2">
-                      {item.contentList.map(data => {
-                        return (
-                          <li key={data} className="_css_content_ mt-1">
-                            <Image src={'/assets/svg/landing/check_squere.svg'} alt={data} width={20} height={20} />
-                            <span>{data}</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <button className="Dark_button mt-5">Book An Appointment</button>
-                  </div> */}
                   <TextComponent
                     heading={item.heading}
                     content={item.content}
                     contentList={item.contentList}
-                    href="/"
+                    // href="/"
                   />
                 </div>
 

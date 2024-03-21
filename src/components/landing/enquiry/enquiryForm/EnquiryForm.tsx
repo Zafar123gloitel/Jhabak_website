@@ -8,7 +8,8 @@ import { ddItems } from '@/services/country';
 import validation from '@/services/validation';
 
 const defaultEnquiryData = {
-  name: '',
+  fname: '',
+  lname: '',
   email: '',
   mobile: '',
   message: '',
@@ -28,8 +29,11 @@ export const EnquiryForm = () => {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      if (!validation.requied(enquiryData?.name)) {
-        setEnquiryDataError(prev => ({ ...prev, name: 'Name Require' }));
+      if (!validation.requied(enquiryData?.fname)) {
+        setEnquiryDataError(prev => ({ ...prev, fname: 'First Name Require' }));
+      }
+      if (!validation.requied(enquiryData?.lname)) {
+        setEnquiryDataError(prev => ({ ...prev, lname: 'Last Name Require' }));
       }
 
       if (!validation.email(enquiryData?.email)) {
@@ -65,29 +69,43 @@ export const EnquiryForm = () => {
   return (
     <form className={styles.form_enquiry} onSubmit={onSubmit}>
       <div className={styles.input_container}>
-        <span>
-          <InputField
-            label="Name"
-            type="text"
-            placeholder="Enter Your Name"
-            error={enquiryDataError.name}
-            name="name"
-            className={styles.enquiry_input}
-            onChange={onChange}
-            value={enquiryData.name}
-          />
-        </span>
+        <div className={`${styles.names} d-flex`}>
+          <span>
+            <InputField
+              label="First Name"
+              type="text"
+              placeholder="Enter First Name"
+              error={enquiryDataError.fname}
+              name="fname"
+              className={styles.enquiry_input}
+              onChange={onChange}
+              value={enquiryData.fname}
+            />
+          </span>
+          <span>
+            <InputField
+              label="Last Name"
+              type="text"
+              placeholder="Enter Last Name"
+              error={enquiryDataError.lname}
+              name="lname"
+              className={styles.enquiry_input}
+              onChange={onChange}
+              value={enquiryData.lname}
+            />
+          </span>
+        </div>
         <span>
           <div className={`${styles['detail_css']}`}>
             <label className={`${styles['phone_code_lable_css']} text-white css-f14`} htmlFor="phone">
               Phone number
             </label>
-            <div className={`${styles['phone_number']} ${styles['enquiry_phone_number']}`}>
-              <div className={`${styles['enquiry_phone_number_collection']} All_content_center country-collection`}>
-                <DropdownButton id="dropdown-basic-button" title={countryCode} className="dropdown-btn-phn">
+            <div className="country_code">
+              <div className=" country-collection">
+                <DropdownButton id="dropdown-basic-button" title={countryCode} className="dropdown-btn-phn ">
                   <input
                     type="text"
-                    className="search drop_search dark_input"
+                    className="search drop_search dark_input bg-transparent text-dark"
                     placeholder="Search"
                     name="countryCode"
                     value={searchValue}
@@ -97,8 +115,8 @@ export const EnquiryForm = () => {
                     {data.map((d: Record<string, string>, index: number) => {
                       return (
                         <Dropdown.Item key={index} onClick={() => handleCountry(d.code)}>
-                          <span className="left">{d.country}</span>
                           <span className="right">{d.code}</span>
+                          <span className="left ">{d.country}</span>
                         </Dropdown.Item>
                       );
                     })}
@@ -151,7 +169,7 @@ export const EnquiryForm = () => {
           <span className="text-green"> Privacy Policy</span>.
         </label>
       </div> */}
-      <button type="submit" className={`${styles.enquiry_btn} Dark_button mt-3`}>
+      <button type="submit" className={`${styles.enquiry_btn} Dark_button mt-3 `}>
         Submit Now
       </button>
     </form>

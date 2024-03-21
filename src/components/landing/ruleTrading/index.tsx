@@ -8,7 +8,7 @@ const RuleTrading = () => {
     <section className={`${styles.main} flex-column`}>
       <h1 className="section_heading_css">Intraday Trading Strategies</h1>
       <p className="small_heading"> Basic Rules for Intraday Trading</p>
-      <div className={`${styles.inner_main} mt-5`}>
+      <div className={`${styles.inner_main}`}>
         <div className={styles.men}>
           <Image src="/assets/svg/landing/rule_men.svg" alt="loading" width={500} height={500} />
         </div>

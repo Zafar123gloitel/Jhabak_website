@@ -1,3 +1,18 @@
+export interface IRandomBanners {
+  imgSrc: string;
+}
+export const randomBanners: IRandomBanners[] = [
+  {
+    imgSrc: '/assets/images/banner1.jpg',
+  },
+  {
+    imgSrc: '/assets/images/banner.jpg',
+  },
+  {
+    imgSrc: '/assets/images/banner2.jpg',
+  },
+];
+
 export interface MasterTechnical {
   id: number;
   content: string;
@@ -79,6 +94,23 @@ export const PricingData: Pricing[] = [
     featureHeading: 'Our Best Features',
     featureList: [
       '100% Intraday Trading Calls',
+      'Free Strategies',
+      'Free Software',
+      'Live market support',
+      'Free Learning Videos',
+      'Support option hedge',
+    ],
+    href: '/',
+  },
+  {
+    id: 304,
+    callType: 'Long Term',
+    heading: 'Intraday Trading',
+    hrs: 150,
+    price: 1500,
+    featureHeading: 'Our Best Features',
+    featureList: [
+      '100% Long Term Trading Calls',
       'Free Strategies',
       'Free Software',
       'Live market support',
@@ -195,10 +227,10 @@ export interface IBuildDreams {
 export const buildDreamData: IBuildDreams[] = [
   {
     id: 3111,
-    smallHeading: 'Investing made Easy for you',
-    heading: 'Mutual Funds Investment Services',
+    smallHeading: 'Mutual Funds Investment Services',
+    heading: 'Investing made Easy for you',
     content:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry is standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the',
+      'Unlock tailored investment solutions with our Mutual Funds Investment Services. Our expert guidance and personalized strategies cater to your financial goals and risk tolerance, empowering informed investment decisions. Whether you are a novice or seasoned investor, our comprehensive approach ensures your investments align with your aspirations.',
     imgSrc: '/assets/svg/landing/potli.svg',
     svgList: [
       {

@@ -9,5 +9,5 @@
   "quoteProps": "consistent",
   "arrowParens": "avoid",
   "htmlWhitespaceSensitivity": "strict",
-  "endOfLine": "lf"
+  "endOfLine": "auto"
 }

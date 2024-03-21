@@ -6,6 +6,12 @@
   @include respond(sm) {
     width: 95%;
   }
+  .enquiry_form {
+    width: 75%;
+    @include respond(mmd) {
+      width: 100%;
+    }
+  }
   p,
   h1,
   form {
@@ -27,8 +33,8 @@
 .enquiry_image {
   position: relative;
   display: flex;
-  width: 80%;
-  height: 550px;
+  width: 650px;
+  height: 450px;
   border-radius: 20px;
   margin-top: -55px;
 

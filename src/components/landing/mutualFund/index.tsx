@@ -5,15 +5,17 @@ import { TextComponent } from '@/components';
 import { buildDreamData } from '../configData';
 function MutualFund() {
   return (
-    <section className={`${styles.we_are_dream} element_center w-100 section_padding mt-1`}>
-      <div className={`${styles.innr_dream} css_max_screen d-flex flex-wrap  `}>
-        {buildDreamData &&
-          buildDreamData.map(item => {
-            return (
-              <React.Fragment key={item.heading}>
+    <section className={`${styles.we_are_dream} element_center w-100 flex-column`}>
+      {buildDreamData &&
+        buildDreamData.map(item => {
+          return (
+            <React.Fragment key={item.heading}>
+              <h1 className="section_heading_css mt-3 mb-5">{item.heading}</h1>
+              <div className={`${styles.innr_dream} mt-2  css_max_screen d-flex flex-wrap element_center `}>
                 <div className={`${styles.dream_content} _css_left `}>
                   <div className={`${styles.content}`}>
-                    <TextComponent smallHeading={item.smallHeading} heading={item.heading} content={item.content} />
+                    <h5 className={`${styles.small_heading} text-white`}>{item.smallHeading}</h5>
+                    <TextComponent content={item.content} />
                     <div className={`${styles.svgs} element_center mt-5`}>
                       {item.svgList.map(data => {
                         return (
@@ -31,10 +33,10 @@ function MutualFund() {
                     <Image src={'/assets/svg/landing/potli.svg'} fill={true} alt="advisory" />
                   </div>
                 </div>
-              </React.Fragment>
-            );
-          })}
-      </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
     </section>
   );
 }

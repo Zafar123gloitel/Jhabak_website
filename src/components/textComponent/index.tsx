@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 interface ITextContent {
   smallHeading?: string;
-  heading: string;
+  heading?: string;
   content?: string;
   contentList?: string[];
   href?: string;
@@ -12,7 +12,7 @@ interface ITextContent {
 export const TextComponent = ({ heading, smallHeading, content, contentList, href }: ITextContent) => {
   return (
     <div className={styles.content}>
-      <p className={`${styles.small_heading} text-green css-f13 m-0`}>
+      <p className={`${styles.small_heading} text-white css-f13 m-0`}>
         <strong>{smallHeading}</strong>
       </p>
       <h1 className="section_heading_css w-100 mt-1">{heading}</h1>

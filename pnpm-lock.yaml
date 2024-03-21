@@ -8,9 +8,6 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^2.1.0
     version: 2.2.1(react-redux@9.1.0)(react@18.2.0)
-  '@splidejs/react-splide':
-    specifier: ^0.7.12
-    version: 0.7.12
   axios:
     specifier: ^1.6.7
     version: 1.6.7
@@ -88,6 +85,9 @@ dependencies:
     version: 1.71.1
 
 devDependencies:
+  '@splidejs/react-splide':
+    specifier: ^0.7.12
+    version: 0.7.12
   '@types/js-cookie':
     specifier: ^3.0.6
     version: 3.0.6
@@ -1770,11 +1770,11 @@ packages:
     resolution: {integrity: sha512-UfXH+j47jsMc4x5HA/aOwuuHPqn6y9+ZTNYPWDRD8iLKvIVMZlzq2unjUEvyDAU+TTVPZOXkG2Ojeoz0P4AkZw==}
     dependencies:
       '@splidejs/splide': 4.1.4
-    dev: false
+    dev: true
 
   /@splidejs/splide@4.1.4:
     resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
-    dev: false
+    dev: true
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}

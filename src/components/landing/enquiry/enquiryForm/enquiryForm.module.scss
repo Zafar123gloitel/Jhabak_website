@@ -7,11 +7,34 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    textarea {
+      background-color: $dark-input-bg;
+      color: $white-input-color;
+    }
+    .names {
+      width: 60%;
+      justify-content: space-between;
+      @include respond(mmd) {
+        width: 100%;
+      }
+      span {
+        width: 48%;
+        span {
+          width: 100%;
+        }
+      }
+    }
     span {
       display: block;
-      width: 46%;
+      width: 37%;
+
+      input {
+        background-color: $dark-input-bg;
+        color: $white-input-color;
+      }
       @include respond(mmd) {
-        width: 48%;
+        width: 100%;
       }
       @include respond(xs) {
         width: 100%;
@@ -37,7 +60,8 @@
     }
   }
   .enquiry_btn {
-    @include respond(md) {
+    float: right;
+    @include respond(xms) {
       width: 100%;
     }
   }

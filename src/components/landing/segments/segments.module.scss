@@ -1,8 +1,17 @@
 @import '../../../styles/index.scss';
 .segments {
+  > h1 {
+    font-size: 36px;
+    @include respond(mmd) {
+      font-size: 26px;
+    }
+    @include respond(xs) {
+      font-size: 21px;
+    }
+  }
   .innr_segments {
     .segment_conainer {
-      width: 80%;
+      width: 90%;
       padding: 40px 0;
 
       .image_part {

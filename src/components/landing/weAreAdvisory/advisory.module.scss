@@ -67,6 +67,7 @@
       }
       @include respond(mmd) {
         // display: none;
+        margin: 50px 0;
       }
       .advisory_image {
         position: relative;

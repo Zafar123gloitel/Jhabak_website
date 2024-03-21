@@ -137,18 +137,18 @@ button {
   font-weight: bolder;
 }
 .section_heading_css {
-  font-size: 44px;
+  font-size: 35px;
   font-weight: 600;
   color: $white-color;
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 
-  @include respond(md) {
-    font-size: 35px;
+  @include respond(mmd) {
+    font-size: 25px;
   }
   @include respond(xs) {
-    font-size: 26px;
+    font-size: 19px;
     -webkit-text-stroke-width: 1px;
   }
 }
@@ -162,7 +162,7 @@ button {
   font-size: 13px;
   font-family: 'Source Sans 3', sans-serif;
   background: $green-color;
-  padding: 13px 15px;
+  padding: 8px 15px;
   border-radius: 6px;
   color: #fff;
   letter-spacing: 0.9px;
@@ -171,7 +171,7 @@ button {
   border: 1px solid #fff;
   font-size: 13px;
   font-weight: 500;
-  padding: 13px 15px;
+  padding: 8px 15px;
   border-radius: 6px;
   background-color: transparent;
   color: $white-color;
@@ -438,19 +438,62 @@ button {
   #dropdown-basic-button {
     position: absolute;
     z-index: 2;
-    top: 9.5px;
-    height: 50px;
+    top: 9px;
+    height: 40px;
+    font-size: 13px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background-color: transparent;
-    border: 1px transparent solid;
-    border-right-color: #00000081;
+    border: none;
+    color: #fff;
 
-    color: #000;
+    &::before {
+      position: absolute;
+      content: '';
+      right: 0;
+      top: 3px;
+      width: 4px;
+      height: 35px;
+      border-right: 1px solid #efefef6c;
+    }
+  }
+  .drop_search {
+    padding: 5px 0px 3px 10px;
+    font-size: 14px;
+    &::placeholder {
+      font-size: 13px;
+    }
+    &:focus {
+      background-color: #000000d6 !important;
+      color: #fff !important;
+      &::placeholder {
+        color: #fff !important;
+      }
+    }
+  }
+  .dd-item-wrp {
+    a {
+      display: flex !important;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+      span {
+        width: auto;
+
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          margin-left: 10px;
+        }
+      }
+    }
   }
   .phone_input {
     input {
       padding-left: 90px !important;
+      overflow: hidden;
     }
   }
 }
@@ -521,6 +564,37 @@ button {
   }
 }
 
+// Fitness Client Section css
+.banner_slider {
+  .slider-section {
+    .splide__track {
+      height: 100%;
+      margin-top: 0;
+    }
+  }
+  .splide__pagination {
+    .splide__pagination__page {
+      background-color: #fff;
+      &.is-active {
+        // background-color: $logo-button-color;
+      }
+    }
+  }
+}
+
+.slider-section {
+  .splide__track {
+    width: 100%;
+  }
+  @include respond(sm) {
+    width: 90%;
+  }
+  .splide__arrow {
+    display: none;
+  }
+  // .splide__pagination {
+  // }
+}
 // banners tab design
 .images_tabs_css {
   .nav-tabs {

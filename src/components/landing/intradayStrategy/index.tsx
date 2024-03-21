@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { StartegyData } from './stragtegyData';
 const IntradayStrategy = () => {
   return (
-    <section className={`${styles.intraday_strategy} element_center w-100 section_padding flex-column mt-1`}>
-      <h1 className="section_heading_css mb-5 ">Intraday Trading Strategies</h1>
+    <section className={`${styles.intraday_strategy} element_center w-100 flex-column mt-1`}>
+      <h1 className="section_heading_css ">Intraday Trading Strategies</h1>
       <div className={`${styles.innr_intraday_strategy} css_max_screen`}>
         <div className={`${styles.strategy_container} element_center`}>
           {StartegyData &&

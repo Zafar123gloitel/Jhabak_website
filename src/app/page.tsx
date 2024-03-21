@@ -3,6 +3,8 @@ import React from 'react';
 // import styles from '@/app/page.module.scss';
 import Loading from '@/components/loading';
 import dynamic from 'next/dynamic';
+// import { BannerSection } from '@/components';
+import Slider from '@/components/landing/slider';
 
 const BasicRuleTrading = dynamic(() => import('../components/landing/basicRuleTrading'), {
   loading: () => <Loading />,
@@ -14,14 +16,14 @@ const VideoSection = dynamic(() => import('../components/landing/videoSection'),
   ssr: false, // Replace this with your loading component
 });
 // const IntradayStrategy = dynamic(() => import('../components/landing/intradayStrategy'));
-const NeedHelpSection = dynamic(() => import('../components/landing/needHelpSection'), {
-  loading: () => <Loading />,
-  ssr: false, // Replace this with your loading component
-});
-const Segments = dynamic(() => import('../components/landing/segments'), {
-  loading: () => <Loading />,
-  ssr: false, // Replace this with your loading component
-});
+// const NeedHelpSection = dynamic(() => import('../components/landing/needHelpSection'), {
+//   loading: () => <Loading />,
+//   ssr: false, // Replace this with your loading component
+// });
+// const Segments = dynamic(() => import('../components/landing/segments'), {
+//   loading: () => <Loading />,
+//   ssr: false, // Replace this with your loading component
+// });
 const MutualFund = dynamic(() => import('../components/landing/mutualFund'), {
   loading: () => <Loading />,
   ssr: false, // Replace this with your loading component
@@ -48,6 +50,7 @@ function Home() {
     <main>
       {/* section 1 */}
       {/* <BannerSection /> */}
+      <Slider />
       {/* <VideoContent /> */}
       {/* section 2 */}
       <VideoSection />
@@ -62,9 +65,9 @@ function Home() {
 
       {/* <IntradayStrategy /> */}
       {/* section 7 */}
-      <NeedHelpSection />
+      {/* <NeedHelpSection /> */}
       {/* section 8 */}
-      <Segments />
+      {/* <Segments /> */}
       {/* section 9 */}
       <MutualFund />
       {/* section 10 */}

@@ -1,15 +1,18 @@
 @import '../../../styles/index.scss';
 $list: #ffd512, #9945ff, #19fb9b;
 .basic_rule {
+  @include respond(mmd) {
+    margin-top: -305px;
+  }
+  @include respond(lg) {
+    margin-top: -50px;
+  }
   .innnr_basic_rule {
     justify-content: center;
     .strategy_rule {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      @include respond(mmd) {
-        margin-top: 30px;
-      }
 
       .single_stretegy {
         width: 48%;
@@ -18,7 +21,7 @@ $list: #ffd512, #9945ff, #19fb9b;
         }
         @include respond(mmd) {
           transform: translateY(0) !important;
-          margin-top: 25px;
+          margin-top: 55px;
         }
 
         @include respond(xs) {
@@ -43,10 +46,10 @@ $list: #ffd512, #9945ff, #19fb9b;
         }
       }
       @include respond(mmd) {
-        margin-top: 55px;
+        margin-top: 0px;
       }
       @include respond(sm) {
-        margin-top: 0px;
+        margin-top: 50px;
       }
       .rule_container {
         display: flex;

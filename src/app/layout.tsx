@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from '@/components/footer';
 import { ReduxProvider } from '@/store/redux-provider';
 const inter = Inter({ subsets: ['latin'] });
+import '@splidejs/splide/dist/css/splide.min.css';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
