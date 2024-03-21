@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { apiService } from '@/utils';
 import { validateEmail, validateIndianPhoneNumber, validatePassword, validateEmptyString } from 'regexx';
 import { useAuth, useUser } from '@/hooks';
+import Forgotten from '../Modals/forgot-password/ForgottenModal';
 
 interface AddressProfileState {
   email: string;
@@ -24,7 +25,7 @@ export const Login = () => {
   const { Auth, ResetAuth } = useAuth();
   const { SetUser, ResetUser } = useUser();
   const router = useRouter();
-
+  const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userDetails, setUserDetails] = useState<AddressProfileState>({ email: '', password: '' });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,17 +99,23 @@ export const Login = () => {
         const response: any = await apiService.post('/login', data);
         if (response.success && response.status === 200) {
           const { payload, accessToken, refreshToken } = response;
-          Auth({
-            role: payload.role,
-            accessToken: accessToken,
-            refreshToken: refreshToken,
-          });
-          SetUser(payload);
 
           toast.success('login successfull');
           if (payload?.role === 'admin') {
+            Auth({
+              role: payload.role,
+              accessToken: accessToken,
+              refreshToken: refreshToken,
+            });
+            SetUser(payload);
             return router.push('/admin/clients');
           } else if (payload?.role === 'user') {
+            Auth({
+              role: payload.role,
+              accessToken: accessToken,
+              refreshToken: refreshToken,
+            });
+            SetUser(payload);
             return router.push('/client/dashboard');
           }
         } else {
@@ -173,16 +180,20 @@ export const Login = () => {
               />
             </div>
 
-            <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={() => handleLogin()}>
+            <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={handleLogin}>
               {isLoading ? 'Loading...' : 'Login'}
             </button>
           </div>
 
-          <button className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}>
+          <button
+            className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}
+            onClick={() => setShow(true)}
+          >
             Forgot password ?
           </button>
         </div>
       </div>
+      <Forgotten show={show} onHide={() => setShow(false)} />
     </main>
   );
 };

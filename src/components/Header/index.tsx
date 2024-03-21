@@ -1,17 +1,18 @@
 'use client';
 import React from 'react';
 import styles from './header.module.scss';
-// import Image from 'next/image';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth, useUser } from '@/hooks';
+import Link from 'next/link';
 
 const Header = () => {
   const { IsLoggedIn, ResetAuth } = useAuth();
-  const { ResetUser } = useUser();
+  const { ResetUser, UserData } = useUser();
   const pathname = usePathname();
   const router = useRouter();
 
+  const role = UserData()?.role;
   const handleRoute = (path: string) => {
     return router.push(path);
   };
@@ -19,7 +20,7 @@ const Header = () => {
   function handleLogout() {
     ResetAuth();
     ResetUser();
-    return router.push('/login');
+    return router.replace('/login');
   }
 
   return (
@@ -68,17 +69,16 @@ const Header = () => {
             </ul>
           </div>
 
-          {pathname.startsWith('/admin') ? (
-            ''
-          ) : (
-            <button className={`outline_button`} type="button">
-              Book An Appointment
-            </button>
+          {role === 'admin' && !pathname.startsWith('/admin/clients') && (
+            <Link href="/admin/clients" className={`outline_button`}>
+              DashBoard
+            </Link>
           )}
-
-          {/* <button className="bg-transparent" onClick={() => document.body.setAttribute('data-theme', 'red-theme')}>
-            <Image src={'/assets/svg/light-theme.svg'} alt="light" width={35} height={35} />
-          </button> */}
+          {role === 'user' && !pathname.startsWith('/client/dashboard') && (
+            <Link href="/client/dashboard" className={`outline_button`}>
+              DashBoard
+            </Link>
+          )}
         </div>
       </nav>
     </>
