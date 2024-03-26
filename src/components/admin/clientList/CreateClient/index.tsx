@@ -129,7 +129,6 @@ const CreateClientForm = () => {
             end_plan,
             plan_type: dayCallPlan,
             trading_type: selectedDayOptions,
-
             durations: {
               duration,
               duration_type,
@@ -304,82 +303,81 @@ const CreateClientForm = () => {
               </fieldset>
             </div>
           </div>
-          {formData?.subscription && (
-            <>
-              <div className={` ${styles.plan_headings} d-flex mt-3 text-white w-100 element_center`}>
-                <div className="d-flex">
-                  <span className={` ${styles.single_plan} css-f15 `}>Select Plan </span>
-                  <span className={` ${styles.single_plan} css-f15`}>Select Duration </span>
-                  <span className={` ${styles.single_plan} css-f15 d-flex  justify-content-center`}>
-                    Select Trade Type
-                  </span>
-                </div>
-              </div>
 
-              <div
-                className={`${styles.Client_input_container} ${styles.plans_details} w-100 element_center flex-column mt-2`}
-              >
-                <div className={`${styles.single_plan_field}`}>
-                  <Checkbox
-                    label="Day Call"
-                    isChecked={isDayChecked}
-                    setIsChecked={setIsDayChecked}
-                    setPlanType={setDayCallPlan}
-                  />
-
-                  <TradeTypeInput
-                    setSelectedOptions={setSelectedDayOptions}
-                    selectedOptions={selectedDayOptions}
-                    handleChanges={handleDayChanges}
-                    longTerm="day-call"
-                  />
-                </div>
-                <div className={`${styles.single_plan_field}`}>
-                  <Checkbox
-                    label="Weekly Call"
-                    isChecked={isWeekChecked}
-                    setIsChecked={setIsWeekChecked}
-                    setPlanType={setWeekCallPlan}
-                  />
-                  <TradeTypeInput
-                    setSelectedOptions={setSelectedWeekOptions}
-                    selectedOptions={selectedWeekOptions}
-                    handleChanges={handleWeekChanges}
-                    longTerm="week-call"
-                  />
-                </div>
-                <div className={`${styles.single_plan_field}`}>
-                  <Checkbox
-                    label="Monthly Call"
-                    isChecked={isMonthChecked}
-                    setIsChecked={setIsMonthChecked}
-                    setPlanType={setMonthCallPlan}
-                  />
-                  <TradeTypeInput
-                    setSelectedOptions={setSelectedMonthOptions}
-                    selectedOptions={selectedMonthOptions}
-                    handleChanges={handleMonthChanges}
-                    longTerm="month-call"
-                  />
-                </div>
-                <div className={`${styles.single_plan_field}`}>
-                  <Checkbox
-                    label="Year Call"
-                    isChecked={isYearChecked}
-                    setIsChecked={setIsYearChecked}
-                    setPlanType={setlongCallPlan}
-                  />
-                  <TradeTypeInput
-                    setSelectedOptions={setSelectedLongOptions}
-                    selectedOptions={selectedLongOptions}
-                    handleChanges={handleLongChanges}
-                    longTerm="year-call"
-                  />
-                </div>{' '}
-                *
+          <div className={` w-100 ${formData?.subscription ? styles.show_trade_type : styles.hide_trade_type}`}>
+            <div className={` ${styles.plan_headings} d-flex mt-3 text-white w-100 element_center`}>
+              <div className="d-flex">
+                <span className={` ${styles.single_plan} css-f15 `}>Select Plan </span>
+                <span className={` ${styles.single_plan} css-f15`}>Select Duration </span>
+                <span className={` ${styles.single_plan} css-f15 d-flex  justify-content-center`}>
+                  Select Trade Type
+                </span>
               </div>
-            </>
-          )}
+            </div>
+
+            <div
+              className={`${styles.Client_input_container} ${styles.plans_details} w-100 element_center flex-column mt-2`}
+            >
+              <div className={`${styles.single_plan_field}`}>
+                <Checkbox
+                  label="Day Call"
+                  isChecked={isDayChecked}
+                  setIsChecked={setIsDayChecked}
+                  setPlanType={setDayCallPlan}
+                />
+
+                <TradeTypeInput
+                  setSelectedOptions={setSelectedDayOptions}
+                  selectedOptions={selectedDayOptions}
+                  handleChanges={handleDayChanges}
+                  longTerm="day-call"
+                />
+              </div>
+              <div className={`${styles.single_plan_field}`}>
+                <Checkbox
+                  label="Weekly Call"
+                  isChecked={isWeekChecked}
+                  setIsChecked={setIsWeekChecked}
+                  setPlanType={setWeekCallPlan}
+                />
+                <TradeTypeInput
+                  setSelectedOptions={setSelectedWeekOptions}
+                  selectedOptions={selectedWeekOptions}
+                  handleChanges={handleWeekChanges}
+                  longTerm="week-call"
+                />
+              </div>
+              <div className={`${styles.single_plan_field}`}>
+                <Checkbox
+                  label="Monthly Call"
+                  isChecked={isMonthChecked}
+                  setIsChecked={setIsMonthChecked}
+                  setPlanType={setMonthCallPlan}
+                />
+                <TradeTypeInput
+                  setSelectedOptions={setSelectedMonthOptions}
+                  selectedOptions={selectedMonthOptions}
+                  handleChanges={handleMonthChanges}
+                  longTerm="month-call"
+                />
+              </div>
+              <div className={`${styles.single_plan_field}`}>
+                <Checkbox
+                  label="Year Call"
+                  isChecked={isYearChecked}
+                  setIsChecked={setIsYearChecked}
+                  setPlanType={setlongCallPlan}
+                />
+                <TradeTypeInput
+                  setSelectedOptions={setSelectedLongOptions}
+                  selectedOptions={selectedLongOptions}
+                  handleChanges={handleLongChanges}
+                  longTerm="year-call"
+                />
+              </div>{' '}
+              *
+            </div>
+          </div>
 
           <div className={`${styles.sbt_button} w-100 d-flex element_center`}>
             <button type="submit" className={`${styles.smt_btn} Dark_button css-f16`}>

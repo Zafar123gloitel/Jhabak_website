@@ -10,9 +10,15 @@ export const fitnessClientImage: fitnessClientImages[] = [
     name: 'first',
     image: '/assets/images/banner.jpg',
   },
+
   {
     id: 1102,
     name: 'second',
     image: '/assets/images/banner2.jpg',
+  },
+  {
+    id: 1103,
+    name: 'first',
+    image: '/assets/images/demobanner.jpg',
   },
 ];

@@ -1,15 +1,22 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './sidebar.module.scss';
 // import Image from 'next/image';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-export const Sidebar = () => {
-  const [openSidebar, setOpenSidebar] = useState(false);
+interface IProps {
+  isToggle: boolean;
+  setIsToggle: () => void;
+}
+export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
+  // const [openSidebar, setOpenSidebar] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  // const toggle = useAppSelector(selectToggle);
+
+  // const dispatch = useAppDispatch();
 
   const handleRoute = (path: string) => {
     router.push(path);
@@ -19,19 +26,24 @@ export const Sidebar = () => {
       return true;
     }
   };
+  function handleToggle() {
+    // setOpenSidebar(!openSidebar);
+    setIsToggle();
+    // dispatch(setToggle_());
+  }
 
   return (
     <>
-      <button className={styles.menu_dropdown_button} type="button" onClick={() => setOpenSidebar(!openSidebar)}>
+      <button className={styles.menu_dropdown_button} type="button" onClick={handleToggle}>
         <Image
           className={styles.icon}
-          src={openSidebar ? '/assets/svg/hamburger.svg' : '/assets/svg/sidebar/Close.svg'}
+          src={isToggle ? '/assets/svg/hamburger.svg' : '/assets/svg/sidebar/Close.svg'}
           alt="Home"
           width={17}
           height={17}
         />
       </button>
-      <nav className={`${styles.main_sidebar} ${openSidebar && styles.show_sidebar}`}>
+      <nav className={`${styles.main_sidebar} ${isToggle && styles.show_sidebar}`}>
         <div className={`${styles.inner_sidebar} `}>
           <div className={`${styles.sidebar_top} `}>
             <div className={styles.menu_dropdown}></div>
@@ -41,7 +53,7 @@ export const Sidebar = () => {
               {pageRoute?.map(value => (
                 <li key={value.id} className={`${styles.li_content}`}>
                   <button
-                    className={`${styles.single_menu} ${styles.no_margin_padding}  bg-transparent text-white ${openSidebar && styles.showSidebar} ${styles.main_content}  `}
+                    className={`${styles.single_menu} ${styles.no_margin_padding}  bg-transparent text-white ${isToggle && styles.showSidebar} ${styles.main_content}`}
                     title={value.name}
                     onClick={() => handleRoute(value.href as string)}
                   >
@@ -52,7 +64,9 @@ export const Sidebar = () => {
                       height={25}
                       src={isActiveLink(pathname, value.href as string) ? `${value.activeImgSrc}` : `${value.imgSrc}`}
                     />
-                    <strong>{value.name}</strong>
+                    <strong className={isActiveLink(pathname, value.href as string) && 'text-black'}>
+                      {value.name}
+                    </strong>
                   </button>
                 </li>
               ))}

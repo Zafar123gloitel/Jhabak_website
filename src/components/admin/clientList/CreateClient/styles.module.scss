@@ -1,17 +1,24 @@
 @import '../../../../styles/index.scss';
 
 .create_form {
-  justify-content: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .create_Client_section {
   position: relative;
   border-radius: 10px;
-  padding: 20px 0 50px 0;
+  padding: 20px 0 30px 0;
   margin: 20px 0 50px 0;
-  width: 85%;
+  width: 800px;
   border: 1px solid $green-color;
-  @include respond(xxxxl) {
-    width: 55%;
+  @include respond(sm) {
+    width: 500px;
+    height: auto;
+  }
+  @include respond(xs) {
+    width: 85%;
+    height: auto;
   }
   .inr_create_Client_section {
     display: flex;
@@ -23,6 +30,11 @@
       align-items: center;
       width: 30%;
       padding: 10px 0;
+
+      @include respond(sm) {
+        width: 90%;
+        flex-wrap: wrap;
+      }
 
       fieldset {
         display: flex;
@@ -83,10 +95,21 @@
       span {
         display: flex;
         text-align: center;
+        flex-wrap: wrap;
         width: 30%;
+        @include respond(mmd) {
+          width: 20%;
+        }
+        @include respond(sm) {
+          width: 100%;
+        }
         &:nth-child(2),
         &:nth-child(3) {
+          width: 35%;
           margin-left: 11px;
+          @include respond(sm) {
+            display: none !important;
+          }
         }
       }
     }
@@ -95,18 +118,45 @@
   .plans_details {
     width: 100%;
     align-items: center;
+    @include respond(sm) {
+      flex-wrap: wrap;
+    }
     .single_plan_field {
       margin-left: 10px;
       width: 95%;
       display: flex;
       align-items: center;
+      @include respond(sm) {
+        flex-wrap: wrap;
+      }
       .radio_select_field {
         width: 70%;
+        @include respond(mmd) {
+          width: 80%;
+        }
+        @include respond(sm) {
+          width: 100%;
+          flex-wrap: wrap;
+        }
+        .single_plan {
+          @include respond(sm) {
+            width: 100%;
+            flex-wrap: wrap;
+          }
+        }
       }
       .single_plan {
         width: 30%;
         color: #fff;
         justify-content: flex-start;
+
+        @include respond(mmd) {
+          width: 20%;
+        }
+        @include respond(sm) {
+          min-width: 100%;
+          margin-top: 15px;
+        }
         .duration {
           width: calc(100% / 4);
           font-size: 12px;
@@ -135,7 +185,7 @@
 
   .smt_btn {
     width: 95%;
-    margin-top: 64px;
+
     &.smt_btn_loader {
       padding: 20px 0;
     }
@@ -199,9 +249,18 @@
 }
 
 .select_tradeType {
-  width: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
+  @include respond(sm) {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .tradeType_select {
+    @include respond(sm) {
+      width: 100%;
+    }
+  }
   select {
     border-bottom: 1px solid $green-color;
     color: #fff;
@@ -209,6 +268,9 @@
     width: 68%;
     border-radius: 5px;
     font-size: 13px;
+    @include respond(sm) {
+      width: 100%;
+    }
     option {
       background-color: $background-color;
     }
@@ -224,7 +286,9 @@
   padding: 0px 10px;
   font-size: 12px;
   width: 72%;
-  position: relative;
+  @include respond(sm) {
+    padding: 0 10px 0 0;
+  }
   .tradetype_btn {
     padding: 7px 10px;
     width: 100%;
@@ -261,6 +325,9 @@
     border-top-right-radius: 0;
     overflow: hidden;
     width: 100%;
+    @include respond(sm) {
+      min-width: 96%;
+    }
     button {
       width: 100%;
       display: flex;
@@ -292,4 +359,19 @@
       transition: all 2.5s ease;
     }
   }
+}
+
+.show_trade_type {
+  overflow: hidden;
+  height: 250px;
+  @include respond(sm) {
+    height: 500px;
+  }
+  transition: all 0.5s ease-in-out;
+}
+
+.hide_trade_type {
+  height: 0;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
 }

@@ -31,7 +31,6 @@ export default function TradeTypeInput({ setSelectedOptions, selectedOptions, ha
       {longTerm === 'week-call' && (
         <>
           <RadioWeekOptions handleChanges={handleChanges} />
-
           <SelectField setSelectedOptions={setSelectedOptions} selectedOptions={selectedOptions} longTerm={longTerm} />
         </>
       )}
@@ -59,7 +58,7 @@ interface RadioDayOptionsProps {
 
 function RadioDayOptions({ handleChanges }: RadioDayOptionsProps) {
   return (
-    <div className={`${styles.single_plan} w-50 d-flex align-items-center`}>
+    <div className={`${styles.single_plan} single_plan w-50 d-flex align-items-center`}>
       {dayCallDurations.map(duration => (
         <div key={duration.id} className={styles.duration}>
           <input
@@ -191,7 +190,7 @@ function SelectField({ setSelectedOptions, selectedOptions, longTerm }: ISelect)
     .join(', ');
 
   return (
-    <div className={`${styles.select_tradeType} w-50`}>
+    <div className={`${styles.select_tradeType} select_tradeType `}>
       <div className={`${selectStyle.tradeType_select}`}>
         <button
           className={`${selectStyle.tradetype_btn} d-flex align-items-center`}

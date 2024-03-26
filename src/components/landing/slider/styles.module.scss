@@ -3,18 +3,18 @@
 .banner_slider {
   // min-height: 500px;
   height: 500px;
-  @include respond(xxxl) {
-    height: 350px;
-  }
-  @include respond(xl) {
-    height: 300px;
-  }
-  @include respond(md) {
-    height: 230px;
-  }
-  @include respond(sm) {
-    height: 190px;
-  }
+  // @include respond(xxxl) {
+  //   height: 350px;
+  // }
+  // @include respond(xl) {
+  //   height: 300px;
+  // }
+  // @include respond(md) {
+  //   height: 230px;
+  // }
+  // @include respond(sm) {
+  //   height: 190px;
+  // }
 
   .slider-section {
     display: flex;

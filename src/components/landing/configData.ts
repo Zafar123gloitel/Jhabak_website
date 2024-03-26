@@ -9,7 +9,7 @@ export const randomBanners: IRandomBanners[] = [
     imgSrc: '/assets/images/banner.jpg',
   },
   {
-    imgSrc: '/assets/images/banner2.jpg',
+    imgSrc: '/assets/images/demobanner.jpg',
   },
 ];
 
