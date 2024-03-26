@@ -11,6 +11,7 @@ interface InputFieldProps {
   className?: string;
   require?: boolean;
 }
+
 const TextAreaInput = ({ label, placeholder, value, onChange, error, name, className, require }: InputFieldProps) => {
   return (
     <div className={`${styles._input_field_} input-field ${className} `}>

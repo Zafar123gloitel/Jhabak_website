@@ -70,21 +70,20 @@ const Header = () => {
                 </button>
               )}
             </ul>
-            {pathname.startsWith('/admin') ? (
-              ''
-            ) : (
-              <button className={`${styles.appointment_btn} outline_button`} type="button">
-                Book An Appointment
-              </button>
-            )}
+            {role === 'admin' ||
+              ('user' && (
+                <Link href="/appointment" className={`${styles.appointment_btn} outline_button`} type="button">
+                  Book An Appointment
+                </Link>
+              ))}
           </div>
 
-          {role === 'admin' && !pathname.startsWith('/admin/clients') && (
+          {role === 'admin' && !pathname.startsWith('/admin') && (
             <Link href="/admin/clients" className={`outline_button`}>
               DashBoard
             </Link>
           )}
-          {role === 'user' && !pathname.startsWith('/client/dashboard') && (
+          {role === 'user' && !pathname.startsWith('/client') && (
             <Link href="/client/dashboard" className={`outline_button`}>
               DashBoard
             </Link>

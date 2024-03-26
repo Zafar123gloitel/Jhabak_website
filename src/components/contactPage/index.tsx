@@ -8,13 +8,16 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import InputField from '../InputField/InputField';
 import TextAreaInput from '../InputField/TextAreaInput';
 import validation from '@/services/validation';
+import { apiService } from '@/utils';
+import useLoading from '../Loader/Loader';
+import { toast } from 'react-toastify';
 
 const defaultContactData = {
   fName: '',
   lName: '',
   email: '',
   mobile: '',
-  message: 'please enter your message',
+  message: '',
 };
 
 export const ContactForm = () => {
@@ -22,39 +25,69 @@ export const ContactForm = () => {
   const [searchValue, setSearchValue] = useState('');
   const [countryCode, setCountryCode] = useState('+91');
   const [contactData, setContactData] = useState(defaultContactData);
-  const [contactError, setContactError] = useState(defaultContactData);
-
+  const [error, setError] = useState(defaultContactData);
+  const { isLoading, startLoading, stopLoading } = useLoading();
   function onHandleValue(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-    setContactError(defaultContactData);
+    setError(defaultContactData);
     setContactData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       if (!validation.requied(contactData?.fName)) {
-        setContactError(prev => ({ ...prev, fName: 'First Name Require' }));
-        // alert(contactError.fName);
+        setError(prev => ({ ...prev, fName: 'First Name Require' }));
+        return false;
       }
       if (!validation.requied(contactData?.lName)) {
-        setContactError(prev => ({ ...prev, lName: 'Last Name Require' }));
+        setError(prev => ({ ...prev, lName: 'Last Name Require' }));
+        return false;
       }
       if (!validation.email(contactData?.email)) {
-        setContactError(prev => ({ ...prev, email: 'Invalid Email Form' }));
+        setError(prev => ({ ...prev, email: 'Invalid Email Format' }));
+        return false;
       }
       if (!validation.mobile(countryCode + contactData?.mobile)) {
-        setContactError(prev => ({ ...prev, mobile: 'Invalid Phone Number' }));
+        setError(prev => ({ ...prev, mobile: 'Invalid Phone Number' }));
+        return false;
       }
       if (!validation.requied(contactData?.message)) {
-        setContactError(prev => ({ ...prev, message: 'Message Required' }));
+        setError(prev => ({ ...prev, message: 'Message Required' }));
+        return false;
       }
-      // console.log(contactData, 'contactData');
-      // setContactError(defaultContactData);
-    } catch (error) {
-      const typeError = error as Error;
 
-      return new Error(typeError.message);
+      const data = {
+        first_name: contactData.fName,
+        last_name: contactData.lName,
+        email: contactData.email,
+        phone_number: countryCode + contactData.mobile,
+        message: contactData.message,
+      };
+      startLoading();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.post('/contact-us', data);
+      if (response?.success && response?.status === 201) {
+        toast.success('your details has been submited');
+      }
+
+      // console.log(contactData, 'contactData');
+      // setError(defaultContactData);
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error?.response?.data?.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error?.response?.data?.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    } finally {
+      stopLoading();
     }
   }
+
   const filterHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value === '') {
       setData(ddItems);
@@ -116,7 +149,7 @@ export const ContactForm = () => {
                   value={contactData.fName}
                   onChange={onHandleValue}
                   placeholder="Eg. John"
-                  error={contactError.fName}
+                  error={error.fName}
                 />
               </div>
               <div className={`${styles['last_name_div']}`}>
@@ -127,7 +160,7 @@ export const ContactForm = () => {
                   value={contactData.lName}
                   onChange={onHandleValue}
                   placeholder="Eg. Doe"
-                  error={contactError.lName}
+                  error={error.lName}
                 />
               </div>
             </div>
@@ -140,7 +173,7 @@ export const ContactForm = () => {
                   value={contactData.email}
                   onChange={onHandleValue}
                   placeholder="Eg. you@example.com"
-                  error={contactError.email}
+                  error={error.email}
                 />
               </div>
               <div className={`${styles['detail_css']}`}>
@@ -176,7 +209,7 @@ export const ContactForm = () => {
                       placeholder="Enter your mobile"
                       value={contactData.mobile}
                       onChange={onHandleValue}
-                      error={contactError.mobile}
+                      error={error.mobile}
                       className={`${styles.consultant_phone} phone_input ${styles.phone_input} dark_input`}
                     />
                   </div>
@@ -190,12 +223,12 @@ export const ContactForm = () => {
                   placeholder="Your Message"
                   value={contactData.message}
                   onChange={onHandleValue}
-                  error={contactError.message}
+                  error={error.message}
                   require={true}
                 />
               </div>
               <button className={` Dark_button`} type="submit">
-                Book an appointment
+                {isLoading ? 'waiting...' : 'Book an appointment'}
               </button>
             </div>
           </form>
