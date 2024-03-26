@@ -19,7 +19,7 @@ const CreateClient = () => {
   const [dataList, setDataList] = useState([]);
   const [totalEvents, setTotalEvents] = useState(0);
   const [activeTab, setActiveTab] = useState('create_client');
-  const [searchData] = useState('');
+  const [searchData, setSearchData] = useState('');
   const debounceDelay = 500; // Adjust debounce delay as needed
   const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
   const { UserData } = useUser();
@@ -67,7 +67,7 @@ const CreateClient = () => {
   };
   useEffect(() => {
     corporateList();
-  }, [currentPage, postsPerPage]);
+  }, [currentPage, postsPerPage, debouncedSearchQuery]);
 
   const setPage = (i: number) => {
     setCurrentPage(i);
@@ -89,6 +89,8 @@ const CreateClient = () => {
                 //   pageSize={postsPerPage}
                 // />
                 <ClientDetails
+                  searchData={searchData}
+                  setSearchData={setSearchData}
                   dataList={dataList}
                   corporateList={corporateList}
                   onChange={setPage}

@@ -84,7 +84,7 @@ const Header = () => {
               DashBoard
             </Link>
           )}
-          {role === 'user' && !pathname.startsWith('/client/dashboard') && (
+          {role === 'user' && pathname.startsWith('/client/dashboard') && (
             <Link href="/client/dashboard" className={`outline_button`}>
               DashBoard
             </Link>

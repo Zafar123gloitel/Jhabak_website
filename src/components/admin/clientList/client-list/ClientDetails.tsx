@@ -11,6 +11,8 @@ import moment from 'moment';
 
 interface ICardDeatils {
   dataList: [] | IUserSchema[];
+  searchData: string;
+  setSearchData: (e: string) => void;
   corporateList: () => void;
   onChange: (i: number) => void;
   total: number;
@@ -19,7 +21,7 @@ interface ICardDeatils {
   activeTab?: string;
 }
 
-const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
+const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchData, setSearchData }: ICardDeatils) => {
   const formatStartDateRange = (startDateString: Date) => {
     return moment(startDateString).format('DD MMMM YYYY');
   };
@@ -33,6 +35,13 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
     if (plan_type === 'month_call') return 'Month Call';
     if (plan_type === 'long_term') return 'Long Call';
   };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSearch = (e: any) => {
+    const value = e.target.value;
+    setSearchData(value);
+  };
+
   return (
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} element_center flex-column`}>
       <div className={`${styles.search_filter} d-flex`}>
@@ -41,21 +50,20 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize }: ICardDe
             label=""
             type="text"
             placeholder="Search"
-            value={'searchData'}
-            // onChange={e => setSearchData(e.target.value)}
+            value={searchData}
+            onChange={handleSearch}
             name="search"
             className={`${styles.searchInput}`}
           />
         </div>
 
-        <div className={`${styles.filter} All_content_center `}>
+        {/* <div className={`${styles.filter} All_content_center `}>
           <button className="outline_button">
-            {/* <Image src={'/assets/svg/admin/filter.svg'} alt="filter" width={15} height={15} /> */}
             <span>Filter</span>
           </button>
-        </div>
+        </div> */}
       </div>
-      {dataList !== undefined ? (
+      {dataList.length !== 0 ? (
         <>
           <div className={`${styles.dashboard_data}`}>
             <div className={`${styles.details_card_container} flex-wrap`}>
