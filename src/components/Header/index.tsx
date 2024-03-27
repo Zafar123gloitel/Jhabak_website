@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './header.module.scss';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
@@ -8,8 +8,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
+  const [showNav, setShowNav] = useState(false);
   const { IsLoggedIn, ResetAuth } = useAuth();
   const { ResetUser, UserData } = useUser();
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -39,7 +41,7 @@ const Header = () => {
             <Image src="/assets/svg/Logo.svg" alt="Jhabak" width={200} height={80} />
           </div>
           <div className={`${styles['Menu_List']} element_center `}>
-            <ul className={`${styles['Menues']} element_center`}>
+            <ul className={`${styles['Menues']} element_center ${showNav && styles.show_mainnav}`}>
               {pageRoute.map(value => {
                 return (
                   <li key={value.id} className={styles.menu_single_lists}>
@@ -70,24 +72,33 @@ const Header = () => {
                 </button>
               )}
             </ul>
-            {role === 'admin' ||
-              ('user' && (
-                <Link href="/appointment" className={`${styles.appointment_btn} outline_button`} type="button">
-                  Book An Appointment
+            <div className={`${styles.showmenu_btn} `}>
+              {role === 'admin' ||
+                ('user' && (
+                  <Link href="/appointment" className={`${styles.appointment_btn} outline_button`} type="button">
+                    Book An Appointment
+                  </Link>
+                ))}
+              {role === 'admin' && !pathname.startsWith('/admin') && (
+                <Link href="/admin/clients" className={`outline_button`}>
+                  DashBoard
                 </Link>
-              ))}
-          </div>
+              )}
+              {role === 'user' && !pathname.startsWith('/client') && (
+                <Link href="/client/dashboard" className={`outline_button`}>
+                  DashBoard
+                </Link>
+              )}
 
-          {role === 'admin' && !pathname.startsWith('/admin') && (
-            <Link href="/admin/clients" className={`outline_button`}>
-              DashBoard
-            </Link>
-          )}
-          {role === 'user' && !pathname.startsWith('/client') && (
-            <Link href="/client/dashboard" className={`outline_button`}>
-              DashBoard
-            </Link>
-          )}
+              <button className="bg-transparent" onClick={() => setShowNav(!showNav)}>
+                {showNav ? (
+                  <Image src="/assets/svg/landing_close.svg" alt="menu" width={35} height={35} />
+                ) : (
+                  <Image src="/assets/svg/landing_hamburger.svg" alt="menu" width={45} height={45} />
+                )}
+              </button>
+            </div>
+          </div>
         </div>
       </nav>
     </>

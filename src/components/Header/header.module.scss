@@ -96,7 +96,6 @@
 .anchor_dec {
   text-decoration: none !important;
   color: #000;
-  font-family: 'Yatra One';
 }
 
 .no_marging_padding {
@@ -120,34 +119,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  @include respond(md) {
+    width: 100%;
+  }
+  @include respond(xms) {
+    flex-direction: column;
+  }
 }
 
-.brand_menues {
-  width: 20%;
-  height: 100%;
+.company_name {
+  img {
+    @include respond(xs) {
+      width: 150px;
+    }
+  }
 }
 
 .Menu_List {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-
   max-width: 1170px;
+  width: 65%;
+  @include respond(lg) {
+    width: 75%;
+  }
+  @include respond(md) {
+    width: auto;
+  }
   @include respond(sm) {
     margin-left: 0;
   }
-}
-
-.Menues {
-  margin: 0 !important;
-  padding: 0 !important;
-  cursor: pointer;
+  @include respond(xs) {
+    .appointment_btn {
+      font-size: 8px;
+    }
+  }
+  @include respond(xms) {
+    width: 100%;
+  }
 }
 
 .single_menue {
   width: auto;
   margin: 0 15px;
   height: 100%;
+  @include respond(md) {
+    height: auto;
+    margin-top: 15px;
+  }
   @include respond(xxs) {
     margin: 0 4px;
   }
@@ -167,7 +188,29 @@
 }
 
 .Menues {
-  width: 100%;
+  width: auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  cursor: pointer;
+  @include respond(md) {
+    // display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    display: block;
+    top: 90px;
+    background: $background-color;
+    height: 0px;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    &.show_mainnav {
+      height: 250px;
+      transition: all 0.5s ease-in-out;
+    }
+    @include respond(xms) {
+      top: 130px;
+    }
+  }
 }
 
 .single_menue > a {
@@ -178,21 +221,28 @@
   align-items: center;
   // height: 100%;
 }
-// archana_css
-.company_name {
+.showmenu_btn {
   display: flex;
-  width: 40%;
-  height: auto;
-  font-family: Timmana;
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #023d6d;
-  @include respond(md) {
-    font-size: 40px;
+  align-items: center;
+  z-index: 99;
+  @include respond(xms) {
+    width: 98%;
+    justify-content: space-between;
+  }
+  button {
+    display: none;
+    @include respond(md) {
+      display: flex;
+    }
+    img {
+      margin-left: 15px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
   }
 }
+// archana_css
+
 .book {
   @include respond(md) {
     display: none;
@@ -200,12 +250,7 @@
 }
 .appointment_btn {
   text-wrap: nowrap;
-}
-.Menu_List {
-  width: 55%;
-  @include respond(md) {
-    display: none;
-  }
+  margin-left: 15px;
 }
 
 .menu_dropdown_button {

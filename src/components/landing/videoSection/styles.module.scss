@@ -78,6 +78,9 @@
           height: 250px;
           border-radius: 5px;
         }
+        @include respond(xms) {
+          width: 330px;
+        }
         video {
           position: absolute;
           object-fit: cover;
@@ -111,6 +114,13 @@
             left: 20px;
             top: 10px;
             transform: skew(-7deg);
+          }
+          @include respond(xms) {
+            height: 156px;
+            width: 285px;
+            left: 20px;
+            top: 10px;
+            transform: skew(-5deg);
           }
         }
       }

@@ -1,5 +1,6 @@
+@import '../../styles/index.scss';
 .footer_outter {
-  background-color: #00b666;
+  background-color: $green-color;
 }
 
 .footer_inner {
@@ -7,26 +8,46 @@
   height: auto;
   justify-content: space-between;
   align-items: flex-start !important;
+  padding: 0 25px;
+  @include respond(sm) {
+    justify-content: start !important;
+  }
+  @include respond(sm) {
+    flex-wrap: wrap;
+  }
 }
 .footer_1 {
-  display: flex;
   flex-direction: column;
   width: 30%;
 }
 .footer_2 {
-  display: flex;
   flex-direction: column;
   width: 30%;
 }
 .footer_3 {
-  display: flex;
   flex-direction: column;
   width: 18%;
 }
 
 .footer_heading {
   width: 70%;
+  @include respond(md) {
+    width: 100%;
+  }
+}
+.footer_parts {
+  @include respond(sm) {
+    width: 40%;
+    gap: 0;
+  }
+  @include respond(xs) {
+    width: 90%;
+  }
 }
 .footer_content {
   width: 70%;
+  color: #000 !important;
+  @include respond(mmd) {
+    width: 90%;
+  }
 }
