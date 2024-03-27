@@ -143,7 +143,7 @@ class APIService {
 
   async post<T>(
     url: string,
-    data: Record<string, unknown> = {},
+    data: unknown = {},
     headers: Record<string, string> = {},
     configOverrides: AxiosRequestConfig = {}
   ): Promise<T> {
