@@ -11,6 +11,7 @@ import TabComponent from '@/components/TabComponents';
 // import { selectUser } from '@/store/User/userSlice';
 import useLoading from '@/components/Loader/Loader';
 import MainLoader from '@/components/Loader/MainLoader';
+import { useUser } from '@/hooks';
 
 const tabData = [
   {
@@ -39,26 +40,22 @@ const BannerCustomize = () => {
   const [fileType, setFileType] = useState();
   const [imagetoCrop, setImagetoCrop] = useState<string | null>(null); // Assuming imagetoCrop is of type string
   const [listOfImage, setListOfImage] = useState<ImageData[]>([]);
-  const [corporateType, setCorporateType] = useState<string>('');
   const [imagesDetails, setImagesDetails] = useState([]);
-  // const [imagesDetailsCount, setImagesDetailsCount] = useState(0);
+  const [imagesDetailsCount, setImagesDetailsCount] = useState(0);
   const { isLoading, startLoading, stopLoading } = useLoading();
-  const [loading, setLoadingValue] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState('upload_images');
   // const { dataUser } = useSelector(selectUser);
+  const { UserData } = useUser();
 
-  const handleCorporateType = async () => {
-    const value = 'gsjag';
+  const getBanner = async () => {
     startLoading();
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.post(`/corporate-wellness/corporate-type/banners`, {
-        corporateType: value,
-      });
+      const response: any = await apiService.get(`/get-banners`);
 
       if (response?.status === 200 && response?.success) {
-        setImagesDetails(response.payload.banners);
-        setCorporateType(value);
+        setImagesDetails(response.payload);
+        setImagesDetailsCount(response?.count);
       } else {
         toast.error('something went wrong');
       }
@@ -70,6 +67,9 @@ const BannerCustomize = () => {
     }
   };
 
+  useEffect(() => {
+    getBanner();
+  }, []);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getEdittedImg = (file: any) => {
     if (fileType === 'file-input-main') {
@@ -143,64 +143,73 @@ const BannerCustomize = () => {
     setListOfImage(updatedData);
   };
 
-  const handleSubmit = async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    if (imagesDetailsCount + listOfImage.length > 6) {
+      toast.error('you already selected 6 images');
+      return;
+    }
+
     const formDataFileThumbImg = new FormData();
     // formDataFileThumbImg.append('file', listOfImage);
     listOfImage.forEach((image: ImageData) => {
       formDataFileThumbImg.append(`banners`, image.value as unknown as File);
     });
-    formDataFileThumbImg.append(`corporateType`, corporateType);
-    setLoadingValue(true);
-    // try {
-    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    //   const response: any = await apiService.post(
-    //     `/${dataUser?._id}/corporate-wellness/add/banners`,
-    //     formDataFileThumbImg,
-    //     {
-    //       'content-type': 'multipart/form-data',
-    //     }
-    //   );
-    //   if (response?.status === 200 && response?.success) {
-    //     toast.success(response?.message);
-    //     setImagesDetails(response.payload.banners);
-    //     setListOfImage([]);
-    //     setImagesDetailsCount(response?.banner_count);
-    //     setCorporateType('');
-    //   } else {
-    //     toast.error('something went wrong');
-    //   }
-    // } catch (e) {
-    //   toast.error('something went wrong');
-    // } finally {
-    //   setLoadingValue(false);
-    // }
+
+    startLoading();
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.post(`/admin/${UserData()?._id}/upload-banner`, formDataFileThumbImg, {
+        'content-type': 'multipart/form-data',
+      });
+      if (response?.status === 200 && response?.success) {
+        getBanner();
+        toast.success(response?.message);
+        // setImagesDetails(response.payload.banners);
+        setListOfImage([]);
+      } else {
+        toast.error('something went wrong');
+      }
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error?.response?.data?.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    } finally {
+      stopLoading();
+    }
+  };
+  const handleDeleteImage = async (id: string) => {
+    try {
+      const data = {
+        fileId: id,
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.delete(`/admin/${UserData()?._id}/delete-banner`, {}, data);
+      if (response?.status === 200 && response?.success) {
+        getBanner();
+        toast.success(response?.message);
+        // setCorporateType(value);
+      } else {
+        toast.error('something went wrong');
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      toast.error(e.response.data.message);
+      // stopLoading();
+    } finally {
+      // stopLoading();
+    }
   };
 
-  // const handleDeleteImage = async (id: string) => {
-  //   try {
-  //     const data = {
-  //       corporateType: corporateType,
-  //       fileId: id,
-  //     };
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //     const response: any = await apiService.delete(`/${dataUser?._id}/corporate-wellness/delete/banner`, {}, data);
-
-  //     if (response?.status === 200 && response?.success) {
-  //       toast.success(response?.message);
-  //       setImagesDetails(response?.payload?.banners);
-  //       setImagesDetailsCount(response?.banner_count);
-  //       // setCorporateType(value);
-  //     } else {
-  //       toast.error('something went wrong');
-  //     }
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   } catch (e: any) {
-  //     toast.error(e.response.data.message);
-  //     // stopLoading();
-  //   } finally {
-  //     // stopLoading();
-  //   }
-  // };
   return (
     <>
       <div className={`${styles.images_tabs} images_tabs_css`}>
@@ -218,25 +227,22 @@ const BannerCustomize = () => {
                         cropMainImg === '' ? '' : styles['imageHolder']
                       } All_content_center flex-column`}
                     >
-                      {!isLoading ? (
-                        <label htmlFor="file-input">
-                          <Image
-                            src={
-                              cropMainImg !== '' && typeof cropedMainImg === 'string'
-                                ? cropedMainImg
-                                : typeof cropMainImg === 'object'
-                                  ? URL.createObjectURL(cropMainImg)
-                                  : `${'/assets/svg/admin/image_upload.svg'}`
-                            }
-                            alt="file"
-                            className={styles['file-img']}
-                            width={150}
-                            height={150}
-                          />
-                        </label>
-                      ) : (
-                        <MainLoader />
-                      )}
+                      <label htmlFor="file-input">
+                        <Image
+                          src={
+                            cropMainImg !== '' && typeof cropedMainImg === 'string'
+                              ? cropedMainImg
+                              : typeof cropMainImg === 'object'
+                                ? URL.createObjectURL(cropMainImg)
+                                : `${'/assets/svg/admin/image_upload.svg'}`
+                          }
+                          alt="file"
+                          className={styles['file-img']}
+                          width={150}
+                          height={150}
+                        />
+                      </label>
+
                       <input
                         id="file-input-main"
                         name="nftImage"
@@ -318,10 +324,10 @@ const BannerCustomize = () => {
                   )}
                 </div>
                 <div className={styles.upload_btn}>
-                  {loading ? (
+                  {isLoading ? (
                     <div className="sign_in_button All_content_center mt-2">
                       <button
-                        onClick={handleCorporateType}
+                        // onClick={handleBanner}
                         className={`${styles.submit_btn} ${
                           listOfImage.length > 0 ? 'Dark_button' : 'disbled_btn'
                         }  All_content_center`}
@@ -332,7 +338,7 @@ const BannerCustomize = () => {
                     </div>
                   ) : (
                     <button
-                      onClick={() => handleSubmit()}
+                      onClick={e => handleSubmit(e)}
                       className={`${styles.submit_btn} ${listOfImage.length > 0 ? 'Dark_button' : 'disbled_btn'}  `}
                     >
                       Submit
@@ -357,7 +363,7 @@ const BannerCustomize = () => {
                         return (
                           <>
                             <div className={`${styles.single_img}`} key={item.id}>
-                              <button className={styles.delete_img}>
+                              <button className={styles.delete_img} onClick={() => handleDeleteImage(item.id)}>
                                 <Image
                                   src={'/assets/svg/admin/image_close.svg'}
                                   alt="delete"
