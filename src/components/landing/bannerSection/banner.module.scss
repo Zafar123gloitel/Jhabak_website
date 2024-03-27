@@ -3,9 +3,9 @@
 .fitness_slider {
   background-color: $background-color;
   // min-height: 500px;
-  height: 800px;
+  height: 400px;
   @include respond(xxxl) {
-    height: 500px;
+    height: 300px;
   }
   @include respond(xl) {
     height: 300px;

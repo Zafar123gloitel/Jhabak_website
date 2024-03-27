@@ -145,7 +145,7 @@ export const Login = () => {
         <div className={`${styles.inner_container} d-flex flex-wrap element_center `}>
           <h2 className={`${styles.heading} section_heading_css element_center  `}>Welcome to Jhabak</h2>
 
-          <p className={`${styles.sub_heading} text-blue css-f18`}>Share and Stock Brokers</p>
+          <p className={`${styles.sub_heading} text-blue css-f14`}>Share and Stock Brokers</p>
 
           <Image
             className={styles.image}

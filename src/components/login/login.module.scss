@@ -32,10 +32,16 @@
   @include respond(md) {
     font-size: 26px;
   }
+  @include respond(xms) {
+    font-size: 22px;
+  }
 }
 .sub_heading {
   font-weight: 600;
   margin-top: 5px;
+  @include respond(xs) {
+    font-size: 22px;
+  }
 }
 .image {
   width: 50%;
