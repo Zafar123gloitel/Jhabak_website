@@ -16,7 +16,7 @@ import useDebounce from '@/components/Usedebounce';
 const EnquiryHandleList = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [postsPerPage] = useState<number>(2);
+  const [postsPerPage] = useState<number>(10);
   const [appoitmentDataList, setAppoitmentDataList] = useState<IAppoitment[]>([]);
   const [enquiryDataList, setEnquiryDataList] = useState<IContactUs[]>([]);
   const [totalEvents, setTotalEvents] = useState(0);
@@ -153,7 +153,7 @@ const EnquiryHandleList = () => {
               {activeTab === 'enquiry_list' && (
                 <EnquiryList
                   dataList={enquiryDataList}
-                  corporateList={AppoitmentList}
+                  corporateList={EnquiryDataList}
                   onChange={setPage}
                   total={totalEnquiryEvents}
                   current={currentPage}
