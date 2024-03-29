@@ -5,58 +5,30 @@ import Image from 'next/image';
 export const About = () => {
   return (
     <div className={`${styles.basic_rule} element_center section_padding section_shadow`}>
-      <div className={`${styles.innnr_basic_rule} css_max_screen d-flex flex-wrap`}>
-        <div className={`${styles.about_left} _css_left element_center`}>
-          <div className={`${styles.about_left_content} _css_left element_center`}>
-            <h2 className={`${styles.heading} _css_left element_center `}>
+      <div className={`${styles.innr_basic_rule} css_max_screen pt-5`}>
+        <div className={`${styles.about_container} element_center`}>
+          <div className={`${styles.about_content} _css_left element_center`}>
+            <h2 className={`${styles.heading} section_heading_css _css_left element_center `}>
               Generating wealth for you is at the heart of everything we do
             </h2>
-            <p className={`${styles.about_description} _css_content_`}>
+            <p className={`${styles.about_description} _css_content_ css-f14 mt-4`}>
               We want to help our clients meet their financial goals with passion and integrity. Since day one, we are
               committed to giving our customers the best services while holding to our core values which always place
               our clients interests first.
             </p>
           </div>
-          <div className={`${styles.about_image_left} _css_left element_center`}>
-            <Image
-              className={styles.about_image_back}
-              src="/assets/svg/about/about_backimage_left.svg"
-              alt="image back"
-              width={500}
-              height={400}
-            />
-
-            <Image
-              className={styles.about_image}
-              src="/assets/images/about/about_image1.jpg"
-              alt="image1"
-              width={500}
-              height={300}
-            />
+          <div className={`${styles.about_image} _css_right element_center`}>
+            <Image src="/assets/images/about/about_image2.jpg" alt="image1" width={500} height={350} />
           </div>
         </div>
 
-        <div className={`${styles.about_right} _css_right`}>
-          <div className={`${styles.about_image_right_outter}`}>
-            <Image
-              className={styles.about_image_right_back}
-              src="/assets/svg/about/about_backimage_right.svg"
-              alt="image back"
-              width={500}
-              height={400}
-            />
-
-            <Image
-              className={styles.about_image_right}
-              src="/assets/images/about/about_image2.jpg"
-              alt="image2"
-              width={500}
-              height={300}
-            />
+        <div className={`${styles.history} _css_right`}>
+          <div className={`${styles.history_img} element_center `}>
+            <Image src="/assets/images/about/about_image1.jpg" alt="image2" width={500} height={350} />
           </div>
-          <div className={`${styles.about_right_content} _css_right element_center`}>
-            <h1 className={`${styles.heading} _css_right  element_center css-f25`}>Our Story </h1>
-            <p className={`${styles.about_description} _css_content_`}>
+          <div className={`${styles.history_content} _css_right`}>
+            <h2 className={`${styles.heading} section_heading_css _css_right  `}>Our History </h2>
+            <p className={`${styles.about_description} _css_content_ mt-2`}>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
               industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into

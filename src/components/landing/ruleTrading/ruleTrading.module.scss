@@ -36,6 +36,9 @@
     padding-top: 0;
     width: 100%;
   }
+  @include respond(xxs) {
+    transform: scale(0.8);
+  }
   .men {
     margin-left: -15px;
     img {
@@ -166,6 +169,9 @@
 
 .menu_item {
   transition: all 0.5s;
+}
+.menues {
+  transform: scale(0.1);
 }
 
 $menu-items: 6; // Define the number of menu items

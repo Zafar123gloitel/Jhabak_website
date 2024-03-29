@@ -1,2 +1,2 @@
 export * from './intradayAdvantages';
-export * from './serviceHero';
+export * from './serviceCover';

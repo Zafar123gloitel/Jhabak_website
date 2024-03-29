@@ -4,7 +4,7 @@
   h1 {
     @include respond(xs) {
       width: 80%;
-      text-align: left !important;
+      text-align: center !important;
     }
   }
   .advantges_content {
@@ -12,17 +12,23 @@
     text-align: center;
 
     @include respond(sm) {
-      text-align: justify;
-      width: 70%;
-    }
-    @include respond(xs) {
       width: 80%;
     }
   }
   .innr_advantages {
+    width: 90%;
+    justify-content: space-between;
+    align-items: flex-start;
     .advantages_conainer {
-      width: 80%;
+      width: 43%;
       padding: 40px 0;
+      align-items: flex-start;
+      @include respond(mmd) {
+        width: 45%;
+      }
+      @include respond(sm) {
+        width: 90%;
+      }
       .image_part {
         position: relative;
         display: flex;
@@ -40,6 +46,19 @@
           border-radius: 15px;
         }
       }
+      &:nth-child(odd) {
+        .image_part {
+          display: flex;
+          justify-content: flex-start;
+          .segments_img {
+            width: 90%;
+            margin-top: 0;
+          }
+          @include respond(mmd) {
+            display: none;
+          }
+        }
+      }
       &:nth-child(even) {
         @include respond(md) {
           justify-content: space-between;
@@ -50,13 +69,25 @@
         .image_part {
           order: 1;
           display: flex;
-          justify-content: flex-start;
+          justify-content: center;
           @include respond(mmd) {
             display: none;
           }
         }
         .content {
           order: 2;
+        }
+      }
+      .content {
+        h2 {
+          @include respond(xl) {
+            font-size: 23px;
+          }
+        }
+      }
+      .advisory_text {
+        li {
+          margin: 5px 0;
         }
       }
     }

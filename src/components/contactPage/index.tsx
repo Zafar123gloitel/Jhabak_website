@@ -101,17 +101,17 @@ export const ContactForm = () => {
     setCountryCode(code);
   };
   return (
-    <section className="w-100 element_center flex-column">
-      <span className={`${styles['heading']}`}>
-        <h2 className={`${styles['section_heading']} section_heading_css`}>Get in Touch</h2>
-        <p className={`${styles['section_para']} _css_content_`}>
+    <section className={`${styles.contact} w-100 element_center flex-column section_padding`}>
+      <span className={styles.heading}>
+        <h2 className={`${styles.section_heading} section_heading_css`}>Get in Touch</h2>
+        <p className={`${styles.section_para} _css_content_`}>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys
           standard dummy text ever since the 1500s.
         </p>
       </span>
       <div className={`${styles.contactForm} css_max_screen `}>
-        <div className={`${styles['inner_div_left']} _css_left`}>
-          <div className={`${styles['map']} element_center`}>
+        <div className={`${styles.details} _css_left`}>
+          <div className={`${styles.map} element_center`}>
             <iframe
               title="address"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.137501008186!2d81.62634552828317!3d21.23921648938207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dd2b52613ae5%3A0x8d2be6b0db8be9b4!2sShare%20Building!5e0!3m2!1sen!2sin!4v1707980382518!5m2!1sen!2sin"
@@ -119,18 +119,18 @@ export const ContactForm = () => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <div className={`${styles['contact']}`}>
+          <div className={`${styles.contact} element_center `}>
             {contactDetails &&
               contactDetails.map(item => {
                 return (
                   <>
-                    <div className={`${styles['contact_inner']}`}>
-                      <div className={`${styles['contact_icon']}`}>
+                    <div className={styles.contact_inner}>
+                      <div className={styles.contact_icon}>
                         <Image src={item.imgSrc} alt={item.heading} width={175} height={175} />
                       </div>
-                      <div className={`${styles['contact_content']} _css_content_`}>
-                        <h2 className={`${styles['office_heading_css']} text-white`}>{item.heading}</h2>
-                        <p className={`${styles['office_para_css']} text-white`}>{item.content}</p>
+                      <div className={`${styles.contact_content} _css_content_`}>
+                        <h2 className={`${styles.office_heading_css} text-white`}>{item.heading}</h2>
+                        <p className={`${styles.office_para_css} text-white`}>{item.content}</p>
                       </div>
                     </div>
                   </>
@@ -138,8 +138,8 @@ export const ContactForm = () => {
               })}
           </div>
         </div>
-        <div className={`${styles['inner_div_right']} _css_right element_center`}>
-          <form className={`${styles['inner_div_right_form']}`} onSubmit={onSubmit}>
+        <div className={`${styles.contact_form} _css_right element_center`}>
+          <form className={`${styles.inner_contact_form}`} onSubmit={onSubmit}>
             <div className={`${styles['name_css']}`}>
               <div className={`${styles['first_name_div']}`}>
                 <InputField
@@ -177,7 +177,7 @@ export const ContactForm = () => {
                 />
               </div>
               <div className={`${styles['detail_css']}`}>
-                <label className={`${styles['phone_code_lable_css']} text-white css-f14`} htmlFor="firstname">
+                <label className={`${styles['phone_code_lable_css']} css-f14`} htmlFor="firstname">
                   Phone number
                 </label>
                 <div className={`${styles['phone_number']} ${styles['enquiry_phone_number']}`}>

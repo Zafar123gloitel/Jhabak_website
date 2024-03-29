@@ -18,8 +18,15 @@
       @include respond(mmd) {
         width: 100%;
       }
+
       span {
         width: 48%;
+        span {
+          width: 100%;
+        }
+      }
+      @include respond(xs) {
+        flex-wrap: wrap;
         span {
           width: 100%;
         }

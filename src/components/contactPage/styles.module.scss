@@ -1,5 +1,18 @@
 @import '../../styles/index.scss';
 
+.contact {
+  input,
+  textarea {
+    background: #222;
+    color: $white-color;
+    &::placeholder {
+      color: $light-text-color;
+    }
+  }
+  @include respond(mmd) {
+    padding-top: 35px;
+  }
+}
 .heading {
   display: flex;
   justify-content: center;
@@ -30,9 +43,28 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width: 80%;
+  margin-top: 20px;
+  @include respond(xxl) {
+    justify-content: space-between;
+  }
+  @include respond(xl) {
+    width: 90%;
+  }
+  @include respond(mmd) {
+    width: 80%;
+    justify-content: center;
+  }
+  @include respond(xs) {
+    width: 100%;
+  }
 }
-.inner_div_left {
+.details {
+  width: 503px;
+  @include respond(lg) {
+    width: 45%;
+  }
+
   @include respond(mmd) {
     width: 80%;
   }
@@ -40,11 +72,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    height: 325px;
     margin-bottom: 10px;
     overflow: hidden;
     iframe {
-      width: 80%;
+      width: 100%;
       height: 100%;
       border-radius: 10px;
       @include respond(mmd) {
@@ -55,25 +87,31 @@
   .contact {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
-    justify-content: center;
+    margin-top: 45px;
+    @include respond(mmd) {
+      margin-top: 0;
+    }
     .contact_inner {
-      width: 80%;
+      width: 100%;
       height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0px 5px 50px 0px #00000014;
-
+      background: #222;
+      box-shadow:
+        0px 4px 4px 0px #adff14,
+        0px 5px 20px 0px rgba(200, 255, 113, 0.5);
       gap: 10px;
       border-radius: 10px;
       @include respond(mmd) {
         width: 100%;
       }
+
       .contact_icon {
-        width: 150px;
+        width: 80px;
         height: 150px;
+        transform: translate(-40px, -8px);
       }
       .contact_content {
         width: 400px;
@@ -82,23 +120,18 @@
         color: #011632;
 
         .office_heading_css {
-          font-family: Source Sans Pro;
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 400;
           letter-spacing: 0.015em;
           text-align: left;
           color: #011632;
 
           @include respond(md) {
-            font-size: 16px;
-          }
-          @include respond(sm) {
             font-size: 14px;
           }
         }
         .office_para_css {
-          font-family: Source Sans Pro;
-          font-size: 16px;
+          font-size: 12px;
           font-weight: 400;
           letter-spacing: 0.015em;
           text-align: left;
@@ -109,6 +142,7 @@
           }
           @include respond(sm) {
             font-size: 10px;
+            word-wrap: break-word;
           }
         }
       }
@@ -116,18 +150,23 @@
   }
 }
 
-.inner_div_right {
+.contact_form {
+  align-items: start;
+
   @include respond(mmd) {
     width: 100%;
     margin-top: 25px;
   }
 }
-.inner_div_right_form {
-  width: 80%;
+.inner_contact_form {
+  width: 600px;
   height: auto;
-  border-radius: 8px;
-  padding: 10px;
-  border: 1px solid #667085;
+
+  padding: 67px 10px;
+  border-radius: 10px;
+  border: 1px solid #adff14;
+  box-shadow: 0px 4px 4px 0px #adff14;
+  height: 720px;
   @include respond(lg) {
     width: 100%;
   }
@@ -145,16 +184,23 @@
   flex-direction: row;
   justify-content: space-around;
   padding-top: 20px;
+  flex-wrap: wrap;
 }
 .first_name_div {
   display: flex;
   flex-direction: column;
   width: 40%;
+  @include respond(sm) {
+    width: 90%;
+  }
 }
 .last_name_div {
   display: flex;
   flex-direction: column;
   width: 40%;
+  @include respond(sm) {
+    width: 90%;
+  }
 }
 .info_css {
   display: flex;
@@ -170,6 +216,12 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  input {
+    height: 40px;
+  }
+  textarea {
+    height: 185px !important;
+  }
 }
 .label_css {
   width: 100%;

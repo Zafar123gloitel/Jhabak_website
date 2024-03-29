@@ -198,7 +198,7 @@
     width: 100%;
     left: 0;
     display: block;
-    top: 90px;
+    top: 75px;
     background: $background-color;
     height: 0px;
     transition: all 0.5s ease-in-out;
@@ -208,7 +208,16 @@
       transition: all 0.5s ease-in-out;
     }
     @include respond(xms) {
-      top: 130px;
+      top: 120px;
+      .single_menue {
+        margin-top: 10px;
+        &:nth-child(1) {
+          margin-top: 20px;
+        }
+        &:last-child {
+          margin-top: 20px;
+        }
+      }
     }
   }
 }
@@ -227,6 +236,7 @@
   z-index: 99;
   @include respond(xms) {
     width: 98%;
+
     justify-content: space-between;
   }
   button {

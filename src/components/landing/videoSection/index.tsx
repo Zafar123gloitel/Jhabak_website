@@ -25,8 +25,7 @@ const VideoSection = () => {
                 <div className={`${styles.technical_image} _css_right `}>
                   <div className={`${styles.technical_img} `}>
                     <Image src={'/assets/images/landing_page/screenFrame.png'} fill={true} alt="technical" />
-
-                    <video preload="matadata" poster="Loading" autoPlay muted loop>
+                    <video preload="matadata" poster="Loading" autoPlay muted loop playsInline>
                       <source
                         src="https://res.cloudinary.com/ddaddjwgj/video/upload/v1707478996/jhabak_trading/ut2nsknsn9bxg41k1uqd.mp4"
                         type="video/mp4"

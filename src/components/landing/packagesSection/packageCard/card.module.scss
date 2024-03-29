@@ -11,6 +11,7 @@ $card_text_color: #adff14;
   border-radius: 10px;
   position: relative;
   transition: all 0.5s ease-in-out;
+
   h1 {
     font-size: 20px;
     color: $blue-color;
@@ -80,8 +81,8 @@ $card_text_color: #adff14;
   }
 
   @include respond(xms) {
-    width: 98%;
-    min-width: 98%;
+    width: 80%;
+    min-width: 80%;
   }
   .innr_card {
     width: 100%;

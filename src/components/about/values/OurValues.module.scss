@@ -1,0 +1,74 @@
+@import '../../../styles/index.scss';
+.our_values {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.our_values_heading {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  color: $white-color;
+}
+.content {
+  // font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.card_collection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: center;
+  gap: 50px;
+  transition: all 0.5s ease;
+}
+.single_card {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  justify-content: center;
+  transition: all 0.5s ease;
+  @include respond(xxl) {
+    width: 400px;
+    transition: all 0.5s ease;
+  }
+  @include respond(xl) {
+    width: 320px;
+    transition: all 0.5s ease;
+  }
+  @include respond(sm) {
+    width: 40%;
+    transition: all 0.5s ease;
+  }
+  @include respond(xs) {
+    width: 80%;
+    transition: all 0.5s ease;
+  }
+}
+.icon {
+  display: flex;
+}
+.inner_heading {
+  text-align: center;
+}
+.inner_content {
+  font-weight: 400;
+  text-align: center;
+  width: 250px;
+  @include respond(xs) {
+    width: 80%;
+    transition: all 0.5s ease;
+  }
+  @include respond(xms) {
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+}

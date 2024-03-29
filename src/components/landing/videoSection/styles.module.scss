@@ -29,6 +29,12 @@
         @include respond(xs) {
           margin-left: 0;
         }
+        @include respond(xms) {
+          padding-left: 5px;
+          li {
+            text-align: left;
+          }
+        }
       }
 
       .technical_text {
@@ -81,6 +87,9 @@
         @include respond(xms) {
           width: 330px;
         }
+        @include respond(xxs) {
+          width: 250px;
+        }
         video {
           position: absolute;
           object-fit: cover;
@@ -94,7 +103,7 @@
             width: 375px;
           }
           @include respond(md) {
-            width: 380px;
+            width: 340px;
             height: 188px;
             top: 10px;
             left: 26px;
@@ -121,6 +130,10 @@
             left: 20px;
             top: 10px;
             transform: skew(-5deg);
+          }
+          @include respond(xxs) {
+            height: 156px;
+            width: 205px;
           }
         }
       }

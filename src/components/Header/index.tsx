@@ -47,7 +47,10 @@ const Header = () => {
                   <li key={value.id} className={styles.menu_single_lists}>
                     <button
                       className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
-                      onClick={() => handleRoute(value?.href)}
+                      onClick={() => {
+                        handleRoute(value?.href);
+                        setShowNav(false);
+                      }}
                     >
                       <span>{value?.name}</span>
                     </button>
@@ -59,7 +62,10 @@ const Header = () => {
               {!IsLoggedIn() ? (
                 <button
                   className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
-                  onClick={() => handleRoute('/login')}
+                  onClick={() => {
+                    handleRoute('/login');
+                    setShowNav(false);
+                  }}
                 >
                   <span>Login</span>
                 </button>

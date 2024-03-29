@@ -26,10 +26,11 @@
         .segments_img {
           display: block;
           position: relative;
-          width: 300px;
+          width: 500px;
           height: 300px;
           border-radius: 15px;
-          //   overflow: hidden;
+          border: 1px solid #ffd90070;
+          overflow: hidden;
         }
       }
       &:nth-child(2) {
@@ -42,8 +43,9 @@
 
         .segments_img {
           width: 500px;
-          border-radius: 5px;
+          border-radius: 15px;
           overflow: hidden;
+          border: 1px solid #c0c0c07c !important;
           @include respond(xl) {
             width: 400px;
             height: 250px;
@@ -67,8 +69,9 @@
       }
       &:nth-child(3) {
         .segments_img {
-          width: 400px;
-          height: 180px;
+          border: 1px solid #ffffff79;
+          overflow: hidden;
+          border-radius: 15px;
         }
       }
     }

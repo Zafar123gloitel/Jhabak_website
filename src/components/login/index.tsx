@@ -26,6 +26,7 @@ export const Login = () => {
   const { SetUser, ResetUser } = useUser();
   const router = useRouter();
   const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userDetails, setUserDetails] = useState<AddressProfileState>({ email: '', password: '' });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -140,26 +141,14 @@ export const Login = () => {
     }
   };
   return (
-    <main className={`${styles.outter_container} element_center `}>
-      <div className=" css_max_screen flex-wrap element_center">
-        <div className={`${styles.inner_container} d-flex flex-wrap element_center `}>
-          <h2 className={`${styles.heading} section_heading_css element_center  `}>Welcome to Jhabak</h2>
-
-          <p className={`${styles.sub_heading} text-blue css-f14`}>Share and Stock Brokers</p>
-
-          <Image
-            className={styles.image}
-            src="/assets/images/login_image.jpg"
-            alt=" login image"
-            width={200}
-            height={200}
-          />
-
-          <h3 className={`${styles.sub_heading2} text-blue css-f25`}>Login</h3>
-          <div className={`${styles['details']} element_center `}>
-            <div className={`${styles['User_name_div']}`}>
+    <section className={`${styles.login} element_center `}>
+      <div className={`${styles.innr_login} element_center  css_max_screen `}>
+        <div className={`${styles.login_form}`}>
+          <h1 className={`${styles.heading} text-center`}>Login</h1>
+          <p className="_css_content_ text-center">Glad you&rsquo;re back.</p>
+          <div className={`${styles.details} element_center `}>
+            <div className={`${styles.user_input}`}>
               <InputField
-                className={`${styles['User_name']}`}
                 type="text"
                 name="email"
                 placeholder="Enter Email or Phone"
@@ -168,25 +157,34 @@ export const Login = () => {
                 error={emailError}
               />
             </div>
-            <div className={`${styles['User_name_div']} `}>
+            <div className={`${styles.user_input} `}>
               <InputField
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 label=""
                 placeholder="Password"
                 value={userDetails?.password}
                 onChange={e => handleFormDataChange(e)}
                 error={passwordError}
+                className={styles.password}
               />
+              <button className={styles.show_pswd} onClick={() => setShowPassword(!showPassword)}>
+                <Image
+                  src={showPassword ? '/assets/svg/open_eye.svg' : '/assets/svg/closed_eye.svg'}
+                  width={20}
+                  height={20}
+                  alt="show Password"
+                />
+              </button>
             </div>
 
-            <button className={`${styles['Button']} Dark_button text-blue css-f20 mt-2`} onClick={handleLogin}>
+            <button className={`${styles.login_btn} Dark_button text-blue css-f20 mt-2`} onClick={handleLogin}>
               {isLoading ? 'Loading...' : 'Login'}
             </button>
           </div>
 
           <button
-            className={`${styles.sub_heading3} text-blue css-f14 element_center bg-transparent`}
+            className={`${styles.sub_heading3} text-white css-f14 element_center text-center w-100 bg-transparent`}
             onClick={() => setShow(true)}
           >
             Forgot password ?
@@ -194,6 +192,6 @@ export const Login = () => {
         </div>
       </div>
       <Forgotten show={show} onHide={() => setShow(false)} />
-    </main>
+    </section>
   );
 };
