@@ -55,8 +55,11 @@ class APIService {
       response => response,
       async (error: AxiosError) => {
         const originalRequest = error.config as InternalAxiosRequestConfig;
-        if ([401, 403].includes(error.response?.status ?? 0) && !originalRequest._retry) {
-          originalRequest._retry = true;
+        if (
+          [401, 403].includes(error.response?.status ?? 0)
+          // && !originalRequest._retry
+        ) {
+          // originalRequest._retry = true;
           await this.refreshToken();
           return this.axiosInstance(originalRequest);
         }

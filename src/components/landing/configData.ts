@@ -1,17 +1,6 @@
 export interface IRandomBanners {
   imgSrc: string;
 }
-export const randomBanners: IRandomBanners[] = [
-  {
-    imgSrc: '/assets/images/banner1.jpg',
-  },
-  {
-    imgSrc: '/assets/images/banner.jpg',
-  },
-  {
-    imgSrc: '/assets/images/demobanner.jpg',
-  },
-];
 
 export interface MasterTechnical {
   id: number;

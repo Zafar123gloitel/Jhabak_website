@@ -16,6 +16,7 @@ export interface IAppoitment extends Document {
   email: string;
   phone_number: string;
   client_status: string;
+  _id: number;
 }
 export interface IContactUs extends Document {
   first_name: string;
@@ -23,6 +24,7 @@ export interface IContactUs extends Document {
   email: string;
   phone_number: string;
   message: string;
+  _id: number;
 }
 export const EnquiryData: IEnquiryData[] = [
   {

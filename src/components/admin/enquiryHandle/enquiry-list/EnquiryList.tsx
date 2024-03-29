@@ -4,6 +4,9 @@ import React from 'react';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
 import { IContactUs } from '../enquiryData';
+import { apiService } from '@/utils';
+import { useUser } from '@/hooks';
+import { toast } from 'react-toastify';
 // import ActivationModal from '../../Modals/ActivationModal';
 // import { apiService } from '@/utils/index';
 // import { useSelector } from 'react-redux';
@@ -20,9 +23,9 @@ interface ICardDeatils {
   pageSize: number;
   activeTab?: string;
 }
-const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
+const EnquiryList = ({ dataList, corporateList, onChange, total, current, pageSize }: ICardDeatils) => {
   const empcolumns: string[] = ['First Name', 'Email', 'Phone Number', 'Action'];
-
+  const { UserData } = useUser();
   // const [show, setShow] = useState(false);
   // const [employeeId, setEmployeeId] = useState<string | undefined>();
 
@@ -68,6 +71,28 @@ const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeat
   //   }
   // };
 
+  const handleDelete = async (id: number) => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.delete(`/admin/${UserData()?._id}/${id}/delete-contact`);
+      if (response?.status === 200 && response?.success) {
+        corporateList();
+        toast.success('conatct has been delete successfully');
+      }
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    }
+  };
+
   return (
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
       {dataList !== undefined ? (
@@ -87,12 +112,13 @@ const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeat
                     <tr key={index}>
                       <td>{appointment?.first_name}</td>
                       <td>{appointment?.email}</td>
-                      <td>{appointment.phone_number ? appointment.phone_number : ''}</td>
+                      <td>{appointment.phone_number ? appointment?.phone_number : ''}</td>
 
                       {/* <td>{appointment?.email}</td> */}
                       {/* <td>{appointment.message ? appointment.message : 'hello'}</td> */}
                       {/* <td>{appointment?.isActive ? 'true' : 'false'}</td> */}
                       <td>
+                        <button onClick={() => handleDelete(appointment?._id)}>delete</button>
                         {/* <button
                           className={`${styles.approve_btn} ${
                             appointment.isActive && styles.approved_btn
@@ -102,7 +128,7 @@ const EnquiryList = ({ dataList, onChange, total, current, pageSize }: ICardDeat
                         >
                           <span></span>
                         </button> */}
-                        isActive
+
                         {/* {!appointment.isActive ? (
                           <button
                             className={`${styles.approve_btn} bg-transparent`}

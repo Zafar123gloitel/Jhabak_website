@@ -4,6 +4,9 @@ import React from 'react';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
 import { IAppoitment } from '../enquiryData';
+import { apiService } from '@/utils';
+import { useUser } from '@/hooks';
+import { toast } from 'react-toastify';
 
 interface ICardDeatils {
   // dataList: TrainingRequest[] | undefined;
@@ -15,8 +18,55 @@ interface ICardDeatils {
   pageSize: number;
   activeTab?: string;
 }
-const AppointmentList = ({ dataList, onChange, total, current, pageSize }: ICardDeatils) => {
+const AppointmentList = ({ dataList, corporateList, onChange, total, current, pageSize }: ICardDeatils) => {
+  const { UserData } = useUser();
   const empcolumns: string[] = ['Name', 'Email', 'Contact Number', 'Status', 'Action'];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSelect = async (e: any, value: number) => {
+    const val = e.target.value;
+    const data = {
+      clientStatus: val,
+    };
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.patch(`/admin/${UserData()?._id}/updateStatusAppointment/${value}`, data);
+      if (response?.status === 200 && response?.success) {
+        corporateList();
+      }
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.delete(`/admin/${UserData()?._id}/deleteAppointment/${id}`);
+      if (response?.status === 200 && response?.success) {
+        corporateList();
+      }
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error.response.data.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    }
+  };
 
   return (
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
@@ -39,41 +89,32 @@ const AppointmentList = ({ dataList, onChange, total, current, pageSize }: ICard
                       <td>{appointment?.email}</td>
                       <td>{appointment.phone_number && appointment?.phone_number}</td>
 
-                      <td>{appointment.client_status ?? appointment?.client_status}</td>
-                      {/* <td>{appointment?.isActive ? 'true' : 'false'}</td> */}
                       <td>
-                        {/* <button
-                          className={`${styles.approve_btn} ${
-                            appointment.isActive && styles.approved_btn
-                          } bg-transparent`}
-                          // onClick={e => handleApproved(e, true, appointment?._id, appointment?.isActive)}
-                          title="Approve"
-                        >
-                          <span></span>
-                        </button> */}
-                        {/* <>isActive</> */}
-                        {/* {!appointment.isActive ? (
-                          <button
-                            className={`${styles.approve_btn} bg-transparent`}
-                            title="Approve"
-                            onClick={e => handleApproved(e, true, appointment?._id, appointment?.isActive)}
+                        <select name="" id="" onChange={e => handleSelect(e, appointment._id)}>
+                          <option value="prospects" selected={appointment?.client_status === 'prospects'}>
+                            prospects
+                          </option>
+                          <option value="cancel" selected={appointment?.client_status === 'cancel'}>
+                            cancel
+                          </option>
+                          <option value="document_process" selected={appointment?.client_status === 'document_process'}>
+                            document_process
+                          </option>
+                          <option
+                            value="verification_completed"
+                            selected={appointment?.client_status === 'verification_completed'}
                           >
-                            <span></span>
-                          </button>
-                        ) : (
-                          <button
-                            className={`${styles.approve_btn} ${styles.approved_btn} bg-transparents`}
-                            title="Approve"
-                          >
-                            <span></span>
-                          </button>
-                        )} */}
+                            verification_completed
+                          </option>
+                        </select>
+                      </td>
+
+                      <td>
+                        <button onClick={() => handleDelete(appointment._id)}>Delete</button>
                       </td>
                     </tr>
                   </>
                 ))}
-                {/* </>
-          ))} */}
               </tbody>
             </table>
           </div>
