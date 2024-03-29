@@ -2,19 +2,20 @@
 
 .banner_slider {
   // min-height: 500px;
-  height: 300px;
-  // @include respond(xxxl) {
-  //   height: 350px;
-  // }
-  // @include respond(xl) {
-  //   height: 300px;
-  // }
-  // @include respond(md) {
-  //   height: 230px;
-  // }
-  // @include respond(sm) {
-  //   height: 190px;
-  // }
+  min-height: 350px;
+  height: 350px;
+  @include respond(xxxl) {
+    height: 350px;
+  }
+  @include respond(xl) {
+    height: 300px;
+  }
+  @include respond(md) {
+    height: 230px;
+  }
+  @include respond(sm) {
+    height: 190px;
+  }
 
   .slider-section {
     display: flex;
@@ -32,7 +33,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: left center;
+        object-position: center;
       }
       // > img {
       //   width: 100%;
@@ -44,4 +45,23 @@
       // }
     }
   }
+}
+
+.content-first-1 {
+  // position: relative;
+  // display: flex;
+  // justify-content: center;
+  // align-items: stretch;
+  // background-size: cover;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  background-color: #e7f1ff;
+}
+
+.content-first-1-bg {
+  width: 100%;
+  object-fit: cover;
+  max-height: 30vh;
+  vertical-align: middle;
 }

@@ -19,7 +19,7 @@ interface CropModalProps {
 }
 
 const CropModal: React.FC<CropModalProps> = props => {
-  const { show, imageSrc, getEdittedImg, fileName, fileType, fileExtension, setShowCropModal, size } = props;
+  const { show, imageSrc, getEdittedImg, fileName, fileType, fileExtension, setShowCropModal } = props;
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [rotation, setRotation] = useState<number>(0);
   const [zoom, setZoom] = useState<number>(1);
@@ -83,9 +83,9 @@ const CropModal: React.FC<CropModalProps> = props => {
                   rotation={rotation}
                   zoom={zoom}
                   // eslint-disable-next-line sonarjs/no-identical-expressions
-                  // aspect={size === '(1:1)' ? 1 / 1 : size === '(9:16)' ? 9 / 16 : 16 / 9}
+                  // aspect={size === '(9:16)' ? 9 / 16 : 16 / 9}
                   // aspect={size === '(3.84:1)' ? 1 / 3.84 : 3.84 / 1}
-                  aspect={size === '(9:16)' ? 9 / 16 : 16 / 9}
+                  aspect={211 / 35}
                   onCropChange={setCrop}
                   onRotationChange={setRotation}
                   onCropComplete={onCropComplete}
