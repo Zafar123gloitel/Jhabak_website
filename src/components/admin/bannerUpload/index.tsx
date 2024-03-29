@@ -46,6 +46,7 @@ const BannerCustomize = () => {
   const [activeTab, setActiveTab] = useState('upload_images');
   // const { dataUser } = useSelector(selectUser);
   const { UserData } = useUser();
+  const [progress, setProgress] = useState<number>(0);
 
   const getBanner = async () => {
     startLoading();
@@ -78,6 +79,8 @@ const BannerCustomize = () => {
     }
     setShowCropModal(false);
     setImagetoCrop('');
+    // Set progress to true when a file has been cropped successfully
+    setProgress(100);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,6 +89,7 @@ const BannerCustomize = () => {
 
     const file = e.target.files[0];
     const url = file && URL.createObjectURL(file);
+    setProgress(0);
 
     if (e.target.files && e.target.files.length > 0) {
       if (file.name.match(/\.(jpg|jpeg|png)$/)) {
@@ -111,6 +115,9 @@ const BannerCustomize = () => {
 
   const handleListImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    setImagetoCrop('');
+    setCropedMainImg(null);
+    setProgress(0);
     if (!cropedMainImg) {
       toast.error('First select the crop image');
       return;
@@ -215,7 +222,7 @@ const BannerCustomize = () => {
       <div className={`${styles.images_tabs} images_tabs_css`}>
         <TabComponent activeKey={activeTab} tabOptions={tabData} onChangeTab={handleTabChange} />
         {activeTab === 'upload_images' && (
-          <div className={`${styles.banner_customize} All_content_center`}>
+          <div className={`${styles.banner_customize} element_center`}>
             <form className={styles.inner_banner_customize}>
               <div className={`${styles.upload_section} col-12 col-lg-4`}>
                 <h3 className="css-f16">Upload Banner</h3>
@@ -225,7 +232,7 @@ const BannerCustomize = () => {
                     <div
                       className={`${styles['placeholder']} ${
                         cropMainImg === '' ? '' : styles['imageHolder']
-                      } All_content_center flex-column`}
+                      } element_center flex-column`}
                     >
                       <label htmlFor="file-input">
                         <Image
@@ -234,7 +241,7 @@ const BannerCustomize = () => {
                               ? cropedMainImg
                               : typeof cropMainImg === 'object'
                                 ? URL.createObjectURL(cropMainImg)
-                                : `${'/assets/svg/admin/image_upload.svg'}`
+                                : `${'/assets/svg/image_upload.svg'}`
                           }
                           alt="file"
                           className={styles['file-img']}
@@ -249,11 +256,14 @@ const BannerCustomize = () => {
                         type="file"
                         accept="image/jpg, image/png, image/jpeg"
                         className={styles['fileInput']}
-                        onChange={handleFileUpload}
+                        onChange={e => {
+                          handleFileUpload(e);
+                          // handleFileChange(e);
+                        }}
                       />
                       {cropMainImg === '' && (
                         <>
-                          <p className={`${styles['placeholder-text']} css-f15`}>
+                          <p className={`${styles.placeholder_text} css-f15`}>
                             Drag Your Image <b> Browse </b> <br />
                             <span className="browse css-f13 text-center w-100">Support Jpg, Png, Jpeg</span>
                           </p>
@@ -263,29 +273,63 @@ const BannerCustomize = () => {
                     </div>
                   </div>
 
-                  <div className={`${styles.intsruction_adlist}`}>
-                    <div className={`${styles.intsructions}`}>
-                      <p className="m-0 p-0 css-f13">
-                        <Image src={'/assets/svg/admin/info_icon.svg'} width={15} height={15} alt="instrunction" />
-                        <span>Image Guidelines</span>
-                      </p>
-                      <ul className={`${styles.intsructions} css-f14`}>
-                        <li>Image recommended 1920 x 500 pixels.</li>
-                        <li>Maximum file size 5 MB.</li>
-                        <li>Image types include: JPG, GIF or PNG.</li>
-                      </ul>
+                  <div className={`${styles.intsruction_adlist} flex-column`}>
+                    <div className={styles.image_progress}>
+                      <span id={styles.fileName}>
+                        {cropedMainImg && (
+                          <>
+                            <Image
+                              src={
+                                cropMainImg !== '' && typeof cropedMainImg === 'string'
+                                  ? cropedMainImg
+                                  : typeof cropMainImg === 'object'
+                                    ? URL.createObjectURL(cropMainImg)
+                                    : `${'/assets/svg/image_upload.svg'}`
+                              }
+                              alt="file"
+                              className={styles['file-img']}
+                              width={35}
+                              height={35}
+                            />
+                            <span>
+                              File Name: <span className={styles.f_name}>{cropedMainImg.name}</span>
+                            </span>
+                          </>
+                        )}
+                      </span>
+
+                      <div className={`${styles.progress} progress`}>
+                        <span className={`${styles.progress_bar} progress-bar`} style={{ width: `${progress}%` }}>
+                          {progress}%
+                        </span>
+                      </div>
                     </div>
-                    <button
-                      //   disabled={corporateType === '' || imagesDetailsCount + listOfImage.length === 6}
-                      //   className={`${
-                      //     corporateType === '' || imagesDetails.length + listOfImage.length === 6
-                      //       ? 'disbled_btn'
-                      //       : 'Dark_button'
-                      //   }`}
-                      onClick={e => handleListImage(e)}
-                    >
-                      Add
-                    </button>
+
+                    <div className={`${styles.intsructions}`}>
+                      <div>
+                        <p className="m-0 p-0 css-f13">
+                          <Image src={'/assets/svg/info_icon.svg'} width={15} height={15} alt="instrunction" />
+                          <span>Image Guidelines</span>
+                        </p>
+                        <ul className={`${styles.intsructions_list} css-f14 mt-3`}>
+                          <li>Image recommended 1920 x 300 pixels.</li>
+                          <li>Maximum file size 5 MB.</li>
+                          <li>Image types include: JPG, GIF or PNG.</li>
+                        </ul>
+                      </div>
+                      <button
+                        //   disabled={corporateType === '' || imagesDetailsCount + listOfImage.length === 6}
+                        //   className={`${
+                        //     corporateType === '' || imagesDetails.length + listOfImage.length === 6
+                        //       ? 'disbled_btn'
+                        //       : 'Dark_button'
+                        //   }`}
+                        className="Dark_button"
+                        onClick={e => handleListImage(e)}
+                      >
+                        Add
+                      </button>
+                    </div>
                   </div>
 
                   {/* ending here======== */}
@@ -294,7 +338,7 @@ const BannerCustomize = () => {
               <div className={`${styles.banner_list} col-12 col-lg-7`}>
                 <h3 className="css-f16 m-0 ">Banner Preview</h3>
                 <span className="css-f13 text-secondary">You can upload six banner images </span>
-                <div className={`${styles.inner_banner_list} All_content_center `}>
+                <div className={`${styles.inner_banner_list} element_center `}>
                   {listOfImage.length > 0 ? (
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     listOfImage.map((item: any) => {
@@ -303,7 +347,7 @@ const BannerCustomize = () => {
                           <div className={`${styles.single_img}`} key={item.id}>
                             <button className={styles.delete_img} onClick={() => handleDelete(item.id)}>
                               <Image
-                                src={'/assets/svg/admin/image_close.svg'}
+                                src={'/assets/svg/image_close.svg'}
                                 alt="delete"
                                 title="delete"
                                 className={styles.delete_img}
@@ -325,12 +369,12 @@ const BannerCustomize = () => {
                 </div>
                 <div className={styles.upload_btn}>
                   {isLoading ? (
-                    <div className="sign_in_button All_content_center mt-2">
+                    <div className="sign_in_button element_center mt-2">
                       <button
                         // onClick={handleBanner}
                         className={`${styles.submit_btn} ${
                           listOfImage.length > 0 ? 'Dark_button' : 'disbled_btn'
-                        }  All_content_center`}
+                        }  element_center`}
                         style={{ width: '100px', padding: '20px 0' }}
                       >
                         <div className="custom-loader"></div>
@@ -354,7 +398,7 @@ const BannerCustomize = () => {
           <div className={`${styles.banner_list} ${styles.banner_section_list} col-12 col-lg-12`}>
             <h3 className="css-f16 m-0 ">Banner Preview</h3>
             <span className="css-f13 text-secondary">You can upload six banner images </span>
-            <div className={`${styles.inner_banner_list} All_content_center`}>
+            <div className={`${styles.inner_banner_list} element_center`}>
               {!isLoading ? (
                 <>
                   {imagesDetails.length > 0
@@ -365,7 +409,7 @@ const BannerCustomize = () => {
                             <div className={`${styles.single_img}`} key={item.id}>
                               <button className={styles.delete_img} onClick={() => handleDeleteImage(item.id)}>
                                 <Image
-                                  src={'/assets/svg/admin/image_close.svg'}
+                                  src={'/assets/svg/image_close.svg'}
                                   alt="delete"
                                   title="delete"
                                   className={styles.delete_img}
@@ -382,15 +426,10 @@ const BannerCustomize = () => {
                     : imagesDetails.length === 0 && (
                         <>
                           <div
-                            className="All_content_center flex-column w-100"
+                            className="element_center flex-column w-100"
                             style={{ marginTop: '25px', color: '#aaa' }}
                           >
-                            <Image
-                              src={'/assets/svg/admin/image_not_found.svg'}
-                              alt="not found"
-                              width={150}
-                              height={150}
-                            />
+                            <Image src={'/assets/svg/image_not_found.svg'} alt="not found" width={150} height={150} />
                             <h5 className="w-100 text-center" style={{ marginTop: '-25px' }}>
                               Image not found
                             </h5>

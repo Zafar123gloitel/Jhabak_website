@@ -124,4 +124,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  span {
+    position: absolute;
+    bottom: -17px;
+  }
 }

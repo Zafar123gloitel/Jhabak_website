@@ -46,7 +46,7 @@ export const pageRoute: pageRoute[] = [
   },
   {
     id: 5,
-    name: 'Trading Calls',
+    name: 'Trading History',
     imgSrc: '/assets/svg/sidebar/Plans.svg',
     activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
 

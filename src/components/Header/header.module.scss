@@ -17,67 +17,32 @@
   min-height: 80px;
   align-items: center;
   justify-content: center;
-
-  .inner_main_header {
-    @include respond(xxxxl) {
-      max-width: 1800px;
-    }
-    .menu_dropdown_button {
-      position: absolute;
-      z-index: 99;
-      left: 0;
-      top: 0;
-    }
-
-    .menue-list-section {
-      height: 100%;
-      min-width: 100%;
-      display: flex;
-      align-items: center;
-
-      .menue_list {
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        justify-content: space-evenly !important;
-        @include respond(md) {
-          justify-content: space-between !important;
+  &.admin_navbar {
+    background: $admin_navbar_bg;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    .inner_navbar {
+      @include respond(md) {
+        width: 85%;
+        .Menues {
+          width: 120%;
+          left: -9%;
+          background-color: #02160d;
         }
+      }
 
-        .logo_section {
-          width: 130px !important;
-          height: 50px !important;
-          position: relative;
-          .logo_link {
-            width: 100%;
-            height: 100%;
-          }
-          @include respond(md) {
-            margin-left: 15px !important;
-          }
+      @include respond(sm) {
+        .company_name {
+          margin-left: 15px;
         }
-
-        .single_list {
-          margin: 0px 0px 0px 40px;
-          @include respond(lg) {
-            margin: 0;
-          }
-          & a {
-            font-size: 14px;
-            // color: #000000e0;
-            color: #fff;
-            font-weight: 600;
-          }
-
-          & a:hover {
-            color: #efefefea;
-          }
+      }
+      @include respond(xms) {
+        .show_navbtn {
+          position: absolute;
+          right: -20px;
+          top: 20%;
         }
-        .desktop_nav {
-          @include respond(md) {
-            display: none;
-          }
+        .Menues {
+          top: 80px;
         }
       }
     }

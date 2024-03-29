@@ -168,6 +168,17 @@ button {
   border-radius: 6px;
   color: #fff;
   letter-spacing: 0.9px;
+  cursor: pointer;
+}
+.disbled_btn {
+  font-size: 13px;
+  font-family: 'Source Sans 3', sans-serif;
+  background: #efefef;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: #000;
+  letter-spacing: 0.9px;
+  cursor: default !important;
 }
 .outline_button {
   border: 1px solid #fff;
@@ -535,7 +546,7 @@ button {
     width: 85%;
     transition: all 1s ease-in-out;
 
-    @include respond(xs) {
+    @include respond(sm) {
       margin-left: 0px;
       width: 100%;
     }

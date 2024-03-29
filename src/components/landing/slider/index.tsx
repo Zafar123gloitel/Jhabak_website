@@ -5,6 +5,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { toast } from 'react-toastify';
 import { apiService } from '@/utils';
 import useLoading from '@/components/Loader/Loader';
+import Image from 'next/image';
 
 const Slider = () => {
   const [imagesDetails, setImagesDetails] = useState([]);
@@ -110,7 +111,7 @@ const Slider = () => {
                       }}
                     /> */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    {/* <img
                       src={item?.url}
                       srcSet={`${item?.url}, ${item?.url}`}
                       style={{ width: '100%' }}
@@ -118,6 +119,15 @@ const Slider = () => {
                       ((min-width: 30em) and (max-width: 50em)) 30em,
                       (max-width: 30em) 20em"
                       alt="radians"
+                    /> */}
+                    <Image
+                      src={item?.url}
+                      alt="radians"
+                      // layout="responsive" // or use "fill", "fixed", or "intrinsic" depending on your needs
+                      // width={100} // set the width of the image
+                      fill={true}
+                      // height={100} // set the height of the image
+                      sizes="(min-width: 50em) 50em, (min-width: 30em) 30em, 20em" // adjust sizes according to your needs
                     />
                   </SplideSlide>
                 </>

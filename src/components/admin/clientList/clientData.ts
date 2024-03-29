@@ -166,12 +166,12 @@ export const ClientData: IClientData[] = [
 export const tabData: ITabData[] = [
   {
     _id: 2122,
-    name: 'create_client',
-    alt: 'Create Client',
+    name: 'add_client',
+    alt: 'Add Client',
   },
   {
     _id: 2121,
-    name: 'client_list',
-    alt: 'Client List',
+    name: 'view_list',
+    alt: 'View List',
   },
 ];

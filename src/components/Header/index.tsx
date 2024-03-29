@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`${styles['main_navbar']} ${pathname.startsWith('/admin') && 'bg-green'}`}>
+      <nav className={`${styles['main_navbar']} ${pathname.startsWith('/admin') && styles.admin_navbar}`}>
         {/* <button
           className={styles.menu_dropdown_button}
           type="button"
@@ -87,16 +87,16 @@ const Header = () => {
                 ))}
               {role === 'admin' && !pathname.startsWith('/admin') && (
                 <Link href="/admin/clients" className={`outline_button`}>
-                  DashBoard
+                  Dashboard
                 </Link>
               )}
               {role === 'user' && !pathname.startsWith('/client') && (
                 <Link href="/client/dashboard" className={`outline_button`}>
-                  DashBoard
+                  Dashboard
                 </Link>
               )}
 
-              <button className="bg-transparent" onClick={() => setShowNav(!showNav)}>
+              <button className={`${styles.show_navbtn} bg-transparent`} onClick={() => setShowNav(!showNav)}>
                 {showNav ? (
                   <Image src="/assets/svg/landing_close.svg" alt="menu" width={35} height={35} />
                 ) : (

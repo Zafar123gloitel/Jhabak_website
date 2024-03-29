@@ -5,16 +5,22 @@
   // min-height: 350px;
   height: 350px;
   @include respond(xxxl) {
-    height: 350px;
-  }
-  @include respond(xl) {
     height: 300px;
   }
+  @include respond(xl) {
+    height: 250px;
+  }
   @include respond(md) {
-    height: 230px;
+    height: 200px;
   }
   @include respond(sm) {
-    height: 190px;
+    height: 130px;
+  }
+  @include respond(xs) {
+    height: 70px;
+  }
+  @include respond(xms) {
+    height: 50px;
   }
 
   .slider-section {
@@ -29,20 +35,6 @@
       height: 100%;
       margin: 0;
       position: relative;
-      .image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-      // > img {
-      //   width: 100%;
-      //   margin: auto;
-      //   display: block;
-      //   object-fit: cover;
-      //   opacity: 1;
-      //   aspect-ratio: '211 / 35';
-      // }
     }
   }
 }

@@ -22,11 +22,11 @@ interface ICardDeatils {
 }
 
 const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchData, setSearchData }: ICardDeatils) => {
-  const formatStartDateRange = (startDateString: Date) => {
-    return moment(startDateString).format('DD MMMM YYYY');
-  };
+  // const formatStartDateRange = (startDateString: Date) => {
+  //   return moment(startDateString).format('DD MMMM YYYY');
+  // };
   const formatEndDateRange = (endDateString: Date) => {
-    return moment(endDateString).format('DD MMMM YYYY');
+    return moment(endDateString).format('DD.MM.YYYY');
   };
 
   const convertLatter = (plan_type: string) => {
@@ -71,14 +71,13 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
                 <div className={styles.client_details_card} key={appointment?.phone_number}>
                   <div className={`${styles.innr_client_card} element_center flex-column`}>
                     <div className={`${styles.detail_part} `}>
-                      <span className={`${styles.user_img} element_center`}>
-                        <Image src={'/assets/svg/user_default_img.png'} alt="user" width={100} height={100} />
-                      </span>
-                      <div className={`${styles.details} d-flex`}>
+                      <span className={`${styles.user_img} element_center flex-column`}>
+                        <Image src={'/assets/svg/user_default_img.png'} alt="user" width={67} height={67} />
                         <p>
-                          <span>Name:</span>
-                          <span>{appointment.name}</span>
+                          <span className="css-f12">{appointment.name}</span>
                         </p>
+                      </span>
+                      <div className={`${styles.details}`}>
                         <p>
                           <span>Phone:</span>
                           <span>{appointment.phone_number}</span>
@@ -91,9 +90,9 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
                           <span>PAN:</span>
                           <span className={`${styles.PAN}`}>{appointment.pan_number}</span>
                         </p>
-                        <p className={`${styles.aadhar} w-100`}>
+                        <p>
                           <span>Email:</span>
-                          <span className="ml-5">{appointment.email}</span>
+                          <span>{appointment.email}</span>
                         </p>
                       </div>
                     </div>
@@ -101,10 +100,9 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
                     <table className={`${styles.suscription_details} `}>
                       <thead>
                         <tr>
-                          <th>Plans Type</th>
-                          <th>Call Type</th>
-                          <th>Start</th>
-                          <th>Expiry</th>
+                          <th className={styles.plan_type_col}>Plans Type</th>
+                          <th className={styles.call_type_col}>Call Type</th>
+                          <th className={styles.plan_exp_col}>Expiry</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -112,40 +110,57 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
                           return (
                             <React.Fragment key={planValue?._id}>
                               <tr>
-                                <td>{convertLatter(planValue.plan_type)}</td>
-                                <td>
-                                  {planValue.trading_type[0].includes('equity') && (
-                                    <Image
-                                      src="/assets/svg/admin/equity_calls.svg"
-                                      alt="Equtiy Trading"
-                                      title="Equtiy Trading"
-                                      width={30}
-                                      height={30}
-                                    />
-                                  )}
-                                  {planValue.trading_type[1].includes('option') && (
-                                    <Image
-                                      src="/assets/svg/admin/option_trading.svg"
-                                      alt="Option Trading"
-                                      title="Option Trading"
-                                      width={30}
-                                      height={30}
-                                    />
-                                  )}
-                                  {planValue.trading_type[2].includes('commodity') && (
-                                    <Image
-                                      src="/assets/svg/admin/commodity_trading.svg"
-                                      alt="Commodity Trading"
-                                      title="Commodity Trading"
-                                      width={30}
-                                      height={30}
-                                    />
-                                  )}
+                                <td className={`${styles.plan_type_col} element_center`}>
+                                  {convertLatter(planValue.plan_type)}
+                                </td>
+                                <td className={`${styles.call_type_col} element_center`}>
+                                  <span className={styles.calltype_data}>
+                                    {planValue.trading_type[0].includes('equity') && (
+                                      <>
+                                        <Image
+                                          src="/assets/svg/admin/equity_calls.svg"
+                                          alt="Equtiy Trading"
+                                          title="Equtiy Trading"
+                                          width={20}
+                                          height={20}
+                                        />
+                                        <span className={styles.calltype}>Equity</span>
+                                      </>
+                                    )}
+                                  </span>
+                                  <span className={styles.calltype_data}>
+                                    {planValue.trading_type[1].includes('option') && (
+                                      <>
+                                        <Image
+                                          src="/assets/svg/admin/option_trading.svg"
+                                          alt="Option Trading"
+                                          title="Option Trading"
+                                          width={20}
+                                          height={20}
+                                        />
+                                        <span className={styles.calltype}>Option</span>
+                                      </>
+                                    )}
+                                  </span>
+                                  <span className={styles.calltype_data}>
+                                    {planValue.trading_type[2].includes('commodity') && (
+                                      <>
+                                        <Image
+                                          src="/assets/svg/admin/commodity_trading.svg"
+                                          alt="Commodity Trading"
+                                          title="Commodity Trading"
+                                          width={20}
+                                          height={20}
+                                        />
+                                        <span className={styles.calltype}>Commodity</span>
+                                      </>
+                                    )}
+                                  </span>
                                 </td>
 
-                                <td>{formatStartDateRange(planValue.start_plan)}</td>
-
-                                <td>{formatEndDateRange(planValue.end_plan)}</td>
+                                <td className={`${styles.plan_exp_col} element_center`}>
+                                  {formatEndDateRange(planValue.end_plan)}
+                                </td>
                               </tr>
                             </React.Fragment>
                           );

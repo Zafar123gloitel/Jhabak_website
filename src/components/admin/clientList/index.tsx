@@ -18,7 +18,7 @@ const CreateClient = () => {
   const [postsPerPage] = useState<number>(2);
   const [dataList, setDataList] = useState([]);
   const [totalEvents, setTotalEvents] = useState(0);
-  const [activeTab, setActiveTab] = useState('create_client');
+  const [activeTab, setActiveTab] = useState('add_client');
   const [searchData, setSearchData] = useState('');
   const debounceDelay = 500; // Adjust debounce delay as needed
   const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
@@ -79,7 +79,7 @@ const CreateClient = () => {
           <TabComponent activeKey={activeTab} tabOptions={tabData} onChangeTab={handleTabChange} />
           {!isLoading ? (
             <>
-              {activeTab === 'client_list' && (
+              {activeTab === 'view_list' && (
                 // <ClientList
                 //   dataList={ClientData}
                 //   corporateList={corporateList}
@@ -103,7 +103,7 @@ const CreateClient = () => {
           ) : (
             <MainLoader />
           )}
-          {activeTab === 'create_client' && <CreateClientForm />}
+          {activeTab === 'add_client' && <CreateClientForm />}
         </div>
       </div>
     </>

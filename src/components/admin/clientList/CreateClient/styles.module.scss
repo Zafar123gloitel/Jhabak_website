@@ -294,7 +294,7 @@
     width: 100%;
     text-align: left;
     border-radius: 5px;
-    overflow: hidden;
+    // overflow: hidden;
     padding-left: 10px;
     border-bottom: 1px solid $green-color;
     background: $dark-input-bg;
@@ -365,9 +365,21 @@
   overflow: hidden;
   height: 250px;
   @include respond(sm) {
-    height: 500px;
+    height: 600px;
+  }
+  @include respond(xms) {
+    height: 650px;
   }
   transition: all 0.5s ease-in-out;
+  animation: removeOverflow 2s ease forwards;
+}
+@keyframes removeOverflow {
+  0% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
+  }
 }
 
 .hide_trade_type {
