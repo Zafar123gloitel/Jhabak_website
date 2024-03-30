@@ -5,6 +5,7 @@ import styles from './sidebar.module.scss';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
+// import { Accordion } from 'react-bootstrap';
 
 interface IProps {
   isToggle: boolean;
@@ -17,7 +18,11 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
   // const toggle = useAppSelector(selectToggle);
 
   // const dispatch = useAppDispatch();
+  // const redirect = (path: string) => {
+  //   console.log(path, 'path');
 
+  //   router.push(`${path}`);
+  // };
   const handleRoute = (path: string) => {
     router.push(path);
   };
@@ -44,18 +49,17 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
         />
       </button>
       <nav className={`${styles.main_sidebar} ${isToggle && styles.show_sidebar}`}>
-        <div className={`${styles.inner_sidebar} `}>
-          <div className={`${styles.sidebar_top} `}>
-            <div className={styles.menu_dropdown}></div>
-          </div>
-          <div className={`${styles.Menu_List} `}>
+        <div className={`${styles.inner_sidebar} ${styles['sidebar_container']}`}>
+          <div className={`${styles.Menu_List} ${styles.inner_sidebar_container} sidebar`}>
             <ul className={`${styles.Menues} `}>
               {pageRoute?.map(value => (
                 <li key={value.id} className={`${styles.li_content}`}>
                   <button
                     className={`${styles.single_menu} ${styles.no_margin_padding}  bg-transparent text-white ${isToggle && styles.showSidebar} ${styles.main_content}`}
                     title={value.name}
-                    onClick={() => handleRoute(value.href as string)}
+                    onClick={() => {
+                      value.subMenu && handleRoute(value.href as string);
+                    }}
                   >
                     <Image
                       className={styles.icon}
@@ -71,6 +75,42 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
                 </li>
               ))}
             </ul>
+
+            {/* <Accordion defaultActiveKey="" className={styles.filter}>
+              {pageRoute?.map(item => {
+                return (
+                  <div key={item?.id}>
+                    <button onClick={() => redirect(item?.href)} className={`bg-transparent ${styles.outer_btn}`}>
+                      {item.subMenu.length > 0 ? (
+                        <Accordion.Item eventKey={item.name} className={styles.filterItem} key={item?.id}>
+                          <Accordion.Header className={styles.filterHeading}>
+                            <Image src={item.imgSrc} alt="item.name" width={25} height={25} />
+                            {item.name}
+                          </Accordion.Header>
+                          <Accordion.Body className={styles.filterAccordian}>
+                            {item.subMenu?.map(item => {
+                              return (
+                                <>
+                                  <button onClick={() => redirect(item?.href)} key={item.href}>
+                                    <Image src={item.imgSrc} alt="value" width={20} height={20} />
+                                    <p>{item.name}</p>
+                                  </button>
+                                </>
+                              );
+                            })}
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      ) : (
+                        <button>
+                          <Image src={item.imgSrc} alt="value" width={25} height={25} />
+                          <p>{item.name}</p>
+                        </button>
+                      )}
+                    </button>
+                  </div>
+                );
+              })}
+            </Accordion> */}
           </div>
         </div>
       </nav>

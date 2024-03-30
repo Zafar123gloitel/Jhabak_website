@@ -117,7 +117,7 @@ const OptionData = ({ formData, getError, onChange }: IProps) => {
             />
           </div>
 
-          <div className={`${styles.single_price_actions}`}>
+          <div className={`${styles.single_price_actions}`} title="Min Quantity">
             <InputField
               label={''}
               type="text"

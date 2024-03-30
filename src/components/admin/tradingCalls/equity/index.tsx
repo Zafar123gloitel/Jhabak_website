@@ -98,7 +98,7 @@ const Equity = ({ formData, getError, onChange }: IProps) => {
               value={formData.minimum_quantity}
               onChange={onChange}
               error={getError.minimum_quantity}
-              placeholder="Min. Quantity"
+              placeholder="Min. Qty"
               className={`${styles.Client_input_section}`}
             />
           </div>

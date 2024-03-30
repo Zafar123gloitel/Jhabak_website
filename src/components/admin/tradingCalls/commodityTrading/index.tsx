@@ -185,12 +185,12 @@ const CommodityTrading = () => {
     <>
       <div className={`${styles.create_form} element_center`}>
         <form
-          className={`${styles.create_Client_section} ${commodityStyles.create_Client_section} ${commodityTrading.option_type === 'hedge' && commodityStyles.hedgeForm} `}
+          className={`${styles.create_Client_section} ${commodityStyles.create_Client_section} ${commodityTrading.option_type === 'hedge' ? commodityStyles.hedgeForm : commodityStyles.open} `}
           onSubmit={handleFormSubmit}
         >
           <div className={`${optionStyles.inr_create_Client_section} element_center `}>
             {/* section 1 */}
-            <div className={`${styles.Client_input_container}  d-flex justify-content-between `}>
+            <div className={`${styles.Client_input_container}  d-flex  flex-wrap `}>
               <div className={`${commodityStyles.top_single_input}`}>
                 <SelectField
                   label={''}
@@ -219,7 +219,9 @@ const CommodityTrading = () => {
               </div>
             </div>
 
-            <div className={`${styles.Client_input_container} w-100 d-flex flex-column element_center`}>
+            <div
+              className={`${styles.Client_input_container} w-100 d-flex flex-column element_center ${commodityStyles.all_inputs}`}
+            >
               {commodityTrading.trading_type == 'equity' ? (
                 <Equity formData={equityFormData} getError={equityError} onChange={onEquityChange} />
               ) : (
