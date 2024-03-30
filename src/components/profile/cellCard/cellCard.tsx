@@ -4,6 +4,8 @@ import style from './cellCard.module.scss';
 import { useUser } from '@/hooks';
 import { IPlans } from '@/types';
 import moment from 'moment';
+import Image from 'next/image';
+// import { table } from 'console';
 export default function CellCard() {
   const { getUsersPlans } = useUser();
   const formatEndDateRange = (endDateString: Date) => {
@@ -13,22 +15,23 @@ export default function CellCard() {
     <>
       {getUsersPlans()?.map((item: IPlans) => {
         return (
-          <div className={`${style.maincontainer}`} key={item._id}>
-            <div className={`${style.headercontainer}`}>
-              <div className={`${style.headersubcontainer01}`}></div>
-              <div className={`${style.headersubcontainer02}`}>{item?.plan_type.split('_').join(' ')}</div>
+          <div className={`${style.cellmaincontainer}`} key={item._id}>
+            <div className={`${style.cellheadercontainer}`}>
+              <Image src="/assets/svg/profile/red.svg" width={31} height={31} alt="Picture of the author" />
+              <p>{item?.plan_type.split('_').join(' ')}</p>
             </div>
-            <div className={`${style.tableconatiner}`}>
+            <div className={`${style.cellfootercontainer}`}>
               <table>
-                <tr>
-                  <td>Calls Type</td>
-                  <td>Duration</td>
-                  <td>Start</td>
-                  <td>End</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Calls Type</th>
+                    <th>Duration</th>
+                    <th>Start</th>
+                    <th>End</th>
+                  </tr>
+                </thead>
 
                 <tr>
-                  <td className={`${style.cheklist}`}></td>
                   <td>
                     {item.trading_type.map((value, index) => {
                       return <li key={index}>{value}</li>;
