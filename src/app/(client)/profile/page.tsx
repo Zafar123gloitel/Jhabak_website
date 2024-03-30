@@ -5,7 +5,7 @@ import style from './profile.module.scss';
 function Profile() {
   return (
     <>
-      <div className={`${style.maincontainer} element_center w-100 section_padding flex-column `}>
+      <div className={`${style.maincontainer} element_center`}>
         <Usercard />
         <PersonalInfo />
       </div>
