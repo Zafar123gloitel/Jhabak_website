@@ -23,7 +23,12 @@ interface AddressProfileState {
 
 export const Login = () => {
   const { Auth, ResetAuth } = useAuth();
-  const { SetUser, ResetUser } = useUser();
+  const {
+    SetUser,
+    ResetUser,
+    SetUserPlans,
+    // getUsersPlans
+  } = useUser();
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -117,6 +122,7 @@ export const Login = () => {
               refreshToken: refreshToken,
             });
             SetUser(payload);
+            SetUserPlans(payload.plans);
             return router.push('/client/dashboard');
           }
         } else {
@@ -140,6 +146,7 @@ export const Login = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <section className={`${styles.login} element_center `}>
       <div className={`${styles.innr_login} element_center  css_max_screen `}>
