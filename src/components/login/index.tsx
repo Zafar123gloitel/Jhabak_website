@@ -116,13 +116,14 @@ export const Login = () => {
             SetUser(payload);
             return router.push('/admin/clients');
           } else if (payload?.role === 'user') {
+            const { plans, ...rest } = payload;
             Auth({
               role: payload.role,
               accessToken: accessToken,
               refreshToken: refreshToken,
             });
-            SetUser(payload);
-            SetUserPlans(payload.plans);
+            SetUser({ ...rest });
+            SetUserPlans(plans);
             return router.push('/client/dashboard');
           }
         } else {

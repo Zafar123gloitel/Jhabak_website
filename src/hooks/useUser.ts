@@ -9,7 +9,7 @@ export default function useUser() {
   function SetUser(_user: ISignupPayload): void {
     dispatch(setUser_(_user));
   }
-  function SetUserPlans(plans_: IPlans): void {
+  function SetUserPlans(plans_: IPlans[]): void {
     dispatch(setUserPlans_(plans_));
   }
 
@@ -20,7 +20,7 @@ export default function useUser() {
   function UserData(): ISignupPayload | null {
     return user;
   }
-  function getUsersPlans(): IPlans | null {
+  function getUsersPlans(): IPlans[] | null {
     return plans;
   }
 

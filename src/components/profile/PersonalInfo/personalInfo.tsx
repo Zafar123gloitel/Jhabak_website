@@ -20,7 +20,7 @@ export default function personalInfo() {
             </div>
             <div className={`${style.cellbox}`}>
               <CellCard />
-              <CellCard />
+              {/* <CellCard /> */}
             </div>
           </div>
         </div>
