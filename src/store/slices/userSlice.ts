@@ -4,7 +4,7 @@ import { ISignupPayload, IPlans } from '@/types';
 
 interface IState {
   user: ISignupPayload | null;
-  plans: IPlans | null;
+  plans: IPlans[] | null;
 }
 
 const initialState: IState = {
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     setUser_: (state: IState, action: PayloadAction<ISignupPayload>) => {
       state.user = action.payload;
     },
-    setUserPlans_: (state: IState, action: PayloadAction<IPlans>) => {
+    setUserPlans_: (state: IState, action: PayloadAction<IPlans[]>) => {
       state.plans = action.payload;
     },
     resetUser_: (state: IState) => {
