@@ -8,10 +8,10 @@ export interface ISubMenu {
 export interface pageRoute {
   id: number;
   name: string;
-  href?: string | undefined;
+  href: string;
   imgSrc: string;
   activeImgSrc: string;
-  subMenu?: ISubMenu[];
+  subMenu: ISubMenu[];
 }
 export const pageRoute: pageRoute[] = [
   {
@@ -20,6 +20,7 @@ export const pageRoute: pageRoute[] = [
     href: '/Admin',
     imgSrc: '/assets/svg/sidebar/Home.svg',
     activeImgSrc: '/assets/svg/sidebar/Home_active.svg',
+    subMenu: [],
   },
 
   {
@@ -28,6 +29,7 @@ export const pageRoute: pageRoute[] = [
     href: '/admin/clients',
     imgSrc: '/assets/svg/sidebar/Admin.svg',
     activeImgSrc: '/assets/svg/sidebar/Admin_active.svg',
+    subMenu: [],
   },
   {
     id: 3,
@@ -35,6 +37,7 @@ export const pageRoute: pageRoute[] = [
     href: '/admin/inquiry',
     imgSrc: '/assets/svg/sidebar/Calendar.svg',
     activeImgSrc: '/assets/svg/sidebar/Calender_active.svg',
+    subMenu: [],
   },
 
   {
@@ -43,34 +46,35 @@ export const pageRoute: pageRoute[] = [
     href: '/admin/calls',
     imgSrc: '/assets/svg/sidebar/call.svg',
     activeImgSrc: '/assets/svg/sidebar/call_active.svg',
+    subMenu: [],
   },
   {
     id: 5,
     name: 'Trading History',
-    imgSrc: '/assets/svg/sidebar/Plans.svg',
-    activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
-
+    imgSrc: '/assets/svg/sidebar/history.svg',
+    activeImgSrc: '/assets/svg/sidebar/history_active.svg',
+    href: '/admin/equity',
     subMenu: [
       {
         _id: 'Equity Trading',
         name: 'Equity Trading',
-        href: '/admin/trading_calls',
-        imgSrc: '/assets/svg/sidebar/Plans.svg',
-        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+        href: '/admin/equity',
+        imgSrc: '/assets/svg/sidebar/history.svg',
+        activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
       {
         _id: 'Option Trading',
         name: 'Option Trading',
-        href: '/admin/trading_calls',
-        imgSrc: '/assets/svg/sidebar/Plans.svg',
-        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+        href: '/admin/trading_history/option',
+        imgSrc: '/assets/svg/sidebar/history.svg',
+        activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
       {
         _id: 'Commodity Trading',
-        name: 'Option Trading',
-        href: '/admin/trading_calls',
-        imgSrc: '/assets/svg/sidebar/Plans.svg',
-        activeImgSrc: '/assets/svg/sidebar/Plans_active.svg',
+        name: 'Commodity Trading',
+        href: '/admin',
+        imgSrc: '/assets/svg/sidebar/history.svg',
+        activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
     ],
   },
@@ -80,6 +84,7 @@ export const pageRoute: pageRoute[] = [
     href: '/admin/banner',
     imgSrc: '/assets/svg/sidebar/Banner.svg',
     activeImgSrc: '/assets/svg/sidebar/Banner_active.svg',
+    subMenu: [],
   },
 
   {
@@ -88,6 +93,7 @@ export const pageRoute: pageRoute[] = [
     href: '/admin/offer',
     imgSrc: '/assets/svg/sidebar/Setting.svg',
     activeImgSrc: '/assets/svg/sidebar/Setting_active.svg',
+    subMenu: [],
   },
   //   {
   //     id: 5,

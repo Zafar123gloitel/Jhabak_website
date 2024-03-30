@@ -1,5 +1,5 @@
 // YourPage.tsx
-import React from 'react';
+import React, { useState } from 'react';
 // import { TrainingRequest } from '@/types/index';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import styles from '@/components/TableComponent/styles.module.scss';
@@ -7,6 +7,9 @@ import { IAppoitment } from '../enquiryData';
 import { apiService } from '@/utils';
 import { useUser } from '@/hooks';
 import { toast } from 'react-toastify';
+import LocalStyle from '../style.module.scss';
+import DeleteModal from '@/components/Modals/DeleteModal';
+import Image from 'next/image';
 
 interface ICardDeatils {
   // dataList: TrainingRequest[] | undefined;
@@ -19,6 +22,8 @@ interface ICardDeatils {
   activeTab?: string;
 }
 const AppointmentList = ({ dataList, corporateList, onChange, total, current, pageSize }: ICardDeatils) => {
+  const [show, setShow] = useState(false);
+  const [userId, setUserId] = useState<number>();
   const { UserData } = useUser();
   const empcolumns: string[] = ['Name', 'Email', 'Contact Number', 'Status', 'Action'];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,35 +52,19 @@ const AppointmentList = ({ dataList, corporateList, onChange, total, current, pa
     }
   };
 
-  const handleDelete = async (id: number) => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.delete(`/admin/${UserData()?._id}/deleteAppointment/${id}`);
-      if (response?.status === 200 && response?.success) {
-        corporateList();
-      }
-    } catch (error: unknown) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      if (error.response.data.message) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        return toast.error(error.response.data.message);
-      }
-
-      const typeError = error as Error;
-      return toast.error(typeError.message);
-    }
+  const handleDeleteModal = (id: number) => {
+    setUserId(id);
+    setShow(true);
   };
 
   return (
-    <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} All_content_center flex-column`}>
+    <div style={{ marginTop: '50px' }} className={`${LocalStyle.main__data_container}`}>
       {dataList !== undefined ? (
         <>
-          <div className={`${styles.dashboard_data}`}>
-            <table className={`${styles.table_dashboard} table responsive`}>
+          <div className={`${styles.dashboard_data} ${LocalStyle.dashboard_data} `}>
+            <table className={`${styles.table_dashboard} ${LocalStyle.table_dashboard} text-white responsive `}>
               <thead>
-                <tr>
+                <tr className={LocalStyle.data_content}>
                   {empcolumns.map((column, index) => (
                     <th key={index}>{column}</th>
                   ))}
@@ -85,11 +74,11 @@ const AppointmentList = ({ dataList, corporateList, onChange, total, current, pa
                 {dataList?.map((appointment, index) => (
                   <>
                     <tr key={index}>
-                      <td>{appointment?.name}</td>
-                      <td>{appointment?.email}</td>
-                      <td>{appointment.phone_number && appointment?.phone_number}</td>
+                      <td className={LocalStyle.table_data}>{appointment?.name}</td>
+                      <td className={LocalStyle.table_data}>{appointment?.email}</td>
+                      <td className={LocalStyle.table_data}>{appointment.phone_number && appointment?.phone_number}</td>
 
-                      <td>
+                      <td className={LocalStyle.table_data}>
                         <select name="" id="" onChange={e => handleSelect(e, appointment._id)}>
                           <option value="prospects" selected={appointment?.client_status === 'prospects'}>
                             prospects
@@ -109,8 +98,14 @@ const AppointmentList = ({ dataList, corporateList, onChange, total, current, pa
                         </select>
                       </td>
 
-                      <td>
-                        <button onClick={() => handleDelete(appointment._id)}>Delete</button>
+                      <td className={LocalStyle.table_data}>
+                        <button
+                          onClick={() => handleDeleteModal(appointment?._id)}
+                          title="delete"
+                          className="bg-transparent"
+                        >
+                          <Image src={'/assets/svg/admin/delete_svg.svg'} alt="delete" width={24} height={24} />
+                        </button>
                       </td>
                     </tr>
                   </>
@@ -127,13 +122,13 @@ const AppointmentList = ({ dataList, corporateList, onChange, total, current, pa
         'Data Not Found!'
       )}
 
-      {/* <ActivationModal
+      <DeleteModal
         show={show}
+        corporateList={corporateList}
         setShow={() => setShow(false)}
-        handleApprove={handleApprove}
-        isLoading={isLoading}
-        approved={approved}
-      /> */}
+        userId={userId}
+        deleteUserType="appointment"
+      />
     </div>
   );
 };

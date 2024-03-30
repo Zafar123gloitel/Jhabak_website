@@ -9,3 +9,68 @@
     }
   }
 }
+
+.dashboard_data {
+  width: 100%;
+  background-color: black !important;
+  padding-left: 30px;
+
+  .table_dashboard {
+    background-color: black !important;
+    width: 100%;
+    tbody {
+      tr {
+        width: 100%;
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
+  .data_content {
+    // color: white;
+    border-bottom: 1px solid #00b666;
+    width: 200px;
+    text-align: center;
+
+    padding: 5px;
+    th {
+      &:nth-child(1) {
+        span {
+          display: flex;
+          width: 80%;
+          margin-left: 10%;
+          text-align: left;
+        }
+      }
+    }
+  }
+  .table_data {
+    // color: white;
+
+    text-align: center;
+    size: 14px;
+    padding: 5px;
+    &:nth-child(1) {
+      span {
+        display: flex;
+        width: 80%;
+        margin-left: 10%;
+        text-align: left;
+      }
+    }
+
+    select {
+      outline: none;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 10px 0;
+      option {
+        background-color: #000;
+        margin: 10px 10px !important;
+        &::hover {
+          color: #000;
+        }
+      }
+    }
+  }
+}

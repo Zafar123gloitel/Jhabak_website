@@ -4,16 +4,63 @@
   display: flex;
   justify-content: space-between !important;
 }
-.top_single_input {
-  width: 48%;
+.all_inputs {
+  @include respond(xs) {
+    margin-top: 0 !important;
+  }
 }
 
-.defaultInputs {
-  width: 90%;
+.top_single_input {
+  width: 45%;
+  @include respond(xs) {
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 0;
+  }
+
+  .Client_input_section {
+    width: 100%;
+  }
+  &:nth-child(2) {
+    margin-left: 9%;
+    margin-top: -2px;
+
+    @include respond(xs) {
+      margin-left: 0px;
+    }
+  }
 }
+
 .hedgeForm {
   width: 55%;
   transition: all 0.5s ease-in-out;
+  .top_single_input {
+    :nth-child(2) {
+      margin-left: 50px !important;
+      margin-top: -2px;
+      @include respond(xl) {
+        margin-left: 40px;
+      }
+      @include respond(lg) {
+        margin-left: 45px;
+      }
+      @include respond(sm) {
+        margin-left: 30 px;
+      }
+      @include respond(xs) {
+        margin-left: 0px;
+      }
+    }
+  }
+  @include respond(xl) {
+    width: 80%;
+  }
+  @include respond(sm) {
+    width: 90%;
+  }
+}
+.defaultInputs {
+  width: 90%;
 }
 
 .hedgeData {
