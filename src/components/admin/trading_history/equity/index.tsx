@@ -12,18 +12,6 @@ import PaginationComponent from '@/components/Pagination/Pagination';
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
 
-// interface Data {
-//   skillType: {
-//     name: string;
-//   };
-//   search?: string;
-//   filter?: {
-//     gender?: string;
-//     level?: string;
-//   };
-// }
-// import ActivationModal from '../../Modals/ActivationModal';
-
 const EquityHistory = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [buySell, setBuySell] = useState('');
@@ -42,27 +30,6 @@ const EquityHistory = () => {
     // let data;
 
     try {
-      // if (debouncedSearchQuery) {
-      //   data = {
-      //     search: debouncedSearchQuery,
-      //   };
-      // }
-      // if (buySell) {
-      //   data = {
-      //     filter: {
-      //       buy_sell_type: buySell,
-      //     },
-      //   };
-      // }
-
-      // if (debouncedSearchQuery && buySell) {
-      //   data = {
-      //     ...data,
-      //     filter: {
-      //       buy_sell_type: buySell,
-      //     },
-      //   };
-      // }
       let data: { search?: string; filter?: { buy_sell_type: string } } = {};
 
       if (debouncedSearchQuery) {
