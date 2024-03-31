@@ -10,14 +10,26 @@ import { toast } from 'react-toastify';
 
 import PaginationComponent from '@/components/Pagination/Pagination';
 import InputField from '@/components/InputField/InputField';
+import SelectField from '@/components/InputField/SelectField';
 
+// interface Data {
+//   skillType: {
+//     name: string;
+//   };
+//   search?: string;
+//   filter?: {
+//     gender?: string;
+//     level?: string;
+//   };
+// }
 // import ActivationModal from '../../Modals/ActivationModal';
 
 const EquityHistory = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
+  const [buySell, setBuySell] = useState('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState([]);
-  const [postsPerPage] = useState<number>(2);
+  const [postsPerPage] = useState<number>(10);
   const debounceDelay = 500; // Adjust debounce delay as needed
   // total no of data
   const [totalEvents, setTotalEvents] = useState(0);
@@ -27,16 +39,57 @@ const EquityHistory = () => {
 
   const corporateList = async () => {
     startLoading();
-    let data;
+    // let data;
 
     try {
+      // if (debouncedSearchQuery) {
+      //   data = {
+      //     search: debouncedSearchQuery,
+      //   };
+      // }
+      // if (buySell) {
+      //   data = {
+      //     filter: {
+      //       buy_sell_type: buySell,
+      //     },
+      //   };
+      // }
+
+      // if (debouncedSearchQuery && buySell) {
+      //   data = {
+      //     ...data,
+      //     filter: {
+      //       buy_sell_type: buySell,
+      //     },
+      //   };
+      // }
+      let data: { search?: string; filter?: { buy_sell_type: string } } = {};
+
       if (debouncedSearchQuery) {
-        data = {
-          search: debouncedSearchQuery,
+        data.search = debouncedSearchQuery;
+      }
+
+      if (buySell) {
+        data.filter = {
+          buy_sell_type: buySell,
         };
       }
+
+      // If both debouncedSearchQuery and buySell exist, merge them into the data object
+      if (debouncedSearchQuery && buySell) {
+        data = {
+          ...data,
+          filter: {
+            buy_sell_type: buySell,
+          },
+        };
+      }
+
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.get(`/admin/${UserData()?._id}/get-equity-trading`, data);
+      const response: any = await apiService.post(
+        `/admin/${UserData()?._id}/get-equity-trading?page=${currentPage}&limit=${postsPerPage}&sort=desc`,
+        data
+      );
 
       if (response?.status === 200 && response?.success) {
         setDataList(response?.payload);
@@ -62,7 +115,7 @@ const EquityHistory = () => {
   };
   useEffect(() => {
     corporateList();
-  }, [currentPage, postsPerPage, debouncedSearchQuery]);
+  }, [currentPage, postsPerPage, debouncedSearchQuery, buySell]);
 
   const setPage = (i: number) => {
     setCurrentPage(i);
@@ -84,16 +137,17 @@ const EquityHistory = () => {
             onChange={handleSearch}
             className={styles.search_share}
           />
-          {/* <SelectField
+          <SelectField
             label=""
+            name="buySale"
             options={[
               { label: 'Select Trading Type', value: '' },
-              { label: 'Equity Trading', value: 'equity' },
-              { label: 'Option Trading', value: 'option' },
+              { label: 'Buy', value: 'buy' },
+              { label: 'Sell', value: 'sell' },
             ]}
-            value={''}
-            
-          /> */}
+            value={buySell}
+            onChange={e => setBuySell(e.target.value)}
+          />
         </div>
         {!isLoading ? (
           <div className={styles.innr_trading_history}>
