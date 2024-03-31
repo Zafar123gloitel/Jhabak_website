@@ -23,25 +23,39 @@ const CommodityHistory = () => {
   const { UserData } = useUser();
   const [searchData, setSearchData] = useState('');
   const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
+  const [optionType, setOptionType] = useState('');
+  const [tradingType, setTradingType] = useState('equity');
 
   const corporateList = async () => {
     startLoading();
-    let data;
 
     try {
-      if (debouncedSearchQuery) {
+      let data: { search?: string; filter?: { option_type: string }; trading_type?: string } = {};
+      if (tradingType) {
+        data.trading_type = tradingType;
+      }
+      if (tradingType && debouncedSearchQuery) {
+        data.trading_type = tradingType;
+        data.search = debouncedSearchQuery;
+      }
+
+      if (tradingType && optionType) {
+        data.trading_type = tradingType;
+        data.filter = {
+          option_type: optionType,
+        };
+      }
+
+      if (debouncedSearchQuery && optionType) {
         data = {
-          search: debouncedSearchQuery,
+          ...data,
+          filter: {
+            option_type: optionType,
+          },
         };
       }
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.post(
-        `/admin/${UserData()?._id}/get-mcx-trading`,
-        {
-          trading_type: 'option',
-        },
-        data
-      );
+      const response: any = await apiService.post(`/admin/${UserData()?._id}/get-mcx-trading`, data);
 
       if (response?.status === 200 && response?.success) {
         setDataList(response?.payload);
@@ -67,7 +81,7 @@ const CommodityHistory = () => {
   };
   useEffect(() => {
     corporateList();
-  }, [currentPage, postsPerPage, debouncedSearchQuery]);
+  }, [currentPage, postsPerPage, debouncedSearchQuery, tradingType]);
 
   const setPage = (i: number) => {
     setCurrentPage(i);
@@ -83,6 +97,16 @@ const CommodityHistory = () => {
         <div className={styles.search_data}>
           <span className={styles.type}>Commodity</span>
           <div className={styles.input_container}>
+            <SelectField
+              label=""
+              name="trading_type"
+              options={[
+                { label: 'Option', value: 'option' },
+                { label: 'Equity', value: 'equity' },
+              ]}
+              value={tradingType}
+              onChange={e => setTradingType(e.target.value)}
+            />
             <InputField
               type="text"
               placeholder="Search for Share name"
@@ -91,16 +115,19 @@ const CommodityHistory = () => {
               onChange={handleSearch}
               className={styles.search_share}
             />
-            <SelectField
-              label=""
-              name=""
-              options={[
-                { label: 'Buy/Sell', value: '' },
-                { label: 'Buy', value: 'buy' },
-                { label: 'Sell', value: 'sell' },
-              ]}
-              value={''}
-            />
+            {tradingType === 'option' && (
+              <SelectField
+                label=""
+                name="buySale"
+                options={[
+                  { label: 'Select option', value: '' },
+                  { label: 'Open', value: 'open' },
+                  { label: 'Hedge', value: 'hedge' },
+                ]}
+                value={optionType}
+                onChange={e => setOptionType(e.target.value)}
+              />
+            )}
           </div>
         </div>
         {!isLoading ? (
@@ -108,7 +135,11 @@ const CommodityHistory = () => {
             {dataList.length !== 0 ? (
               <>
                 {dataList.map((item, index) => {
-                  return <EquityCard key={index} dataList={item} />;
+                  return tradingType === 'equity' ? (
+                    <EquityCard key={index} dataList={item} />
+                  ) : (
+                    <EquityCard key={index + 1} dataList={item} />
+                  );
                 })}
 
                 <PaginationComponent

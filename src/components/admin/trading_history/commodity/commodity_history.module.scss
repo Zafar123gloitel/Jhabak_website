@@ -20,10 +20,12 @@
 
         input {
           background-color: $dark-input-bg;
+          color: #fff;
         }
         select {
           border-bottom: 1px solid $green-color;
           margin-top: 6px;
+          color: #fff;
         }
       }
     }
