@@ -14,18 +14,11 @@ function specialCharactor(val: string) {
 }
 
 function userName(val: string) {
-  // const regex = new RegExp(/^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/)
-  // const regex = new RegExp(
-  //     /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/,
-  // )
   const regex = new RegExp(/[a-zA-Z0-9!@#$%^&*()-_+={}[\]/,.?"':;|<>~`]$/);
 
   return !!(requied(val) && regex.test(val));
 }
-// function mobile(val: string) {
-//   const regex = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/);
-//   return !!(requied(val) && regex.test(val));
-// }
+
 function mobile(PhoneNumber: string, countryCode = '+91', regex = /^\d{10}$/): boolean {
   const test = PhoneNumber?.split(countryCode)[1];
   return regex.test(test);
@@ -39,7 +32,6 @@ function youtubeUserName(val: string) {
   const regex = new RegExp(/(www)?\/\/(www\.)?(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/);
   return !!(requied(val) && regex.test(val));
 }
-// /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
 
 function domainName(val: string) {
   const regex = new RegExp(

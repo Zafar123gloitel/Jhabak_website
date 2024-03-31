@@ -13,18 +13,6 @@ import PaginationComponent from '@/components/Pagination/Pagination';
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
 
-// interface Data {
-//   skillType: {
-//     name: string;
-//   };
-//   search?: string;
-//   filter?: {
-//     gender?: string;
-//     level?: string;
-//   };
-// }
-// import ActivationModal from '../../Modals/ActivationModal';
-
 const EquityHistory = () => {
   const [buySell, setBuySell] = useState('');
   const [currentPage, setCurrentPage] = useState<number>(1);
