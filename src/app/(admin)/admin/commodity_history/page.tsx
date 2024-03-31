@@ -1,12 +1,13 @@
 'use client';
 import React from 'react';
 import { withAuthentication } from '@/hocs';
-import EquityHistory from '@/components/admin/trading_history/equity';
+
+import CommodityHistory from '@/components/admin/trading_history/commodity';
 
 const Equity = () => {
   return (
     <>
-      <EquityHistory />
+      <CommodityHistory />
     </>
   );
 };

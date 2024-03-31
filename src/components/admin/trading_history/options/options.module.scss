@@ -1,4 +1,34 @@
+@import '../../../../styles/index.scss';
 .option_history {
+  margin-top: 30px;
+
+  .search_data {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > span {
+      color: $light-text-color;
+      margin-left: -5%;
+      font-size: 13px;
+    }
+    .input_container {
+      display: flex;
+      align-items: center;
+      div {
+        margin: 0;
+        width: 200px;
+
+        input {
+          background-color: $dark-input-bg;
+        }
+        select {
+          border-bottom: 1px solid $green-color;
+          margin-top: 6px;
+        }
+      }
+    }
+  }
   .innr_option_history {
     height: 100%;
     width: 100%;
@@ -6,5 +36,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
+    margin-top: 76px;
   }
 }

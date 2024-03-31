@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './equity_history.module.scss';
+import styles from './commodity_history.module.scss';
 import EquityCard from '@/components/cards/equity_card';
 import useLoading from '@/components/loading/Loader';
 import { apiService } from '@/utils';
@@ -12,7 +12,7 @@ import PaginationComponent from '@/components/Pagination/Pagination';
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
 
-const EquityHistory = () => {
+const CommodityHistory = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState([]);
@@ -35,7 +35,13 @@ const EquityHistory = () => {
         };
       }
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const response: any = await apiService.post(`/admin/${UserData()?._id}/get-equity-trading`, data);
+      const response: any = await apiService.post(
+        `/admin/${UserData()?._id}/get-mcx-trading`,
+        {
+          trading_type: 'option',
+        },
+        data
+      );
 
       if (response?.status === 200 && response?.success) {
         setDataList(response?.payload);
@@ -73,9 +79,9 @@ const EquityHistory = () => {
   };
   return (
     <>
-      <div className={`${styles.trading_history} element_center flex-column`}>
+      <div className={`${styles.commodity_history} element_center flex-column`}>
         <div className={styles.search_data}>
-          <span className={styles.type}>Equity</span>
+          <span className={styles.type}>Commodity</span>
           <div className={styles.input_container}>
             <InputField
               type="text"
@@ -125,4 +131,4 @@ const EquityHistory = () => {
   );
 };
 
-export default EquityHistory;
+export default CommodityHistory;
