@@ -3,7 +3,7 @@ import React from 'react';
 import { withAuthentication } from '@/hocs';
 import EquityHistory from '@/components/admin/trading_history/equity';
 
-const Calls = () => {
+const Equity = () => {
   return (
     <>
       <EquityHistory />
@@ -11,4 +11,4 @@ const Calls = () => {
   );
 };
 
-export default withAuthentication(Calls);
+export default withAuthentication(Equity);
