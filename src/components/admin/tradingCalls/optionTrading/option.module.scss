@@ -3,9 +3,34 @@
 .create_Client_section {
   width: 40%;
   margin-top: 0;
+  @include respond(md) {
+    width: 60%;
+  }
+  @include respond(sm) {
+    width: 90%;
+  }
+
   .inr_create_Client_section {
     display: flex;
     flex-wrap: nowrap;
+  }
+}
+.open_design {
+  .top_inputs {
+    flex-wrap: wrap;
+    .top_single_input {
+      &:nth-child(2) {
+        margin-left: 8%;
+
+        @include respond(xms) {
+          margin-left: 0;
+          margin-top: 8px;
+        }
+      }
+      @include respond(xms) {
+        width: 97.5%;
+      }
+    }
   }
 }
 .top_inputs {
@@ -16,17 +41,34 @@
     }
     &:nth-child(2) {
       margin-left: 35px;
+      @include respond(xl) {
+        margin-left: 29px;
+      }
+      @include respond(lg) {
+        margin-left: 20px;
+      }
     }
   }
 }
 .hedge_input {
+  flex-wrap: wrap;
   .top_single_input {
     width: 47.5%;
+    @include respond(xs) {
+      width: 100%;
+      margin-top: 8px;
+      margin-left: 0;
+    }
+
     .Client_input_section {
       width: 100%;
     }
     &:nth-child(2) {
-      margin-left: 38px;
+      margin-left: 4%;
+
+      @include respond(xs) {
+        margin-left: 0px;
+      }
     }
   }
 }
@@ -34,6 +76,12 @@
 .hedge_design {
   width: 60%;
   transition: all 0.5s ease-in-out;
+  @include respond(xl) {
+    width: 80%;
+  }
+  @include respond(sm) {
+    width: 90%;
+  }
   .inr_create_Client_section {
     .top_inputs {
       .top_single_input {
@@ -54,6 +102,14 @@
     }
   }
   .single_side_option {
-    width: 48% !important;
+    width: 48%;
+  }
+}
+.option_data_container {
+  flex-wrap: wrap;
+  .single_side_option {
+    @include respond(sm) {
+      width: 100%;
+    }
   }
 }

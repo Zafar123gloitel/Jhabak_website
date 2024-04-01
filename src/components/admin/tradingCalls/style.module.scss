@@ -21,9 +21,16 @@
   border-radius: 10px;
   padding: 20px 0 50px 0;
   margin: 20px 0 50px 0;
-  width: 40%;
+  width: 627px;
   border: 1px solid $green-color;
   transition: all 0.5s ease-in-out;
+  @include respond(sm) {
+    width: 70%;
+  }
+  @include respond(xs) {
+    width: 90%;
+  }
+
   .inr_create_Client_section {
     display: flex;
     flex-wrap: wrap;
@@ -42,7 +49,6 @@
         margin-top: 10px;
       }
       .single_side_option {
-        width: 100%;
         .Client_input_container {
           width: 100%;
         }
@@ -51,8 +57,13 @@
     .price_range {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       .Client_input_section {
         width: 48%;
+        @include respond(xms) {
+          width: 100%;
+          margin-top: 8px;
+        }
       }
     }
 

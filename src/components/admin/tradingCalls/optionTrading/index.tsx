@@ -157,14 +157,14 @@ const OptionTrading = () => {
     <>
       <div className={`${styles.create_form} element_center`}>
         <form
-          className={`${styles.create_Client_section} ${optionStyles.create_Client_section} ${baseFormData.option_type === 'hedge' && optionStyles.hedge_design}`}
+          className={`${styles.create_Client_section} ${optionStyles.create_Client_section} ${baseFormData.option_type === 'hedge' ? optionStyles.hedge_design : optionStyles.open_design}`}
           onSubmit={handleFormSubmit}
         >
           <div className={`${styles.inr_create_Client_section} element_center`}>
             {/* section 1 */}
 
             <div
-              className={`${styles.Client_input_container}  d-flex  ${baseFormData.option_type === 'hedge' ? optionStyles.hedge_input : optionStyles.top_inputs}`}
+              className={`${styles.Client_input_container}  d-flex   ${baseFormData.option_type === 'hedge' ? optionStyles.hedge_input : optionStyles.top_inputs}`}
             >
               <div className={optionStyles.top_single_input}>
                 <SelectField
@@ -194,7 +194,9 @@ const OptionTrading = () => {
               </div>
             </div>
 
-            <div className={`${styles.Client_input_container} ${optionStyles.Client_input_container}`}>
+            <div
+              className={`${styles.Client_input_container} ${optionStyles.Client_input_container} ${optionStyles.option_data_container} `}
+            >
               {/* section 2 */}
               {baseFormData.option_type === 'open' && (
                 <OptionData formData={openFormData} getError={openError} onChange={onOpenChange} />
