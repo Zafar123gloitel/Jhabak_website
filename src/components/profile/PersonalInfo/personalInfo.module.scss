@@ -1,14 +1,9 @@
 @import '../../../styles/index.scss';
 
-.maincontainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .infocontainer {
-  width: 716px;
-  min-height: 493px;
+  // min-width: 716px;
+  // min-height: 493px;
+  width: 60vw;
   flex-shrink: 0;
   border: solid 1px $green-color;
   border-radius: 10px;
@@ -24,10 +19,34 @@
   color: $Nylon;
   font-style: italic;
   font-size: 20px;
+  div {
+    p {
+      font-style: normal;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
 }
 .heading {
   display: flex;
-  padding-left: 30px;
+  gap: 150px;
+  padding-left: 10%;
+  padding-top: 30px;
+  color: #adff14;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 30.8px;
+  div {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    gap: 7px;
+    p {
+      margin-bottom: 0rem;
+    }
+  }
 }
 .cellbox {
   display: grid;

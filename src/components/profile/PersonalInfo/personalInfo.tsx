@@ -2,6 +2,7 @@ import React from 'react';
 import style from './personalInfo.module.scss';
 import InfoContainer from '../infoContainer/infoContainer';
 import CellCard from '../cellCard/cellCard';
+import Image from 'next/image';
 
 export default function personalInfo() {
   return (
@@ -15,12 +16,15 @@ export default function personalInfo() {
           <div className={`${style.afterinfoconatiner}`}>
             <div className={`${style.heading}`}>
               <h2 className={`${style.heading02}`}>Plan Information</h2>
-              <p className="text-white">Active</p>
-              <p className="text-white">Near About Expire </p>
+              <div>
+                <Image src="/assets/svg/profile/Green.svg" width={15} height={15} alt="Picture of the author" />
+                <p className="text-white">Active</p>
+                <Image src="/assets/svg/profile/red.svg" width={15} height={15} alt="Picture of the author" />
+                <p className="text-white">Near About Expire </p>
+              </div>
             </div>
             <div className={`${style.cellbox}`}>
               <CellCard />
-              {/* <CellCard /> */}
             </div>
           </div>
         </div>

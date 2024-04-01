@@ -6,9 +6,16 @@
   align-items: center;
 }
 .divcontainer {
-  display: flex;
-  width: 626px;
-  height: 112px;
+  display: grid;
+  grid-row-gap: 20px;
+  row-gap: 17px;
+  padding-inline: 40px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 19%;
+  padding-left: 12%;
+
+  width: 80%;
+  justify-content: center;
   padding: 10.548px 21.095px;
   align-items: center;
   gap: 10.548px;
@@ -23,16 +30,23 @@
 .datacontainer {
   color: #ffff;
   display: grid;
+  width: 80%;
+
   grid-template-columns: repeat(2, 1fr);
-  text-align: center;
   text-align: left;
   column-gap: 50px;
-}
-.datacontainer {
+  @include respond(sm) {
+    grid-template-columns: repeat(1, 1fr);
+  }
   p {
+    display: flex;
+
     span {
       text-align: left;
       padding-right: 10px;
+      @include respond(md) {
+        padding-right: 8px;
+      }
     }
   }
 }
