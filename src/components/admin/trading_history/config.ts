@@ -31,9 +31,10 @@ export interface IHedgeOption {
   second_target_set: number;
 }
 export interface IHedgeOptionHistory {
-  hedge: string;
+  hedge: IHedgeOption[];
   option_type: string;
   plan_type: string;
+  trading_type: string;
 }
 
 export interface IOpenOption {
@@ -51,4 +52,5 @@ export interface IOpenOptionHistory {
   open: IOpenOption[];
   option_type: string;
   plan_type: string;
+  trading_type: string;
 }
