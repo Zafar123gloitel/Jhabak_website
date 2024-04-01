@@ -1,10 +1,11 @@
+'use client';
 import React from 'react';
 import style from './personalInfo.module.scss';
 import InfoContainer from '../infoContainer/infoContainer';
 import CellCard from '../cellCard/cellCard';
 import Image from 'next/image';
 
-export default function personalInfo() {
+export default function PersonalInfo() {
   return (
     <>
       <div className={`${style.maincontainer}`}>

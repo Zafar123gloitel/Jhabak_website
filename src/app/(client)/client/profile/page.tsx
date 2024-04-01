@@ -1,6 +1,8 @@
-import Usercard from '@/components/profile/usercard/userCard';
-import PersonalInfo from '@/components/profile/PersonalInfo/personalInfo';
+'use client';
+import Usercard from '@/components/client/profile/usercard/userCard';
+import PersonalInfo from '@/components/client/profile/PersonalInfo/personalInfo';
 import style from './profile.module.scss';
+import { withAuthentication } from '@/hocs';
 
 function Profile() {
   return (
@@ -15,4 +17,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default withAuthentication(Profile);
