@@ -5,6 +5,7 @@ import styles from './sidebar.module.scss';
 import { pageRoute } from './config';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { Accordion } from 'react-bootstrap';
 // import { Accordion } from 'react-bootstrap';
 
 interface IProps {
@@ -37,6 +38,9 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
     // dispatch(setToggle_());
   }
 
+  const redirect = (value: string) => {
+    router.push(value);
+  };
   return (
     <>
       <button className={styles.menu_dropdown_button} type="button" onClick={handleToggle}>
@@ -76,41 +80,41 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
               ))}
             </ul>
 
-            {/* <Accordion defaultActiveKey="" className={styles.filter}>
+            <Accordion defaultActiveKey="" className={styles.filter}>
               {pageRoute?.map(item => {
                 return (
                   <div key={item?.id}>
-                    <button onClick={() => redirect(item?.href)} className={`bg-transparent ${styles.outer_btn}`}>
-                      {item.subMenu.length > 0 ? (
-                        <Accordion.Item eventKey={item.name} className={styles.filterItem} key={item?.id}>
-                          <Accordion.Header className={styles.filterHeading}>
-                            <Image src={item.imgSrc} alt="item.name" width={25} height={25} />
-                            {item.name}
-                          </Accordion.Header>
-                          <Accordion.Body className={styles.filterAccordian}>
-                            {item.subMenu?.map(item => {
-                              return (
-                                <>
-                                  <button onClick={() => redirect(item?.href)} key={item.href}>
-                                    <Image src={item.imgSrc} alt="value" width={20} height={20} />
-                                    <p>{item.name}</p>
-                                  </button>
-                                </>
-                              );
-                            })}
-                          </Accordion.Body>
-                        </Accordion.Item>
-                      ) : (
-                        <button>
-                          <Image src={item.imgSrc} alt="value" width={25} height={25} />
-                          <p>{item.name}</p>
-                        </button>
-                      )}
-                    </button>
+                    {/* <button onClick={() => redirect(item?.href)} className={`bg-transparent ${styles.outer_btn}`}> */}
+                    {item.subMenu.length > 0 ? (
+                      <Accordion.Item eventKey={item.name} className={styles.filterItem} key={item?.id}>
+                        <Accordion.Header className={styles.filterHeading}>
+                          <Image src={item.imgSrc} alt="item.name" width={25} height={25} />
+                          {item.name}
+                        </Accordion.Header>
+                        <Accordion.Body className={styles.filterAccordian}>
+                          {item.subMenu?.map(item => {
+                            return (
+                              <>
+                                <button onClick={() => redirect(item?.href)} key={item.href}>
+                                  <Image src={item.imgSrc} alt="value" width={20} height={20} />
+                                  <p>{item.name}</p>
+                                </button>
+                              </>
+                            );
+                          })}
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    ) : (
+                      <button>
+                        <Image src={item.imgSrc} alt="value" width={25} height={25} />
+                        <p>{item.name}</p>
+                      </button>
+                    )}
+                    {/* </button> */}
                   </div>
                 );
               })}
-            </Accordion> */}
+            </Accordion>
           </div>
         </div>
       </nav>
