@@ -1,2 +1,16 @@
+@import '../../../styles/index.scss';
+
+.userprofilecardcontainer {
+  @include respond(sm) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 .maincontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  @include respond(sm) {
+    display: block;
+  }
 }

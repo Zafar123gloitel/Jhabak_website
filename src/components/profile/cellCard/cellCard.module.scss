@@ -1,12 +1,20 @@
 @import '../../../styles/index.scss';
 
+.cellaligment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cellmaincontainer {
-  width: 307px;
+  min-width: 307px;
   height: 164px;
   border-radius: 10px;
   border: 0.5px solid #adff14;
   background: #181818;
   z-index: 1;
+  @include respond(xl) {
+    width: 100%;
+  }
 }
 .cellheadercontainer {
   display: flex;
@@ -18,7 +26,7 @@
   align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  z-index: -1;
+  z-index: 1;
   position: relative;
 
   p {

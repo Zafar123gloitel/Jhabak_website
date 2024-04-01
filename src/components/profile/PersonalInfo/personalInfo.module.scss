@@ -1,10 +1,14 @@
 @import '../../../styles/index.scss';
 
+.maincontainer {
+  @include respond(sm) {
+    display: flex;
+    justify-content: center;
+  }
+}
 .infocontainer {
   // min-width: 716px;
-  // min-height: 493px;
-  width: 60vw;
-  flex-shrink: 0;
+  width: 50vw;
   border: solid 1px $green-color;
   border-radius: 10px;
   border: 1px solid #00b666;
@@ -15,36 +19,47 @@
   padding-top: 11px;
   padding-bottom: 84px;
 }
-.heading02 {
-  color: $Nylon;
-  font-style: italic;
-  font-size: 20px;
-  div {
-    p {
-      font-style: normal;
-      font-size: 14px;
-      font-weight: 500;
-    }
-  }
-}
+// .heading02 {
+//   color: $Nylon;
+//   font-style: italic;
+//   font-size: 20px;
+//   div {
+//     p {
+//       font-style: normal;
+//       font-size: 14px;
+//       font-weight: 500;
+//     }
+//   }
+// }
 .heading {
   display: flex;
-  gap: 150px;
-  padding-left: 10%;
+  gap: 36%;
+  margin-inline: 8%;
   padding-top: 30px;
   color: #adff14;
   font-size: 20px;
   font-style: italic;
   font-weight: 700;
   line-height: 30.8px;
+  @include respond(xl) {
+    display: flex;
+    flex-direction: column;
+  }
   div {
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 11px;
     gap: 7px;
+    h2 {
+      color: $Nylon;
+      font-style: italic;
+      font-size: 20px;
+    }
     p {
       margin-bottom: 0rem;
+      font-size: 14px;
+      font-style: normal;
     }
   }
 }
@@ -52,5 +67,13 @@
   display: grid;
   row-gap: 20px;
   padding-inline: 40px;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: repeat(2, 1fr);
+  @include respond(lg) {
+    grid-template-columns: repeat(1, 1fr);
+    padding-inline: 10px;
+  }
+  @include respond(xl) {
+    padding-inline: 10px;
+    gap: 10px;
+  }
 }

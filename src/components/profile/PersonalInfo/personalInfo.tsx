@@ -15,7 +15,10 @@ export default function personalInfo() {
           </div>
           <div className={`${style.afterinfoconatiner}`}>
             <div className={`${style.heading}`}>
-              <h2 className={`${style.heading02}`}>Plan Information</h2>
+              <div>
+                <h2>Plan Information</h2>
+              </div>
+
               <div>
                 <Image src="/assets/svg/profile/Green.svg" width={15} height={15} alt="Picture of the author" />
                 <p className="text-white">Active</p>
