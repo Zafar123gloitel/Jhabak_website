@@ -20,6 +20,10 @@ const Header = () => {
     return router.push(path);
   };
 
+  const handleRouteClient = (path: string) => {
+    return router.push(`/client/${path}`);
+  };
+
   function handleLogout() {
     ResetAuth();
     ResetUser();
@@ -45,7 +49,7 @@ const Header = () => {
                         <button
                           className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
                           onClick={() => {
-                            handleRoute(value?.href);
+                            handleRouteClient(value?.href);
                             setShowNav(false);
                           }}
                         >
@@ -75,7 +79,16 @@ const Header = () => {
                     </button>
                   )}
                 </ul>
-                <div className={`${styles.showmenu_btn} `}></div>
+                <div className={`${styles.showmenu_btn} `}>
+                  {' '}
+                  <button className={`${styles.show_navbtn} bg-transparent`} onClick={() => setShowNav(!showNav)}>
+                    {showNav ? (
+                      <Image src="/assets/svg/landing_close.svg" alt="menu" width={35} height={35} />
+                    ) : (
+                      <Image src="/assets/svg/landing_hamburger.svg" alt="menu" width={45} height={45} />
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           </nav>
