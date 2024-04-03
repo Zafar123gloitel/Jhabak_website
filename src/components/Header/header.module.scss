@@ -130,6 +130,9 @@
   width: auto;
   margin: 0 15px;
   height: 100%;
+  strong {
+    padding-inline: 10px;
+  }
   @include respond(md) {
     height: auto;
     margin-top: 15px;
@@ -194,6 +197,11 @@
   justify-content: center;
   align-items: center;
   // height: 100%;
+}
+
+.single_menue > span {
+  font-weight: bold;
+  padding-inline: 10px;
 }
 .showmenu_btn {
   display: flex;
