@@ -67,7 +67,6 @@ const Header = () => {
                             setShowNav(false);
                           }}
                         >
-                          45
                           <span>{value?.name}</span>
                         </button>
                       </li>

@@ -42,9 +42,7 @@ const PageCom = () => {
         <div className={`${style.hedaingcontainer}`}>
           <TabComponent activeKey={activeTab} tabOptions={tabData} onChangeTab={handleTabChange} />
         </div>
-        <div>
-          <h1>asd</h1>
-        </div>
+
         <div className={`${style.daycallcontainer}`}>
           {activeTab === 'equity_trading' && <Equity_trading />}
           {activeTab === 'option_trading' && <Option_trading />}
