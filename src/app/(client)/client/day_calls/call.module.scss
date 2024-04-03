@@ -1,8 +1,12 @@
-.mainsection {
+.maincontainer {
   width: 100vw;
   height: 100vh;
 }
-.divconatiner {
+
+.hedaingcontainer {
+}
+
+.daycallcontainer {
   display: flex;
-  justify-content: center;
+  gap: 26px;
 }
