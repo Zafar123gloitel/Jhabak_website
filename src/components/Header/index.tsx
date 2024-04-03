@@ -37,6 +37,7 @@ const Header = () => {
     }
 
     toast.error('Please check your plans');
+    return router.push('/client/profile');
   };
   function handleLogout() {
     ResetAuth();
