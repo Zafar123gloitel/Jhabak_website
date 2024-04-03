@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import PaginationComponent from '@/components/Pagination/Pagination';
 import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
+import OptionsCard from '@/components/cards/option_card';
 
 const CommodityHistory = () => {
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -91,6 +92,11 @@ const CommodityHistory = () => {
     const value = e.target.value;
     setSearchData(value);
   };
+  const handleTradingType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDataList([]);
+    setTradingType(e.target.value);
+  };
+
   return (
     <>
       <div className={`${styles.commodity_history} element_center flex-column`}>
@@ -105,7 +111,7 @@ const CommodityHistory = () => {
                 { label: 'Equity', value: 'equity' },
               ]}
               value={tradingType}
-              onChange={e => setTradingType(e.target.value)}
+              onChange={handleTradingType}
             />
             <InputField
               type="text"
@@ -134,13 +140,22 @@ const CommodityHistory = () => {
           <div className={styles.innr_trading_history}>
             {dataList.length !== 0 ? (
               <>
-                {dataList.map((item, index) => {
-                  return tradingType === 'equity' ? (
-                    <EquityCard key={index} dataList={item} />
-                  ) : (
-                    <EquityCard key={index + 1} dataList={item} />
-                  );
-                })}
+                {tradingType === 'equity'
+                  ? dataList.map((item, index) => {
+                      return <EquityCard key={index} dataList={item} />;
+                    })
+                  : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    dataList.map((item: any, index: React.Key | null | undefined) => {
+                      return (
+                        <>
+                          {item.option_type === 'hedge' ? (
+                            <OptionsCard dataList={item.hedge} key={index} option_type={item.option_type} />
+                          ) : (
+                            <OptionsCard dataList={item.open} key={index} option_type={item.option_type} />
+                          )}
+                        </>
+                      );
+                    })}
 
                 <PaginationComponent
                   total={totalEvents}
