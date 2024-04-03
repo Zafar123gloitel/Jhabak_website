@@ -7,11 +7,11 @@ import { useAuth, useUser } from '@/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { toast } from 'react-toastify';
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const { IsLoggedIn, ResetAuth } = useAuth();
-  const { ResetUser, UserData } = useUser();
-
+  const { ResetUser, UserData, getUsersPlans } = useUser();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -21,9 +21,23 @@ const Header = () => {
   };
 
   const handleRouteClient = (path: string) => {
-    return router.push(`/client/${path}`);
-  };
+    const userPlans = getUsersPlans();
 
+    if (userPlans?.[0]?.plan_type === path.split('/')[1]) {
+      return router.push(`/client/${path}`);
+    }
+    if (userPlans?.[1]?.plan_type === path.split('/')[1]) {
+      return router.push(`/client/${path}`);
+    }
+    if (userPlans?.[2]?.plan_type === path.split('/')[1]) {
+      return router.push(`/client/${path}`);
+    }
+    if (userPlans?.[3]?.plan_type === path.split('/')[1]) {
+      return router.push(`/client/${path}`);
+    }
+
+    toast.error('Please check your plans');
+  };
   function handleLogout() {
     ResetAuth();
     ResetUser();
@@ -53,6 +67,7 @@ const Header = () => {
                             setShowNav(false);
                           }}
                         >
+                          45
                           <span>{value?.name}</span>
                         </button>
                       </li>

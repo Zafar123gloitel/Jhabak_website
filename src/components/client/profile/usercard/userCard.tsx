@@ -3,7 +3,7 @@ import style from './userCard.module.scss';
 
 import Image from 'next/image';
 
-export default function usercard() {
+export default function Usercard() {
   return (
     <>
       <div className={`${style.maincontainer}`}>

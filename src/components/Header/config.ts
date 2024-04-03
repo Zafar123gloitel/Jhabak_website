@@ -61,22 +61,22 @@ export const clientPageRoute: pageRoute[] = [
   {
     id: 163,
     name: 'Day Call',
-    href: '/day_calls',
+    href: '/day_call',
   },
 
   {
     id: 156,
     name: 'Week Call',
-    href: '/week_calls',
+    href: '/week_call',
   },
   {
     id: 189,
     name: 'Month Call',
-    href: '/month_calls',
+    href: '/month_call',
   },
   {
     id: 858,
     name: 'Long Term',
-    href: '/long_terms',
+    href: '/long_term',
   },
 ];
