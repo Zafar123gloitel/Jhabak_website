@@ -8,6 +8,7 @@ export default function Option_trading() {
       <div className={`${style.maincontainer}`}>
         <div className={`${style.headercontainer}`}>
           <h2>Options Trading </h2>
+          <h2>03-04-2024</h2>
         </div>
         <div>
           <ul>
