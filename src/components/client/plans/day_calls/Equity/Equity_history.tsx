@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './Equity_history.module.scss';
 import SelectField from '@/components/InputField/SelectField';
 import InputField from '@/components/InputField/InputField';
-
 // import Equity_Card from '@/components/client/plans/cards/Equity_card/Equity_card';
 import { toast } from 'react-toastify';
 import useDebounce from '@/components/Usedebounce';

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './Equity_history.module.scss';
+import styles from './Mcx_history.module.scss';
 import SelectField from '@/components/InputField/SelectField';
 
 import { toast } from 'react-toastify';

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import SelectField from '@/components/InputField/SelectField';
 // import Option_card from '@/components/client/plans/cards/Option_card/Option_card';
 import { toast } from 'react-toastify';
-import styles from '@/components/admin/trading_history/options/options.module.scss';
+import styles from './Option.module.scss';
 import OptionsCard from '@/components/cards/option_card';
 
 import { apiService } from '@/utils';

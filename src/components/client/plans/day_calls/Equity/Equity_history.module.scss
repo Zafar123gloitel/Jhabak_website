@@ -7,7 +7,13 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    padding-right: 9rem;
+    padding-right: 14rem;
+    @include respond(xs) {
+      flex-direction: column;
+    }
+    @include respond(sm) {
+      padding-right: 4rem;
+    }
     > span {
       color: $light-text-color;
       margin-left: -5%;
@@ -39,6 +45,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: 76px;
+    margin-top: 2rem;
   }
 }

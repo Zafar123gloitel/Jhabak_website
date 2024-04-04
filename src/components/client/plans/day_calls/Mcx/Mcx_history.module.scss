@@ -5,7 +5,8 @@
   .search_data {
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
+    padding-right: 14rem;
     align-items: center;
     > span {
       color: $light-text-color;
@@ -38,18 +39,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: 76px;
+    margin-top: 2rem;
   }
 }
-.optiondiv {
-  display: grid;
-}
-
-// .innr_option_history {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 9px;
-//   flex-wrap: wrap;
-//   width: 90%;
-// }
