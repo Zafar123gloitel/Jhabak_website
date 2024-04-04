@@ -5,11 +5,10 @@ import EquityCard from '@/components/cards/equity_card';
 import useLoading from '@/components/loading/Loader';
 import { apiService } from '@/utils';
 import { useUser } from '@/hooks';
-import useDebounce from '@/components/Usedebounce';
 import { toast } from 'react-toastify';
 
 import PaginationComponent from '@/components/Pagination/Pagination';
-import InputField from '@/components/InputField/InputField';
+
 import SelectField from '@/components/InputField/SelectField';
 import OptionsCard from '@/components/cards/option_card';
 
@@ -18,12 +17,9 @@ const CommodityHistory = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState([]);
   const [postsPerPage] = useState<number>(2);
-  const debounceDelay = 500; // Adjust debounce delay as needed
   // total no of data
   const [totalEvents, setTotalEvents] = useState(0);
   const { UserData } = useUser();
-  const [searchData, setSearchData] = useState('');
-  const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
   const [optionType, setOptionType] = useState('');
   const [tradingType, setTradingType] = useState('equity');
 
@@ -31,13 +27,9 @@ const CommodityHistory = () => {
     startLoading();
 
     try {
-      let data: { search?: string; filter?: { option_type: string }; trading_type?: string } = {};
+      let data: { filter?: { option_type: string }; trading_type?: string } = {};
       if (tradingType) {
         data.trading_type = tradingType;
-      }
-      if (tradingType && debouncedSearchQuery) {
-        data.trading_type = tradingType;
-        data.search = debouncedSearchQuery;
       }
 
       if (tradingType && optionType) {
@@ -47,9 +39,8 @@ const CommodityHistory = () => {
         };
       }
 
-      if (debouncedSearchQuery && optionType) {
+      if (optionType) {
         data = {
-          ...data,
           filter: {
             option_type: optionType,
           },
@@ -82,19 +73,10 @@ const CommodityHistory = () => {
   };
   useEffect(() => {
     corporateList();
-  }, [currentPage, postsPerPage, debouncedSearchQuery, tradingType]);
+  }, [currentPage, postsPerPage, optionType, tradingType]);
 
   const setPage = (i: number) => {
     setCurrentPage(i);
-  };
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchData(value);
-  };
-  const handleTradingType = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDataList([]);
-    setTradingType(e.target.value);
   };
 
   return (
@@ -111,16 +93,9 @@ const CommodityHistory = () => {
                 { label: 'Equity', value: 'equity' },
               ]}
               value={tradingType}
-              onChange={handleTradingType}
+              onChange={e => setTradingType(e.target.value)}
             />
-            <InputField
-              type="text"
-              placeholder="Search for Share name"
-              name="search_data"
-              value={searchData}
-              onChange={handleSearch}
-              className={styles.search_share}
-            />
+
             {tradingType === 'option' && (
               <SelectField
                 label=""
