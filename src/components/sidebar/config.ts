@@ -8,7 +8,7 @@ export interface ISubMenu {
 export interface pageRoute {
   id: number;
   name: string;
-  href: string;
+  href?: string;
   imgSrc: string;
   activeImgSrc: string;
   subMenu: ISubMenu[];
@@ -53,26 +53,26 @@ export const pageRoute: pageRoute[] = [
     name: 'Trading History',
     imgSrc: '/assets/svg/sidebar/history.svg',
     activeImgSrc: '/assets/svg/sidebar/history_active.svg',
-    href: '/admin/equity',
+    // href: '/admin/equity',
     subMenu: [
       {
         _id: 'Equity Trading',
         name: 'Equity Trading',
-        href: '/admin/equity',
+        href: '/admin/equity_history',
         imgSrc: '/assets/svg/sidebar/history.svg',
         activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
       {
         _id: 'Option Trading',
         name: 'Option Trading',
-        href: '/admin/trading_history/option',
+        href: '/admin/option_history',
         imgSrc: '/assets/svg/sidebar/history.svg',
         activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
       {
         _id: 'Commodity Trading',
         name: 'Commodity Trading',
-        href: '/admin',
+        href: '/admin/commodity_history',
         imgSrc: '/assets/svg/sidebar/history.svg',
         activeImgSrc: '/assets/svg/sidebar/history_active.svg',
       },
