@@ -126,11 +126,13 @@ export default function Option_history() {
                     dataList.map((item: any, index: React.Key | null | undefined) => {
                       return (
                         <>
-                          {item.option_type === 'hedge' ? (
-                            <OptionsCard dataList={item.hedge} key={index} option_type={item.option_type} />
-                          ) : (
-                            <OptionsCard dataList={item.open} key={index} option_type={item.option_type} />
-                          )}
+                          <div className={`${styles.optiondiv}`}>
+                            {item.option_type === 'hedge' ? (
+                              <OptionsCard dataList={item.hedge} key={index} option_type={item.option_type} />
+                            ) : (
+                              <OptionsCard dataList={item.open} key={index} option_type={item.option_type} />
+                            )}
+                          </div>
                         </>
                       );
                     })

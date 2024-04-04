@@ -3,10 +3,11 @@
   margin-top: 30px;
   margin-bottom: 30px;
   .search_data {
-    width: 90%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
+    padding-right: 9rem;
     > span {
       color: $light-text-color;
       margin-left: -5%;
