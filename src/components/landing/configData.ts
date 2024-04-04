@@ -18,8 +18,8 @@ export const masterTechnicalData: MasterTechnical[] = [
     heading: 'Master Technical Analysis with Jhabak Stock & Share Broker!',
     contentList: [
       'Identify Profitable Trading Opportunities.',
-      'Understand Market Trends & Patterns',
-      'Execute Well - Informed Trades with Confidence',
+      'Understand Market Trends & Patterns.',
+      'Execute Well-Informed Trades with Confidence.',
     ],
     content: 'Learn from industry experts and gain invaluable insights to:',
     href: '/',
@@ -179,7 +179,7 @@ export const baseRuleData: IBaseRule[] = [
   },
   {
     id: 2112,
-    heading: 'Risk Managementzed',
+    heading: 'Risk Management',
     content:
       'Limiting risk is fundamental to successful trading. Implementing stop-loss orders for each trade helps to mitigate potential losses by automatically selling a security when it reaches a specified price. This strategy is a key component of risk management, preventing significant financial downturns.',
   },
@@ -217,7 +217,7 @@ export const buildDreamData: IBuildDreams[] = [
   {
     id: 3111,
     smallHeading: 'Mutual Funds Investment Services',
-    heading: 'Investing made Easy for you',
+    heading: 'Investing Made Easy for You',
     content:
       'Unlock tailored investment solutions with our Mutual Funds Investment Services. Our expert guidance and personalized strategies cater to your financial goals and risk tolerance, empowering informed investment decisions. Whether you are a novice or seasoned investor, our comprehensive approach ensures your investments align with your aspirations.',
     imgSrc: '/assets/svg/landing/potli.svg',
@@ -259,7 +259,7 @@ export const segmentData: Segment[] = [
     Heading: 'Bank Nifty Options advisor',
     smallHeading: 'Nifty + Banknifty Options Calls',
     content:
-      'We love to provide advice on  Index options such as Nifty options and Banknifty options calls for Intraday Traders as we do not keep the overnight position in options and we provide only long calls in options and avoid options writing as it require high margin as compare to options buying. so our USP is ',
+      'We love to provide advice on  Index options such as Nifty options and Banknifty options calls for Intraday Traders as we do not keep the overnight position in options and we provide only long calls in options and avoid options writing as it require high margin as compare to options buying. So our USP (Unique Selling Proposition) is :',
     list: [
       '100% Intraday  calls ( no overnight risk at all )',
       '100% Live Market (no pre market call)',
@@ -270,7 +270,7 @@ export const segmentData: Segment[] = [
   },
   {
     id: 202,
-    Heading: 'Stock Market calls provider in Futures',
+    Heading: 'Stock Market Calls Provider in Futures',
     smallHeading: '100% Intraday Calls in Stock Futures',
     content: 'We provide stock futures calls with the following features',
     list: [

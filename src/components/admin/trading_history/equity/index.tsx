@@ -115,6 +115,7 @@ const EquityHistory = () => {
                 { label: 'Buy', value: 'buy' },
                 { label: 'Sell', value: 'sell' },
               ]}
+              className={styles.search_share}
               value={buySell}
               onChange={e => setBuySell(e.target.value)}
             />

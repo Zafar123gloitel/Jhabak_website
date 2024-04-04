@@ -653,6 +653,7 @@ button {
 .sidebar {
   .accordion {
     width: 100%;
+
     .accordion-item {
       width: 100%;
       border: none !important;
@@ -668,9 +669,8 @@ button {
 
       .accordion-button {
         margin: 0;
-        padding: 10px 0;
+        padding: 0;
         text-wrap: nowrap;
-
         img {
           margin-left: 0px;
         }
@@ -680,14 +680,27 @@ button {
           background-size: contain;
           position: absolute;
           right: 15px;
-          fill: #fff;
+          top: 18px;
         }
+      }
+      .accordion-button:not(.collapsed) {
+        box-shadow: none;
       }
     }
     .accordion-body {
       padding: 0px 20px;
       color: #fff;
       background-color: $green-color;
+    }
+    .hide_arrow {
+      .accordion-button {
+        &::after {
+          width: 10px;
+          height: 10px;
+          right: 2px;
+          top: 40%;
+        }
+      }
     }
   }
 }

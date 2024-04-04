@@ -1,16 +1,11 @@
 @import '../../../styles/index.scss';
 .option_card {
-  width: 318px;
+  width: 300px;
   height: auto;
   border-radius: 10px;
   border: 1px solid #adff14;
   background: #000;
   color: $black-text-color;
-
-  &:hover {
-    width: 500px;
-    transition: all 0.5s ease-in-out;
-  }
 
   .top_bar {
     width: 100%;
