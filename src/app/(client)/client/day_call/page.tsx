@@ -1,9 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Equity_trading from '@/components/client/plans/day_calls/Equity_Trading/Equity_Trading';
 import Option_trading from '@/components/client/plans/day_calls/Option_Trading/Option_trading';
 import style from './call.module.scss';
 import TabComponent from '@/components/TabComponents';
+import { useUser } from '@/hooks';
 
 interface ITabData {
   _id: number;
@@ -11,17 +12,38 @@ interface ITabData {
   alt: string;
 }
 
-const tabData: ITabData[] = [
+// const tabData: ITabData[] = [
+//   {
+//     _id: 3121,
+//     name: 'equity_trading',
+//     alt: 'Equity Trading',
+//   },
+//   {
+//     _id: 3122,
+//     name: 'option_trading',
+//     alt: 'Options Trading',
+//   },
+//   {
+//     _id: 3123,
+//     name: 'mcx',
+//     alt: 'MCX',
+//   },
+// ];
+const tabData1: ITabData[] = [
   {
     _id: 3121,
     name: 'equity_trading',
     alt: 'Equity Trading',
   },
+];
+const tabData2: ITabData[] = [
   {
     _id: 3122,
     name: 'option_trading',
     alt: 'Options Trading',
   },
+];
+const tabData3: ITabData[] = [
   {
     _id: 3123,
     name: 'mcx',
@@ -29,8 +51,19 @@ const tabData: ITabData[] = [
   },
 ];
 
-const PageCom = () => {
-  const [activeTab, setActiveTab] = useState(tabData[0].name);
+const DayCall = () => {
+  const { getUsersPlans } = useUser();
+  const [activeTab, setActiveTab] = useState<string>();
+
+  useEffect(() => {
+    if (getUsersPlans()?.[0].trading_type.includes('equity')) {
+      setActiveTab(tabData1[0].name);
+    } else if (getUsersPlans()?.[0].trading_type.includes('option')) {
+      setActiveTab(tabData2[0].name);
+    } else if (getUsersPlans()?.[0].trading_type.includes('commodity')) {
+      setActiveTab(tabData3[0].name);
+    }
+  }, []);
 
   const handleTabChange = (selectedTab: string) => {
     setActiveTab(selectedTab);
@@ -39,18 +72,25 @@ const PageCom = () => {
   return (
     <>
       <section className={`${style.maincontainer}`}>
-        <div className={`${style.hedaingcontainer}`}>
-          <TabComponent activeKey={activeTab} tabOptions={tabData} onChangeTab={handleTabChange} />
+        <div className={`${style.hedaingcontainer} d-flex`}>
+          {getUsersPlans()?.[0].trading_type.includes('equity') && (
+            <TabComponent activeKey={activeTab} tabOptions={tabData1} onChangeTab={handleTabChange} />
+          )}
+          {getUsersPlans()?.[0].trading_type.includes('option') && (
+            <TabComponent activeKey={activeTab} tabOptions={tabData2} onChangeTab={handleTabChange} />
+          )}
+          {getUsersPlans()?.[0].trading_type.includes('commodity') && (
+            <TabComponent activeKey={activeTab} tabOptions={tabData3} onChangeTab={handleTabChange} />
+          )}
         </div>
-
         <div className={`${style.daycallcontainer}`}>
-          {activeTab === 'equity_trading' && <Equity_trading />}
-          {activeTab === 'option_trading' && <Option_trading />}
-          {activeTab === 'mcx' && <Equity_trading />}
+          {activeTab === 'equity_trading' && getUsersPlans()?.[0].trading_type.includes('equity') && <Equity_trading />}
+          {activeTab === 'option_trading' && getUsersPlans()?.[0].trading_type.includes('option') && <Option_trading />}
+          {/* {activeTab === 'mcx' && getUsersPlans()?.[0].trading_type.includes('commodity') && <Equity_trading />} */}
         </div>
       </section>
     </>
   );
 };
 
-export default PageCom;
+export default DayCall;

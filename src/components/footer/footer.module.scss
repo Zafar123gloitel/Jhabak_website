@@ -32,6 +32,7 @@
 
 .footer_heading {
   width: 70%;
+  color: #fff;
   @include respond(md) {
     width: 100%;
   }
@@ -46,6 +47,7 @@
   }
 }
 .footer_content {
+  display: block;
   width: 70%;
   color: #000 !important;
   @include respond(mmd) {

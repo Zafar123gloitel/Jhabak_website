@@ -105,8 +105,8 @@ export const ContactForm = () => {
       <span className={styles.heading}>
         <h2 className={`${styles.section_heading} section_heading_css`}>Get in Touch</h2>
         <p className={`${styles.section_para} _css_content_`}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys
-          standard dummy text ever since the 1500s.
+          Reach out to us today for expert guidance and personalized investment solutions in the ever-evolving world of
+          the stock market.
         </p>
       </span>
       <div className={`${styles.contactForm} css_max_screen `}>

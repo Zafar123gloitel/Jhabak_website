@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './card.module.scss';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Image from 'next/image';
 interface IPriceData {
   id?: number;
@@ -42,11 +42,11 @@ const PackageCard = ({ priceData }: IProps) => {
             })}
           </ul>
         </span>
-        <div className={`${styles.info_btns} element_center flex-column `}>
+        {/* <div className={`${styles.info_btns} element_center flex-column `}>
           <Link href={'/'} className={`${styles.more_details} element_center mt-2 float-right`}>
             More Details &#8594;
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

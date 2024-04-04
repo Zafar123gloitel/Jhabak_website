@@ -1,6 +1,6 @@
 @import '../../../styles/index.scss';
 .option_card {
-  width: 244px;
+  width: 300px;
   height: auto;
   border-radius: 10px;
   border: 1px solid #adff14;
@@ -33,13 +33,29 @@
       display: flex;
       align-items: center;
       margin: 2px 0;
+
       p {
-        width: 60%;
+        width: 35%;
         font-size: 14px;
         margin-left: 8px;
         text-transform: capitalize;
         span {
           margin-left: 6px;
+        }
+        b {
+          width: 100px; /* Set the width of the container */
+          white-space: nowrap; /* Prevent text from wrapping */
+          overflow: hidden; /* Hide overflowing text */
+          text-overflow: ellipsis; /* Add ellipsis for overflow */
+        }
+        &:nth-child(2) {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          b {
+            width: 50%;
+            text-align: left;
+          }
         }
       }
     }

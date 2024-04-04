@@ -5,11 +5,9 @@ import MainLoader from '@/components/loading';
 import TabComponent from '@/components/TabComponents';
 import useLoading from '@/components/loading/Loader';
 import { tabData } from './clientData';
-// import ClientList from './client-list/ClientList';
 import { apiService } from '@/utils';
 import useDebounce from '@/components/Usedebounce';
 import { useUser } from '@/hooks';
-// import ClientList from './client-list/ClientList';
 import CreateClientForm from './CreateClient';
 import ClientDetails from './client-list/ClientDetails';
 const CreateClient = () => {
@@ -24,7 +22,6 @@ const CreateClient = () => {
   const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
   const { UserData } = useUser();
 
-  // console.log(setSearchData);
   const corporateList = async () => {
     startLoading();
     let data;

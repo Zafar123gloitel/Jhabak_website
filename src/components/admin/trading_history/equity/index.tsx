@@ -30,27 +30,6 @@ const EquityHistory = () => {
     // let data;
 
     try {
-      // if (debouncedSearchQuery) {
-      //   data = {
-      //     search: debouncedSearchQuery,
-      //   };
-      // }
-      // if (buySell) {
-      //   data = {
-      //     filter: {
-      //       buy_sell_type: buySell,
-      //     },
-      //   };
-      // }
-
-      // if (debouncedSearchQuery && buySell) {
-      //   data = {
-      //     ...data,
-      //     filter: {
-      //       buy_sell_type: buySell,
-      //     },
-      //   };
-      // }
       let data: { search?: string; filter?: { buy_sell_type: string } } = {};
 
       if (debouncedSearchQuery) {
@@ -117,26 +96,31 @@ const EquityHistory = () => {
     <>
       <div className={`${styles.trading_history} element_center flex-column`}>
         <div className={styles.search_data}>
-          <InputField
-            type="text"
-            placeholder="Search for Share name"
-            name="search_data"
-            value={searchData}
-            onChange={handleSearch}
-            className={styles.search_share}
-          />
-          <SelectField
-            label=""
-            name="buySale"
-            options={[
-              { label: 'Select Trading Type', value: '' },
-              { label: 'Buy', value: 'buy' },
-              { label: 'Sell', value: 'sell' },
-            ]}
-            value={buySell}
-            onChange={e => setBuySell(e.target.value)}
-          />
+          <span className={styles.type}>Equity</span>
+          <div className={styles.input_container}>
+            <InputField
+              type="text"
+              placeholder="Search for Share name"
+              name="search_data"
+              value={searchData}
+              onChange={handleSearch}
+              className={styles.search_share}
+            />
+            <SelectField
+              label=""
+              name="buySale"
+              options={[
+                { label: 'Select Trading Type', value: '' },
+                { label: 'Buy', value: 'buy' },
+                { label: 'Sell', value: 'sell' },
+              ]}
+              className={styles.search_share}
+              value={buySell}
+              onChange={e => setBuySell(e.target.value)}
+            />
+          </div>
         </div>
+
         {!isLoading ? (
           <div className={styles.innr_trading_history}>
             {dataList.length !== 0 ? (

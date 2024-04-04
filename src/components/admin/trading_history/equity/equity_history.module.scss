@@ -6,6 +6,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include respond(xs) {
+      .type {
+        width: 100%;
+        text-align: left;
+      }
+      flex-direction: column;
+      .input_container {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        .search_share {
+          width: 100%;
+          select {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
     > span {
       color: $light-text-color;
       margin-left: -5%;
@@ -20,10 +41,12 @@
 
         input {
           background-color: $dark-input-bg;
+          color: #fff;
         }
         select {
           border-bottom: 1px solid $green-color;
           margin-top: 6px;
+          color: #fff;
         }
       }
     }
@@ -36,5 +59,11 @@
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 76px;
+    @include respond(sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
   }
 }

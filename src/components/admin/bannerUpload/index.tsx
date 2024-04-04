@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { apiService } from '@/utils/index';
-// import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import CropModal from '@/components/Modals/cropModal/cropModal';
 import Image from 'next/image';
-// import SelectField from '@/components/InputField/SelectField';
 import { FileInformation } from '@/types';
 import TabComponent from '@/components/TabComponents';
-// import { selectUser } from '@/store/User/userSlice';
 import useLoading from '@/components/Loader/Loader';
 import MainLoader from '@/components/Loader/MainLoader';
 import { useUser } from '@/hooks';
@@ -95,7 +92,6 @@ const BannerCustomize = () => {
       if (file.name.match(/\.(jpg|jpeg|png)$/)) {
         if (inputId === 'file-input-main') {
           setMainImg(file);
-          // setSelectedFile(file);
           setFileType(inputId);
           setImagetoCrop(url);
         }
@@ -160,7 +156,6 @@ const BannerCustomize = () => {
     }
 
     const formDataFileThumbImg = new FormData();
-    // formDataFileThumbImg.append('file', listOfImage);
     listOfImage.forEach((image: ImageData) => {
       formDataFileThumbImg.append(`banners`, image.value as unknown as File);
     });
@@ -174,7 +169,6 @@ const BannerCustomize = () => {
       if (response?.status === 200 && response?.success) {
         getBanner();
         toast.success(response?.message);
-        // setImagesDetails(response.payload.banners);
         setListOfImage([]);
       } else {
         toast.error('something went wrong');
@@ -204,14 +198,12 @@ const BannerCustomize = () => {
       if (response?.status === 200 && response?.success) {
         getBanner();
         toast.success(response?.message);
-        // setCorporateType(value);
       } else {
         toast.error('something went wrong');
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       toast.error(e.response.data.message);
-      // stopLoading();
     } finally {
       // stopLoading();
     }

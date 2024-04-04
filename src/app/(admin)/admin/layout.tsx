@@ -5,7 +5,7 @@ import { Sidebar } from '@/components';
 
 export default function ClientInfromation({ children }: { children: React.ReactNode }) {
   // const toggle = useAppSelector(selectToggle);
-  const [isToggle, setIsToggle] = useState(true);
+  const [isToggle, setIsToggle] = useState(false);
 
   return (
     <>
