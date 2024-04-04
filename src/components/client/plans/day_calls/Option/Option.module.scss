@@ -3,11 +3,14 @@
   margin-top: 30px;
   margin-bottom: 30px;
   .search_data {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: end;
     padding-right: 14rem;
     align-items: center;
+    @include respond(md) {
+      justify-content: start;
+    }
     > span {
       color: $light-text-color;
       margin-left: -5%;
@@ -46,9 +49,9 @@
 
 .innr_option_history {
   display: flex;
-  justify-content: center;
+
   align-items: center;
   gap: 30px;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
 }

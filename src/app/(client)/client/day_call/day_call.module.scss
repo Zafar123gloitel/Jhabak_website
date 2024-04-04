@@ -2,15 +2,20 @@
 
 .maincontainer {
   width: 100%;
-  padding-left: 5rem;
-  @include respond(xl) {
-    padding-left: 0;
-  }
-  @include respond(sm) {
-    padding-left: 2rem;
-  }
+  // padding-left: 5rem;
+  // @include respond(xl) {
+  //   padding-left: 0;
+  // }
+  // @include respond(sm) {
+  //   padding-left: 2rem;
+  // }
 }
 .hedaingcontainer {
   width: 100px;
   display: flex;
+  @include respond(sm) {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 }
