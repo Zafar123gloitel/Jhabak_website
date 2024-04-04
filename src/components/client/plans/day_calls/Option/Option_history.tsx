@@ -1,17 +1,98 @@
 'use client';
-import React, { useState } from 'react';
-import styles from './Equity_history.module.scss';
+import React, { useEffect, useState } from 'react';
+// import styles from './Equity_history.module.scss';
 import SelectField from '@/components/InputField/SelectField';
-import Option_card from '@/components/client/plans/cards/Option_card/Option_card';
-// import PaginationComponent from '@/components/Pagination/Pagination';
+// import Option_card from '@/components/client/plans/cards/Option_card/Option_card';
+import { toast } from 'react-toastify';
+import styles from '@/components/admin/trading_history/options/options.module.scss';
+import OptionsCard from '@/components/cards/option_card';
+
+import { apiService } from '@/utils';
+import useLoading from '@/components/Loader/Loader';
+import { useUser } from '@/hooks';
+import PaginationComponent from '@/components/Pagination/Pagination';
 
 export default function Option_history() {
-  const [tradingType, setTradingType] = useState('equity');
-  //   const [optionType, setOptionType] = useState('');
+  const { isLoading, startLoading, stopLoading } = useLoading();
 
-  const handleTradingType = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTradingType(e.target.value);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [dataList, setDataList] = useState([]);
+  const [postsPerPage] = useState<number>(10);
+
+  // total no of data
+  const [totalEvents, setTotalEvents] = useState(0);
+  const { UserData } = useUser();
+
+  const [optionType, setOptionType] = useState('');
+
+  const corporateList = async () => {
+    startLoading();
+    // let data;
+
+    try {
+      const data: { filter?: { option_type: string } } = {};
+
+      // if (debouncedSearchQuery) {
+      //   data.search = debouncedSearchQuery;
+      // }
+
+      if (optionType) {
+        data.filter = {
+          option_type: optionType,
+        };
+      }
+
+      // If both debouncedSearchQuery and buySell exist, merge them into the data object
+      // if (debouncedSearchQuery && optionType) {
+      //   data = {
+      //     ...data,
+      //     filter: {
+      //       option_type: optionType,
+      //     },
+      //   };
+      // }
+
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: any = await apiService.post(
+        `/admin/${UserData()?._id}/get-option-trading?page=${currentPage}&limit=${postsPerPage}&sort=desc`,
+        data
+      );
+
+      if (response?.status === 200 && response?.success) {
+        setDataList(response?.payload);
+
+        setTotalEvents(response?.count);
+      } else {
+        toast.error('something went wrong');
+      }
+      setTotalEvents(2);
+    } catch (error: unknown) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (error?.response?.data?.message) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        return toast.error(error.response.data.message);
+      }
+
+      const typeError = error as Error;
+      return toast.error(typeError.message);
+    } finally {
+      stopLoading();
+    }
   };
+  useEffect(() => {
+    corporateList();
+  }, [currentPage, postsPerPage, optionType]);
+
+  const setPage = (i: number) => {
+    setCurrentPage(i);
+  };
+
+  // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const value = e.target.value;
+  //   setSearchData(value);
+  // };
 
   return (
     <>
@@ -26,18 +107,52 @@ export default function Option_history() {
               name="option_type"
               options={[
                 { label: 'Option Type', value: '' },
-                { label: 'Open', value: 'buy' },
-                { label: 'Hedge', value: 'sell' },
+                { label: 'Open', value: 'open' },
+                { label: 'Hedge', value: 'hedge' },
               ]}
-              value={tradingType}
-              onChange={handleTradingType}
+              value={optionType}
+              onChange={e => setOptionType(e.target.value)}
             />
           </div>
         </div>
 
         <div className={styles.innr_trading_history}>
-          <>
-            <h1>option</h1>
+          {!isLoading ? (
+            <div className={styles.innr_option_history}>
+              {dataList.length !== 0 ? (
+                <>
+                  {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    dataList.map((item: any, index: React.Key | null | undefined) => {
+                      return (
+                        <>
+                          {item.option_type === 'hedge' ? (
+                            <OptionsCard dataList={item.hedge} key={index} option_type={item.option_type} />
+                          ) : (
+                            <OptionsCard dataList={item.open} key={index} option_type={item.option_type} />
+                          )}
+                        </>
+                      );
+                    })
+                  }
+
+                  <PaginationComponent
+                    total={totalEvents}
+                    current={currentPage}
+                    onChange={setPage}
+                    pageSize={postsPerPage}
+                  />
+                </>
+              ) : (
+                'Data Not Found!'
+              )}
+            </div>
+          ) : (
+            // <MainLoader />
+            'loading'
+          )}
+
+          {/* <>
             <Option_card />
             <Option_card />
             <Option_card />
@@ -47,7 +162,7 @@ export default function Option_history() {
             <Option_card />
             <Option_card />
             <Option_card />
-          </>
+          </> */}
 
           {/* 
           <PaginationComponent total={totalEvents} current={currentPage} onChange={setPage} pageSize={postsPerPage} /> */}
