@@ -2,10 +2,13 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } f
 import { configs } from '@/config';
 import { store } from '@/store';
 import { resetAuth_, setAuth_ } from '@/store/slices/authSlice';
-const { baseUrl, nodeEnv } = configs;
+const {
+  baseUrl,
+  // nodeEnv
+} = configs;
 
 const baseURL: string = `${baseUrl.server}${baseUrl.apiVersion}`;
-const isProduction: boolean = nodeEnv === 'production';
+// const isProduction: boolean = nodeEnv === 'production';
 
 interface TokenResponse {
   accessToken: string;
@@ -28,7 +31,7 @@ class APIService {
     this.axiosInstance = axios.create({
       baseURL,
       headers: { 'Content-Type': 'application/json' },
-      withCredentials: isProduction,
+      // withCredentials: isProduction,
     });
 
     this.abortController = new AbortController();
@@ -100,7 +103,11 @@ class APIService {
       const response = await axios.post<TokenResponse>(
         `${baseURL}/auth/refresh`,
         {},
-        { headers, withCredentials: isProduction, signal: this.abortController.signal }
+        {
+          headers,
+          // withCredentials: isProduction,
+          signal: this.abortController.signal,
+        }
       );
       if (response.data && response.data.status === 200 && response.data.success) {
         const { accessToken, refreshToken, role } = response.data;
