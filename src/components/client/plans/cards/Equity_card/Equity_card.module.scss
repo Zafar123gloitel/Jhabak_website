@@ -1,17 +1,19 @@
-@import '../../../styles/index.scss';
-.option_card {
-  width: 300px;
+@import '../../../../../styles/index.scss';
+.equity_card {
+  width: 244px;
   height: auto;
   border-radius: 10px;
   border: 1px solid #adff14;
   background: #000;
   color: $black-text-color;
-
+  // transition: all 0.3s ease-in-out;
   // &:hover {
-  //   width: 500px;
-  //   transition: all 0.5s ease-in-out;
-  // }
+  //   position: relative;
+  //   width: 400px;
 
+  //   transform: scale(1.1);
+  //   transition: all 0.3s ease-in-out;
+  // }
   .top_bar {
     width: 100%;
     position: relative;
@@ -26,11 +28,12 @@
     p {
       margin-bottom: 0;
       font-weight: 700;
+      width: 100%;
+      text-align: center;
     }
   }
   .details {
     display: flex;
-
     color: $white-color;
     flex-wrap: wrap;
     padding: 5px 0;
@@ -39,29 +42,12 @@
       display: flex;
       align-items: center;
       margin: 2px 0;
-
       p {
-        width: 35%;
+        width: 60%;
         font-size: 14px;
         margin-left: 8px;
-        text-transform: capitalize;
         span {
           margin-left: 6px;
-        }
-        b {
-          width: 100px; /* Set the width of the container */
-          white-space: nowrap; /* Prevent text from wrapping */
-          overflow: hidden; /* Hide overflowing text */
-          text-overflow: ellipsis; /* Add ellipsis for overflow */
-        }
-        &:nth-child(2) {
-          width: 50%;
-          display: flex;
-          justify-content: space-between;
-          b {
-            width: 50%;
-            text-align: left;
-          }
         }
       }
     }

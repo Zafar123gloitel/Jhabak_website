@@ -1,0 +1,51 @@
+@import '../../../../../styles/index.scss';
+.commodity_history {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .search_data {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 14rem;
+    @include respond(md) {
+      justify-content: center;
+    }
+
+    > span {
+      color: $light-text-color;
+      margin-left: -5%;
+      font-size: 13px;
+    }
+    .input_container {
+      display: flex;
+      align-items: center;
+      div {
+        margin: 0;
+        width: 200px;
+
+        input {
+          background-color: $dark-input-bg;
+          color: #fff;
+        }
+        select {
+          border-bottom: 1px solid $green-color;
+          margin-top: 6px;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .innr_trading_history {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 2rem;
+    @include respond(sm) {
+      justify-content: center;
+    }
+  }
+}

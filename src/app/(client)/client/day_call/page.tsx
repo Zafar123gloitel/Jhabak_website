@@ -1,10 +1,12 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
-import Equity_trading from '@/components/client/plans/day_calls/Equity_Trading/Equity_Trading';
-import Option_trading from '@/components/client/plans/day_calls/Option_Trading/Option_trading';
-import style from './call.module.scss';
+import Equity_trading from '@/components/client/plans/day_calls/Equity/Equity_history';
+import Option_trading from '@/components/client/plans/day_calls/Option/Option_history';
+import Mcx_trading from '@/components/client/plans/day_calls/Mcx/Mcx_history';
 import TabComponent from '@/components/TabComponents';
 import { useUser } from '@/hooks';
+import style from './day_call.module.scss';
 
 interface ITabData {
   _id: number;
@@ -12,23 +14,6 @@ interface ITabData {
   alt: string;
 }
 
-// const tabData: ITabData[] = [
-//   {
-//     _id: 3121,
-//     name: 'equity_trading',
-//     alt: 'Equity Trading',
-//   },
-//   {
-//     _id: 3122,
-//     name: 'option_trading',
-//     alt: 'Options Trading',
-//   },
-//   {
-//     _id: 3123,
-//     name: 'mcx',
-//     alt: 'MCX',
-//   },
-// ];
 const tabData1: ITabData[] = [
   {
     _id: 3121,
@@ -72,7 +57,7 @@ const DayCall = () => {
   return (
     <>
       <section className={`${style.maincontainer}`}>
-        <div className={`${style.hedaingcontainer} d-flex`}>
+        <div className={`${style.hedaingcontainer}`}>
           {getUsersPlans()?.[0].trading_type.includes('equity') && (
             <TabComponent activeKey={activeTab} tabOptions={tabData1} onChangeTab={handleTabChange} />
           )}
@@ -83,10 +68,10 @@ const DayCall = () => {
             <TabComponent activeKey={activeTab} tabOptions={tabData3} onChangeTab={handleTabChange} />
           )}
         </div>
-        <div className={`${style.daycallcontainer}`}>
+        <div className="">
           {activeTab === 'equity_trading' && getUsersPlans()?.[0].trading_type.includes('equity') && <Equity_trading />}
           {activeTab === 'option_trading' && getUsersPlans()?.[0].trading_type.includes('option') && <Option_trading />}
-          {/* {activeTab === 'mcx' && getUsersPlans()?.[0].trading_type.includes('commodity') && <Equity_trading />} */}
+          {activeTab === 'mcx' && getUsersPlans()?.[0].trading_type.includes('commodity') && <Mcx_trading />}
         </div>
       </section>
     </>
