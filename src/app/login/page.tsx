@@ -9,6 +9,7 @@ const LoginPage = () => {
   const { UserData } = useUser();
   const role = UserData()?.role;
   const router = useRouter();
+
   useEffect(() => {
     if (IsLoggedIn() && role === 'admin') {
       router.push('/admin/clients');
@@ -17,7 +18,8 @@ const LoginPage = () => {
     } else {
       router.replace('/login');
     }
-  });
+  }, [IsLoggedIn, role, router]);
+
   return <Login />;
 };
 
