@@ -41,6 +41,7 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
     const value = e.target.value;
     setSearchData(value);
   };
+  // console.log(dataList, 'data');
 
   return (
     <div style={{ marginTop: '50px' }} className={`${styles.main__data_container} element_center flex-column`}>
@@ -68,107 +69,115 @@ const ClientDetails = ({ dataList, onChange, total, current, pageSize, searchDat
           <div className={`${styles.dashboard_data}`}>
             <div className={`${styles.details_card_container} flex-wrap`}>
               {dataList?.map((appointment: IUserSchema) => (
-                <div className={styles.client_details_card} key={appointment?.phone_number}>
-                  <div className={`${styles.innr_client_card} element_center flex-column`}>
-                    <div className={`${styles.detail_part} `}>
-                      <span className={`${styles.user_img} element_center flex-column`}>
-                        <Image src={'/assets/svg/user_default_img.png'} alt="user" width={67} height={67} />
-                        <p>
-                          <span className="css-f12">{appointment.name}</span>
-                        </p>
-                      </span>
-                      <div className={`${styles.details}`}>
-                        <p>
-                          <span>Phone:</span>
-                          <span>{appointment.phone_number}</span>
-                        </p>
-                        <p>
-                          <span>Addhar:</span>
-                          <span>{appointment.aadhar_number}</span>
-                        </p>
-                        <p>
-                          <span>PAN:</span>
-                          <span className={`${styles.PAN}`}>{appointment.pan_number}</span>
-                        </p>
-                        <p>
-                          <span>Email:</span>
-                          <span>{appointment.email}</span>
-                        </p>
+                <>
+                  <div className={styles.client_details_card} key={appointment?.phone_number}>
+                    <div className={`${styles.innr_client_card} element_center flex-column`}>
+                      <div className={`${styles.detail_part} `}>
+                        <span className={`${styles.user_img} element_center flex-column`}>
+                          <Image src={'/assets/svg/user_default_img.png'} alt="user" width={67} height={67} />
+                          <p>
+                            <span className="css-f12">{appointment.name}</span>
+                          </p>
+                        </span>
+                        <div className={`${styles.details}`}>
+                          <p>
+                            <span>Contact:</span>
+                            <span>{appointment.phone_number}</span>
+                          </p>
+                          <p>
+                            <span>Addhar:</span>
+                            <span>{appointment.aadhar_number}</span>
+                          </p>
+                          <p>
+                            <span>PAN:</span>
+                            <span className={`${styles.PAN}`}>{appointment.pan_number}</span>
+                          </p>
+                          <p>
+                            <span>Email:</span>
+                            <span>{appointment.email}</span>
+                          </p>
+                        </div>
                       </div>
+
+                      <table className={`${styles.suscription_details} `}>
+                        <thead>
+                          <tr>
+                            <th className={styles.plan_type_col}>Plans Type</th>
+                            <th className={styles.call_type_col}>Call Type</th>
+                            <th className={styles.plan_exp_col}>Expiry</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {appointment.plans.map((planValue: IPlan) => {
+                            return (
+                              <React.Fragment key={planValue?._id}>
+                                <tr>
+                                  <td className={`${styles.plan_type_col} element_center`}>
+                                    {convertLatter(planValue.plan_type)}
+                                  </td>
+                                  <td className={`${styles.call_type_col} element_center`}>
+                                    <span className={styles.calltype_data}>
+                                      {(planValue.trading_type[0]?.includes('equity') ||
+                                        planValue.trading_type[1]?.includes('equity') ||
+                                        planValue.trading_type[2]?.includes('equity')) && (
+                                        <>
+                                          <Image
+                                            src="/assets/svg/admin/equity_card.svg"
+                                            alt="Equtiy Trading"
+                                            title="Equtiy"
+                                            width={20}
+                                            height={20}
+                                          />
+                                          <span className={styles.calltype}>Equity</span>
+                                        </>
+                                      )}
+                                    </span>
+                                    <span className={styles.calltype_data}>
+                                      {(planValue.trading_type[0]?.includes('option') ||
+                                        planValue.trading_type[1]?.includes('option') ||
+                                        planValue.trading_type[2]?.includes('option')) && (
+                                        <>
+                                          <Image
+                                            src="/assets/svg/admin/option_card.svg"
+                                            alt="Option Trading"
+                                            title="Option "
+                                            width={20}
+                                            height={20}
+                                          />
+                                          <span className={styles.calltype}>Option</span>
+                                        </>
+                                      )}
+                                    </span>
+                                    <span className={styles.calltype_data}>
+                                      {(planValue.trading_type[0]?.includes('commodity') ||
+                                        planValue.trading_type[1]?.includes('commodity') ||
+                                        planValue.trading_type[2]?.includes('commodity')) && (
+                                        <>
+                                          <Image
+                                            src="/assets/svg/admin/commodity_card.svg"
+                                            alt="Commodity Trading"
+                                            title="Commodity "
+                                            width={20}
+                                            height={20}
+                                          />
+                                          <span className={styles.calltype}>Commodity</span>
+                                        </>
+                                      )}
+                                    </span>
+                                  </td>
+
+                                  <td className={`${styles.plan_exp_col} element_center`}>
+                                    {formatEndDateRange(planValue.end_plan)}
+                                  </td>
+                                </tr>
+                              </React.Fragment>
+                            );
+                          })}
+                        </tbody>
+                      </table>
                     </div>
-
-                    <table className={`${styles.suscription_details} `}>
-                      <thead>
-                        <tr>
-                          <th className={styles.plan_type_col}>Plans Type</th>
-                          <th className={styles.call_type_col}>Call Type</th>
-                          <th className={styles.plan_exp_col}>Expiry</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {appointment.plans.map((planValue: IPlan) => {
-                          return (
-                            <React.Fragment key={planValue?._id}>
-                              <tr>
-                                <td className={`${styles.plan_type_col} element_center`}>
-                                  {convertLatter(planValue.plan_type)}
-                                </td>
-                                <td className={`${styles.call_type_col} element_center`}>
-                                  <span className={styles.calltype_data}>
-                                    {planValue.trading_type[0].includes('equity') && (
-                                      <>
-                                        <Image
-                                          src="/assets/svg/admin/equity_calls.svg"
-                                          alt="Equtiy Trading"
-                                          title="Equtiy Trading"
-                                          width={20}
-                                          height={20}
-                                        />
-                                        <span className={styles.calltype}>Equity</span>
-                                      </>
-                                    )}
-                                  </span>
-                                  <span className={styles.calltype_data}>
-                                    {planValue.trading_type[1].includes('option') && (
-                                      <>
-                                        <Image
-                                          src="/assets/svg/admin/option_trading.svg"
-                                          alt="Option Trading"
-                                          title="Option Trading"
-                                          width={20}
-                                          height={20}
-                                        />
-                                        <span className={styles.calltype}>Option</span>
-                                      </>
-                                    )}
-                                  </span>
-                                  <span className={styles.calltype_data}>
-                                    {planValue.trading_type[2].includes('commodity') && (
-                                      <>
-                                        <Image
-                                          src="/assets/svg/admin/commodity_trading.svg"
-                                          alt="Commodity Trading"
-                                          title="Commodity Trading"
-                                          width={20}
-                                          height={20}
-                                        />
-                                        <span className={styles.calltype}>Commodity</span>
-                                      </>
-                                    )}
-                                  </span>
-                                </td>
-
-                                <td className={`${styles.plan_exp_col} element_center`}>
-                                  {formatEndDateRange(planValue.end_plan)}
-                                </td>
-                              </tr>
-                            </React.Fragment>
-                          );
-                        })}
-                      </tbody>
-                    </table>
                   </div>
-                </div>
+                </>
               ))}
             </div>
           </div>

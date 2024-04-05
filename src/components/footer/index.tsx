@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -23,10 +24,18 @@ const Footer = () => {
         </div>
         <div className={`${styles.footer_3} ${styles.footer_parts} flex-wrap`}>
           <h2 className={`${styles.footer_heading} css-f21`}>Quick Links</h2>
-          <p className={`${styles.footer_content} _css_content_`}>About Us</p>
-          <p className={`${styles.footer_content} _css_content_`}>Our Services</p>
-          <p className={`${styles.footer_content} _css_content_`}>Packages</p>
-          <p className={`${styles.footer_content} _css_content_`}>Privacy Policy</p>
+          <Link href={'/about'} className={`${styles.footer_content} _css_content_`}>
+            About Us
+          </Link>
+          <Link href={'/services'} className={`${styles.footer_content} _css_content_`}>
+            Our Services
+          </Link>
+          <Link href={'#'} className={`${styles.footer_content} _css_content_`}>
+            Packages
+          </Link>
+          <Link href={'#'} className={`${styles.footer_content} _css_content_`}>
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </section>
