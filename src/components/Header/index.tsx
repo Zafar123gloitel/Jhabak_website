@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAuth, useUser } from '@/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { toast } from 'react-toastify';
 const Header = () => {
@@ -86,12 +87,25 @@ const Header = () => {
                       <span>Login</span>
                     </button>
                   ) : (
-                    <button
-                      className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
-                      onClick={handleLogout}
-                    >
-                      <strong>Logout</strong>
-                    </button>
+                    <div className={`${styles.headerdropdown}`}>
+                      <Image src="/assets/images/DP_Photo.png" width={30} height={30} alt="jhabak" />
+                      <NavDropdown id="nav-dropdown-dark-example" title="" menuVariant="dark">
+                        <button
+                          className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                          onClick={() => {
+                            handleRoute('/client/profile');
+                          }}
+                        >
+                          <strong>Profile</strong>
+                        </button>
+                        <button
+                          className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                          onClick={handleLogout}
+                        >
+                          <strong>Logout</strong>
+                        </button>
+                      </NavDropdown>
+                    </div>
                   )}
                 </ul>
                 <div className={`${styles.showmenu_btn} `}>

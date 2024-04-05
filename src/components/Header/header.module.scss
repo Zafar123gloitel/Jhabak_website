@@ -189,7 +189,10 @@
     }
   }
 }
-
+.single_menue > strong {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 .single_menue > a {
   font-size: 15px;
   // font-weight: 550;
@@ -256,4 +259,10 @@
   @include respond(md) {
     display: inline;
   }
+}
+
+.headerdropdown {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
