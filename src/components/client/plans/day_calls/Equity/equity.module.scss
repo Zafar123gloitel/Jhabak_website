@@ -2,13 +2,13 @@
 .commodity_history {
   margin-top: 30px;
   margin-bottom: 30px;
-  .search_data {
+  .equity_client_search {
     width: 100%;
     display: flex;
     justify-content: end;
     align-items: center;
-    padding-right: 14rem;
-    @include respond(md) {
+
+    @include respond(sm) {
       justify-content: center;
     }
 
@@ -20,10 +20,15 @@
     .input_container {
       display: flex;
       align-items: center;
+      @include respond(xms) {
+        flex-wrap: wrap;
+      }
       div {
         margin: 0;
         width: 200px;
-
+        @include respond(xms) {
+          width: 100% !important;
+        }
         input {
           background-color: $dark-input-bg;
           color: #fff;
@@ -32,6 +37,10 @@
           border-bottom: 1px solid $green-color;
           margin-top: 6px;
           color: #fff;
+          @include respond(xms) {
+            margin: 0;
+            width: 100%;
+          }
         }
       }
     }

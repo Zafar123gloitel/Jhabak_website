@@ -9,11 +9,11 @@ export default function InfoContainer() {
         <div className={`${style.datacontainer}`}>
           <div>
             <p>
-              <span className={`${style.fontwrightMedium} css-f14`}>Contact No . </span>
+              <span className={`${style.fontwrightMedium} css-f14`}>Contact No. </span>
               <span className={`${style.fontwrightextralight} css-f12`}>{UserData()?.phone_number}</span>
             </p>
             <p>
-              <span className={`${style.fontwrightMedium} css-f14`}>Email </span>
+              <span className={`${style.fontwrightMedium} css-f14`}>Email. </span>
               <span className={`${style.fontwrightextralight} css-f12`}>{UserData()?.email.toUpperCase()}</span>
             </p>
           </div>

@@ -10,15 +10,12 @@ export default function PersonalInfo() {
     <>
       <div className={`${style.maincontainer}`}>
         <div className={`${style.infocontainer}`}>
-          <div>
-            <h2 className={`${style.heading}`}>Personal Information</h2>
-            <InfoContainer />
-          </div>
+          <h2 className={`${style.heading}`}>Personal Information</h2>
+          <InfoContainer />
+
           <div className={`${style.afterinfoconatiner}`}>
             <div className={`${style.heading}`}>
-              <div>
-                <h2>Plan Information</h2>
-              </div>
+              <h2>Plan Information</h2>
 
               <div>
                 <Image src="/assets/svg/profile/Green.svg" width={15} height={15} alt="Picture of the author" />

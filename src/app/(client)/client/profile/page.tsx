@@ -7,8 +7,8 @@ import { withAuthentication } from '@/hocs';
 function Profile() {
   return (
     <>
-      <section className={`${style.userprofilecardcontainer} w-100 element_center section_padding`}>
-        <div className={`${style.maincontainer}  css_max_screen `}>
+      <section className={`${style.user_profile_container} section_padding`}>
+        <div className={`${style.maincontainer}  `}>
           <Usercard />
           <PersonalInfo />
         </div>

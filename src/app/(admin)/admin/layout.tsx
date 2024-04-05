@@ -10,7 +10,7 @@ export default function ClientInfromation({ children }: { children: React.ReactN
   return (
     <>
       {/* {dataUser?.role==='admin'&& */}
-      <div className={`main_dashboard All_content_center`}>
+      <div className={`main_dashboard dashboard_container All_content_center`}>
         <div className={`main_dashboard d-flex w-100 css_max_screen `}>
           <>
             <div className={`sidebar_main`}>

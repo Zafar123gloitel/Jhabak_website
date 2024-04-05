@@ -3,7 +3,9 @@
 .banner_slider {
   // min-height: 500px;
   // min-height: 350px;
+
   height: 350px;
+  margin-top: 90px;
   @include respond(xxxl) {
     height: 300px;
   }

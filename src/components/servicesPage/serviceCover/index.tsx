@@ -5,8 +5,8 @@ import Image from 'next/image';
 export function ServiceCover() {
   return (
     <>
-      <div className={`${styles['service_cover']} section_shadow mb-1 element_center`}>
-        <div className={`${styles['innr_cover']} css_max_screen element_center`}>
+      <div className={`${styles.service_cover} section_shadow mb-1 element_center`}>
+        <div className={`${styles.innr_cover} css_max_screen element_center`}>
           <div className={`${styles.banner_content} _css_left`}>
             <p className="small_heading m-0">Welcome to Jhabak Share and Stock Broker</p>
             <h1 className="section_heading_css text-white mt-2">Gateway to Smart Investments!</h1>

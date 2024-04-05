@@ -4,6 +4,7 @@
   background-color: $background-color;
   // min-height: 500px;
   height: 400px;
+  margin-top: 80px;
   @include respond(xxxl) {
     height: 300px;
   }

@@ -56,8 +56,8 @@ const DayCall = () => {
 
   return (
     <>
-      <section className={`${style.maincontainer}`}>
-        <div className={`${style.hedaingcontainer}`}>
+      <section className={style.maincontainer}>
+        <div className={`${style.hedaingcontainer} client_tab`}>
           {getUsersPlans()?.[0].trading_type.includes('equity') && (
             <TabComponent activeKey={activeTab} tabOptions={tabData1} onChangeTab={handleTabChange} />
           )}

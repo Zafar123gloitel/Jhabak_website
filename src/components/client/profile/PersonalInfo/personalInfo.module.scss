@@ -4,6 +4,7 @@
   @include respond(sm) {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 }
 .infocontainer {
@@ -14,47 +15,59 @@
   border: 1px solid #00b666;
   background: #000;
   box-shadow: 1px 4px 4px 1px #c2ff61;
+  @include respond(sm) {
+    width: 100% !important;
+    z-index: 10;
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    // box-shadow: none;
+  }
 }
 .afterinfoconatiner {
   padding-top: 11px;
   padding-bottom: 84px;
+  @include respond(sm) {
+    padding-bottom: 20px;
+  }
 }
-// .heading02 {
-//   color: $Nylon;
-//   font-style: italic;
-//   font-size: 20px;
-//   div {
-//     p {
-//       font-style: normal;
-//       font-size: 14px;
-//       font-weight: 500;
-//     }
-//   }
-// }
+
 .heading {
   display: flex;
-  gap: 36%;
-  margin-inline: 8%;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
   padding-top: 30px;
   color: #adff14;
   font-size: 20px;
-  font-style: italic;
+
   font-weight: 700;
   line-height: 30.8px;
+
+  h2 {
+    color: $Nylon;
+    font-size: 20px;
+    text-wrap: nowrap;
+  }
   @include respond(xl) {
     display: flex;
-    flex-direction: column;
+  }
+  @include respond(lg) {
+    display: flex;
+    flex-wrap: wrap;
   }
   div {
     display: flex;
     align-items: center;
+    justify-content: end;
     padding-top: 10px;
     padding-bottom: 11px;
+    padding-right: 15px;
     gap: 7px;
-    h2 {
-      color: $Nylon;
-      font-style: italic;
-      font-size: 20px;
+    width: 60%;
+    @include respond(lg) {
+      width: 100%;
+      justify-content: flex-start;
     }
     p {
       margin-bottom: 0rem;

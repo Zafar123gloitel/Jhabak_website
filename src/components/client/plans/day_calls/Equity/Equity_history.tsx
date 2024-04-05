@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './Equity_history.module.scss';
+import styles from './equity.module.scss';
 import SelectField from '@/components/InputField/SelectField';
 import InputField from '@/components/InputField/InputField';
 // import Equity_Card from '@/components/client/plans/cards/Equity_card/Equity_card';
@@ -96,7 +96,7 @@ export default function Equity_history() {
   return (
     <>
       <div className={`${styles.commodity_history} element_center flex-column`}>
-        <div className={styles.search_data}>
+        <div className={styles.equity_client_search}>
           <div className={styles.input_container}>
             <InputField
               type="text"

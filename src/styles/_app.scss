@@ -528,6 +528,28 @@ button {
   }
 }
 
+.client_tab {
+  @include respond(sm) {
+    flex-wrap: wrap;
+    .nav-tabs {
+      width: 50% !important;
+      margin-top: 15px !important;
+      .nav-item {
+        margin: 0 !important;
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 0 !important;
+          width: 95% !important;
+        }
+      }
+    }
+  }
+}
+
+// admin details main css
+
 .inner_plans_tabs {
   margin-top: 0px;
   width: 80%;
@@ -596,6 +618,12 @@ button {
         background: $green-color;
       }
     }
+  }
+}
+.client_data {
+  margin-left: 0;
+  @include respond(md) {
+    width: 95% !important;
   }
 }
 
@@ -702,4 +730,12 @@ button {
       }
     }
   }
+}
+// dashboard main
+
+.dashboard_container {
+  margin-top: 80px;
+}
+.client_container {
+  margin-top: 120px;
 }

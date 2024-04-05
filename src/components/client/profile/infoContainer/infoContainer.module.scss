@@ -6,12 +6,8 @@
   align-items: center;
 }
 .divcontainer {
-  // display: grid;
-  // grid-row-gap: 20px;
-  // row-gap: 17px;
   padding-inline: 40px;
-  // grid-template-columns: 1fr 1fr;
-  // column-gap: 19%;
+
   padding-left: 12%;
 
   width: 80%;
@@ -26,21 +22,45 @@
   box-shadow:
     0px 1.318px 2.637px 0px #232329,
     0px 0px 0px 1.318px #272729;
+
+  @include respond(xl) {
+    width: 95%;
+    padding: 10px;
+  }
 }
 .datacontainer {
   color: #ffff;
   width: 100%;
-  // display: flex;
   text-align: left;
   column-gap: 50px;
   div {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    @include respond(xs) {
+      flex-direction: column;
+    }
     p {
+      width: 50%;
+      display: flex;
+      align-items: center;
+
+      @include respond(lg) {
+        flex-direction: column;
+        justify-content: center;
+      }
+      @include respond(xs) {
+        flex-direction: row;
+      }
+      @include respond(xxs) {
+        flex-direction: column;
+      }
       span {
         @include respond(xl) {
           display: block;
           text-align: left;
+          @include respond(xs) {
+            width: 50%;
+          }
         }
       }
     }
@@ -49,10 +69,26 @@
 
 .fontwrightMedium {
   font-weight: 500;
-  margin-right: 50px;
+  margin-right: 0px;
+  width: 100px;
+  margin-left: 20px;
+
+  display: flex;
+  @include respond(xs) {
+    margin-left: 0;
+    width: 180px !important;
+  }
+  @include respond(xxs) {
+    width: 100% !important;
+    text-align: center;
+  }
 }
 
 .fontwrightextralight {
   font-weight: 200;
-  text-align: right;
+  @include respond(xxs) {
+    width: 100% !important;
+    text-align: center;
+    margin-top: 5px;
+  }
 }

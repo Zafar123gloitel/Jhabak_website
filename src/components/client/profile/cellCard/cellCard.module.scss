@@ -13,7 +13,7 @@
   background: #181818;
   z-index: 1;
   @include respond(xl) {
-    width: 100%;
+    min-width: 100%;
   }
 }
 .cellheadercontainer {
@@ -47,6 +47,9 @@
   bottom: 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  @include respond(xl) {
+    padding-left: 5px;
+  }
   table {
     width: 100%;
 

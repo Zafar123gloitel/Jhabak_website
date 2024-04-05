@@ -49,20 +49,22 @@ const Header = () => {
     <>
       {role === 'user' && pathname.startsWith('/client') ? (
         <>
-          <nav className={`${styles['main_navbar']} `}>
-            <div className={`${styles['inner_navbar']} element_center`}>
+          <nav className={`${styles.main_navbar} fixed-top`}>
+            <div className={`${styles.inner_navbar} element_center`}>
               <div className={`${styles['company_name']}`}>
                 <Image src="/assets/svg/Logo.svg" alt="Jhabak" width={200} height={80} />
               </div>
 
-              <div className={`${styles['Menu_List']} element_center `}>
+              <div className={`${styles.Menu_List} element_center `}>
                 {/* login and logout  */}
-                <ul className={`${styles['Menues']} element_center ${showNav && styles.show_mainnav}`}>
+                <ul
+                  className={`${styles.Menues} ${styles.client__lists} element_center ${showNav && styles.show_mainnav}`}
+                >
                   {clientPageRoute.map(value => {
                     return (
-                      <li key={value.id} className={styles.menu_single_lists}>
+                      <li key={value.id} className={`${styles.menu_single_lists} ${styles.client_single_lists}`}>
                         <button
-                          className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                          className={`${styles.single_menue} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
                           onClick={() => {
                             handleRouteClient(value?.href);
                             setShowNav(false);
@@ -87,7 +89,7 @@ const Header = () => {
                     </button>
                   ) : (
                     <button
-                      className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                      className={`${styles.single_menue} ${styles.client_logout} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
                       onClick={handleLogout}
                     >
                       <strong>Logout</strong>
@@ -95,7 +97,6 @@ const Header = () => {
                   )}
                 </ul>
                 <div className={`${styles.showmenu_btn} `}>
-                  {' '}
                   <button className={`${styles.show_navbtn} bg-transparent`} onClick={() => setShowNav(!showNav)}>
                     {showNav ? (
                       <Image src="/assets/svg/landing_close.svg" alt="menu" width={35} height={35} />
@@ -109,26 +110,19 @@ const Header = () => {
           </nav>
         </>
       ) : (
-        <nav className={`${styles['main_navbar']} ${pathname.startsWith('/admin') && styles.admin_navbar}`}>
-          {/* <button
-          className={styles.menu_dropdown_button}
-          type="button"
-          onClick={() => setOpenSidebar(!openSidebar)}
-        >
-          <Image className={styles.icon} src="/assets/svg/hamburger.svg" alt="Home" width={17} height={17} />
-        </button> */}
+        <nav className={`${styles['main_navbar']} ${pathname.startsWith('/admin') && styles.admin_navbar} fixed-top`}>
           <div className={`${styles['inner_navbar']} element_center`}>
             <div className={`${styles['company_name']}`}>
               <Image src="/assets/svg/Logo.svg" alt="Jhabak" width={200} height={80} />
             </div>
 
-            <div className={`${styles['Menu_List']} element_center `}>
-              <ul className={`${styles['Menues']} element_center ${showNav && styles.show_mainnav}`}>
+            <div className={`${styles.Menu_List} element_center `}>
+              <ul className={`${styles.Menues} element_center ${showNav && styles.show_mainnav}`}>
                 {pageRoute.map(value => {
                   return (
                     <li key={value.id} className={styles.menu_single_lists}>
                       <button
-                        className={`${styles['single_menue']} ${styles['no_marging_padding']} element_center bg-transparent text-white css-f15`}
+                        className={`${styles.single_menue} ${styles.no_marging_padding} element_center bg-transparent text-white css-f15`}
                         onClick={() => {
                           handleRoute(value?.href);
                           setShowNav(false);

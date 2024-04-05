@@ -9,9 +9,12 @@ export default function Usercard() {
       <div className={`${style.maincontainer}`}>
         <div className={`${style.conatainer}`}>
           <div className={`${style.imageContainer}`}>
-            <Image src="/assets/images/profile/userimage.png" width={296} height={300} alt="" />
+            <div className={style.img}>
+              <Image src="/assets/images/profile/userimage.png" fill={true} alt="" />
+            </div>
+
             <div className={`${style.dpconatiner}`}>
-              <Image src="/assets/images/profile/dp.png" width={185} height={185} alt="" />
+              <Image src="/assets/images/profile/dp.png" fill={true} alt="" />
               <div>{/* <Image src="/assets/svg/profile/camera-add 1.svg" width={27} height={27} alt="" /> */}</div>
             </div>
           </div>
