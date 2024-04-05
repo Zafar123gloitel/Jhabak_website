@@ -111,12 +111,12 @@ const CreateClientForm = () => {
       if (!validateIndianPhoneNumber(formData.phone_number)) return onError('phone_number', 'Invalide Phone Number.');
       if (validateEmptyString(formData.pan_number)) return onError('pan_number', 'Enter client pan.');
       // if (validation(formData.pan_number)) return onError('pan_number', 'Enter valid client pan.');
-      if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(formData.pan_number.toUpperCase())) {
-        return onError('pan_number', 'Enter valid client pan.');
-      }
+      // if (/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(formData.pan_number.toUpperCase())) {
+      //   return onError('pan_number', 'Enter valid client pan.');
+      // }
       if (validateEmptyString(formData.aadhar_number)) return onError('aadhar_number', 'Enter client aadhar.');
       if (!/^\d{12}$/.test(formData.aadhar_number.toUpperCase())) {
-        return onError('pan_number', 'Enter valid client pan.');
+        return onError('aadhar_number', 'Enter valid client pan.');
       }
 
       setIsLoading(true);

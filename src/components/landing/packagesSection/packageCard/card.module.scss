@@ -3,7 +3,7 @@ $card_text_color: #adff14;
 .pricing_card {
   width: 300px;
   min-width: 250px;
-  height: 450px;
+  height: 400px;
   padding: 40px 25px 30px 25px;
   margin: 40px;
   // background-color: $white-color;
@@ -53,6 +53,7 @@ $card_text_color: #adff14;
       }
       ul {
         li {
+          text-transform: capitalize;
           color: $black-text-color !important;
         }
       }

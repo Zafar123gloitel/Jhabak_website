@@ -12,7 +12,7 @@ export const TradingStrategy = ({ heading, content }: ITradingContent) => {
       <h4 className="section_heading_css text-left css-f19 ">
         <span>{heading}</span>
       </h4>
-      <div className={`${styles.trading_strategies_text} _css_content_ css-f12 mt-2 element_ceneter`}>
+      <div className={`${styles.trading_strategies_text} _css_content_ css-f14 mt-2 element_ceneter`}>
         <p className="text-white">{content}</p>
       </div>
     </div>

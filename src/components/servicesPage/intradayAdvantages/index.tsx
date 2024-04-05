@@ -24,9 +24,11 @@ export const IntradayAdvantage = () => {
                   </div>
                 </div>
                 <div className={`${styles.content} mt-2`}>
-                  <h2 className={`${styles.small_heading}  w-100  section_heading_css text-green`}>{item.Heading}</h2>
-                  <b className="css-f13 w-100 mt-1">{item.smallHeading}</b>
-                  <ul className={`${styles.advisory_text} _css_content_ mt-3 css-f13`}>
+                  <h2 className={`${styles.small_heading}  w-100  section_heading_css text-white`}>
+                    {item.smallHeading}
+                  </h2>
+                  {/* <b className="css-f13 w-100 mt-1">{item.smallHeading}</b> */}
+                  <ul className={`${styles.advisory_text} _css_content_ mt-3 css-f13 `}>
                     {item.content.map(data => {
                       return (
                         <>

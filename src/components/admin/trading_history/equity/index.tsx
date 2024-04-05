@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './equity_history.module.scss';
 import EquityCard from '@/components/cards/equity_card';
 import useLoading from '@/components/loading/Loader';
-
 import { apiService } from '@/utils';
 import { useUser } from '@/hooks';
 import useDebounce from '@/components/Usedebounce';
@@ -14,6 +13,7 @@ import InputField from '@/components/InputField/InputField';
 import SelectField from '@/components/InputField/SelectField';
 
 const EquityHistory = () => {
+  const { isLoading, startLoading, stopLoading } = useLoading();
   const [buySell, setBuySell] = useState('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState([]);
@@ -24,7 +24,6 @@ const EquityHistory = () => {
   const { UserData } = useUser();
   const [searchData, setSearchData] = useState('');
   const debouncedSearchQuery = useDebounce(searchData, debounceDelay);
-  const { isLoading, startLoading, stopLoading } = useLoading();
 
   const corporateList = async () => {
     startLoading();
@@ -115,6 +114,7 @@ const EquityHistory = () => {
                 { label: 'Buy', value: 'buy' },
                 { label: 'Sell', value: 'sell' },
               ]}
+              className={styles.search_share}
               value={buySell}
               onChange={e => setBuySell(e.target.value)}
             />

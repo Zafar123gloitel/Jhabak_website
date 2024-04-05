@@ -17,7 +17,7 @@ const OptionHistory = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dataList, setDataList] = useState([]);
-  const [postsPerPage] = useState<number>(10);
+  const [postsPerPage] = useState<number>(8);
   const debounceDelay = 500; // Adjust debounce delay as needed
   // total no of data
   const [totalEvents, setTotalEvents] = useState(0);

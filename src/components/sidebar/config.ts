@@ -10,7 +10,7 @@ export interface pageRoute {
   name: string;
   href?: string;
   imgSrc: string;
-  activeImgSrc?: string;
+  activeImgSrc: string;
   subMenu: ISubMenu[];
 }
 export const pageRoute: pageRoute[] = [
@@ -52,7 +52,7 @@ export const pageRoute: pageRoute[] = [
     id: 5,
     name: 'Trading History',
     imgSrc: '/assets/svg/sidebar/history.svg',
-    // activeImgSrc: '/assets/svg/sidebar/history_active.svg',
+    activeImgSrc: '/assets/svg/sidebar/history_active.svg',
     // href: '/admin/equity',
     subMenu: [
       {

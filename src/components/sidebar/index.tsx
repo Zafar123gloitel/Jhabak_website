@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './sidebar.module.scss';
 // import Image from 'next/image';
 import { pageRoute } from './config';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Accordion } from 'react-bootstrap';
 // import { Accordion } from 'react-bootstrap';
@@ -24,9 +24,9 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
 
   //   router.push(`${path}`);
   // };
-  const handleRoute = (path: string) => {
-    router.push(path);
-  };
+  // const handleRoute = (path: string) => {
+  //   router.push(path);
+  // };
   const isActiveLink = (location: string, path: string) => {
     if (path === location) {
       return true;
@@ -55,7 +55,7 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
       <nav className={`${styles.main_sidebar} ${isToggle && styles.show_sidebar}`}>
         <div className={`${styles.inner_sidebar} ${styles['sidebar_container']}`}>
           <div className={`${styles.Menu_List} ${styles.inner_sidebar_container} sidebar`}>
-            <ul className={`${styles.Menues} `}>
+            {/* <ul className={`${styles.Menues} `}>
               {pageRoute?.map(value => (
                 <li key={value.id} className={`${styles.li_content}`}>
                   <button
@@ -78,26 +78,39 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
                   </button>
                 </li>
               ))}
-            </ul>
+            </ul> */}
 
             <Accordion defaultActiveKey="" className={styles.filter}>
               {pageRoute?.map(item => {
                 return (
-                  <div key={item?.id}>
+                  <div key={item?.id} className={styles.single_sidebar}>
                     {/* <button onClick={() => redirect(item?.href)} className={`bg-transparent ${styles.outer_btn}`}> */}
                     {item.subMenu.length > 0 ? (
                       <Accordion.Item eventKey={item.name} className={styles.filterItem} key={item?.id}>
-                        <Accordion.Header className={styles.filterHeading}>
-                          <Image src={item.imgSrc} alt="item.name" width={25} height={25} />
-                          {item.name}
+                        <Accordion.Header className={`${styles.filterHeading} ${isToggle && 'hide_arrow'}`}>
+                          <button
+                            key={item.href}
+                            className={`${styles.href_button} ${isActiveLink(pathname, item.href as string) ? item.activeImgSrc : item.imgSrc}`}
+                          >
+                            <Image src={item.imgSrc} alt="item.name" width={25} height={25} />
+                            <strong className={isActiveLink(pathname, item.href as string) && 'text-black'}>
+                              {item.name}
+                            </strong>
+                          </button>
                         </Accordion.Header>
                         <Accordion.Body className={styles.filterAccordian}>
                           {item.subMenu?.map(item => {
                             return (
                               <>
-                                <button onClick={() => redirect(item?.href)} key={item.href}>
+                                <button
+                                  onClick={() => redirect(item?.href)}
+                                  key={item.href}
+                                  className={styles.href_button}
+                                >
                                   <Image src={item.imgSrc} alt="value" width={20} height={20} />
-                                  <p>{item.name}</p>
+                                  <strong className={isActiveLink(pathname, item.href as string) && 'text-black'}>
+                                    {item.name}
+                                  </strong>
                                 </button>
                               </>
                             );
@@ -105,10 +118,18 @@ export const Sidebar = ({ isToggle, setIsToggle }: IProps) => {
                         </Accordion.Body>
                       </Accordion.Item>
                     ) : (
-                      <button>
-                        <Image src={item.imgSrc} alt="value" width={25} height={25} />
-                        <p>{item.name}</p>
-                      </button>
+                      <Accordion.Item eventKey={item.name}>
+                        <button
+                          onClick={() => redirect(item?.href as string)}
+                          key={item.href}
+                          className={styles.href_button}
+                        >
+                          <Image src={item.imgSrc} alt="value" width={25} height={25} />
+                          <strong className={isActiveLink(pathname, item.href as string) && 'text-black'}>
+                            {item.name}
+                          </strong>
+                        </button>
+                      </Accordion.Item>
                     )}
                     {/* </button> */}
                   </div>
